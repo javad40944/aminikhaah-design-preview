@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="مقایسه سه جهت بصری پیشنهادی برای طراحی جامع کتابخانه امینی‌خواه؛ مرحله ۰۷ب، پیش از تأیید طرح نهایی.">
+  <title>مقایسه سه هویت بصری | طراحی امینی‌خواه – مرحله ۰۷ب</title>
+  <style>
+    :root{color-scheme:light;--ink:#17282a;--muted:#617171;--page:#f4f0e7;--line:#dfe2dc;--focus:#d18931}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{margin:0;background:var(--page);color:var(--ink);font-family:Vazirmatn,"Noto Sans Arabic",Tahoma,Arial,sans-serif;font-size:14px;line-height:1.85}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+    svg{display:block}
+    .page-top{position:sticky;top:0;z-index:20;background:#102a2c;color:#fff;border-bottom:1px solid #ffffff24;box-shadow:0 7px 25px #102a2c22}
+    .top-inner{max-width:1450px;margin:auto;padding:10px clamp(18px,4vw,56px);display:flex;align-items:center;gap:15px;justify-content:space-between;flex-wrap:wrap}
+    .top-brand{display:flex;gap:11px;align-items:center;font-weight:900;font-size:14px}
+    .top-mark{display:grid;place-items:center;width:40px;height:40px;color:#182d28;border-radius:12px;background:linear-gradient(135deg,#f3d394,#d99b65);font-size:24px;font-family:serif}
+    .top-caption{font-size:11px;display:block;font-weight:400;color:#b4c9c6;margin-top:-5px}
+    .return-link{border:1px solid #a8bfbc60;border-radius:999px;padding:8px 14px;color:#f5eee4;background:#ffffff0a;font-size:12px;transition:background .2s}
+    .return-link:hover{background:#ffffff1a}
+    .intro{position:relative;isolation:isolate;overflow:hidden;background:#183b3e;color:#fff;padding:clamp(36px,6vw,78px) clamp(18px,4vw,56px) clamp(30px,4vw,52px)}
+    .intro:before{content:"";position:absolute;top:-260px;left:-180px;width:640px;height:640px;border-radius:50%;border:85px solid #f3c5880e;box-shadow:0 0 0 85px #f3c58806;z-index:-1}
+    .intro:after{content:"";position:absolute;bottom:-140px;right:46%;width:240px;height:240px;border-radius:50%;background:#d5894c12;filter:blur(18px);z-index:-1}
+    .intro-inner{max-width:1335px;margin:auto;display:grid;grid-template-columns:1.28fr .72fr;gap:42px;align-items:end}
+    .kicker{font-size:11px;letter-spacing:.2px;color:#f3c588;font-weight:850;display:flex;align-items:center;gap:9px;margin-bottom:13px}
+    .kicker:before{content:"";width:27px;height:2px;background:#f3c588;border-radius:4px}
+    h1,h2,h3,p{margin:0}
+    .intro h1{font-size:clamp(28px,3.8vw,55px);line-height:1.44;letter-spacing:-.75px;font-weight:950;max-width:820px}
+    .intro h1 em{font-style:normal;color:#f0c383}
+    .intro p{font-size:clamp(12px,1.22vw,15px);line-height:2.15;max-width:735px;color:#d7e4df;margin-top:13px}
+    .intro-aside{background:#ffffff0d;border:1px solid #ffffff2b;border-radius:19px;padding:23px 25px;backdrop-filter:blur(3px)}
+    .intro-aside strong{font-size:15px;color:#ffe1a8}
+    .intro-aside p{font-size:12px;color:#d7e4df;margin-top:7px}
+    .intro-aside .stamp{display:inline-block;background:#3f665f;color:#e3efdc;border-radius:999px;padding:5px 13px;font-size:11px;margin-top:12px}
+    .main{max-width:1450px;margin:auto;padding:35px clamp(14px,3.7vw,52px) 80px}
+    .lead-row{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 19px}
+    .lead-row h2{font-size:clamp(21px,2.1vw,29px);font-weight:950}
+    .lead-row p{font-size:12px;color:var(--muted);margin-top:5px}
+    .legend{display:inline-flex;align-items:center;gap:7px;background:#fff9f0;border:1px solid #e9d9c0;border-radius:999px;padding:6px 13px;color:#885e30;font-size:11px;font-weight:800}
+    .overview{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:25px}
+    .choice{appearance:none;text-align:right;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;background:white;border:1px solid #e4e4df;border-radius:19px;padding:18px 20px;box-shadow:0 10px 27px #102c2420;min-height:180px;transition:transform .2s,box-shadow .2s,border-color .2s}
+    .choice:hover{transform:translateY(-3px);box-shadow:0 15px 31px #102c2427;border-color:#c7b398}
+    .choice:focus-visible{outline-offset:0}
+    .choice .choice-no{font:900 24px Georgia,serif;position:absolute;left:19px;top:13px;color:#afb9ad}
+    .choice h3{font-size:20px;font-weight:950}
+    .choice p{color:#687472;font-size:11px;line-height:1.9;max-width:350px}
+    .mini-palette{display:flex;gap:0;overflow:hidden;border-radius:999px;width:170px;height:13px;margin-top:auto}
+    .mini-palette span{flex:1}
+    .choice .choice-link{align-self:flex-start;color:#29584d;font-size:11px;font-weight:900}
+    .controls{position:sticky;top:60px;z-index:16;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fffcf7ee;border:1px solid #e4e1d7;box-shadow:0 8px 22px #29332c12;border-radius:17px;padding:10px 14px;margin:10px 0 25px;backdrop-filter:blur(14px);flex-wrap:wrap}
+    .control-set{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+    .control-label{font-size:11px;color:#637069;font-weight:800;margin:0 6px}
+    .control-btn{min-height:34px;border:1px solid #e0ded4;background:#fff;color:#485954;border-radius:9px;padding:6px 13px;font-size:11px;font-weight:750;transition:background .18s}
+    .control-btn[aria-pressed="true"]{background:#1e514b;border-color:#1e514b;color:#fff}
+    .mood{--bg:#f8f3e9;--surface:#fffdf9;--soft:#f1e8d7;--ink:#25342c;--sub:#687064;--primary:#395b49;--accent:#bf683d;--secondary:#cda356;--border:#eadfce;--hero:#304f40;--hero-to:#6e6e45;--onhero:#fff8ec;--cover:#64745d;--shadow:0 17px 30px #4b463118;scroll-margin-top:135px;margin:0 0 34px;background:#fffdfb;border:1px solid #e5e2d9;border-radius:25px;overflow:hidden;box-shadow:0 10px 36px #4c514719}
+    .mood.style-b{--bg:#f8f5ef;--surface:#fffefa;--soft:#e8eff0;--ink:#1f3445;--sub:#64717d;--primary:#1c4565;--accent:#bf7f36;--secondary:#dcac5c;--border:#d9e2e3;--hero:#1c3559;--hero-to:#287678;--onhero:#fff6e5;--cover:#365573;--shadow:0 17px 30px #233e481c}
+    .mood.style-c{--bg:#faf0e8;--surface:#fffaf6;--soft:#f3e2d4;--ink:#4a3030;--sub:#81655f;--primary:#753d40;--accent:#c75e3d;--secondary:#d99c5e;--border:#ecd5c9;--hero:#6b3743;--hero-to:#af6550;--onhero:#fff4e5;--cover:#895154;--shadow:0 17px 30px #6540371c}
+    body.night .mood{--bg:#171e1b;--surface:#252e29;--soft:#30382d;--ink:#f4eddb;--sub:#c2bba9;--primary:#8dbba2;--accent:#f0ac75;--secondary:#efc781;--border:#444d42;--hero:#234338;--hero-to:#635e3b;--onhero:#fff4df;--cover:#465b4a;--shadow:0 20px 33px #10161244}
+    body.night .mood.style-b{--bg:#101a29;--surface:#1d2d3b;--soft:#223847;--ink:#f4f0e6;--sub:#b3c0cb;--primary:#91b9dc;--accent:#edb96d;--secondary:#e9c785;--border:#365062;--hero:#20395d;--hero-to:#17595d;--onhero:#fff8e9;--cover:#355678}
+    body.night .mood.style-c{--bg:#211a1c;--surface:#32272a;--soft:#453137;--ink:#fcefe6;--sub:#d2b5ad;--primary:#e6a0a0;--accent:#f0ae7c;--secondary:#e5bd89;--border:#573e41;--hero:#58333d;--hero-to:#8a483e;--onhero:#fff4e5;--cover:#74434b}
+    .mood-head{background:white;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding:24px clamp(17px,3vw,36px) 19px}
+    .mood-name{display:flex;gap:15px;align-items:center}
+    .mood-code{font:900 30px Georgia,serif;color:#fff;background:#38614f;border-radius:15px;display:grid;place-items:center;width:53px;height:53px;box-shadow:inset 0 0 0 1px #fff4}
+    .style-b .mood-code{background:#23496b}
+    .style-c .mood-code{background:#90484d}
+    .mood-name h2{font-size:24px;line-height:1.5;font-weight:950}
+    .mood-name p{font-size:11px;color:#78807b;margin-top:-3px}
+    .mood-meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+    .mood-meta span{background:#f6f3ed;border:1px solid #eae2d5;padding:5px 12px;border-radius:999px;color:#6c6658;font-size:11px}
+    .mood-meta .mood-audience{background:#eef4ee;color:#3f6249;border-color:#e0e9e0}
+    .mood-summary{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;padding:0 clamp(17px,3vw,36px) 19px;background:#fff}
+    .mood-summary p{color:#5b6a65;font-size:12px;max-width:680px}
+    .swatches{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+    .swatch{width:26px;height:26px;border-radius:9px;border:2px solid #fff;box-shadow:0 0 0 1px #d9d8d2}
+    .stage-bg{background:#edf0ec;padding:clamp(12px,2.2vw,32px);display:flex;justify-content:center;align-items:start;min-width:0}
+    .style-b .stage-bg{background:#e8edf2}
+    .style-c .stage-bg{background:#f4e9e0}
+    body.night .stage-bg{background:#202624}
+    body.night .style-b .stage-bg{background:#17212d}
+    body.night .style-c .stage-bg{background:#292023}
+    .mock-shell{width:100%;max-width:1190px;min-width:0;container-type:inline-size;container-name:mock;transition:max-width .27s,background .2s;box-shadow:0 19px 45px #1b37372c;border-radius:15px;background:var(--bg);overflow:hidden;border:1px solid #0000000e}
+    body.phone-view .mock-shell{max-width:390px}
+    .mock{position:relative;min-height:515px;background:var(--bg);color:var(--ink);font-size:12px}
+    .site-overline{height:25px;background:var(--soft);color:var(--sub);text-align:center;font-size:10px;display:grid;place-items:center;letter-spacing:.15px}
+    .mock-head{background:var(--surface);border-bottom:1px solid var(--border);padding:11px 24px;display:flex;gap:17px;align-items:center;justify-content:space-between}
+    .mock-logo{display:flex;gap:8px;align-items:center;flex-shrink:0;line-height:1.35}
+    .mock-brand-icon{background:var(--primary);color:var(--surface);font:900 23px Georgia,serif;width:43px;height:43px;display:grid;place-items:center;border-radius:12px}
+    .mock-logo strong{font-size:19px;letter-spacing:-.5px;white-space:nowrap}
+    .mock-logo small{display:block;font-size:8px;color:var(--sub);letter-spacing:0}
+    .mock-nav{display:flex;gap:17px;align-items:center;font-size:11px;font-weight:750;color:var(--sub);white-space:nowrap}
+    .mock-nav .nav-active{color:var(--primary);font-weight:900}
+    .mock-search{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:10px 13px;min-width:0;max-width:240px;flex:1;color:var(--sub);font-size:10px;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+    .mock-search .search-symbol{color:var(--primary);padding-left:5px;font-size:15px;vertical-align:middle}
+    .mock-day{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:var(--soft);color:var(--primary);font-size:16px;flex-shrink:0}
+    .site-content{padding:23px clamp(18px,3vw,32px) 32px;max-width:1190px;margin:auto}
+    .mock-intro{display:flex;justify-content:space-between;gap:15px;align-items:end;margin-bottom:15px}
+    .mock-kicker{color:var(--accent);font-weight:950;font-size:10px}
+    .mock-intro h3{font-size:clamp(18px,2.25vw,27px);font-weight:950;line-height:1.6;margin-top:1px;letter-spacing:-.5px}
+    .mock-intro p{color:var(--sub);font-size:10px}
+    .mock-intro .mock-date{background:var(--soft);padding:5px 11px;border-radius:999px;color:var(--primary);font-weight:850;font-size:10px;white-space:nowrap}
+    .hero-layout{display:grid;grid-template-columns:1.57fr .83fr;gap:15px}
+    .mock-hero{aspect-ratio:16/9;background:linear-gradient(125deg,var(--hero),var(--hero-to));color:var(--onhero);border-radius:19px;position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:center;box-shadow:var(--shadow);padding:clamp(16px,3vw,36px)}
+    .mock-hero:before{content:"";position:absolute;width:66%;aspect-ratio:1;left:-12%;top:-45%;border:1px solid #ffffff32;border-radius:50%;box-shadow:0 0 0 38px #ffffff06,0 0 0 76px #ffffff08;z-index:-1}
+    .mock-hero:after{content:"";position:absolute;right:-15%;bottom:-100%;width:95%;height:170%;border:1px solid #ffffff19;border-radius:50%;transform:rotate(-22deg);z-index:-1}
+    .hero-copy{position:relative;z-index:2;max-width:59%;margin-right:0}
+    .hero-copy .mini-overline{font-size:10px;color:#ffe0ac;font-weight:850;letter-spacing:.25px}
+    .hero-copy h4{font-size:clamp(20px,2.7vw,38px);line-height:1.49;letter-spacing:-.6px;font-weight:950;margin:10px 0 7px}
+    .hero-copy p{font-size:11px;color:#ffffffcf;line-height:1.9}
+    .hero-cta{display:inline-flex;margin-top:15px;align-items:center;gap:6px;font-size:10px;font-weight:900;border-radius:999px;padding:8px 15px;background:var(--onhero);color:var(--hero)}
+    .hero-emblem{width:31%;aspect-ratio:3/4;position:absolute;left:9%;top:14%;border-radius:12px;background:linear-gradient(155deg,#ffffff34,#00000031);border:5px solid #ffffff47;display:grid;place-items:center;transform:rotate(-7deg);box-shadow:0 14px 29px #0003;overflow:hidden}
+    .hero-emblem:before{content:"";position:absolute;inset:10%;border:1px solid #ffffff72;border-radius:55% 55% 3px 3px;opacity:.8}
+    .hero-emblem:after{content:"";position:absolute;width:80%;height:30%;bottom:-14%;border-radius:50%;background:#ffffff18;filter:blur(12px)}
+    .hero-emblem span{font:900 clamp(21px,3.7vw,49px) Georgia,serif;text-shadow:0 3px 12px #0004;z-index:1;color:#fff0d7;letter-spacing:-.7px;line-height:1.65;text-align:center}
+    .hero-pagination{position:absolute;bottom:10px;right:46%;display:flex;gap:5px;align-items:center}
+    .hero-pagination i{width:6px;height:6px;border-radius:10px;background:#fff8;display:block}
+    .hero-pagination i:first-child{width:18px;background:#fff}
+    .quick{background:var(--surface);border:1px solid var(--border);border-radius:19px;padding:17px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px}
+    .quick h4{font-size:15px;margin-bottom:1px}
+    .quick p{font-size:9px;color:var(--sub);line-height:1.85}
+    .quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex:1}
+    .quick-item{border:1px solid var(--border);border-radius:12px;display:flex;gap:9px;align-items:center;padding:10px;min-width:0;background:var(--bg)}
+    .quick-item .quick-icon{width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--primary);display:grid;place-items:center;font-size:16px;flex-shrink:0}
+    .quick-item b{font-size:10px;white-space:nowrap}
+    .quick-item small{display:block;color:var(--sub);font-size:8px;white-space:nowrap}
+    .mock-section{margin-top:25px}
+    .section-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+    .section-title h4{font-size:17px;font-weight:950;position:relative;padding-right:13px}
+    .section-title h4:before{content:"";position:absolute;right:0;top:6px;width:4px;height:19px;background:var(--accent);border-radius:10px}
+    .section-title span{color:var(--primary);font-size:10px;font-weight:900;background:var(--soft);padding:4px 12px;border-radius:999px}
+    .media-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .media-card{min-width:0}
+    .cover{aspect-ratio:1;border-radius:14px;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--cover),var(--hero-to));color:#fff2dd;padding:10px;text-align:center;box-shadow:0 5px 17px #22332919}
+    .media-card:nth-child(2) .cover{background:linear-gradient(140deg,#b37a52,#5c7058)}
+    .media-card:nth-child(3) .cover{background:linear-gradient(140deg,#876050,#be9f66)}
+    .media-card:nth-child(4) .cover{background:linear-gradient(140deg,#315a67,#8e9a77)}
+    .cover:before{content:"";position:absolute;inset:12px 18px;border:1px solid #ffffff55;border-radius:50% 50% 6px 6px}
+    .cover:after{content:"";position:absolute;width:130%;height:45%;border-radius:50%;bottom:-30%;background:#ffffff14}
+    .cover span{font-size:clamp(11px,1.6vw,20px);font-weight:950;max-width:140px;line-height:1.6;z-index:1}
+    .cover small{font-size:8px;position:absolute;bottom:9px;right:9px;color:#fffddc;background:#0004;border-radius:6px;padding:1px 5px;z-index:1}
+    .media-title{margin-top:9px;font-weight:850;font-size:11px;line-height:1.6;min-height:31px}
+    .media-meta{font-size:9px;color:var(--sub)}
+    .mock-bottom{display:none}
+    .style-b .mock-head{background:var(--primary);color:#fff;border:0}
+    body.night .style-b .mock-head{background:var(--hero)}
+    .style-b .mock-logo strong,.style-b .mock-logo small,.style-b .mock-nav,.style-b .mock-nav .nav-active{color:#fff}
+    .style-b .mock-brand-icon{color:#27496a;background:#f3d29a;border-radius:8px}
+    .style-b .mock-search{background:#ffffff22;border-color:#ffffff40;color:#fff}
+    .style-b .mock-search .search-symbol{color:#f5d596}
+    .style-b .mock-day{color:#f8daa4;background:#ffffff25}
+    .style-b .mock-hero,.style-b .quick,.style-b .cover{border-radius:9px}
+    .style-b .hero-emblem{transform:rotate(1deg);border-radius:7px}
+    .style-b .quick-item{border-radius:7px}
+    .style-b .section-title h4:before{background:var(--secondary);width:23px;height:3px;top:auto;bottom:-4px;border-radius:0}
+    .style-b .section-title h4{padding-right:0}
+    .style-c .site-overline{background:var(--primary);color:#fff9ea}
+    .style-c .mock-head{border-bottom:3px double var(--accent)}
+    .style-c .mock-brand-icon{border-radius:50%;background:var(--accent)}
+    .style-c .mock-hero{border-radius:28px 10px 28px 10px}
+    .style-c .hero-emblem{border-radius:48% 48% 5px 5px;transform:rotate(-4deg)}
+    .style-c .quick{border-radius:28px 10px 28px 10px}
+    .style-c .quick-item{border-radius:17px}
+    .style-c .cover{border-radius:30px 8px 30px 8px}
+    .mood-note{background:#fff;border-top:1px solid #e9e6df;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:16px clamp(17px,3vw,36px) 19px}
+    .mood-note div{font-size:11px;color:#5b6860;line-height:1.9}
+    .mood-note strong{color:#243b34;display:block;font-size:12px;margin-bottom:2px}
+    .compare-summary{border-radius:22px;background:#fff;padding:27px clamp(19px,3vw,40px);border:1px solid #e5e2da}
+    .compare-summary h2{font-size:22px;margin-bottom:5px}
+    .compare-summary p{color:#66716c;font-size:12px;margin-bottom:16px}
+    .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+    .summary-cell{border:1px solid #e5e3db;padding:16px;border-radius:14px;background:#fbfaf6}
+    .summary-cell strong{display:block;font-size:14px;margin-bottom:7px}
+    .summary-cell p{color:#61716e;margin:0}
+    .summary-cell .risk{display:block;margin-top:8px;color:#9c6740;font-size:11px}
+    .bottom-cta{margin-top:22px;padding:16px 19px;border-radius:15px;background:#ecf3ed;border:1px solid #d7e5d9;color:#355044;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .bottom-cta span{font-weight:900}
+    .bottom-cta p{font-size:11px;color:#587369;margin-top:2px}
+    .bottom-cta a{background:#24534a;color:#fff;border-radius:9px;padding:10px 14px;font-size:11px;font-weight:850}
+    .page-footer{text-align:center;font-size:11px;color:#70817b;padding:0 20px 36px}
+    body[data-selected="a"] .mood:not(.style-a),body[data-selected="b"] .mood:not(.style-b),body[data-selected="c"] .mood:not(.style-c){display:none}
+    @container mock (max-width:760px){
+      .mock-head{flex-wrap:wrap;gap:9px;padding:10px 13px}
+      .mock-logo{width:auto}.mock-logo strong{font-size:17px}.mock-logo small{font-size:8px}
+      .mock-nav{display:none}.mock-search{order:5;min-width:100%;max-width:100%;padding:10px 12px}
+      .mock-day{margin-right:auto}
+      .site-content{padding:14px 12px 65px}
+      .mock-intro{align-items:start}.mock-intro h3{font-size:18px}.mock-intro p{font-size:9px}.mock-intro .mock-date{display:none}
+      .hero-layout{grid-template-columns:1fr;gap:12px}
+      .mock-hero{padding:16px;border-radius:13px}
+      .hero-copy{max-width:61%}.hero-copy h4{font-size:21px;margin:4px 0}.hero-copy p{font-size:9px}
+      .hero-copy .mini-overline{font-size:8px}.hero-cta{font-size:9px;padding:5px 10px;margin-top:8px}
+      .hero-emblem{width:27%;left:8%;top:16%;border-width:3px}
+      .hero-emblem span{font-size:22px}
+      .hero-pagination{bottom:7px}
+      .quick{padding:12px;box-shadow:none}
+      .quick h4{font-size:13px}.quick p{display:none}
+      .quick-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+      .quick-item{display:flex;flex-direction:column;text-align:center;gap:4px;padding:8px 2px;min-width:0}
+      .quick-item b{font-size:9px}.quick-item small{display:none}
+      .quick-item .quick-icon{height:28px;width:28px;font-size:15px}
+      .mock-section{margin-top:18px}.section-title h4{font-size:15px}
+      .media-row{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+      .media-card:last-child{display:none}
+      .cover{border-radius:11px}.cover:before{inset:7px 10px}.cover span{font-size:11px}
+      .media-title{font-size:10px;min-height:32px}.media-meta{font-size:8px}
+      .mock-bottom{position:absolute;bottom:0;right:0;left:0;display:flex;justify-content:space-around;background:var(--surface);border-top:1px solid var(--border);padding:8px 5px 6px;gap:3px}
+      .mock-bottom span{font-size:9px;color:var(--sub);text-align:center;display:grid;gap:2px}
+      .mock-bottom span:first-child{color:var(--primary);font-weight:900}
+      .mock-bottom i{font-style:normal;font-size:17px;line-height:1}
+      .mock{min-height:635px}
+    }
+    @media(max-width:900px){
+      .intro-inner{grid-template-columns:1fr;gap:20px}
+      .intro-aside{max-width:680px}
+      .overview{grid-template-columns:1fr 1fr}
+      .controls{top:60px}
+      .mood-note{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .top-inner{padding:9px 13px;flex-wrap:nowrap}.top-brand{font-size:12px}.top-caption{font-size:9px}.top-mark{width:35px;height:35px}.return-link{font-size:10px;padding:6px 9px}
+      .intro{padding:27px 17px}.intro h1{font-size:29px}.intro-aside{padding:16px}.intro-aside strong{font-size:13px}
+      .main{padding:24px 11px 40px}.overview{grid-template-columns:1fr;gap:9px}.choice{min-height:140px;padding:14px 17px}
+      .lead-row h2{font-size:21px}.controls{top:55px;padding:9px;gap:8px}.control-btn{padding:5px 10px;min-height:31px;font-size:10px}.control-label{display:none}
+      .mood{border-radius:16px;margin-bottom:18px}.mood-head{padding:14px 13px}.mood-name{gap:9px}.mood-code{width:40px;height:40px;font-size:23px;border-radius:10px}.mood-name h2{font-size:18px}.mood-summary{padding:0 13px 14px}
+      .stage-bg{padding:11px}.mock-shell{border-radius:11px}.summary-grid{grid-template-columns:1fr}.compare-summary{padding:20px 15px}.mood-note{padding:14px 13px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body data-selected="all">
+  <header class="page-top">
+    <div class="top-inner">
+      <div class="top-brand"><span class="top-mark" aria-hidden="true">آ</span><span>امینی‌خواه <span class="top-caption">آزمایشگاه طراحی · مرحله ۰۷ب</span></span></div>
+      <a class="return-link" href="./">بازگشت به طرح جامع قبلی ↶</a>
+    </div>
+  </header>
+  <section class="intro">
+    <div class="intro-inner">
+      <div>
+        <div class="kicker">مطالعه هویت بصری / پیشنهادهای قابل مقایسه</div>
+        <h1>سه روایت برای <em>یک کتابخانه زنده</em></h1>
+        <p>جهت کلی «کتابخانه آرام» حفظ شده؛ حالا می‌خواهیم ببینیم کدام زبان رنگ، فرم و تایپوگرافی به سایت امینی‌خواه گرما، اصالت و شخصیت بیشتری می‌دهد. هر سه گزینه را با اجزای واقعی صفحه اصلی در دو اندازه ببینید.</p>
+      </div>
+      <aside class="intro-aside">
+        <strong>در این مرحله چه چیزی انتخاب می‌کنیم؟</strong>
+        <p>حس و شخصیت بصری، هماهنگی رنگ‌ها، فرم کارت و بنر، سبک هدر و خوانایی عمومی. کد رنگ دقیق، طراحی تمام صفحات و امکانات فنی هنوز نهایی نمی‌شوند.</p>
+        <span class="stamp">نمونه طراحی؛ بدون اتصال به سایت اصلی</span>
+      </aside>
+    </div>
+  </section>
+  <main class="main">
+    <div class="lead-row">
+      <div><h2>سه مسیر پیشنهادی</h2><p>هر کارت را بزنید تا به نمونه کامل آن بروید؛ یا هر سه را پشت سر هم مقایسه کنید.</p></div>
+      <span class="legend">ترکیب‌های پیشنهادی؛ هنوز تصویب نشده‌اند</span>
+    </div>
+    <div id="overview" class="overview"></div>
+    <div class="controls" role="group" aria-label="تنظیمات مقایسه">
+      <div class="control-set" role="group" aria-label="نمایش گزینه‌ها">
+        <span class="control-label">سبک:</span>
+        <button type="button" class="control-btn" data-filter="all" aria-pressed="true">هر سه</button>
+        <button type="button" class="control-btn" data-filter="a" aria-pressed="false">A</button>
+        <button type="button" class="control-btn" data-filter="b" aria-pressed="false">B</button>
+        <button type="button" class="control-btn" data-filter="c" aria-pressed="false">C</button>
+      </div>
+      <div class="control-set" role="group" aria-label="اندازه نمونه">
+        <span class="control-label">اندازه:</span>
+        <button type="button" class="control-btn" data-viewport="desktop" aria-pressed="true">دسکتاپ</button>
+        <button type="button" class="control-btn" data-viewport="phone" aria-pressed="false">موبایل ۳۹۰</button>
+      </div>
+      <div class="control-set" role="group" aria-label="حالت رنگ">
+        <span class="control-label">نمای ظاهری:</span>
+        <button type="button" class="control-btn" data-mode="day" aria-pressed="true">☀ روز</button>
+        <button type="button" class="control-btn" data-mode="night" aria-pressed="false">☾ شب</button>
+      </div>
+    </div>
+    <div id="mood-list"></div>
+    <section class="compare-summary" aria-labelledby="compare-title">
+      <h2 id="compare-title">مقایسه از نگاه طراح</h2>
+      <p>در هر سبک می‌توان رنگ و جزئیات را اصلاح کرد؛ انتخاب فعلی فقط نقطه شروع هویت بصری است.</p>
+      <div class="summary-grid">
+        <div class="summary-cell"><strong>A · سپیده و زیتون</strong><p>صمیمی، گرم و آسان برای استفاده روزمره؛ مناسب کتابخانه‌ای که مخاطب بارها به آن برمی‌گردد.</p><span class="risk">نکته مراقبت: تزئینات و رنگ‌های خاکی نباید بیش از حد ملایم شوند.</span></div>
+        <div class="summary-cell"><strong>B · لاجورد و خورشید</strong><p>اصیل و شاخص، با شخصیت رسانه‌ای قوی برای اسلایدرها و محتوای برجسته.</p><span class="risk">نکته مراقبت: استفاده زیاد از سرمه‌ای ممکن است حس سردی ایجاد کند.</span></div>
+        <div class="summary-cell"><strong>C · انار و کاغذ</strong><p>زنده، فرهنگی و متفاوت؛ مناسب ایجاد امضای بصری ماندگار.</p><span class="risk">نکته مراقبت: رنگ پرقدرت باید در کنار کاورهای متنوع محتوا کنترل شود.</span></div>
+      </div>
+      <div class="bottom-cta">
+        <div><span>مرحله بعد پس از انتخاب سبک</span><p>تکمیل Wireframe صفحه اصلی و ۱۲ نمای محصول، سپس نهایی‌کردن توکن‌های رنگی در ۰۹.</p></div>
+        <a href="./">مشاهده طرح جامع نسخه ۱</a>
+      </div>
+    </section>
+  </main>
+  <footer class="page-footer">مرحله ۰۷ب · نمونه مستقل و غیررسمی هویت بصری امینی‌خواه · متن و تصاویرِ کاورها صرفاً برای نمایش چیدمان‌اند.</footer>
+  <script>
+    const options=[
+      {id:'a',type:'style-a',label:'A',title:'سپیده و زیتون',subtitle:'گرمای یک کتابخانه روشن',summary:'کاغذ گرم، سبز زیتونی زنده، رگه‌های مسی و طلایی؛ صمیمی، خوانا و آرام.',feeling:'صمیمی و کتابخانه‌ای',note:'نزدیک‌ترین امتدادِ ایده «کتابخانه آرام»، اما با گرما و تضاد بصری بیشتر.',palette:['#395b49','#bf683d','#cda356','#f8f3e9','#25342c'],strength:'نزدیکی به هویت آرام و خوانایی مداوم',risk:'گرم‌بودن باید به کمک تصاویر و رنگ تأکید حفظ شود.'},
+      {id:'b',type:'style-b',label:'B',title:'لاجورد و خورشید',subtitle:'اصالت با جلوه شاخص',summary:'لاجورد عمیق، فیروزه کنترل‌شده و طلایی آفتابی؛ باشکوه و در عین حال امروزی.',feeling:'شاخص و اصیل',note:'تأکید بیشتر روی هدر و بنرهای موضوعی؛ هویت مناسب مجموعه‌ای رسانه‌ای.',palette:['#1c4565','#287678','#dcac5c','#f8f5ef','#1f3445'],strength:'قدرت هویت در بنرها و بخش‌های شاخص',risk:'در صفحات متنی نباید رنگ‌های تیره بر تجربه غالب شوند.'},
+      {id:'c',type:'style-c',label:'C',title:'انار و کاغذ',subtitle:'گرمای فرهنگی با امضای مستقل',summary:'عنابی ایرانی، سفالی روشن و کرم کاغذی؛ زنده، انسانی و متمایز.',feeling:'گرم و فرهنگی',note:'فرم‌های نرم‌تر، جسارت رنگی بیشتر و حس مجله فرهنگی در کنار کتابخانه صوتی.',palette:['#753d40','#c75e3d','#d99c5e','#faf0e8','#4a3030'],strength:'تشخص بصری و گرمای رنگی بیشتر',risk:'باید با کاورهای رنگارنگ آلبوم‌ها هماهنگ نگه داشته شود.'}
+    ];
+    const cardData=[['راه روشن','سیر اندیشه و عمل','۸ جلسه'],['مهندسی ترس','نشست‌های موضوعی','۱۲ جلسه'],['سبک زندگی دینی','پژوهش‌های کاربردی','۱۰ جلسه'],['روایت بندگی','درس‌های اخلاق','۶ جلسه']];
+    const quicks=[['◈','سخنرانی','آلبوم و جلسه'],['♫','روضه‌ها','شنیدن و دانلود'],['▤','درس‌ها','آموزش تخصصی'],['؟','پرسش‌وپاسخ','پاسخ موضوعی']];
+    const escapeHtml=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function renderMock(o){
+      return `<div class="mock-shell" aria-label="نمونه طراحی ${escapeHtml(o.title)}"><div class="mock">
+        <div class="site-overline">بسم الله الرحمن الرحیم</div>
+        <header class="mock-head"><div class="mock-logo"><span class="mock-brand-icon">آ</span><span><strong>امینی‌خواه</strong><small>کتابخانه سخنرانی و معارف</small></span></div>
+          <nav class="mock-nav" aria-label="ناوبری نمونه"><span class="nav-active">خانه</span><span>سخنرانی‌ها</span><span>روضه‌ها</span><span>درس تخصصی</span><span>رسانه‌ها</span></nav>
+          <div class="mock-search"><span class="search-symbol">⌕</span>هر چیز که در جستن آنی، آنی ...</div><span class="mock-day" aria-label="نشان حالت روز و شب">◐</span></header>
+        <div class="site-content"><div class="mock-intro"><div><span class="mock-kicker">کتابخانه سخنرانی‌ها و معارف</span><h3>برای شنیدن، برای اندیشیدن</h3><p>از یک سخنرانی کوتاه تا یک مسیر عمیق یادگیری</p></div><span class="mock-date">تازه‌های کتابخانه</span></div>
+          <div class="hero-layout"><div class="mock-hero"><div class="hero-copy"><span class="mini-overline">◈ مجموعه منتخب</span><h4>از پرسیدن<br>تا رسیدن</h4><p>نمونه‌ای از یک مجموعه موضوعی برای آغاز شنیدن</p><span class="hero-cta">مشاهده مجموعه ←</span></div><div class="hero-emblem"><span>راه<br>روشن</span></div><div class="hero-pagination"><i></i><i></i><i></i></div></div>
+            <div class="quick"><div><h4>از کجا شروع کنیم؟</h4><p>دسترسی به موضوعاتی که برایشان آمده‌اید</p></div><div class="quick-grid">${quicks.map(q=>`<div class="quick-item"><span class="quick-icon">${q[0]}</span><div><b>${q[1]}</b><small>${q[2]}</small></div></div>`).join('')}</div></div></div>
+          <section class="mock-section"><div class="section-title"><h4>تازه‌ترین آلبوم‌ها</h4><span>مشاهده همه ←</span></div><div class="media-row">${cardData.map(c=>`<article class="media-card"><div class="cover"><span>${c[0]}</span><small>${c[2]}</small></div><p class="media-title">${c[0]}</p><p class="media-meta">${c[1]}</p></article>`).join('')}</div></section>
+        </div><div class="mock-bottom"><span><i>⌂</i>خانه</span><span><i>▦</i>دسته‌ها</span><span><i>♫</i>رسانه</span><span><i>♧</i>پروفایل</span></div>
+      </div></div>`;
+    }
+    document.getElementById('overview').innerHTML=options.map(o=>`<button type="button" class="choice" data-goto="${o.id}" aria-label="رفتن به سبک ${o.label} ${escapeHtml(o.title)}"><span class="choice-no">${o.label}</span><h3>${o.title}</h3><p>${o.summary}</p><div class="mini-palette">${o.palette.map(c=>`<span style="background:${c}"></span>`).join('')}</div><span class="choice-link">دیدن نمونه کامل ←</span></button>`).join('');
+    document.getElementById('mood-list').innerHTML=options.map(o=>`<section class="mood ${o.type}" id="style-${o.id}" aria-labelledby="title-${o.id}"><div class="mood-head"><div class="mood-name"><span class="mood-code">${o.label}</span><div><h2 id="title-${o.id}">${o.title}</h2><p>${o.subtitle}</p></div></div><div class="mood-meta"><span>${o.feeling}</span><span class="mood-audience">پیشنهاد آزمایشی</span></div></div><div class="mood-summary"><p>${o.summary} ${o.note}</p><div class="swatches" aria-label="پالت رنگ پیشنهادی">${o.palette.map((c,i)=>`<span class="swatch" style="background:${c}" title="رنگ ${i+1}: ${c}"></span>`).join('')}</div></div><div class="stage-bg">${renderMock(o)}</div><div class="mood-note"><div><strong>نقطه قوت</strong>${o.strength}</div><div><strong>نکته‌ای که در طراحی نهایی کنترل می‌کنیم</strong>${o.risk}</div></div></section>`).join('');
+    function choose(group,value){
+      document.querySelectorAll(`[data-${group}]`).forEach(button=>button.setAttribute('aria-pressed',String(button.dataset[group]===value)));
+      if(group==='filter')document.body.dataset.selected=value;
+      if(group==='viewport')document.body.classList.toggle('phone-view',value==='phone');
+      if(group==='mode')document.body.classList.toggle('night',value==='night');
+    }
+    document.querySelectorAll('[data-filter],[data-viewport],[data-mode]').forEach(button=>button.addEventListener('click',()=>{
+      for(const group of ['filter','viewport','mode'])if(button.dataset[group])choose(group,button.dataset[group]);
+    }));
+    document.querySelectorAll('[data-goto]').forEach(button=>button.addEventListener('click',()=>{
+      choose('filter','all');document.getElementById('style-'+button.dataset.goto)?.scrollIntoView({behavior:'smooth',block:'start'});
+    }));
+    if(window.matchMedia('(max-width: 650px)').matches)choose('viewport','phone');
+  </script>
+</body>
+</html>
