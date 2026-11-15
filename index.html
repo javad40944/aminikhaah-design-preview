@@ -6,13 +6,13 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>پیش‌نمایش آزمایشی طراحی امینی‌خواه | نسخه ۱</title>
 <style>
-:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px--font-sans:"Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:19px;--heading-md:23px;--heading-lg:clamp(27px,2.3vw,35px);--leading-body:1.95;--leading-heading:1.5;}
+:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px;--font-sans:"Arad",Tahoma,Arial,sans-serif;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:19px;--heading-md:23px;--heading-lg:clamp(27px,2.3vw,35px);--leading-body:1.95;--leading-heading:1.5;}
 body[data-palette="lapis"]{--primary:#123f62;--primary-dark:#0b2d48;--primary-soft:#e4edf3;--paper:#f2f5f6;--white:#fff;--surface:#fff;--alt:#e9eff2;--ink:#20394c;--muted:#687985;--line:#dbe3e7;--gold:#d3a24f;--accent:#397b83;--accent-soft:#e3eff0}
 body[data-palette="clay"]{--primary:#7b3438;--primary-dark:#512428;--primary-soft:#f1e5df;--paper:#f8f0e8;--white:#fffaf5;--surface:#fffaf5;--alt:#f0e5dc;--ink:#4a3030;--muted:#796961;--line:#e6d9cf;--gold:#c99a58;--accent:#a95740;--accent-soft:#f4e6dc}
 body.dark{--primary:#a5c9b8;--primary-dark:#d0e3d9;--primary-soft:#293f38;--paper:#17221f;--white:#202d28;--surface:#273630;--alt:#202e28;--ink:#f1f3ed;--muted:#b4c5bb;--line:#40544a;--gold:#dfbd7c;--accent:#d9a17d;--accent-soft:#3c332c;--shadow:none}
 body.dark[data-palette="lapis"]{--primary:#9fc4df;--primary-dark:#d7e7f1;--primary-soft:#263e50;--paper:#14212b;--white:#1c2d39;--surface:#263946;--alt:#1d303d;--ink:#f0f4f6;--muted:#b5c5ce;--line:#3b5260;--gold:#e5c37b;--accent:#78b8b9;--accent-soft:#2e4649;--shadow:none}
 body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primary-soft:#482f30;--paper:#241d1b;--white:#312624;--surface:#3c302d;--alt:#2c2422;--ink:#f6efea;--muted:#d0bdb4;--line:#574642;--gold:#e6bc79;--accent:#dc9879;--accent-soft:#49332f;--shadow:none}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eceb;color:var(--ink);font-family:Vazirmatn,'Noto Sans Arabic',Tahoma,sans-serif;font-size:14px;line-height:1.8}button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}h1,h2,h3,h4,p{margin:0}h1{font-size:clamp(23px,2.4vw,33px);line-height:1.48}h2{font-size:clamp(17px,1.6vw,23px);line-height:1.5}h3{font-size:16px}p{line-height:1.95}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}img{max-width:100%}.hide{display:none!important}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eceb;color:var(--ink);font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.8}button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}h1,h2,h3,h4,p{margin:0}h1{font-size:clamp(23px,2.4vw,33px);line-height:1.48}h2{font-size:clamp(17px,1.6vw,23px);line-height:1.5}h3{font-size:16px}p{line-height:1.95}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}img{max-width:100%}.hide{display:none!important}
 .demo-bar{background:#1e2b32;color:#fff;padding:12px clamp(15px,3vw,34px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;box-shadow:0 2px 8px #0002}.demo-brand{font-size:15px;font-weight:800}.demo-caption{font-size:11px;color:#cbd6db}.toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;color:#d7dfe0}.toolbar select,.toolbar button{background:#384951;color:white;border:1px solid #52626a;border-radius:9px;padding:6px 10px;font-size:12px;min-height:35px}.toolbar button.active{background:#f4f7f6;color:#17292a;border-color:#f4f7f6}.palette-hint{font-size:10px;color:#cbd6db;white-space:nowrap}.demo-notice{background:#e9f0ea;border-bottom:1px solid #d6e3d9;padding:7px 18px;color:#34534a;text-align:center;font-size:11px}
 .preview{max-width:1500px;margin:0 auto;padding:0 12px 40px}.app-frame{margin:14px auto 0;max-width:1440px;min-height:700px;border-radius:18px;overflow:clip;box-shadow:0 25px 64px #17272221;container-type:inline-size;background:var(--paper);transition:max-width .22s ease}.preview.mobile-forced .app-frame{max-width:390px;box-shadow:0 16px 55px #1727222e}.site-app{background:var(--paper);color:var(--ink);min-height:100vh;position:relative;padding-bottom:92px}.overline{height:27px;background:var(--alt);color:var(--muted);font-size:10px;letter-spacing:.1px;text-align:center;display:flex;align-items:center;justify-content:center}.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--white) 97%, transparent);border-bottom:1px solid var(--line);box-shadow:0 4px 18px #24342b08}.header-inner{max-width:1260px;margin:auto;display:flex;align-items:center;gap:22px;padding:11px 26px}.site-brand{display:flex;align-items:center;gap:9px;min-width:max-content}.brand-mark{width:45px;height:45px;border-radius:13px;background:var(--primary);display:grid;place-items:center;color:var(--paper);font-size:25px;font-family:serif}.site-brand b{font-size:21px;font-weight:850;letter-spacing:-1px}.site-brand small{display:block;font-size:9px;color:var(--muted);margin-top:-7px}.head-nav{display:flex;gap:17px;align-items:center}.head-nav button{padding:8px 0;white-space:nowrap;font-size:12px;color:var(--ink);background:transparent;border:0}.head-nav button:hover,.head-nav button.active{color:var(--primary);font-weight:800}.search-box{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:11px;background:var(--alt);padding:7px 9px;min-width:160px;max-width:310px;flex:1;margin-inline-start:auto}.search-box input{border:0;outline:0;background:transparent;min-width:0;width:100%;font-size:12px}.search-box button{border:0;background:none;color:var(--primary);font-size:20px;line-height:1}.small-icon{border:1px solid var(--line);background:var(--surface);border-radius:11px;min-width:40px;min-height:40px;padding:5px;display:grid;place-items:center}.header-login{background:var(--primary-soft);color:var(--primary-dark);border:1px solid var(--line);border-radius:11px;padding:9px 14px;min-width:max-content;font-size:11px;font-weight:750}.mobile-menu{display:none}.mobile-bottombar{display:none}.site-header.compact .header-inner{transition:padding .15s}
 .app-main{max-width:1260px;margin:0 auto;padding:25px 26px 48px}.eyebrow{font-size:11px;letter-spacing:.1px;color:var(--accent);font-weight:800}.page-title{margin-bottom:18px}.page-title p{font-size:12px;color:var(--muted);max-width:780px;margin-top:8px}.bread{font-size:11px;color:var(--muted);margin-bottom:14px}.bread a{text-decoration:underline;text-decoration-style:dotted;text-underline-offset:4px}.scope{display:inline-flex;gap:5px;align-items:center;font-size:10px;padding:3px 9px;border-radius:999px;border:1px solid #b7cbbd;background:#edf6ee;color:#315f49;white-space:nowrap}.scope.future{background:#fcf4e9;border-color:#e5cfb6;color:#7f5d38}.dark .scope{filter:brightness(.83)}.section{margin:25px 0 27px;padding:21px 21px 23px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.section:nth-of-type(2n){background:var(--white)}.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.section-head h2{display:flex;align-items:center;gap:8px;font-size:20px;font-weight:830}.section-head h2:before{content:'';width:5px;height:23px;background:var(--accent);border-radius:8px;flex-shrink:0}.section-actions{display:flex;align-items:center;gap:8px}.more{border:0;background:var(--primary-soft);color:var(--primary-dark);border-radius:10px;padding:5px 12px;font-size:11px;font-weight:750}.section-desc{color:var(--muted);font-size:11px;margin:0 0 14px}.section.future-only{border-style:dashed}.future-note,.notice,.soft-panel{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--alt);font-size:12px;color:var(--muted)}.notice{border-right:4px solid var(--accent);background:var(--accent-soft);color:var(--ink)}.skeleton{color:var(--muted)}
@@ -247,7 +247,7 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .site-header.compact .header-inner>.palette-picker .palette-menu{top:calc(100% + 8px)}
 }
 
-/* Stage 09 — Persian typography foundation (Vazirmatn) */
+/* Stage 09 — Persian typography foundation and live font comparison */
 .site-app{font-family:var(--font-sans);font-size:var(--text-base);line-height:var(--leading-body);font-kerning:normal;text-rendering:optimizeLegibility}
 .site-app h1{font-size:var(--heading-lg);font-weight:800;line-height:1.45;letter-spacing:-.02em}
 .site-app h2{font-size:var(--heading-md);font-weight:750;line-height:var(--leading-heading)}
@@ -268,11 +268,24 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .site-app .site-brand b{font-size:19px}
 }
 @media(prefers-reduced-motion:reduce){.site-app *{text-rendering:optimizeSpeed}}
+
+/* Persian font comparison — official OFL fonts, loaded only for this preview */
+@font-face{font-family:"Arad";src:url("https://cdn.jsdelivr.net/gh/MDarvishi5124/Arad@main/Fonts/main/variable/Arad-VF.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Estedad";src:url("https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@master/fonts/webfonts/Estedad%5Bwght%5D.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Sahel";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@master/dist/Sahel-VF.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim-Medium.woff2") format("woff2");font-style:normal;font-weight:500;font-display:swap}
+@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim-Bold.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
+body[data-font="arad"]{--font-sans:"Arad",Tahoma,Arial,sans-serif}
+body[data-font="estedad"]{--font-sans:"Estedad",Tahoma,Arial,sans-serif}
+body[data-font="sahel"]{--font-sans:"Sahel",Tahoma,Arial,sans-serif}
+body[data-font="samim"]{--font-sans:"Samim",Tahoma,Arial,sans-serif}
+
 </style>
 </head>
-<body data-palette="olive">
+<body data-palette="olive" data-font="arad">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><span class="toolbar-note">رنگ‌بندی را از دکمه‌های داخل سربرگ سایت انتخاب کن.</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
+<div class="toolbar"><span class="toolbar-note">فونت و رنگ را برای مقایسه تغییر بده.</span><label for="font-preview">فونت فارسی</label><select id="font-preview" aria-label="مقایسه فونت فارسی"><option value="arad">آراد</option><option value="estedad">استعداد</option><option value="sahel">ساحل</option><option value="samim">صمیم</option></select><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
 <div class="demo-notice">برای تغییر ظاهر سایت، دکمه‌های سه رنگ‌بندی را در سربرگ انتخاب کن؛ انتخاب در تمام صفحات همین پیش‌نمایش اعمال و ذخیره می‌شود. متن و تصویر نمونه‌اند؛ صوتی پخش نمی‌شود و هیچ فرمی به سایت اصلی ارسال نمی‌شود.</div>
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline"><span class="bismillah-script">بسم الله الرحمن الرحیم</span><span class="bismillah-note">جایگاه تصویر دستخط اصلی ـ فایل تصویری تأییدشده هنوز ارائه نشده</span></div>
@@ -485,6 +498,14 @@ function closePaletteMenu(){
  const menu=byId('paletteMenu'),trigger=byId('paletteTrigger');
  menu.classList.remove('show');trigger.setAttribute('aria-expanded','false');
 }
+function setFont(value){
+ const allowed=['arad','estedad','sahel','samim'];
+ if(!allowed.includes(value))value='arad';
+ document.body.dataset.font=value;
+ const picker=byId('font-preview');
+ if(picker)picker.value=value;
+ try{localStorage.setItem('aminikhaah_design_preview_font_v1',value)}catch(e){}
+}
 function setPalette(value){
  if(!paletteNotes[value])value='olive';
  document.body.dataset.palette=value;
@@ -501,6 +522,8 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePaletteMenu()});
 try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette_v2');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
+try{const savedFont=localStorage.getItem('aminikhaah_design_preview_font_v1');setFont(savedFont||'arad')}catch(e){setFont('arad')}
+byId('font-preview').addEventListener('change',e=>setFont(e.target.value));
 byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});window.addEventListener('scroll',()=>{const header=document.querySelector('.site-header'); if(header)header.classList.toggle('compact',window.scrollY>155)},{passive:true});try{if(localStorage.getItem('aminikhaah_design_preview_dark')==='1')document.body.classList.add('dark')}catch(e){}
 render();
