@@ -312,7 +312,7 @@ function media(){
 }
 
 function openTopic(kind){if(kind==='سخنرانی')go('albums');else if(kind==='درس تخصصی')go('lessons');else if(kind==='رسانه')go('media');else if(kind==='روضه')go('roza');else go('questions')}
-function topicImageCard(name,symbol,kind){return '<button class="topic-image-card" onclick="openTopic(\\''+kind+'\\')"><div class="topic-image"><span>'+symbol+'</span><small>تصویر دسته</small></div><b>'+name+'</b><small class="topic-card-note">'+kind+' · منتخب مدیر</small></button>'}
+function topicImageCard(name,symbol,kind){return '<button class="topic-image-card" onclick="openTopic(\''+kind+'\')"><div class="topic-image"><span>'+symbol+'</span><small>تصویر دسته</small></div><b>'+name+'</b><small class="topic-card-note">'+kind+' · منتخب مدیر</small></button>'}
 function topics(){
  const tabs=['سخنرانی‌ها','دروس','رسانه','روضه‌ها','پرسش‌وپاسخ'];
  const active=currentTab;
