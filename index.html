@@ -6,7 +6,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>پیش‌نمایش آزمایشی طراحی امینی‌خواه | نسخه ۱</title>
 <style>
-:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px;--font-sans:"Estedad",Tahoma,Arial,sans-serif;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:20px;--heading-md:24px;--heading-lg:clamp(30px,2.8vw,40px);--leading-body:26px;--leading-heading:1.42;--display-leading:1.3;--headline-lg-leading:1.375;--headline-md-leading:1.4167;--headline-sm-leading:1.5;--title-md-size:18px;--title-md-leading:1.5556;--body-lg-size:17px;--body-lg-leading:30px;--body-sm-size:13px;--body-sm-leading:22px;--label-lg-size:14px;--label-lg-leading:20px;--label-md-size:12px;--label-md-leading:18px;--label-sm-size:11px;--label-sm-leading:16px;}
+:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px;--font-sans:"Arad",Tahoma,Arial,sans-serif;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:20px;--heading-md:24px;--heading-lg:clamp(30px,2.8vw,40px);--leading-body:26px;--leading-heading:1.42;--display-leading:1.3;--headline-lg-leading:1.375;--headline-md-leading:1.4167;--headline-sm-leading:1.5;--title-md-size:18px;--title-md-leading:1.5556;--body-lg-size:17px;--body-lg-leading:30px;--body-sm-size:13px;--body-sm-leading:22px;--label-lg-size:14px;--label-lg-leading:20px;--label-md-size:12px;--label-md-leading:18px;--label-sm-size:11px;--label-sm-leading:16px;}
 body[data-palette="lapis"]{--primary:#123f62;--primary-dark:#0b2d48;--primary-soft:#e4edf3;--paper:#f2f5f6;--white:#fff;--surface:#fff;--alt:#e9eff2;--ink:#20394c;--muted:#687985;--line:#dbe3e7;--gold:#d3a24f;--accent:#397b83;--accent-soft:#e3eff0}
 body[data-palette="clay"]{--primary:#7b3438;--primary-dark:#512428;--primary-soft:#f1e5df;--paper:#f8f0e8;--white:#fffaf5;--surface:#fffaf5;--alt:#f0e5dc;--ink:#4a3030;--muted:#796961;--line:#e6d9cf;--gold:#c99a58;--accent:#a95740;--accent-soft:#f4e6dc}
 body.dark{--primary:#a5c9b8;--primary-dark:#d0e3d9;--primary-soft:#293f38;--paper:#17221f;--white:#202d28;--surface:#273630;--alt:#202e28;--ink:#f1f3ed;--muted:#b4c5bb;--line:#40544a;--gold:#dfbd7c;--accent:#d9a17d;--accent-soft:#3c332c;--shadow:none}
@@ -269,21 +269,14 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 @media(prefers-reduced-motion:reduce){.site-app *{text-rendering:optimizeSpeed}}
 
-/* Persian font comparison — official OFL fonts, loaded only for this preview */
-@font-face{font-family:"Estedad";src:url("https://cdn.jsdelivr.net/gh/aminabedi68/Estedad@master/fonts/webfonts/Estedad%5Bwght%5D.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:"Sahel";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@master/dist/Sahel-VF.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
-@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
-@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim-Medium.woff2") format("woff2");font-style:normal;font-weight:500;font-display:swap}
-@font-face{font-family:"Samim";src:url("https://cdn.jsdelivr.net/gh/rastikerdar/samim-font@master/dist/Samim-Bold.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
-body[data-font="estedad"]{--font-sans:"Estedad",Tahoma,Arial,sans-serif}
-body[data-font="sahel"]{--font-sans:"Sahel",Tahoma,Arial,sans-serif}
-body[data-font="samim"]{--font-sans:"Samim",Tahoma,Arial,sans-serif}
+/* Persian typography — Arad is the sole approved preview font */
+@font-face{font-family:"Arad";src:url("https://cdn.jsdelivr.net/gh/MDarvishi5124/Arad@main/Fonts/main/variable/Arad-VF.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
 
 </style>
 </head>
-<body data-palette="olive" data-font="estedad">
+<body data-palette="olive">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><span class="toolbar-note">فونت و رنگ را برای مقایسه تغییر بده.</span><label for="font-preview">فونت فارسی</label><select id="font-preview" aria-label="مقایسه فونت فارسی"><option value="estedad">استعداد</option><option value="sahel">ساحل</option><option value="samim">صمیم</option></select><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
+<div class="toolbar"><span class="toolbar-note">رنگ‌بندی را از دکمه‌های داخل سربرگ سایت انتخاب کن.</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
 <div class="demo-notice">برای تغییر ظاهر سایت، دکمه‌های سه رنگ‌بندی را در سربرگ انتخاب کن؛ انتخاب در تمام صفحات همین پیش‌نمایش اعمال و ذخیره می‌شود. متن و تصویر نمونه‌اند؛ صوتی پخش نمی‌شود و هیچ فرمی به سایت اصلی ارسال نمی‌شود.</div>
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline"><span class="bismillah-script">بسم الله الرحمن الرحیم</span><span class="bismillah-note">جایگاه تصویر دستخط اصلی ـ فایل تصویری تأییدشده هنوز ارائه نشده</span></div>
@@ -496,14 +489,6 @@ function closePaletteMenu(){
  const menu=byId('paletteMenu'),trigger=byId('paletteTrigger');
  menu.classList.remove('show');trigger.setAttribute('aria-expanded','false');
 }
-function setFont(value){
- const allowed=['estedad','sahel','samim'];
- if(!allowed.includes(value))value='estedad';
- document.body.dataset.font=value;
- const picker=byId('font-preview');
- if(picker)picker.value=value;
- try{localStorage.setItem('aminikhaah_design_preview_font_v1',value)}catch(e){}
-}
 function setPalette(value){
  if(!paletteNotes[value])value='olive';
  document.body.dataset.palette=value;
@@ -520,8 +505,6 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePaletteMenu()});
 try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette_v2');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
-try{const savedFont=localStorage.getItem('aminikhaah_design_preview_font_v1');setFont(savedFont||'estedad')}catch(e){setFont('estedad')}
-byId('font-preview').addEventListener('change',e=>setFont(e.target.value));
 byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});window.addEventListener('scroll',()=>{const header=document.querySelector('.site-header'); if(header)header.classList.toggle('compact',window.scrollY>155)},{passive:true});try{if(localStorage.getItem('aminikhaah_design_preview_dark')==='1')document.body.classList.add('dark')}catch(e){}
 render();
