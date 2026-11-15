@@ -6,7 +6,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>پیش‌نمایش آزمایشی طراحی امینی‌خواه | نسخه ۱</title>
 <style>
-:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px}
+:root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px--font-sans:"Vazirmatn","Noto Sans Arabic",Tahoma,Arial,sans-serif;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:19px;--heading-md:23px;--heading-lg:clamp(27px,2.3vw,35px);--leading-body:1.95;--leading-heading:1.5;}
 body[data-palette="lapis"]{--primary:#123f62;--primary-dark:#0b2d48;--primary-soft:#e4edf3;--paper:#f2f5f6;--white:#fff;--surface:#fff;--alt:#e9eff2;--ink:#20394c;--muted:#687985;--line:#dbe3e7;--gold:#d3a24f;--accent:#397b83;--accent-soft:#e3eff0}
 body[data-palette="clay"]{--primary:#7b3438;--primary-dark:#512428;--primary-soft:#f1e5df;--paper:#f8f0e8;--white:#fffaf5;--surface:#fffaf5;--alt:#f0e5dc;--ink:#4a3030;--muted:#796961;--line:#e6d9cf;--gold:#c99a58;--accent:#a95740;--accent-soft:#f4e6dc}
 body.dark{--primary:#a5c9b8;--primary-dark:#d0e3d9;--primary-soft:#293f38;--paper:#17221f;--white:#202d28;--surface:#273630;--alt:#202e28;--ink:#f1f3ed;--muted:#b4c5bb;--line:#40544a;--gold:#dfbd7c;--accent:#d9a17d;--accent-soft:#3c332c;--shadow:none}
@@ -246,6 +246,28 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .site-header.compact .header-inner>.palette-picker{display:block!important;order:0;flex:0 0 auto}
  .site-header.compact .header-inner>.palette-picker .palette-menu{top:calc(100% + 8px)}
 }
+
+/* Stage 09 — Persian typography foundation (Vazirmatn) */
+.site-app{font-family:var(--font-sans);font-size:var(--text-base);line-height:var(--leading-body);font-kerning:normal;text-rendering:optimizeLegibility}
+.site-app h1{font-size:var(--heading-lg);font-weight:800;line-height:1.45;letter-spacing:-.02em}
+.site-app h2{font-size:var(--heading-md);font-weight:750;line-height:var(--leading-heading)}
+.site-app h3{font-size:var(--heading-sm);font-weight:700;line-height:1.6}
+.site-app p{line-height:var(--leading-body)}
+.site-app .section-head h2{font-size:clamp(19px,1.55vw,22px);font-weight:800;line-height:1.5}
+.site-app .site-brand b{font-size:21px;font-weight:800;letter-spacing:-.35px;line-height:1.35}
+.site-app .site-brand small{font-size:10px;line-height:1.5;letter-spacing:0}
+.site-app .head-nav button{font-size:13px;font-weight:650;line-height:1.5}
+.site-app .palette-option-copy b{font-size:12px;line-height:1.5}
+.site-app .palette-option-copy small{font-size:10px;line-height:1.5}
+@container (max-width:650px){
+ .site-app{font-size:14px}
+ .site-app h1{font-size:clamp(25px,7vw,30px);line-height:1.5}
+ .site-app h2{font-size:20px}
+ .site-app h3{font-size:17px}
+ .site-app .section-head h2{font-size:19px}
+ .site-app .site-brand b{font-size:19px}
+}
+@media(prefers-reduced-motion:reduce){.site-app *{text-rendering:optimizeSpeed}}
 </style>
 </head>
 <body data-palette="olive">
