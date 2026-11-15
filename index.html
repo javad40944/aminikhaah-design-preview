@@ -486,14 +486,22 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 /* Authentic wordmark with no visible badge: ink follows the site theme */
 .site-app .site-brand{min-width:0;gap:0;text-decoration:none;align-items:center}
 .site-app .brand-logo-panel{
-  display:block;flex:0 0 auto;width:86px;height:44px;
+  display:block;flex:0 0 auto;width:85px;height:39px;
   box-sizing:border-box;padding:0;border:0;border-radius:0;box-shadow:none;
   background:var(--primary);
   -webkit-mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
   mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
 }
 .site-app .site-brand:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:9px}
-@container (max-width:650px){.site-app .brand-logo-panel{width:78px;height:40px}}
+@container (max-width:650px){.site-app .brand-logo-panel{width:75px;height:34px}}
+
+/* Slightly slimmer, balanced search-and-brand header (desktop + mobile) */
+.site-app .header-inner{padding-block:3px;min-height:45px}
+.site-app .header-inner>.search-box{min-height:36px;padding:5px 11px}
+@container (max-width:650px){
+ .site-app .header-inner{padding-block:3px;min-height:0}
+ .site-app .header-inner>.search-box{min-height:35px;padding:5px 10px}
+}
 </style>
 </head>
 <body data-palette="olive">
