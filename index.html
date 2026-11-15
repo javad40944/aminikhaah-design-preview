@@ -6,12 +6,12 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>پیش‌نمایش آزمایشی طراحی امینی‌خواه | نسخه ۱</title>
 <style>
-:root{--primary:#395b49;--primary-dark:#25342c;--primary-soft:#e7ede3;--paper:#f8f3e9;--white:#fffdf9;--surface:#fffdf9;--alt:#f1e8d7;--ink:#25342c;--muted:#60685d;--line:#eadfce;--gold:#cda356;--accent:#b25d35;--accent-soft:#f8e8df;--shadow:0 12px 32px rgba(28,42,40,.065);--radius:17px;--target:44px}
-body[data-palette="lapis"]{--primary:#1c4565;--primary-dark:#1f3445;--primary-soft:#e7eef3;--paper:#f8f5ef;--white:#fffefb;--surface:#fff;--alt:#edf1ef;--ink:#1f3445;--muted:#606f77;--line:#dde3e5;--gold:#dcac5c;--accent:#287678;--accent-soft:#e8f2ee}
-body[data-palette="clay"]{--primary:#753d40;--primary-dark:#4a3030;--primary-soft:#f0e4df;--paper:#faf0e8;--white:#fffcf8;--surface:#fff;--alt:#f5e7df;--ink:#4a3030;--muted:#71645d;--line:#e7d9d2;--gold:#d99c5e;--accent:#b85335;--accent-soft:#f7e9e0}
-body.dark{--primary:#9fc8b6;--primary-dark:#c2d9ce;--primary-soft:#263e39;--paper:#17201e;--white:#202a28;--surface:#26302e;--alt:#1e2826;--ink:#f1f4ef;--muted:#b2c2bb;--line:#3a4943;--gold:#d8b482;--accent:#e0a47e;--accent-soft:#34403a;--shadow:none}
-body.dark[data-palette="lapis"]{--primary:#8db5ce;--primary-dark:#d2e1e9;--primary-soft:#263b4a;--paper:#17232b;--white:#202d36;--surface:#26343d;--alt:#1e2b33;--ink:#f0f4f6;--muted:#b5c2c9;--line:#3b4b55;--gold:#e3c078;--accent:#5eb5ad;--accent-soft:#334743;--shadow:none}
-body.dark[data-palette="clay"]{--primary:#d99a93;--primary-dark:#f0c9c2;--primary-soft:#482f32;--paper:#241b1b;--white:#302425;--surface:#382a2b;--alt:#2b2021;--ink:#f6efeb;--muted:#cdbbb5;--line:#514043;--gold:#e9b779;--accent:#df8967;--accent-soft:#49312f;--shadow:none}
+:root{--primary:#365333;--primary-dark:#243b28;--primary-soft:#e7ecd9;--paper:#fbf3dc;--white:#fffaf0;--surface:#fffaf0;--alt:#f3e9cf;--ink:#263522;--muted:#68725d;--line:#e6d9bb;--gold:#d5a44f;--accent:#98723b;--accent-soft:#f4e6c6;--shadow:0 12px 32px rgba(45,55,32,.075);--radius:17px;--target:44px}
+body[data-palette="lapis"]{--primary:#073d68;--primary-dark:#052b4a;--primary-soft:#e2edf5;--paper:#f1f5f7;--white:#fff;--surface:#fff;--alt:#e9f0f4;--ink:#17354b;--muted:#637784;--line:#d8e2e9;--gold:#e0ad50;--accent:#247487;--accent-soft:#e0eff0}
+body[data-palette="clay"]{--primary:#79282d;--primary-dark:#4d1d22;--primary-soft:#f2e2dc;--paper:#fbf0e6;--white:#fffaf4;--surface:#fffaf4;--alt:#f3e4d8;--ink:#4a292b;--muted:#75615b;--line:#e6d4c8;--gold:#d8a254;--accent:#a94b38;--accent-soft:#f5e4d9}
+body.dark{--primary:#a9c59b;--primary-dark:#d3dfc8;--primary-soft:#293b2a;--paper:#1d241b;--white:#252d22;--surface:#2c3528;--alt:#242d21;--ink:#f4f1e5;--muted:#bdc6ae;--line:#46513f;--gold:#e2bc70;--accent:#d2a66b;--accent-soft:#3e3929;--shadow:none}
+body.dark[data-palette="lapis"]{--primary:#8fb9d6;--primary-dark:#d7e7f2;--primary-soft:#263e52;--paper:#101f2d;--white:#192b3a;--surface:#203649;--alt:#1a3041;--ink:#edf4f8;--muted:#b3c4d0;--line:#385064;--gold:#e9c16d;--accent:#68b9c4;--accent-soft:#29474d;--shadow:none}
+body.dark[data-palette="clay"]{--primary:#e1a09a;--primary-dark:#f3d0c7;--primary-soft:#482b2e;--paper:#251a1a;--white:#312323;--surface:#3a2929;--alt:#2d2020;--ink:#f8eee7;--muted:#d0bcb3;--line:#594243;--gold:#e7b66e;--accent:#e08a6c;--accent-soft:#4a302c;--shadow:none}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e9eceb;color:var(--ink);font-family:Vazirmatn,'Noto Sans Arabic',Tahoma,sans-serif;font-size:14px;line-height:1.8}button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}h1,h2,h3,h4,p{margin:0}h1{font-size:clamp(23px,2.4vw,33px);line-height:1.48}h2{font-size:clamp(17px,1.6vw,23px);line-height:1.5}h3{font-size:16px}p{line-height:1.95}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}img{max-width:100%}.hide{display:none!important}
 .demo-bar{background:#1e2b32;color:#fff;padding:12px clamp(15px,3vw,34px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;box-shadow:0 2px 8px #0002}.demo-brand{font-size:15px;font-weight:800}.demo-caption{font-size:11px;color:#cbd6db}.toolbar{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.toolbar label{font-size:11px;color:#d7dfe0}.toolbar select,.toolbar button{background:#384951;color:white;border:1px solid #52626a;border-radius:9px;padding:6px 10px;font-size:12px;min-height:35px}.toolbar button.active{background:#f4f7f6;color:#17292a;border-color:#f4f7f6}.palette-hint{font-size:10px;color:#cbd6db;white-space:nowrap}.demo-notice{background:#e9f0ea;border-bottom:1px solid #d6e3d9;padding:7px 18px;color:#34534a;text-align:center;font-size:11px}
 .preview{max-width:1500px;margin:0 auto;padding:0 12px 40px}.app-frame{margin:14px auto 0;max-width:1440px;min-height:700px;border-radius:18px;overflow:clip;box-shadow:0 25px 64px #17272221;container-type:inline-size;background:var(--paper);transition:max-width .22s ease}.preview.mobile-forced .app-frame{max-width:390px;box-shadow:0 16px 55px #1727222e}.site-app{background:var(--paper);color:var(--ink);min-height:100vh;position:relative;padding-bottom:92px}.overline{height:27px;background:var(--alt);color:var(--muted);font-size:10px;letter-spacing:.1px;text-align:center;display:flex;align-items:center;justify-content:center}.site-header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--white) 97%, transparent);border-bottom:1px solid var(--line);box-shadow:0 4px 18px #24342b08}.header-inner{max-width:1260px;margin:auto;display:flex;align-items:center;gap:22px;padding:11px 26px}.site-brand{display:flex;align-items:center;gap:9px;min-width:max-content}.brand-mark{width:45px;height:45px;border-radius:13px;background:var(--primary);display:grid;place-items:center;color:var(--paper);font-size:25px;font-family:serif}.site-brand b{font-size:21px;font-weight:850;letter-spacing:-1px}.site-brand small{display:block;font-size:9px;color:var(--muted);margin-top:-7px}.head-nav{display:flex;gap:17px;align-items:center}.head-nav button{padding:8px 0;white-space:nowrap;font-size:12px;color:var(--ink);background:transparent;border:0}.head-nav button:hover,.head-nav button.active{color:var(--primary);font-weight:800}.search-box{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:11px;background:var(--alt);padding:7px 9px;min-width:160px;max-width:310px;flex:1;margin-inline-start:auto}.search-box input{border:0;outline:0;background:transparent;min-width:0;width:100%;font-size:12px}.search-box button{border:0;background:none;color:var(--primary);font-size:20px;line-height:1}.small-icon{border:1px solid var(--line);background:var(--surface);border-radius:11px;min-width:40px;min-height:40px;padding:5px;display:grid;place-items:center}.header-login{background:var(--primary-soft);color:var(--primary-dark);border:1px solid var(--line);border-radius:11px;padding:9px 14px;min-width:max-content;font-size:11px;font-weight:750}.mobile-menu{display:none}.mobile-bottombar{display:none}.site-header.compact .header-inner{transition:padding .15s}
@@ -206,17 +206,43 @@ body.dark[data-palette="clay"]{--primary:#d99a93;--primary-dark:#f0c9c2;--primar
 /* Stage 08 QA: accurately separate current public routes from future-only concepts */
 .mode-current .mobile-bottombar{display:none!important}
 @container (max-width:650px){.mode-current .site-app{padding-bottom:72px}}
+
+/* User-facing palette switcher: three complete visual identities */
+.palette-switch{display:flex;align-items:center;gap:5px;padding:4px;border:1px solid var(--line);border-radius:13px;background:var(--alt);flex:0 0 auto}
+.palette-switch-label{font-size:10px;color:var(--muted);font-weight:750;padding:0 5px}
+.palette-choice{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;padding:4px 8px;border:1px solid transparent;border-radius:9px;background:transparent;color:var(--ink);font-size:10px;font-weight:750;white-space:nowrap;transition:background .18s,border-color .18s,transform .18s}
+.palette-choice:hover{background:var(--surface);border-color:var(--line)}
+.palette-choice.active{background:var(--surface);border-color:var(--primary);box-shadow:0 2px 7px #00000010;color:var(--primary-dark)}
+.palette-dot{display:inline-block;width:13px;height:13px;border-radius:50%;border:1px solid #0002;box-shadow:inset 0 0 0 2px #ffffff40}
+.palette-dot-olive{background:linear-gradient(135deg,#304d31 0 50%,#e1b65e 50%)}
+.palette-dot-lapis{background:linear-gradient(135deg,#073d68 0 50%,#e0ad50 50%)}
+.palette-dot-clay{background:linear-gradient(135deg,#79282d 0 50%,#d8a254 50%)}
+.palette-choice:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.toolbar-note{font-size:11px;color:#d4dfe2;margin-inline-end:auto}
+@container (max-width:650px){
+ .header-inner{gap:7px}
+ .palette-switch{order:3;flex:1 1 auto;justify-content:center;min-width:0;padding:3px}
+ .palette-switch-label{font-size:9px;padding:0 3px}
+ .palette-choice{flex:1;gap:4px;padding:4px 5px;font-size:10px;min-height:34px}
+ .header-inner>.small-icon:not(.mobile-menu){order:4}
+ .search-box{order:5}
+ .site-header.compact .header-inner>.palette-switch{display:flex!important;order:0;flex:0 0 auto}
+ .site-header.compact .header-inner>.small-icon:not(.mobile-menu){display:grid!important}
+ .site-header.compact .search-box{order:1;flex:1 1 100%;width:100%}
+ .toolbar-note{display:none}
+}
+@media(max-width:600px){.toolbar-note{display:none}}
 </style>
 </head>
 <body data-palette="olive">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><label for="pal">هویت بصری:</label><select id="pal" aria-label="انتخاب هویت بصری"><option value="olive">A — سپیده و زیتون</option><option value="lapis">B — لاجورد و خورشید</option><option value="clay">C — انار و کاغذ</option></select><span class="palette-hint" id="paletteHint">گرم، صمیمی و کتابخانه‌ای</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
-<div class="demo-notice">برای مقایسه سه جهت بصری، از منوی «هویت بصری» بالا استفاده کن؛ انتخاب تو در تمام ۱۲ نمای همین پیش‌نمایش اعمال می‌شود. متن و تصویر نمونه‌اند؛ صوتی پخش نمی‌شود و هیچ فرمی به سایت اصلی ارسال نمی‌شود.</div>
+<div class="toolbar"><span class="toolbar-note">رنگ‌بندی را از دکمه‌های داخل سربرگ سایت انتخاب کن.</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
+<div class="demo-notice">برای تغییر ظاهر سایت، دکمه‌های سه رنگ‌بندی را در سربرگ انتخاب کن؛ انتخاب در تمام صفحات همین پیش‌نمایش اعمال و ذخیره می‌شود. متن و تصویر نمونه‌اند؛ صوتی پخش نمی‌شود و هیچ فرمی به سایت اصلی ارسال نمی‌شود.</div>
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline"><span class="bismillah-script">بسم الله الرحمن الرحیم</span><span class="bismillah-note">جایگاه تصویر دستخط اصلی ـ فایل تصویری تأییدشده هنوز ارائه نشده</span></div>
 <header class="site-header"><div class="header-inner"><button class="small-icon mobile-menu" onclick="openDrawer()" aria-label="منوی سایت">☰</button><a class="site-brand" href="#home" onclick="go('home');return false"><span class="brand-mark">آ</span><span><b>امینی‌خواه</b><small>کتابخانه سخنرانی و معارف</small></span></a>
 <nav class="head-nav" id="head-nav"><button onclick="go('home')">خانه</button><button onclick="go('albums')">سخنرانی‌ها</button><button class="future-nav" onclick="go('roza')">روضه‌ها</button><button class="future-nav" onclick="go('lessons')">درس تخصصی</button></nav>
-<button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button><button class="header-login" onclick="go('profile')">ورود / حساب</button><button class="small-icon" onclick="toggleDark()" aria-label="روز و شب">◐</button></div></header>
+<button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button><button class="header-login" onclick="go('profile')">ورود / حساب</button><div class="palette-switch" role="group" aria-label="انتخاب رنگ‌بندی سایت"><span class="palette-switch-label">رنگ سایت</span><button class="palette-choice" type="button" data-palette-choice="olive" onclick="setPalette('olive')" aria-label="انتخاب سپیده و زیتون" title="سپیده و زیتون" aria-pressed="true"><i class="palette-dot palette-dot-olive"></i><span>زیتون</span></button><button class="palette-choice" type="button" data-palette-choice="lapis" onclick="setPalette('lapis')" aria-label="انتخاب لاجورد و خورشید" title="لاجورد و خورشید" aria-pressed="false"><i class="palette-dot palette-dot-lapis"></i><span>لاجورد</span></button><button class="palette-choice" type="button" data-palette-choice="clay" onclick="setPalette('clay')" aria-label="انتخاب انار و کاغذ" title="انار و کاغذ" aria-pressed="false"><i class="palette-dot palette-dot-clay"></i><span>انار</span></button></div><button class="small-icon" onclick="toggleDark()" aria-label="روز و شب">◐</button></div></header>
 <main class="app-main" id="content"></main>
 <footer class="site-footer">
 <div class="footer-main">
@@ -406,9 +432,17 @@ function closeExpandedPlayer(){const p=byId('audio-expanded');p.classList.add('h
 function openDrawer(){const d=byId('drawer');d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>!['roza','lessons','questions','books'].includes(id)):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('')}
 function setMode(m){mode=m;if(mode==='current'){if(['questions','books','lessons'].includes(page))page='home';if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
 function setDevice(m){byId('preview').classList.toggle('mobile-forced',m==='mobile');byId('desk').classList.toggle('active',m==='desktop');byId('mob').classList.toggle('active',m==='mobile')}
-const paletteNotes={olive:'گرم، صمیمی و کتابخانه‌ای',lapis:'اصیل، شاخص و رسانه‌ای',clay:'فرهنگی، زنده و متمایز'};
-function setPalette(value){if(!paletteNotes[value])value='olive';document.body.dataset.palette=value;byId('pal').value=value;byId('paletteHint').textContent=paletteNotes[value];try{localStorage.setItem('aminikhaah_design_preview_palette',value)}catch(e){}}
-byId('pal').addEventListener('change',e=>setPalette(e.target.value));
+const paletteNotes={olive:'سپیده و زیتون',lapis:'لاجورد و خورشید',clay:'انار و کاغذ'};
+function setPalette(value){
+ if(!paletteNotes[value])value='olive';
+ document.body.dataset.palette=value;
+ document.querySelectorAll('[data-palette-choice]').forEach(b=>{
+  const active=b.dataset.paletteChoice===value;
+  b.classList.toggle('active',active);
+  b.setAttribute('aria-pressed',active?'true':'false');
+ });
+ try{localStorage.setItem('aminikhaah_design_preview_palette',value)}catch(e){}
+}
 try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
 byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});window.addEventListener('scroll',()=>{const header=document.querySelector('.site-header'); if(header)header.classList.toggle('compact',window.scrollY>155)},{passive:true});try{if(localStorage.getItem('aminikhaah_design_preview_dark')==='1')document.body.classList.add('dark')}catch(e){}
