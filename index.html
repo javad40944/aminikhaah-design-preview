@@ -333,6 +333,23 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .split-reader>.article{max-width:none}
 }
 
+
+/* Homepage wireframe adjustment — remove intro heading, enlarge slider, place quick links below */
+#content:has(.hero-grid)>.page-title{display:none}
+#content>.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin-top:0;width:100%}
+#content>.hero-grid>div:first-child{width:100%;max-width:none;min-width:0}
+#content .hero-slider{width:100%;max-width:none;aspect-ratio:21/8;min-height:300px}
+#content>.hero-grid>.quick-rail{width:100%;max-width:none;min-width:0}
+#content>.hero-grid>.quick-rail .quick-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+@container (max-width:1000px){
+ #content .hero-slider{aspect-ratio:16/8;min-height:260px}
+ #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@container (max-width:650px){
+ #content .hero-slider{aspect-ratio:4/3;min-height:220px}
+ #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -401,7 +418,7 @@ function subjectSlots(style){return '<div class="subject-feature '+style+'"><div
 function subjectBlock(t,style){return sect(t,subjectSlots(style),{future:true,desc:'نمونه ساختار و تنوع ارائه؛ عنوان، ترتیب و آلبوم‌های هر ردیف در محصول مقصد از انتخاب‌های مدیر.'})}
 function homeMediaSection(){return sect('رسانه','<div class="media-home-grid"><button class="media-home-card media-home-podcast" onclick="mediaFilter=\'پادکست\';go(\'media\')"><span class="media-home-icon">♫</span><b>پادکست‌های صوتی</b><small>مسیر عمومی موجود</small></button><button class="media-home-card media-home-video future-only" onclick="toast(\'نمایش ویدئو در طرح جامع حفظ شده؛ مسیر عمومی آن نیازمند توسعه است\')"><span class="media-home-icon">▷</span><b>کلیپ‌های تصویری</b><small>در طرح جامع</small></button><button class="media-home-card media-home-roza future-only" onclick="toast(\'بخش رسانه‌ای روضه در طرح جامع حفظ شده؛ مسیر عمومی مستقل نیازمند توسعه است\')"><span class="media-home-icon">✧</span><b>روضه</b><small>در طرح جامع</small></button><button class="media-home-card media-home-poster future-only" onclick="toast(\'پوستر و عکس‌نوشته در طرح جامع حفظ شده؛ مسیر عمومی نیازمند توسعه است\')"><span class="media-home-icon">▣</span><b>پوستر و عکس‌نوشته</b><small>در طرح جامع</small></button></div>',{className:'desktop-home-entry',desc:'در دسکتاپ، رسانه به‌صورت یک بخش مستقل در خانه قرار می‌گیرد؛ در موبایل دسترسی اصلی از تب پایین صفحه است.'})}
 function homeTopicsSection(){return sect('موضوعات','<div class="categories-grid">'+categories.map(x=>'<button class="topic-card" onclick="go(\'topics\')"><span>'+x[2]+'</span><b>'+x[0]+'</b></button>').join('')+'</div>',{className:'desktop-home-entry',more:'topics',desc:'در دسکتاپ این بخش در خانه دیده می‌شود؛ در موبایل دسترسی اصلی از تب «موضوعات» است.'})}
-function home(){return title('خانهٔ کتابخانه','کتابخانه‌ای برای دسترسی به سخنرانی‌ها، روضه‌ها و منابع معارف؛ ترتیب ردیف‌ها در نسخه واقعی از تنظیمات مدیریت می‌آید.')+hero()+
+function home(){return hero()+
 sect('جدیدترین سخنرانی‌ها',cards(songData,'song'),{more:'albums',desc:'سه کارت مربعی در عرض موبایل، اسکرول افقی تا سقف تنظیم‌شده، عنوان جلسه و نام آلبوم؛ نام فصل فقط در صورت وجود فصل واقعی نمایش داده می‌شود. عناوین این پیش‌نمایش نمونه‌اند و لزوماً جدیدترین جلسات نیستند.'})+
 sect('به‌روزرسانی‌های سایت',cards(albumData),{more:'albums',desc:'آلبوم‌هایی که جلسه تازه دارند؛ ردیف مستقل با زمینه متناوب و حداکثر ۱۰ مورد در طرح مقصد. ترتیب نمونه ادعای جدیدترین‌بودن ندارد.'})+
 sect('آلبوم‌های منتخب',posters(),{desc:'چهار پوستر افقی ۱۶:۹؛ انتخاب محتوا از پنل مدیریت در طرح مقصد. تصاویر این نمونه جایگاه طراحی‌اند و عکس واقعی را کراپ نمی‌کنند.'})+
