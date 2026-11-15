@@ -320,6 +320,7 @@ function media(){
  return pageTitle+'<div class="panel media-toolbar"><div class="pill-row">'+filterHtml+'</div>'+sortTools+'</div>'+sect('محتوای رسانه‌ای','<div class="notice">'+(currentOnly?'در امکانات فعلی، مسیر عمومی پادکست وجود دارد؛ فهرست واقعی پس از اتصال از همان مسیر خوانده می‌شود.':'نمونه‌های این صفحه صرفاً برای نمایش ساختار کارت‌ها هستند؛ فهرست عمومی همه انواع رسانه هنوز در سایت احراز نشده است.')+'</div><div class="media-grid '+(mediaView==='list'?'media-grid-list':'')+'">'+grid+'</div><div class="infinite-feed-note">پیمایش پیوسته و مرتب‌سازی واقعی پس از اتصال به داده عمومی اجرا می‌شود.</div>',{desc:'سه کارت در عرض موبایل؛ عنوان نزدیک تصویر و آیکون نوع محتوا کنار عنوان.'})+detail;
 }
 
+function topicImageCard(name,symbol,kind){return '<button class="topic-image-card" onclick="toast(\'در نسخه متصل، این دسته به فهرست محتوای همان نوع هدایت می‌شود\')"><div class="topic-image"><span>'+symbol+'</span><small>تصویر دسته</small></div><b>'+name+'</b><small class="topic-card-note">'+kind+' · جایگاه نمونه</small></button>'}
 function topics(){
  const allTabs=['سخنرانی‌ها','دروس','رسانه','روضه‌ها','پرسش‌وپاسخ'];
  const tabs=mode==='current'?['سخنرانی‌ها']:allTabs;
