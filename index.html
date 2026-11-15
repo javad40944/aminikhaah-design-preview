@@ -483,17 +483,17 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 
 
-/* Official Aminikhaah lettering: original artwork, no royal-blue background */
+/* Authentic wordmark with no visible badge: ink follows the site theme */
 .site-app .site-brand{min-width:0;gap:0;text-decoration:none;align-items:center}
-.site-app .brand-logo-panel{display:grid;place-items:center;flex:0 0 auto;width:80px;height:44px;box-sizing:border-box;padding:2px 4px;border-radius:9px;background:#24564b;box-shadow:0 2px 7px rgba(20,40,32,.1)}
-body[data-palette="lapis"] .site-app .brand-logo-panel{background:#35564d}
-body[data-palette="clay"] .site-app .brand-logo-panel{background:#7b3438}
-body.dark .site-app .brand-logo-panel{background:#2b5144;box-shadow:none;border:1px solid var(--line)}
-body.dark[data-palette="lapis"] .site-app .brand-logo-panel{background:#34524a}
-body.dark[data-palette="clay"] .site-app .brand-logo-panel{background:#773d42}
-.site-app .brand-logo{display:block;width:100%;height:100%;object-fit:contain}
+.site-app .brand-logo-panel{
+  display:block;flex:0 0 auto;width:86px;height:44px;
+  box-sizing:border-box;padding:0;border:0;border-radius:0;box-shadow:none;
+  background:var(--primary);
+  -webkit-mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
+  mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
+}
 .site-app .site-brand:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:9px}
-@container (max-width:650px){.site-app .brand-logo-panel{width:73px;height:40px;padding:2px 3px;border-radius:8px}}
+@container (max-width:650px){.site-app .brand-logo-panel{width:78px;height:40px}}
 </style>
 </head>
 <body data-palette="olive">
@@ -504,7 +504,7 @@ body.dark[data-palette="clay"] .site-app .brand-logo-panel{background:#773d42}
 <div class="overline bismillah-band" role="img" aria-label="بسم الله الرحمن الرحیم"><span class="bismillah-star" aria-hidden="true">✦</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-script" lang="ar" dir="rtl" aria-hidden="true">﷽</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-star" aria-hidden="true">✦</span></div>
 <header class="site-header"><div class="header-inner">
   <button class="small-icon mobile-menu" onclick="openDrawer()" aria-label="منوی سایت">☰</button>
-  <a class="site-brand" href="#home" onclick="go('home');return false" aria-label="امینی‌خواه؛ صفحه اصلی"><span class="brand-logo-panel"><img class="brand-logo" src="./assets/aminikhaah-logo.svg" alt="" width="78" height="42" decoding="async"></span></a>
+  <a class="site-brand" href="#home" onclick="go('home');return false" aria-label="امینی‌خواه؛ صفحه اصلی"><span class="brand-logo-panel" aria-hidden="true"></span></a>
   <button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button>
   <div class="header-actions">
     <div class="palette-picker palette-swatches" role="group" aria-label="انتخاب رنگ‌بندی سایت">
