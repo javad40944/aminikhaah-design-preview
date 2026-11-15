@@ -350,23 +350,97 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
+
+/* Stage 08 wireframe: centered search, compact controls and icon-only utilities */
+.site-app .overline{height:23px}
+.site-app .header-inner{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,410px) minmax(0,1fr);
+  gap:12px;align-items:center;padding-block:6px;min-height:52px;
+}
+.site-app .header-inner>.mobile-menu{display:none}
+.site-app .header-inner>.site-brand{grid-column:1;grid-row:1;justify-self:start;min-width:0}
+.site-app .brand-mark{width:38px;height:38px;border-radius:11px;font-size:22px}
+.site-app .site-brand b{font-size:19px}
+.site-app .header-inner>.search-box{
+  grid-column:2;grid-row:1;justify-self:stretch;
+  box-sizing:border-box;width:100%;min-width:0;max-width:none;margin:0;
+  padding:6px 12px;min-height:38px;
+}
+.site-app .header-actions{
+  grid-column:3;grid-row:1;display:flex;align-items:center;justify-content:flex-end;
+  gap:6px;min-width:0;white-space:nowrap;
+}
+.site-app .palette-swatches{display:flex;align-items:center;gap:2px;flex:0 0 auto}
+.site-app .palette-dot{
+  appearance:none;display:grid;place-items:center;width:27px;height:34px;
+  padding:0;border:0;border-radius:9px;background:transparent;cursor:pointer;
+}
+.site-app .palette-dot::before{
+  content:"";width:17px;height:17px;display:block;border-radius:50%;
+  border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line);
+  transition:transform .15s,box-shadow .15s;
+}
+.site-app .palette-dot-olive::before{background:#24564b}
+.site-app .palette-dot-lapis::before{background:#123f62}
+.site-app .palette-dot-clay::before{background:#7b3438}
+.site-app .palette-dot:hover::before{transform:scale(1.1)}
+.site-app .palette-dot[aria-pressed="true"]::before{box-shadow:0 0 0 2px var(--primary),0 0 0 4px var(--surface)}
+.site-app .palette-dot:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.site-app .header-actions>.small-icon,.site-app .header-actions>.header-login{
+  display:grid;place-items:center;width:36px;height:36px;min-width:36px;min-height:36px;
+  padding:4px;border:1px solid var(--line);border-radius:10px;
+}
+.site-app .header-actions>.header-login{background:var(--primary-soft);color:var(--primary-dark)}
+@container (max-width:1000px){
+ .site-app .header-inner{grid-template-columns:minmax(0,1fr) minmax(175px,360px) minmax(0,1fr);gap:9px}
+ .site-app .site-brand b{font-size:17px}
+ .site-app .header-actions{gap:4px}
+}
+@container (max-width:650px){
+ .site-app .header-inner{
+  grid-template-columns:34px minmax(0,1fr) auto;
+  grid-template-rows:auto auto;gap:6px 7px;padding-block:5px;min-height:0;
+ }
+ .site-app .header-inner>.mobile-menu{display:grid;grid-column:1;grid-row:1;order:initial;min-width:34px;min-height:34px}
+ .site-app .header-inner>.site-brand{grid-column:2;grid-row:1;order:initial;gap:5px}
+ .site-app .site-brand b{font-size:16px}
+ .site-app .site-brand small{display:none}
+ .site-app .brand-mark{width:32px;height:32px;font-size:18px}
+ .site-app .header-actions{grid-column:3;grid-row:1;gap:3px}
+ .site-app .palette-dot{width:23px;height:32px}
+ .site-app .palette-dot::before{width:15px;height:15px}
+ .site-app .header-actions>.small-icon,.site-app .header-actions>.header-login{width:32px;height:32px;min-width:32px;min-height:32px}
+ .site-app .header-inner>.search-box{
+  grid-column:1/-1;grid-row:2;order:initial;width:100%;min-height:35px;max-width:none;
+  padding:5px 10px;margin:0;
+ }
+ .site-app .site-header.compact .header-inner{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;padding-block:4px}
+ .site-app .site-header.compact .header-actions{display:none}
+ .site-app .site-header.compact .header-inner>.search-box{grid-column:1/-1;grid-row:1}
+}
+
 </style>
 </head>
 <body data-palette="olive">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
 <div class="toolbar"><span class="toolbar-note">رنگ‌بندی را از دکمه‌های داخل سربرگ سایت انتخاب کن.</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
-<div class="demo-notice">برای تغییر ظاهر سایت، دکمه‌های سه رنگ‌بندی را در سربرگ انتخاب کن؛ انتخاب در تمام صفحات همین پیش‌نمایش اعمال و ذخیره می‌شود. متن و تصویر نمونه‌اند؛ صوتی پخش نمی‌شود و هیچ فرمی به سایت اصلی ارسال نمی‌شود.</div>
+
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline"><span class="bismillah-script">بسم الله الرحمن الرحیم</span><span class="bismillah-note">جایگاه تصویر دستخط اصلی ـ فایل تصویری تأییدشده هنوز ارائه نشده</span></div>
-<header class="site-header"><div class="header-inner"><button class="small-icon mobile-menu" onclick="openDrawer()" aria-label="منوی سایت">☰</button><a class="site-brand" href="#home" onclick="go('home');return false"><span class="brand-mark">آ</span><span><b>امینی‌خواه</b><small>کتابخانه سخنرانی و معارف</small></span></a>
-
-<button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button><button class="header-login" onclick="go('profile')">ورود / حساب</button><div class="palette-picker">
-<button class="palette-trigger" id="paletteTrigger" type="button" aria-label="انتخاب رنگ‌بندی سایت" aria-expanded="false" aria-controls="paletteMenu" onclick="togglePaletteMenu()"><span class="palette-trigger-swatches" aria-hidden="true"><i></i><i></i><i></i></span><span>رنگ‌ها</span><span class="palette-trigger-chevron" aria-hidden="true">⌄</span></button>
-<div class="palette-menu" id="paletteMenu" role="group" aria-label="سه هویت بصری سایت">
-<button class="palette-option" type="button" data-palette-choice="olive" onclick="setPalette('olive')" aria-label="انتخاب سپیده و زیتون" aria-pressed="true"><span class="palette-option-art palette-art-olive"><i></i><i></i><i></i></span><span class="palette-option-copy"><b>یشم و عاج</b><small>آرام، اصیل و کتابخانه‌ای</small></span><span class="palette-option-check">✓</span></button>
-<button class="palette-option" type="button" data-palette-choice="lapis" onclick="setPalette('lapis')" aria-label="انتخاب لاجورد و خورشید" aria-pressed="false"><span class="palette-option-art palette-art-lapis"><i></i><i></i><i></i></span><span class="palette-option-copy"><b>لاجورد و خورشید</b><small>روشن و باشکوه</small></span><span class="palette-option-check">✓</span></button>
-<button class="palette-option" type="button" data-palette-choice="clay" onclick="setPalette('clay')" aria-label="انتخاب انار و کاغذ" aria-pressed="false"><span class="palette-option-art palette-art-clay"><i></i><i></i><i></i></span><span class="palette-option-copy"><b>انار و کاغذ</b><small>گرم و هنری</small></span><span class="palette-option-check">✓</span></button>
-</div></div><button class="small-icon" onclick="toggleDark()" aria-label="روز و شب">◐</button></div></header>
+<header class="site-header"><div class="header-inner">
+  <button class="small-icon mobile-menu" onclick="openDrawer()" aria-label="منوی سایت">☰</button>
+  <a class="site-brand" href="#home" onclick="go('home');return false"><span class="brand-mark">آ</span><span><b>امینی‌خواه</b><small>کتابخانه سخنرانی و معارف</small></span></a>
+  <button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button>
+  <div class="header-actions">
+    <div class="palette-picker palette-swatches" role="group" aria-label="انتخاب رنگ‌بندی سایت">
+      <button class="palette-dot palette-dot-olive" type="button" data-palette-choice="olive" onclick="setPalette('olive')" aria-label="رنگ‌بندی یشم و عاج" title="یشم و عاج" aria-pressed="true"></button>
+      <button class="palette-dot palette-dot-lapis" type="button" data-palette-choice="lapis" onclick="setPalette('lapis')" aria-label="رنگ‌بندی لاجورد و خورشید" title="لاجورد و خورشید" aria-pressed="false"></button>
+      <button class="palette-dot palette-dot-clay" type="button" data-palette-choice="clay" onclick="setPalette('clay')" aria-label="رنگ‌بندی انار و کاغذ" title="انار و کاغذ" aria-pressed="false"></button>
+    </div>
+    <button class="small-icon theme-switch" type="button" onclick="toggleDark()" aria-label="تغییر حالت روز و شب" title="روز / شب">◐</button>
+    <button class="header-login" type="button" onclick="go('profile')" aria-label="ورود یا حساب کاربری" title="ورود / حساب"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20v-1.5a7 7 0 0 1 14 0V20"></path></svg></button>
+  </div>
+</div></header>
 <main class="app-main" id="content"></main>
 <footer class="site-footer">
 <div class="footer-main">
@@ -557,16 +631,6 @@ function openDrawer(){const d=byId('drawer');d.classList.toggle('hide');const me
 function setMode(m){mode=m;if(mode==='current'){if(['questions','books','lessons'].includes(page))page='home';if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
 function setDevice(m){byId('preview').classList.toggle('mobile-forced',m==='mobile');byId('desk').classList.toggle('active',m==='desktop');byId('mob').classList.toggle('active',m==='mobile')}
 const paletteNotes={olive:'یشم و عاج',lapis:'لاجورد و خورشید',clay:'انار و کاغذ'};
-function togglePaletteMenu(){
- const menu=byId('paletteMenu'),trigger=byId('paletteTrigger');
- const opening=!menu.classList.contains('show');
- menu.classList.toggle('show',opening);
- trigger.setAttribute('aria-expanded',opening?'true':'false');
-}
-function closePaletteMenu(){
- const menu=byId('paletteMenu'),trigger=byId('paletteTrigger');
- menu.classList.remove('show');trigger.setAttribute('aria-expanded','false');
-}
 function setPalette(value){
  if(!paletteNotes[value])value='olive';
  document.body.dataset.palette=value;
@@ -574,14 +638,9 @@ function setPalette(value){
   const active=b.dataset.paletteChoice===value;
   b.setAttribute('aria-pressed',active?'true':'false');
  });
- closePaletteMenu();
+
  try{localStorage.setItem('aminikhaah_design_preview_palette_v2',value)}catch(e){}
 }
-document.addEventListener('click',e=>{
- const picker=document.querySelector('.palette-picker');
- if(picker&&!picker.contains(e.target))closePaletteMenu();
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePaletteMenu()});
 try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette_v2');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
 byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});window.addEventListener('scroll',()=>{const header=document.querySelector('.site-header'); if(header)header.classList.toggle('compact',window.scrollY>155)},{passive:true});try{if(localStorage.getItem('aminikhaah_design_preview_dark')==='1')document.body.classList.add('dark')}catch(e){}
