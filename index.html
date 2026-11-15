@@ -455,11 +455,38 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .site-app .bismillah-star{font-size:7px}
 }
 
+
+/* Compact prototype toolbar: one-line description and small view controls */
+.demo-bar{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;
+  padding:2px clamp(8px,1.5vw,18px);min-height:31px;gap:8px;
+  flex-wrap:nowrap;
+}
+.demo-bar>div:first-child{display:flex;align-items:center;gap:10px;min-width:0;overflow:hidden;white-space:nowrap}
+.demo-bar .demo-brand{font-size:11px;line-height:1.3;font-weight:800;white-space:nowrap;flex:none}
+.demo-bar .demo-caption{
+  font-size:9px;line-height:1.3;min-width:0;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;
+}
+.demo-bar .toolbar{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-end;gap:4px;min-width:0;white-space:nowrap}
+.demo-bar .toolbar button{
+  min-height:25px;padding:3px 7px;border-radius:6px;
+  font-size:10px;line-height:1.2;white-space:nowrap;
+}
+@media(max-width:760px){
+ .demo-bar{padding:2px 5px;min-height:29px;gap:4px}
+ .demo-bar>div:first-child{gap:3px}
+ .demo-bar .demo-brand{font-size:10px;overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
+ .demo-bar .demo-caption{display:none}
+ .demo-bar .toolbar{gap:3px}
+ .demo-bar .toolbar button{min-height:24px;padding:2px 5px;font-size:9px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
-<div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><span class="toolbar-note">رنگ‌بندی را از دکمه‌های داخل سربرگ سایت انتخاب کن.</span><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
+<div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption" title="مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
+<div class="toolbar"><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
 
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline bismillah-band" role="img" aria-label="بسم الله الرحمن الرحیم"><span class="bismillah-star" aria-hidden="true">✦</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-script" lang="ar" dir="rtl" aria-hidden="true">﷽</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-star" aria-hidden="true">✦</span></div>
