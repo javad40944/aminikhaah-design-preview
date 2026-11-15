@@ -322,6 +322,16 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .grid3,.grid4{grid-template-columns:minmax(0,1fr)}
  .grid3>*:last-child:nth-child(odd){grid-column:auto}
 }
+/* Reading layouts use a narrower measure than the page grid */
+.split-reader{display:grid;grid-template-columns:minmax(0,8fr) minmax(230px,4fr);gap:var(--grid-gap);align-items:start}
+.split-reader>.article{width:100%;max-width:var(--reading-max);margin-inline:auto}
+@container (max-width:1000px){
+ .split-reader{grid-template-columns:minmax(0,5fr) minmax(210px,3fr)}
+}
+@container (max-width:650px){
+ .split-reader{grid-template-columns:minmax(0,1fr);gap:14px}
+ .split-reader>.article{max-width:none}
+}
 
 </style>
 </head>
