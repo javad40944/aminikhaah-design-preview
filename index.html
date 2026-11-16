@@ -513,7 +513,7 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 
 
 /* Authentic wordmark with no visible badge: ink follows the site theme */
-.site-app .site-brand{min-width:0;gap:0;text-decoration:none;align-items:center}
+.site-app .site-brand{min-width:0;gap:0;text-decoration:none;align-items:center;flex-direction:column}
 .site-app .brand-logo-panel{
   display:block;flex:0 0 auto;width:86px;height:44px;
   box-sizing:border-box;padding:0;border:0;border-radius:0;box-shadow:none;
@@ -521,8 +521,16 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   -webkit-mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
   mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;
 }
+.site-app .header-inner>.site-brand{gap:0}
+.site-app .brand-subtitle{
+  display:block;margin-top:-3px;color:var(--muted);
+  font-size:8px;font-weight:500;line-height:1.2;white-space:nowrap;
+}
 .site-app .site-brand:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:9px}
-@container (max-width:650px){.site-app .brand-logo-panel{width:78px;height:40px}}
+@container (max-width:650px){
+  .site-app .brand-logo-panel{width:78px;height:40px}
+  .site-app .brand-subtitle{font-size:7px}
+}
 </style>
 </head>
 <body data-palette="olive">
@@ -533,7 +541,7 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 <div class="overline bismillah-band" role="img" aria-label="بسم الله الرحمن الرحیم"><span class="bismillah-star" aria-hidden="true">✦</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-script" lang="ar" dir="rtl" aria-hidden="true">﷽</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-star" aria-hidden="true">✦</span></div>
 <header class="site-header"><div class="header-inner">
   <button class="small-icon mobile-menu" onclick="openDrawer()" aria-label="منوی سایت">☰</button>
-  <a class="site-brand" href="#home" onclick="go('home');return false" aria-label="امینی‌خواه؛ صفحه اصلی"><span class="brand-logo-panel" aria-hidden="true"></span></a>
+  <a class="site-brand" href="#home" onclick="go('home');return false" aria-label="امینی‌خواه؛ صفحه اصلی"><span class="brand-logo-panel" aria-hidden="true"></span><span class="brand-subtitle">پایگاه حفظ و نشر آثار</span></a>
   <button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button>
   <div class="header-actions">
     <div class="palette-picker palette-swatches" role="group" aria-label="انتخاب رنگ‌بندی سایت">
