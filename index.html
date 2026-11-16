@@ -334,20 +334,49 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 
 
-/* Homepage wireframe adjustment — remove intro heading, enlarge slider, place quick links below */
+/* Homepage hero: 16:9 slider on the right, a listening guide on the left */
 #content:has(.hero-grid)>.page-title{display:none}
-#content>.hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:18px;margin-top:0;width:100%}
-#content>.hero-grid>div:first-child{width:100%;max-width:none;min-width:0}
-#content .hero-slider{width:min(100%,600px);max-width:600px;height:auto;min-height:0;max-height:none;aspect-ratio:16/9;margin-inline-start:0;margin-inline-end:auto}
-#content>.hero-grid>.quick-rail{width:100%;max-width:none;min-width:0}
+#content>.hero-grid{display:grid;grid-template-columns:minmax(0,600px) minmax(0,1fr);gap:16px;align-items:stretch;margin-top:0;width:100%}
+#content>.hero-grid>div:first-child{grid-column:1;width:100%;max-width:none;min-width:0}
+#content .hero-slider{width:100%;max-width:600px;height:auto;min-height:0;max-height:none;aspect-ratio:16/9;margin:0}
+#content>.hero-grid>.start-guide{grid-column:2;min-width:0;min-height:0}
+#content>.hero-grid>.quick-rail{grid-column:1/-1;width:100%;max-width:none;min-width:0}
 #content>.hero-grid>.quick-rail .quick-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.start-guide{position:relative;overflow:hidden;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:clamp(15px,2vw,24px);border:1px solid color-mix(in srgb,var(--gold) 47%,var(--line));border-radius:19px;background:radial-gradient(ellipse at 5% 0%,color-mix(in srgb,var(--gold) 13%,transparent),transparent 58%),linear-gradient(140deg,var(--white),var(--paper));box-shadow:var(--shadow)}
+.start-guide:before{content:"";position:absolute;left:-42px;top:-57px;width:150px;height:150px;border:1px solid color-mix(in srgb,var(--gold) 22%,transparent);border-radius:50%;box-shadow:0 0 0 22px color-mix(in srgb,var(--gold) 5%,transparent),0 0 0 49px color-mix(in srgb,var(--gold) 3%,transparent);pointer-events:none;z-index:-1}
+.start-guide-kicker{display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:800;letter-spacing:.01em;color:var(--accent)}
+.start-guide-kicker:before{content:"✦";font-size:15px;color:var(--gold)}
+.start-guide h2{font-size:clamp(19px,1.7vw,25px);line-height:1.45;margin:5px 0 2px;color:var(--primary-dark)}
+.start-guide-intro{color:var(--muted);font-size:11px;line-height:1.8;margin:0}
+.start-guide-paths{display:grid;gap:7px;margin-top:5px}
+.start-guide-path{display:flex;align-items:center;gap:11px;width:100%;min-width:0;padding:9px 11px;border:1px solid var(--line);border-radius:12px;background:color-mix(in srgb,var(--white) 90%,transparent);color:var(--ink);text-align:right;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.start-guide-path:hover{background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 30%,var(--line));transform:translateX(-2px)}
+.start-guide-path:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.start-guide-number{display:grid;place-items:center;width:35px;height:35px;min-width:35px;border-radius:10px;background:var(--primary-soft);color:var(--primary-dark);font-size:14px;font-weight:800}
+.start-guide-copy{display:grid;gap:2px;flex:1;min-width:0}
+.start-guide-copy strong{font-size:12px;line-height:1.55}
+.start-guide-copy small{font-size:10px;line-height:1.5;color:var(--muted)}
+.start-guide-arrow{color:var(--accent);font-size:17px;line-height:1}
 @container (max-width:1000px){
+ #content>.hero-grid{grid-template-columns:minmax(0,520px) minmax(0,1fr)}
  #content .hero-slider{width:min(100%,520px);max-width:520px;height:auto;min-height:0;max-height:none;aspect-ratio:16/9}
  #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .start-guide{padding:14px}
+ .start-guide-path{padding:7px 9px;gap:8px}
+ .start-guide-number{width:30px;height:30px;min-width:30px}
+}
+@container (max-width:900px){
+ #content>.hero-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+ #content>.hero-grid>div:first-child,#content>.hero-grid>.start-guide,#content>.hero-grid>.quick-rail{grid-column:1/-1}
+ #content>.hero-grid>.start-guide{width:100%}
+ .start-guide{gap:12px}
 }
 @container (max-width:650px){
  #content .hero-slider{width:100%;max-width:none;height:auto;min-height:0;max-height:none;aspect-ratio:16/9}
  #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .start-guide{border-radius:13px;padding:15px}
+ .start-guide h2{font-size:20px}
+ .start-guide-path{min-height:57px}
 }
 
 
@@ -561,7 +590,18 @@ function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i
 function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href="#album" onclick="go('album');return false"><div class="poster poster-${i+1}"><span>${es(a[0])}</span></div><div class="poster-title">${es(a[0])}</div></a>`).join('')}</div>`}
 function packs(){const names=['زیارت اربعین','عتبات عراق','ماه رمضان','محرم','فاطمیه','غدیر','شب‌های قدر','ماه رجب','ماه شعبان','ماه صفر'];const icons=['✦','◇','☽','✺','❃','☀','✧','◈','☾','❋'];return '<div class="packs">'+names.map((t,i)=>'<button class="pack" onclick="toast(\'آلبوم‌های داخل این بسته از دسته‌بندی متصل خوانده می‌شوند\')" style="background:none;border:0"><div class="pack-circle">'+icons[i]+'</div><strong>'+t+'</strong><small class="pack-count">تعداد محتوا از پنل</small></button>').join('')+'</div>'}
 
-function hero(){return `<div class="hero-grid"><div><div class="hero-slider" role="region" aria-roledescription="carousel" aria-label="اسلایدر خانه" onmouseenter="hover=true;stopSlider()" onmouseleave="hover=false;startSlider()" onfocusin="stopSlider()" onfocusout="startSlider()">${sliderData.map((a,i)=>`<div class="slide slide${i+1} ${slide===i?'active':''}" aria-hidden="${slide===i?'false':'true'}"><a href="#album" onclick="go('album');return false" aria-label="مشاهده ${es(a[0])}"><div class="slide-blob"></div><div class="slide-text"><small>آلبوم منتخب — نمونه طرح</small><h2>${es(a[0])}</h2><p>${es(a[2])}</p><span class="slide-link">مشاهده آلبوم ‹</span></div><div class="slide-art"><span>${a[3]}</span></div></a></div>`).join('')}<button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="اسلاید قبلی">‹</button><button class="slider-arrow next" onclick="moveSlide(1)" aria-label="اسلاید بعدی">›</button><div class="slider-dots">${sliderData.map((_,i)=>`<button aria-label="اسلاید ${i+1}" class="${slide===i?'active':''}" onclick="goSlide(${i})"></button>`).join('')}</div></div></div><aside class="quick-rail"><h3>سریع‌تر به محتوا برسید</h3><p>مسیرهای محتوایی پیشنهادی سند اصلی</p><div class="quick-grid">${[['تدریس','lessons','▤'],['کتاب','books','▥'],['پادکست','media','♫'],['کلیپ','media','▷'],['روضه','roza','✧']].map(([t,p,i])=>`<button class="quick-card ${['کتاب','کلیپ','تدریس','روضه'].includes(t)?'future-only':''}" onclick="go('${p}')"><div class="quick-icon">${i}</div><strong>${t}</strong><span>${['کتاب','کلیپ'].includes(t)?'در طرح جامع':'دسترسی محتوایی'}</span></button>`).join('')}</div></aside></div>`}
+function hero(){return `<div class="hero-grid">
+  <div class="hero-main"><div class="hero-slider" role="region" aria-roledescription="carousel" aria-label="اسلایدر خانه" onmouseenter="hover=true;stopSlider()" onmouseleave="hover=false;startSlider()" onfocusin="stopSlider()" onfocusout="startSlider()">${sliderData.map((a,i)=>`<div class="slide slide${i+1} ${slide===i?'active':''}" aria-hidden="${slide===i?'false':'true'}"><a href="#album" onclick="go('album');return false" aria-label="مشاهده ${es(a[0])}"><div class="slide-blob"></div><div class="slide-text"><small>آلبوم منتخب — نمونه طرح</small><h2>${es(a[0])}</h2><p>${es(a[2])}</p><span class="slide-link">مشاهده آلبوم ‹</span></div><div class="slide-art"><span>${a[3]}</span></div></a></div>`).join('')}<button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="اسلاید قبلی">‹</button><button class="slider-arrow next" onclick="moveSlide(1)" aria-label="اسلاید بعدی">›</button><div class="slider-dots">${sliderData.map((_,i)=>`<button aria-label="اسلاید ${i+1}" class="${slide===i?'active':''}" onclick="goSlide(${i})"></button>`).join('')}</div></div></div>
+  <aside class="start-guide" aria-labelledby="start-guide-heading">
+    <div><span class="start-guide-kicker">راهنمای ورود به کتابخانه</span><h2 id="start-guide-heading">از کجا شروع کنم؟</h2><p class="start-guide-intro">متناسب با نیازتان، یکی از این مسیرها را انتخاب کنید.</p></div>
+    <div class="start-guide-paths">
+      <button class="start-guide-path" onclick="go('album')"><span class="start-guide-number" aria-hidden="true">۰۱</span><span class="start-guide-copy"><strong>برای اولین‌بار آمده‌ام</strong><small>با یک مجموعه سخنرانی آشنا شوید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
+      <button class="start-guide-path" onclick="go('albums')"><span class="start-guide-number" aria-hidden="true">۰۲</span><span class="start-guide-copy"><strong>می‌خواهم منظم گوش کنم</strong><small>آلبوم‌ها و مجموعه‌های موضوعی را ببینید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
+      <button class="start-guide-path" onclick="go('search')"><span class="start-guide-number" aria-hidden="true">۰۳</span><span class="start-guide-copy"><strong>دنبال پاسخ یک سؤال هستم</strong><small>در عنوان‌ها و متن جلسات جست‌وجو کنید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
+    </div>
+  </aside>
+  <aside class="quick-rail"><h3>سریع‌تر به محتوا برسید</h3><p>مسیرهای محتوایی پیشنهادی سند اصلی</p><div class="quick-grid">${[['تدریس','lessons','▤'],['کتاب','books','▥'],['پادکست','media','♫'],['کلیپ','media','▷'],['روضه','roza','✧']].map(([t,p,i])=>`<button class="quick-card ${['کتاب','کلیپ','تدریس','روضه'].includes(t)?'future-only':''}" onclick="go('${p}')"><div class="quick-icon">${i}</div><strong>${t}</strong><span>${['کتاب','کلیپ'].includes(t)?'در طرح جامع':'دسترسی محتوایی'}</span></button>`).join('')}</div></aside>
+</div>`}
 function title(t,desc='',crumb=''){return `${crumb?`<div class="bread">${crumb}</div>`:''}<div class="page-title"><span class="eyebrow">کتابخانه امینی‌خواه</span><h1>${t}</h1>${desc?`<p>${desc}</p>`:''}</div>`}
 function subjectSlots(style){return '<div class="subject-feature '+style+'"><div class="subject-feature-intro"><span class="eyebrow">سیر شنیداری موضوعی</span><p>آلبوم‌های مرتبط از دسته‌ای که مدیر برای این ردیف انتخاب می‌کند.</p><button class="more" onclick="go(\'albums\')">مشاهده آلبوم‌ها ‹</button></div><div class="subject-placeholder-row"><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div></div></div>'}
 function subjectBlock(t,style){return sect(t,subjectSlots(style),{future:true,desc:'نمونه ساختار و تنوع ارائه؛ عنوان، ترتیب و آلبوم‌های هر ردیف در محصول مقصد از انتخاب‌های مدیر.'})}
