@@ -770,18 +770,25 @@ function cover(n,symbol='✦'){return `<div class="cover cover-${(n%4)+1}"><span
 function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'مجموعه سخنرانی'} · ${uri}${id}</small></a>`}
 function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i)=>aCard(x,type,i)).join('')}</div>`}
 function siteUpdates(){
- const items=[...albumData,['رهایی از غم','36']].slice(0,5);
+ // Example update records: the real product will receive each published session number from the backend.
+ const items=[
+  {album:albumData[0],session:'پنجم'},
+  {album:albumData[1],session:'هفتم'},
+  {album:albumData[2],session:'نهم'},
+  {album:albumData[3],session:'هشتم'},
+  {album:['رهایی از غم','36'],session:'ششم'}
+ ];
  return `<div class="updates-row" role="list" aria-label="مجموعه‌های دارای جلسه تازه">
   ${items.map((item,i)=>`
-   <a class="update-card update-card-tone-${(i%4)+1}" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item[0])}">
+   <a class="update-card update-card-tone-${(i%4)+1}" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.album[0])}">
     <div class="update-card-cover" aria-hidden="true">
      <span class="update-card-symbol">♫</span>
      <span class="update-card-mark">↻</span>
     </div>
     <div class="update-card-content">
      <div class="update-card-meta"><span class="update-card-type">مجموعه سخنرانی</span><span class="update-card-status"><i></i> جلسه تازه</span></div>
-     <h3>${es(item[0])}</h3>
-     <p>جلسه تازه‌ای به این مجموعه افزوده شده است.</p>
+     <h3>${es(item.album[0])}</h3>
+     <p>جلسه ${es(item.session)} به این مجموعه افزوده شده است.</p>
      <span class="update-card-action">مشاهده مجموعه <b aria-hidden="true">←</b></span>
     </div>
    </a>`).join('')}
