@@ -770,7 +770,7 @@ function cover(n,symbol='✦'){return `<div class="cover cover-${(n%4)+1}"><span
 function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'آلبوم سخنرانی'} · ${uri}${id}</small></a>`}
 function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i)=>aCard(x,type,i)).join('')}</div>`}
 function siteUpdates(){
- const items=albumData.slice(0,5);
+ const items=[...albumData,['رهایی از غم','36']].slice(0,5);
  return `<div class="updates-row" role="list" aria-label="آلبوم‌های دارای جلسه تازه">
   ${items.map((item,i)=>`
    <a class="update-card update-card-tone-${(i%4)+1}" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده آلبوم ${es(item[0])}">
