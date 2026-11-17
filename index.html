@@ -771,7 +771,7 @@ function latestShowcase(){
   </div>
  </section>`;
 }
-function scrollLatest(step){const rail=document.querySelector('.latest-reel-track');if(rail)rail.scrollBy({left:-step*280,behavior:'smooth'})}
+function scrollLatest(step){const rail=document.querySelector('.latest-reel-track');if(rail)rail.scrollBy({left:step*280,behavior:'smooth'})}
 
 function hero(){return `<div class="hero-grid">
   <div class="hero-main"><div class="hero-slider" role="region" aria-roledescription="carousel" aria-label="اسلایدر خانه" onmouseenter="hover=true;stopSlider()" onmouseleave="hover=false;startSlider()" onfocusin="stopSlider()" onfocusout="startSlider()">${sliderData.map((a,i)=>`<div class="slide slide${i+1} ${slide===i?'active':''}" aria-hidden="${slide===i?'false':'true'}"><a href="#album" onclick="go('album');return false" aria-label="مشاهده ${es(a[0])}"><div class="slide-blob"></div><div class="slide-text"><small>آلبوم منتخب — نمونه طرح</small><h2>${es(a[0])}</h2><p>${es(a[2])}</p><span class="slide-link">مشاهده آلبوم ‹</span></div><div class="slide-art"><span>${a[3]}</span></div></a></div>`).join('')}<button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="اسلاید قبلی">‹</button><button class="slider-arrow next" onclick="moveSlide(1)" aria-label="اسلاید بعدی">›</button><div class="slider-dots">${sliderData.map((_,i)=>`<button aria-label="اسلاید ${i+1}" class="${slide===i?'active':''}" onclick="goSlide(${i})"></button>`).join('')}</div></div></div>
