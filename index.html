@@ -680,7 +680,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .site-updates-section{margin-top:22px;margin-bottom:23px;padding-top:16px;padding-bottom:15px}
 .site-updates-section .section-head{margin-bottom:12px}
 .site-updates-section .updates-row{padding-bottom:4px}
-@media (max-width:780px){.site-updates-section{margin-top:13px;margin-bottom:14px;padding-top:10px;padding-bottom:10px}}
+/* Mobile: move the scrollbar 5px away from cards; compensate below to keep section height. */
+@media (max-width:780px){.site-updates-section{margin-top:13px;margin-bottom:14px;padding-top:10px;padding-bottom:5px}.site-updates-section .updates-row{padding-bottom:9px}}
 
 /* Stage 08.1 — dedicated visual treatment for recently updated albums */
 .updates-row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 13px)/3);gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:2px 2px 8px;scrollbar-width:thin}
