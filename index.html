@@ -772,11 +772,11 @@ function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i
 function siteUpdates(){
  // Example update records: the real product will receive each published chapter and session number from the backend.
  const items=[
-  {album:albumData[0],chapter:'اول',session:'پنجم'},
-  {album:albumData[1],chapter:'دوم',session:'هفتم'},
-  {album:albumData[2],chapter:'اول',session:'نهم'},
+  {album:albumData[0],session:'پنجم'},
+  {album:albumData[1],session:'هفتم'},
+  {album:albumData[2],session:'نهم'},
   {album:albumData[3],chapter:'سوم',session:'هشتم'},
-  {album:['رهایی از غم','36'],chapter:'دوم',session:'ششم'}
+  {album:['رهایی از غم','36'],session:'ششم'}
  ];
  return `<div class="updates-row" role="list" aria-label="مجموعه‌های دارای جلسه تازه">
   ${items.map((item,i)=>`
@@ -788,7 +788,7 @@ function siteUpdates(){
     <div class="update-card-content">
      <div class="update-card-meta"><span class="update-card-type">مجموعه سخنرانی</span><span class="update-card-status"><i></i> جلسه تازه</span></div>
      <h3>${es(item.album[0])}</h3>
-     <p>جلسه ${es(item.session)} از فصل ${es(item.chapter)} به این مجموعه افزوده شده است.</p>
+     <p>جلسه ${es(item.session)}${item.chapter ? ' از فصل ' + es(item.chapter) : ''} به این مجموعه افزوده شده است.</p>
      <span class="update-card-action">مشاهده مجموعه <b aria-hidden="true">←</b></span>
     </div>
    </a>`).join('')}
