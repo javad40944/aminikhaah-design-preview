@@ -677,7 +677,7 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 
 
 /* Stage 08.1 — dedicated visual treatment for recently updated albums */
-.updates-row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 13px)/3);gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:2px 2px 8px;scrollbar-width:thin}
+.updates-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;padding:2px 2px 8px}
 .update-card{min-width:0;min-height:142px;display:flex;align-items:center;gap:13px;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--white);color:var(--ink);scroll-snap-align:start;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .update-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 38%,var(--line));box-shadow:0 9px 22px #17272212}
 .update-card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
@@ -701,8 +701,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .update-card-action{display:inline-flex;align-items:center;gap:7px;margin-top:3px;color:var(--primary-dark);font-size:10px;font-weight:850}
 .update-card-action b{font-size:14px;line-height:1;transition:transform .18s ease}
 .update-card:hover .update-card-action b{transform:translateX(-3px)}
-@container (max-width:1000px){.updates-row{grid-auto-columns:calc((100% - 13px)/2)}}
-@container (max-width:650px){.updates-row{grid-auto-columns:minmax(255px,84%);gap:9px}.update-card{min-height:126px;padding:10px;gap:10px;border-radius:12px}.update-card-cover{flex-basis:82px;border-radius:10px}.update-card-symbol{font-size:33px}.update-card-content h3{font-size:11px;min-height:36px}.update-card-content p{font-size:9px}.update-card-action{font-size:9px}}
+@container (max-width:1000px){.updates-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:650px){.updates-row{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(255px,84%);overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;gap:9px}.update-card{min-height:126px;padding:10px;gap:10px;border-radius:12px}.update-card-cover{flex-basis:82px;border-radius:10px}.update-card-symbol{font-size:33px}.update-card-content h3{font-size:11px;min-height:36px}.update-card-content p{font-size:9px}.update-card-action{font-size:9px}}
 @container (max-width:390px){.updates-row{grid-auto-columns:88%}.update-card-cover{flex-basis:74px}.update-card-meta{gap:4px}.update-card-status{padding:3px 6px;font-size:8px}.update-card-type{font-size:8px}}
 
 </style>
