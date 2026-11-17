@@ -738,6 +738,18 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:550px){.popular-showcase{margin:20px 0 14px;padding:0 0 7px;}.popular-showcase-head{margin-bottom:12px;}.popular-showcase-heading:before{height:22px;}.popular-showcase-heading h2{font-size:17px;}.popular-see-all{font-size:10px;gap:4px;}.popular-gallery{box-sizing:border-box;display:grid;grid-template-columns:repeat(5,132px);grid-template-rows:repeat(2,auto);gap:15px 9px;justify-items:center;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--accent) 56%,var(--line)) transparent;padding:0 1px 15px;margin:0;}.popular-album-card{scroll-snap-align:start;}.popular-cover-shell{width:101px;border-radius:7px;}.popular-card-title{font-size:11px;min-height:3.1em;}.popular-card-info{max-width:125px;}}
 @container (max-width:355px){.popular-gallery{grid-template-columns:repeat(5,119px);}.popular-cover-shell{width:94px;}}
 
+
+/* Stage 08.5 — real image assets for recent sessions, new updates, and album cards. */
+#content .latest-reel-cover.has-real-image:before,#content .latest-reel-cover.has-real-image:after{display:none}
+#content .latest-reel-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
+#content .latest-reel-number,#content .latest-reel-duration{z-index:2;border-radius:6px;background:#17332bbd;color:#fffdf4;padding:3px 6px;text-shadow:0 1px 3px #0005}
+.update-card-cover.has-real-image:before,.update-card-cover.has-real-image:after{display:none}
+.update-card-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;z-index:1;border-radius:inherit}
+.update-card-cover .update-card-mark{z-index:2;background:#1b392e91;border-color:#ffffff72}
+.cover-real{background:var(--alt)}
+.cover-real:after{display:none}
+.cover-real img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -789,6 +801,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 <script>
 const pages=[['home','خانه'],['albums','فهرست مجموعه‌ها'],['album','جزئیات مجموعه'],['session','جلسه و متن'],['roza','روضه‌ها'],['media','رسانه'],['topics','موضوعات'],['search','جست‌وجو'],['questions','پرسش‌وپاسخ'],['lessons','دروس تخصصی'],['books','کتاب‌ها و سیرها'],['profile','پروفایل']];
 const albumData=[['شرح و بررسی کتاب آن سوی مرگ','1'],['جهاد با نفس','18'],['تجمعات شبانه','396'],['از حیوانیت تا حیات','116']];
+const albumCoverById={"1":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg","2":"https://aminikhaah.ir/storage/albums/8OOP0zfg0FWwwfmGnlUqViwMHK5In3yq2UZZwhak.jpg","3":"https://aminikhaah.ir/storage/albums/PWI7pu1oVsPZahPz4XhHmfNgbpDZCAACZXoAgja2.jpg","4":"https://aminikhaah.ir/storage/albums/AAPMMG4WbTrTjMe58rOMqMRgdm4kThbt6RveufQr.jpg","5":"https://aminikhaah.ir/storage/albums/ox66eDEomXKdJJiSJgIO9kugzmst0eFjs7JXPe4F.jpg","11":"https://aminikhaah.ir/storage/albums/CahHWU9FyE1RPZsevqJvAhIkT2fxTYPMvYLJHlqO.jpg","12":"https://aminikhaah.ir/storage/albums/uj2EbmWaPpAfdj3TEVjLvdSAzQw9e4Wk8xeFiptB.jpg","18":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg","36":"https://aminikhaah.ir/imgproxy/a3mtbJLQyAVp-9RG3kDEaVm2fKnix8WP1_O-_Lgbof8/resize:fill:150:150/quality:80/aHR0cHM6Ly9hbWluaWtoYWFoLmlyL3N0b3JhZ2UvYWxidW1zL9ix2YfYp9uM24wt2KfYsi3YutmFLTEwMjR4NjgyLmpwZw.webp","116":"https://aminikhaah.ir/storage/albums/7xhXg7ssqMAVuYC513ZYKfE8yrF182uUrw3honVs.jpg","396":"https://aminikhaah.ir/storage/albums/5jQUjXDCWugvWTUI54HgAQoIRtPDfF0aGC7sIABG.webp"};
+function albumCoverUrl(id){return albumCoverById[String(id)]||'';}
 const songData=[['جلسه یک : از تخت بیمارستان تا طبقات ملکوت','1','۲۷:۵۱'],['جلسه دو : لحظه‌ای که مرگ را دیدم','2','۲۷:۱۰'],['جلسه سه : حس آزادی و قدرت پس از جدایی از جسم','3','۲۵:۴۱'],['جلسه چهار : رشته‌های نقره‌ای و لحظه بازگشت روح به جسم','4','۲۴:۲۷'],['جلسه پنج : ورود نوری طلایی و درخشان به آی‌سی‌یو','5','۲۸:۴۱'],['جلسه شش : پرواز روح و عبور از در خانه','6','۱۶:۲۶']];
 const categories=[['اخلاق','136','◈'],['شرح حدیث','137','✦'],['قرآن','140','۞'],['اهل‌بیت (ع)','141','✧'],['عالم ملکوت','142','◇'],['دروس تخصصی','151','▤']];
 const categoriesQA=['اعتقادات','معصومان','مهدویت','آخرت','خواب و امور غیبی','قرآن و حدیث','عبادات','دعا و زیارت','احکام','حق‌الناس','گناه و توبه','خودسازی','معاشرت','ازدواج','خانواده','سلامت روان','آموزش','کار و درآمد','جامعه','تاریخ'];
@@ -800,7 +814,7 @@ function toast(t){const n=byId('toast');n.textContent=t;n.classList.add('show');
 function scope(future=false){return `<span class="scope ${future?'future':''}">${future?'نیازمند توسعه بعدی':'با قابلیت‌های عمومی موجود'}</span>`}
 function sect(title,inner,{future=false,more='',desc='',className=''}={}){return `<section class="section ${future?'future-only':''} ${className}"><div class="section-head"><h2>${title}</h2><div class="section-actions">${future?scope(true):''}${more?`<button class="more" onclick="go('${more}')">مشاهده همه ›</button>`:''}</div></div>${desc?`<p class="section-desc">${desc}</p>`:''}${inner}</section>`}
 function cover(n,symbol='✦'){return `<div class="cover cover-${(n%4)+1}"><span class="cover-symbol">${symbol}</span><small>تصویر نمونه</small></div>`}
-function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'مجموعه سخنرانی'} · ${uri}${id}</small></a>`}
+function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';const imgSrc=type==='album'?albumCoverUrl(id):type==='song'?albumCoverUrl('1'):'';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${imgSrc?`<div class="cover cover-real"><img src="${es(imgSrc)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>`:cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'مجموعه سخنرانی'} · ${uri}${id}</small></a>`}
 function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i)=>aCard(x,type,i)).join('')}</div>`}
 function siteUpdates(){
  // Example update records: the real product will receive each published chapter and session number from the backend.
@@ -814,8 +828,9 @@ function siteUpdates(){
  return `<div class="updates-row" role="list" aria-label="مجموعه‌های دارای جلسه تازه">
   ${items.map((item,i)=>`
    <a class="update-card update-card-tone-${(i%4)+1}" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.album[0])}">
-    <div class="update-card-cover" aria-hidden="true">
+    <div class="update-card-cover has-real-image" aria-hidden="true">
      <span class="update-card-symbol">♫</span>
+     <img class="update-card-photo" src="${es(albumCoverUrl(item.album[1]))}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">
      <span class="update-card-mark">↻</span>
     </div>
     <div class="update-card-content">
@@ -861,7 +876,7 @@ function latestShowcase(){
   </div>
   <div class="latest-reel-track" role="list" aria-label="جلسات سخنرانی">
    ${items.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
-    <div class="latest-reel-cover"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-art" aria-hidden="true">♫</span><span class="latest-reel-waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="latest-reel-duration">${es(item[2])}</span></div>
+    <div class="latest-reel-cover has-real-image"><span class="latest-reel-art" aria-hidden="true">♫</span><img class="latest-reel-photo" src="${es(albumCoverUrl('1'))}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-duration">${es(item[2])}</span></div>
     <div class="latest-reel-meta"><small>شرح و بررسی کتاب آن سوی مرگ</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
    </a>`).join('')}
   </div>
