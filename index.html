@@ -712,47 +712,33 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:390px){.updates-row{grid-auto-columns:88%}.update-card-cover{flex-basis:90px}.update-card-meta{gap:4px}.update-card-status{padding:3px 6px;font-size:8px}.update-card-type{font-size:8px}}
 
 
-/* Stage 08.2 — editorial, asymmetric ranking showcase. */
-.popular-showcase{position:relative;isolation:isolate;overflow:hidden;margin:28px 0 30px;padding:24px;border:1px solid var(--line);border-radius:23px;background:radial-gradient(circle at 5% -20%,color-mix(in srgb,var(--accent) 13%,transparent),transparent 42%),linear-gradient(120deg,var(--surface),color-mix(in srgb,var(--accent-soft) 58%,var(--surface)));box-shadow:var(--shadow)}
-.popular-showcase:before{content:"";pointer-events:none;position:absolute;z-index:-1;inset:auto -140px -250px auto;width:460px;height:460px;border-radius:50%;border:1px solid color-mix(in srgb,var(--accent) 20%,transparent);box-shadow:0 0 0 37px color-mix(in srgb,var(--accent) 4%,transparent),0 0 0 90px color-mix(in srgb,var(--accent) 3%,transparent)}
-.popular-showcase-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin-bottom:18px}
-.popular-showcase-heading{min-width:0}
-.popular-kicker{display:inline-flex;align-items:center;gap:7px;margin-bottom:4px;color:var(--accent);font-size:11px;font-weight:850}
-.popular-kicker span{font-size:18px;line-height:1}
-.popular-showcase-heading h2{font-size:clamp(19px,2vw,25px);font-weight:850;line-height:1.5;letter-spacing:-.35px}
-.popular-see-all{display:inline-flex;align-items:center;gap:8px;flex:0 0 auto;border:0;border-bottom:1px solid color-mix(in srgb,var(--primary) 40%,transparent);border-radius:0;background:transparent;padding:6px 0;color:var(--primary-dark);font-size:12px;font-weight:800}
-.popular-see-all span{font-size:17px;line-height:1}
-.popular-showcase-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:15px;align-items:stretch}
-.popular-feature{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:310px;overflow:hidden;padding:27px;border-radius:19px;color:#fffaf0;background:linear-gradient(135deg,#234c43 0%,#3e6759 54%,#7e8065 100%);box-shadow:0 12px 27px #163c3226;transition:transform .18s ease,box-shadow .18s ease}
-.popular-feature:before{content:"";position:absolute;z-index:-1;inset:0;background:linear-gradient(0deg,#112e2ad9 0%,transparent 70%)}
-.popular-feature:after{content:"";position:absolute;z-index:-1;width:340px;height:340px;border:1px solid #ebd6a44e;border-radius:50%;top:-192px;left:-126px;box-shadow:0 0 0 28px #eed4a50b,0 0 0 66px #f6e1b40c}
-.popular-feature:hover{transform:translateY(-2px);box-shadow:0 16px 32px #163c3233}
-.popular-feature-number{position:absolute;top:15px;right:24px;color:#f1d69c;font-size:47px;line-height:1.1;font-weight:850;font-family:Georgia,serif;letter-spacing:-2px}
-.popular-feature-ornament{position:absolute;left:12%;top:5%;width:186px;height:186px;display:grid;place-items:center;border:1px solid #f4dbad45;border-radius:50%;transform:rotate(-20deg)}
-.popular-feature-ornament:before{content:"";position:absolute;inset:17px;border:1px dashed #f1dba66b;border-radius:50%}
-.popular-feature-ornament span{font-family:serif;font-size:91px;line-height:1;color:#e8d4a5d6;text-shadow:0 5px 15px #0c292634}
-.popular-feature-copy{position:relative;max-width:88%}
-.popular-feature-kind{font-size:11px;font-weight:650;color:#f1e6ca}
-.popular-feature-copy h3{max-width:470px;margin:8px 0 19px;font-size:clamp(20px,2.15vw,29px);font-weight:850;line-height:1.55}
-.popular-feature-link{display:inline-flex;align-items:center;gap:14px;padding-top:8px;border-top:1px solid #ffffff66;font-size:12px;font-weight:800}
-.popular-feature-link span{font-size:18px}
-.popular-ranked-list{min-width:0;display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:10px}
-.popular-ranked-item{min-width:0;display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;border:1px solid color-mix(in srgb,var(--line) 85%,transparent);background:color-mix(in srgb,var(--white) 90%,transparent);transition:background .18s ease,border-color .18s ease,transform .18s ease}
-.popular-ranked-item:hover{transform:translateX(-3px);background:var(--white);border-color:color-mix(in srgb,var(--accent) 53%,var(--line))}
-.popular-ranked-number{flex:0 0 42px;color:var(--accent);font:850 29px/1.2 Georgia,serif;letter-spacing:-1px;text-align:center}
-.popular-ranked-art{flex:0 0 62px;aspect-ratio:1;display:grid;place-items:center;border-radius:12px;color:#f9edda;font:36px/1 Georgia,serif}
-.popular-ranked-art-1{background:linear-gradient(135deg,#a58269,#6a5b4e)}
-.popular-ranked-art-2{background:linear-gradient(135deg,#506f79,#344d59)}
-.popular-ranked-art-3{background:linear-gradient(135deg,#9b8864,#6c684e)}
-.popular-ranked-copy{min-width:0;flex:1;display:flex;flex-direction:column;gap:3px}
-.popular-ranked-copy strong{font-size:clamp(12px,1.2vw,15px);font-weight:820;line-height:1.55;overflow-wrap:anywhere}
-.popular-ranked-copy small{font-size:10px;color:var(--muted)}
-.popular-ranked-arrow{align-self:center;color:var(--primary-dark);font-size:21px;line-height:1;transition:transform .18s}
-.popular-ranked-item:hover .popular-ranked-arrow{transform:translateX(-4px)}
-.popular-showcase a:focus-visible,.popular-see-all:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-@container (max-width:870px){.popular-showcase-layout{grid-template-columns:1fr}.popular-feature{min-height:265px}.popular-ranked-list{grid-template-rows:none;grid-template-columns:repeat(3,minmax(0,1fr))}.popular-ranked-item{gap:9px;padding:11px;flex-wrap:wrap;align-content:center}.popular-ranked-number{flex-basis:32px;font-size:23px}.popular-ranked-art{flex-basis:49px;border-radius:9px;font-size:27px}.popular-ranked-copy{flex-basis:calc(100% - 100px)}.popular-ranked-arrow{display:none}}
-@container (max-width:600px){.popular-showcase{margin:18px 0 21px;padding:15px 12px 13px;border-radius:16px}.popular-showcase-head{margin-bottom:13px;align-items:center}.popular-kicker{font-size:9px;gap:5px}.popular-kicker span{font-size:15px}.popular-showcase-heading h2{font-size:17px}.popular-see-all{font-size:10px;gap:4px}.popular-showcase-layout{gap:10px}.popular-feature{min-height:220px;padding:18px;border-radius:13px}.popular-feature-number{top:11px;right:18px;font-size:35px}.popular-feature-ornament{width:140px;height:140px;left:9%;top:3%}.popular-feature-ornament span{font-size:69px}.popular-feature-copy h3{font-size:20px;margin:5px 0 12px}.popular-feature-kind{font-size:10px}.popular-feature-link{font-size:11px}.popular-ranked-list{display:grid;grid-template-columns:1fr;gap:7px}.popular-ranked-item{min-height:76px;flex-wrap:nowrap;gap:10px;padding:9px 11px;border-radius:11px}.popular-ranked-number{flex:0 0 35px;font-size:22px}.popular-ranked-art{flex:0 0 48px;border-radius:8px;font-size:26px}.popular-ranked-copy{flex:1}.popular-ranked-copy strong{font-size:12px}.popular-ranked-copy small{font-size:9px}.popular-ranked-arrow{display:block;font-size:17px}}
-@container (max-width:370px){.popular-showcase-heading h2{font-size:15px}.popular-showcase{padding:12px 9px}.popular-ranked-number{flex-basis:29px}.popular-ranked-art{flex-basis:43px}}
+
+/* Stage 08.3 — image-first, ten-cover gallery; square originals from aminikhaah.ir. */
+.popular-showcase{position:relative;isolation:isolate;margin:32px 0;padding:28px 24px 31px;overflow:hidden;border-radius:20px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent-soft) 59%,var(--surface)),var(--surface) 72%);border:1px solid color-mix(in srgb,var(--line) 74%,var(--accent));}
+.popular-showcase:before{content:"";position:absolute;z-index:-1;pointer-events:none;width:360px;height:360px;top:-238px;left:-95px;border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:50%;box-shadow:0 0 0 34px color-mix(in srgb,var(--accent) 4%,transparent),0 0 0 77px color-mix(in srgb,var(--accent) 3%,transparent);}
+.popular-showcase-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;padding:0 2px 14px;border-bottom:1px solid color-mix(in srgb,var(--line) 84%,var(--accent));}
+.popular-showcase-heading{display:flex;align-items:center;min-width:0;gap:12px;}
+.popular-showcase-heading:before{content:"";display:block;flex:0 0 4px;width:4px;height:32px;border-radius:9px;background:linear-gradient(var(--accent),var(--gold));}
+.popular-showcase-heading h2{font-size:clamp(20px,2.1vw,27px);font-weight:850;line-height:1.5;color:var(--ink);}
+.popular-see-all{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:0;border-bottom:1px solid color-mix(in srgb,var(--accent) 56%,transparent);background:transparent;color:var(--primary-dark);padding:6px 1px;font-size:12px;font-weight:800;white-space:nowrap;}
+.popular-see-all span{font-size:18px;line-height:1;}
+.popular-gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:23px 17px;align-items:start;}
+.popular-album-card{display:flex;flex-direction:column;min-width:0;gap:10px;text-align:right;text-decoration:none;color:var(--ink);transition:transform .2s ease;}
+.popular-album-card:hover{transform:translateY(-4px);}
+.popular-cover-shell{position:relative;display:block;min-width:0;width:100%;aspect-ratio:1;overflow:hidden;border-radius:10px;background:var(--alt);box-shadow:0 8px 18px #192e2619,0 1px 4px #192e260f;outline:1px solid color-mix(in srgb,var(--line) 74%,transparent);transition:box-shadow .2s ease,outline-color .2s ease;}
+.popular-album-card:hover .popular-cover-shell{box-shadow:0 15px 25px #192e2633;outline-color:color-mix(in srgb,var(--accent) 54%,transparent);}
+.popular-cover-img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:contain;background:var(--alt);}
+.popular-cover-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:14px;text-align:center;background:linear-gradient(145deg,var(--primary),var(--primary-dark));color:#ffead1;font-size:15px;font-weight:750;line-height:1.8;}
+.popular-cover-shell.is-missing .popular-cover-img{display:none;}
+.popular-cover-shell.is-missing .popular-cover-fallback{display:flex;}
+.popular-card-info{display:flex;flex-direction:column;gap:3px;min-width:0;padding:0 3px;}
+.popular-card-title{font-size:clamp(12px,1.16vw,15px);font-weight:820;line-height:1.8;min-height:3.6em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;}
+.popular-card-kind{font-size:11px;color:var(--muted);line-height:1.65;}
+.popular-album-card:focus-visible,.popular-see-all:focus-visible{outline:3px solid var(--accent);outline-offset:4px;}
+@container (max-width:1040px){.popular-gallery{grid-template-columns:repeat(4,minmax(0,1fr));gap:22px 16px;}}
+@container (max-width:790px){.popular-gallery{grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 15px;}.popular-showcase{padding:23px 18px;}}
+@container (max-width:550px){.popular-showcase{margin:22px 0;padding:16px 13px 20px;border-radius:15px;}.popular-showcase-head{margin-bottom:16px;padding-bottom:12px;}.popular-showcase-heading{gap:9px;}.popular-showcase-heading:before{height:26px;width:3px;flex-basis:3px;}.popular-showcase-heading h2{font-size:17px;}.popular-see-all{font-size:10px;gap:4px;}.popular-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:21px 12px;}.popular-album-card{gap:7px;}.popular-cover-shell{border-radius:9px;}.popular-card-info{padding:0 2px;}.popular-card-title{font-size:12px;line-height:1.65;min-height:3.3em;}.popular-card-kind{font-size:10px;}}
+@container (max-width:350px){.popular-showcase{padding-inline:10px;}.popular-gallery{gap:17px 9px;}.popular-showcase-heading h2{font-size:15px;}}
 
 </style>
 </head>
@@ -845,29 +831,22 @@ function siteUpdates(){
 }
 function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href="#album" onclick="go('album');return false"><div class="poster poster-${i+1}"><span>${es(a[0])}</span></div><div class="poster-title">${es(a[0])}</div></a>`).join('')}</div>`}
 function popularShowcase(){
- const items=albumData.slice(0,4);
- if(!items.length)return '';
- const ranks=['۰۱','۰۲','۰۳','۰۴'];
- const glyphs=['◈','✦','◇'];
+ // Ten verified example album covers from the published aminikhaah.ir album catalogue.
+ // Popularity order is only illustrative until connected to backend metrics.
+ const items=[{"id":"1","title":"شرح و بررسی کتاب آن سوی مرگ","image":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg"},{"id":"18","title":"جهاد با نفس","image":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg"},{"id":"396","title":"تجمعات شبانه","image":"https://aminikhaah.ir/storage/albums/5jQUjXDCWugvWTUI54HgAQoIRtPDfF0aGC7sIABG.webp"},{"id":"116","title":"از حیوانیت تا حیات","image":"https://aminikhaah.ir/storage/albums/7xhXg7ssqMAVuYC513ZYKfE8yrF182uUrw3honVs.jpg"},{"id":"2","title":"اهالی حزب باد","image":"https://aminikhaah.ir/storage/albums/8OOP0zfg0FWwwfmGnlUqViwMHK5In3yq2UZZwhak.jpg"},{"id":"3","title":"ادبیات قرآن","image":"https://aminikhaah.ir/storage/albums/PWI7pu1oVsPZahPz4XhHmfNgbpDZCAACZXoAgja2.jpg"},{"id":"4","title":"چرا علی (علیه السلام) تنها ماند؟","image":"https://aminikhaah.ir/storage/albums/AAPMMG4WbTrTjMe58rOMqMRgdm4kThbt6RveufQr.jpg"},{"id":"5","title":"به هوای هدای مهدی","image":"https://aminikhaah.ir/storage/albums/ox66eDEomXKdJJiSJgIO9kugzmst0eFjs7JXPe4F.jpg"},{"id":"11","title":"سنت های الهی","image":"https://aminikhaah.ir/storage/albums/CahHWU9FyE1RPZsevqJvAhIkT2fxTYPMvYLJHlqO.jpg"},{"id":"12","title":"زندگی به سبک بندگی","image":"https://aminikhaah.ir/storage/albums/uj2EbmWaPpAfdj3TEVjLvdSAzQw9e4Wk8xeFiptB.jpg"}];
  return `<section class="popular-showcase" aria-labelledby="popular-showcase-heading">
   <div class="popular-showcase-head">
-   <div class="popular-showcase-heading"><span class="popular-kicker"><span aria-hidden="true">✧</span> انتخاب شنوندگان</span><h2 id="popular-showcase-heading">محبوب‌ترین سخنرانی‌ها</h2></div>
+   <div class="popular-showcase-heading"><h2 id="popular-showcase-heading">محبوب‌ترین سخنرانی‌ها</h2></div>
    <button type="button" class="popular-see-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button>
   </div>
-  <div class="popular-showcase-layout">
-   <a class="popular-feature" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(items[0][0])}">
-    <span class="popular-feature-number" aria-hidden="true">${ranks[0]}</span>
-    <span class="popular-feature-ornament" aria-hidden="true"><span>✦</span></span>
-    <div class="popular-feature-copy"><span class="popular-feature-kind">مجموعه سخنرانی</span><h3>${es(items[0][0])}</h3><span class="popular-feature-link">ورود به مجموعه <span aria-hidden="true">←</span></span></div>
-   </a>
-   <div class="popular-ranked-list" role="list" aria-label="دیگر مجموعه‌های محبوب">
-    ${items.slice(1).map((item,i)=>`<a class="popular-ranked-item" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item[0])}">
-      <span class="popular-ranked-number" aria-hidden="true">${ranks[i+1]}</span>
-      <span class="popular-ranked-art popular-ranked-art-${i+1}" aria-hidden="true">${glyphs[i%glyphs.length]}</span>
-      <span class="popular-ranked-copy"><strong>${es(item[0])}</strong><small>مجموعه سخنرانی</small></span>
-      <span class="popular-ranked-arrow" aria-hidden="true">←</span>
-     </a>`).join('')}
-   </div>
+  <div class="popular-gallery" role="list" aria-label="ده مجموعه سخنرانی">
+   ${items.map(item=>`<a class="popular-album-card" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.title)}">
+    <span class="popular-cover-shell">
+     <img class="popular-cover-img" src="${es(item.image)}" alt="تصویر مجموعه ${es(item.title)}" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('is-missing')">
+     <span class="popular-cover-fallback" aria-hidden="true">${es(item.title)}</span>
+    </span>
+    <span class="popular-card-info"><strong class="popular-card-title">${es(item.title)}</strong><small class="popular-card-kind">مجموعه سخنرانی</small></span>
+   </a>`).join('')}
   </div>
  </section>`;
 }
