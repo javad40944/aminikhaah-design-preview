@@ -537,6 +537,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   padding:3px 0 0;margin:0;border:0;border-radius:0;
   background:transparent;box-shadow:none;height:auto;
 }
+#content>.hero-grid>.quick-rail .quick-rail-title{display:flex;align-items:center;gap:10px;margin:0 0 14px;font-size:clamp(18px,1.7vw,22px);line-height:1.5;font-weight:850;color:var(--ink)}
+#content>.hero-grid>.quick-rail .quick-rail-title:before{content:'';width:5px;height:25px;flex:0 0 5px;background:var(--accent);border-radius:8px}
 #content>.hero-grid>.quick-rail .quick-grid{
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   grid-template-rows:repeat(2,minmax(82px,1fr));gap:12px;
@@ -598,6 +600,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .mode-current #content>.hero-grid>.quick-rail .quick-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:auto}
 .mode-current #content>.hero-grid .quick-card{grid-column:1;grid-row:auto}
 @container (max-width:650px){
+  #content>.hero-grid>.quick-rail .quick-rail-title{font-size:17px;gap:8px;margin-bottom:11px}
+  #content>.hero-grid>.quick-rail .quick-rail-title:before{width:4px;height:21px;flex-basis:4px}
   #content>.hero-grid>.quick-rail .quick-grid{
     grid-template-columns:repeat(2,minmax(0,1fr));
     grid-template-rows:116px repeat(2,minmax(92px,auto));gap:9px;
@@ -765,7 +769,7 @@ function hero(){return `<div class="hero-grid">
       <button class="start-guide-path" onclick="go('search')"><span class="start-guide-number" aria-hidden="true">۰۳</span><span class="start-guide-copy"><strong>دنبال پاسخ یک سؤال هستم</strong><small>در عنوان‌ها و متن جلسات جست‌وجو کنید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
     </div>
   </aside>
-  <nav class="quick-rail" aria-label="دسترسی سریع به محتوای سایت"><div class="quick-grid">${[['تدریس','lessons','▤','درس‌ها و مباحث','lessons'],['کتاب','books','▥','آثار مکتوب','books'],['پادکست','media','♫','شنیدنی‌ها','podcast'],['کلیپ','media','▷','دیدنی‌ها','video'],['روضه','roza','✧','مراثی و مجالس','roza']].map(([t,p,i,d,c])=>`<button class="quick-card quick-card--${c} ${['کتاب','کلیپ','تدریس','روضه'].includes(t)?'future-only':''}" onclick="go('${p}')"><span class="quick-icon" aria-hidden="true">${i}</span><span class="quick-label"><strong>${t}</strong><span class="quick-caption">${d}</span></span><span class="quick-arrow" aria-hidden="true">←</span></button>`).join('')}</div></nav>
+  <nav class="quick-rail" aria-labelledby="quick-rail-title"><h2 class="quick-rail-title" id="quick-rail-title">دسترسی سریع</h2><div class="quick-grid">${[['تدریس','lessons','▤','درس‌ها و مباحث','lessons'],['کتاب','books','▥','آثار مکتوب','books'],['پادکست','media','♫','شنیدنی‌ها','podcast'],['کلیپ','media','▷','دیدنی‌ها','video'],['روضه','roza','✧','مراثی و مجالس','roza']].map(([t,p,i,d,c])=>`<button class="quick-card quick-card--${c} ${['کتاب','کلیپ','تدریس','روضه'].includes(t)?'future-only':''}" onclick="go('${p}')"><span class="quick-icon" aria-hidden="true">${i}</span><span class="quick-label"><strong>${t}</strong><span class="quick-caption">${d}</span></span><span class="quick-arrow" aria-hidden="true">←</span></button>`).join('')}</div></nav>
 </div>`}
 function title(t,desc='',crumb=''){return `${crumb?`<div class="bread">${crumb}</div>`:''}<div class="page-title"><span class="eyebrow">کتابخانه امینی‌خواه</span><h1>${t}</h1>${desc?`<p>${desc}</p>`:''}</div>`}
 function subjectSlots(style){return '<div class="subject-feature '+style+'"><div class="subject-feature-intro"><span class="eyebrow">سیر شنیداری موضوعی</span><p>آلبوم‌های مرتبط از دسته‌ای که مدیر برای این ردیف انتخاب می‌کند.</p><button class="more" onclick="go(\'albums\')">مشاهده آلبوم‌ها ‹</button></div><div class="subject-placeholder-row"><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div><div class="subject-placeholder"><div class="subject-placeholder-cover">تصویر</div><div><b>عنوان آلبوم منتخب</b><small>از دسته تعیین‌شده توسط مدیر</small></div></div></div></div>'}
