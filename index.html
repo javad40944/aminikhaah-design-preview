@@ -630,15 +630,12 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 #content .latest-reel-heading{display:flex;align-items:center;gap:11px;min-width:0}
 #content .latest-reel-heading:before{content:'';width:5px;height:28px;border-radius:8px;background:var(--accent);flex:0 0 auto}
 #content .latest-reel-heading h2{font-size:clamp(19px,1.8vw,24px);font-weight:850;line-height:1.5}
-#content .latest-reel-count{font-size:11px;font-weight:800;color:var(--primary-dark);background:var(--primary-soft);border-radius:9px;padding:3px 9px;line-height:1.5}
 #content .latest-reel-actions{display:flex;align-items:center;gap:6px;flex:0 0 auto}
-#content .latest-reel-nav{width:34px;height:34px;background:var(--surface);border:1px solid var(--line);color:var(--primary-dark);border-radius:9px;font-size:19px;line-height:1;display:grid;place-items:center;transition:background .2s}
-#content .latest-reel-nav:hover{background:var(--primary-soft)}
 #content .latest-reel-all{margin-inline-start:6px;border:0;background:transparent;color:var(--primary-dark);font-size:12px;font-weight:750;display:inline-flex;align-items:center;gap:8px;padding:7px}
 #content .latest-reel-track{display:flex;flex-wrap:nowrap;gap:15px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding:3px 3px 15px;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--primary) 45%,var(--line)) transparent}
 #content .latest-reel-card{--cover-1:#486f62;--cover-2:#20493e;--cover-accent:#e5c791;display:flex;flex-direction:column;flex:0 0 228px;height:300px;min-width:0;overflow:hidden;scroll-snap-align:start;border-radius:17px;background:var(--surface);border:1px solid var(--line);box-shadow:0 8px 22px #1b3b3010;transition:transform .2s,box-shadow .2s}
 #content .latest-reel-card:hover{transform:translateY(-4px);box-shadow:0 15px 27px #1b3b3023}
-#content .latest-reel-card:focus-visible,#content .latest-reel-nav:focus-visible,#content .latest-reel-all:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#content .latest-reel-card:focus-visible,#content .latest-reel-all:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 #content .latest-reel-color-2{--cover-1:#ad7e5a;--cover-2:#734d3f;--cover-accent:#fff0cd}
 #content .latest-reel-color-3{--cover-1:#597487;--cover-2:#314d63;--cover-accent:#e7cf9b}
 #content .latest-reel-color-4{--cover-1:#7c8764;--cover-2:#475a43;--cover-accent:#f6e3b1}
@@ -659,34 +656,19 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 #content .latest-reel-open{margin-top:auto;border-top:1px solid var(--line);padding-top:9px;display:flex;justify-content:space-between;align-items:center;color:var(--primary-dark);font-size:11px;line-height:1.4}
 #content .latest-reel-open b{font-weight:750}
 #content .latest-reel-open span{font-size:18px}
-#content .latest-reel-featured{flex-basis:420px;flex-direction:row}
-#content .latest-reel-featured .latest-reel-cover{height:100%;flex:0 0 45%}
-#content .latest-reel-featured .latest-reel-cover:before{width:310px;height:310px;left:-140px;top:-80px}
-#content .latest-reel-featured .latest-reel-art{font-size:113px}
-#content .latest-reel-featured .latest-reel-meta{padding:21px 20px 18px;gap:13px}
-#content .latest-reel-featured .latest-reel-meta small{white-space:normal}
-#content .latest-reel-featured .latest-reel-meta h3{font-size:20px;line-height:1.65;-webkit-line-clamp:4}
-#content .latest-reel-featured .latest-reel-open{font-size:12px}
 @container (max-width:650px){
  #content .latest-reel{margin:23px 0 22px}
  #content .latest-reel-head{gap:7px;margin-bottom:12px}
  #content .latest-reel-heading{gap:7px}
  #content .latest-reel-heading:before{width:4px;height:22px}
  #content .latest-reel-heading h2{font-size:17px}
- #content .latest-reel-count{font-size:9px;padding:2px 6px}
  #content .latest-reel-actions{gap:3px}
- #content .latest-reel-nav{width:27px;height:27px;font-size:16px;border-radius:7px}
  #content .latest-reel-all{font-size:10px;gap:4px;margin-inline-start:2px;padding:3px}
  #content .latest-reel-track{gap:10px;padding-bottom:11px}
  #content .latest-reel-card{flex-basis:205px;height:275px;border-radius:14px}
  #content .latest-reel-cover{height:140px;flex-basis:140px}
  #content .latest-reel-meta{padding:11px;gap:5px}
  #content .latest-reel-meta h3{font-size:12px}
- #content .latest-reel-featured{flex-basis:310px;height:275px}
- #content .latest-reel-featured .latest-reel-cover{flex-basis:41%}
- #content .latest-reel-featured .latest-reel-art{font-size:78px}
- #content .latest-reel-featured .latest-reel-meta{padding:13px 11px}
- #content .latest-reel-featured .latest-reel-meta h3{font-size:14px;line-height:1.7}
 }
 
 </style>
@@ -757,21 +739,21 @@ function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href=
 function packs(){const names=['زیارت اربعین','عتبات عراق','ماه رمضان','محرم','فاطمیه','غدیر','شب‌های قدر','ماه رجب','ماه شعبان','ماه صفر'];const icons=['✦','◇','☽','✺','❃','☀','✧','◈','☾','❋'];return '<div class="packs">'+names.map((t,i)=>'<button class="pack" onclick="toast(\'آلبوم‌های داخل این بسته از دسته‌بندی متصل خوانده می‌شوند\')" style="background:none;border:0"><div class="pack-circle">'+icons[i]+'</div><strong>'+t+'</strong><small class="pack-count">تعداد محتوا از پنل</small></button>').join('')+'</div>'}
 
 function latestShowcase(){
- const nums=['۰۱','۰۲','۰۳','۰۴','۰۵','۰۶'];
+ const nums=['۰۱','۰۲','۰۳','۰۴','۰۵','۰۶','۰۷','۰۸','۰۹','۱۰'];
+ const items=[...songData,['جلسه هفت : حضور موجودات درخشان و موسیقی آسمانی','7','۲۹:۳۹'],['جلسه هشت : بی‌علاقگی روح به جسم مادی پس از جدایی','8','۲۳:۱۲'],['جلسه نه : وقتی فاتحه به شعاع نور در قبر تبدیل شد','9','۲۶:۴۷'],['جلسه ده : استوانه نور و یادآوری علوم پیش از تولد','10','۲۹:۳۵']];
  return `<section class="latest-reel" aria-labelledby="latest-reel-title">
   <div class="latest-reel-head">
-   <div class="latest-reel-heading"><h2 id="latest-reel-title">جدیدترین سخنرانی‌ها</h2><span class="latest-reel-count">۰۶</span></div>
-   <div class="latest-reel-actions"><button type="button" class="latest-reel-nav" onclick="scrollLatest(1)" aria-label="جلسات قبلی">→</button><button type="button" class="latest-reel-nav" onclick="scrollLatest(-1)" aria-label="جلسات بعدی">←</button><button type="button" class="latest-reel-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>
+   <div class="latest-reel-heading"><h2 id="latest-reel-title">جدیدترین سخنرانی‌ها</h2></div>
+   <div class="latest-reel-actions"><button type="button" class="latest-reel-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>
   </div>
   <div class="latest-reel-track" role="list" aria-label="جلسات سخنرانی">
-   ${songData.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1} ${i===0?'latest-reel-featured':''}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
+   ${items.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
     <div class="latest-reel-cover"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-art" aria-hidden="true">♫</span><span class="latest-reel-waves" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="latest-reel-duration">${es(item[2])}</span></div>
     <div class="latest-reel-meta"><small>شرح و بررسی کتاب آن سوی مرگ</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
    </a>`).join('')}
   </div>
  </section>`;
 }
-function scrollLatest(step){const rail=document.querySelector('.latest-reel-track');if(rail)rail.scrollBy({left:step*280,behavior:'smooth'})}
 
 function hero(){return `<div class="hero-grid">
   <div class="hero-main"><div class="hero-slider" role="region" aria-roledescription="carousel" aria-label="اسلایدر خانه" onmouseenter="hover=true;stopSlider()" onmouseleave="hover=false;startSlider()" onfocusin="stopSlider()" onfocusout="startSlider()">${sliderData.map((a,i)=>`<div class="slide slide${i+1} ${slide===i?'active':''}" aria-hidden="${slide===i?'false':'true'}"><a href="#album" onclick="go('album');return false" aria-label="مشاهده ${es(a[0])}"><div class="slide-blob"></div><div class="slide-text"><small>آلبوم منتخب — نمونه طرح</small><h2>${es(a[0])}</h2><p>${es(a[2])}</p><span class="slide-link">مشاهده آلبوم ‹</span></div><div class="slide-art"><span>${a[3]}</span></div></a></div>`).join('')}<button class="slider-arrow prev" onclick="moveSlide(-1)" aria-label="اسلاید قبلی">‹</button><button class="slider-arrow next" onclick="moveSlide(1)" aria-label="اسلاید بعدی">›</button><div class="slider-dots">${sliderData.map((_,i)=>`<button aria-label="اسلاید ${i+1}" class="${slide===i?'active':''}" onclick="goSlide(${i})"></button>`).join('')}</div></div></div>
