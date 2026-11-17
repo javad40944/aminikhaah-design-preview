@@ -676,6 +676,12 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 
 
+/* Local vertical tightening only; card dimensions and square covers remain unchanged. */
+.site-updates-section{margin-top:22px;margin-bottom:23px;padding-top:16px;padding-bottom:15px}
+.site-updates-section .section-head{margin-bottom:12px}
+.site-updates-section .updates-row{padding-bottom:4px}
+@media (max-width:780px){.site-updates-section{margin-top:13px;margin-bottom:14px;padding-top:10px;padding-bottom:10px}}
+
 /* Stage 08.1 — dedicated visual treatment for recently updated albums */
 .updates-row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 13px)/3);gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:2px 2px 8px;scrollbar-width:thin}
 .update-card{min-width:0;min-height:142px;display:flex;align-items:center;gap:13px;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--white);color:var(--ink);scroll-snap-align:start;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
@@ -833,7 +839,7 @@ function homeMediaSection(){return sect('رسانه','<div class="media-home-gri
 function homeTopicsSection(){return sect('موضوعات','<div class="categories-grid">'+categories.map(x=>'<button class="topic-card" onclick="go(\'topics\')"><span>'+x[2]+'</span><b>'+x[0]+'</b></button>').join('')+'</div>',{className:'desktop-home-entry',more:'topics',desc:'در دسکتاپ این بخش در خانه دیده می‌شود؛ در موبایل دسترسی اصلی از تب «موضوعات» است.'})}
 function home(){return hero()+
 latestShowcase()+
-sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums'})+
+sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',className:'site-updates-section'})+
 sect('مجموعه‌های منتخب',posters(),{desc:'چهار پوستر افقی ۱۶:۹؛ انتخاب محتوا از پنل مدیریت در طرح مقصد. تصاویر این نمونه جایگاه طراحی‌اند و عکس واقعی را کراپ نمی‌کنند.'})+
 sect('محبوب‌ترین سخنرانی‌ها',cards(albumData),{desc:'۱۲ مجموعه بر اساس مجموع پسند جلسات در طرح مقصد؛ این نمونه رتبه‌بندی واقعی را نمایش نمی‌دهد.'})+
 sect('پربازدیدترین سخنرانی‌ها',cards(albumData.slice().reverse()),{desc:'۱۲ مجموعه بر اساس بازدید واقعی در طرح مقصد؛ ترتیب فعلی صرفاً نمونه چیدمان است.'})+
