@@ -675,6 +675,36 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  #content .latest-reel-meta h3{font-size:11.5px;line-height:1.5}
 }
 
+
+/* Stage 08.1 — dedicated visual treatment for recently updated albums */
+.updates-row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * 13px)/3);gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;padding:2px 2px 8px;scrollbar-width:thin}
+.update-card{min-width:0;min-height:142px;display:flex;align-items:center;gap:13px;padding:12px;border:1px solid var(--line);border-radius:15px;background:var(--white);color:var(--ink);scroll-snap-align:start;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.update-card:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--primary) 38%,var(--line));box-shadow:0 9px 22px #17272212}
+.update-card:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.update-card-cover{position:relative;flex:0 0 94px;aspect-ratio:1;display:grid;place-items:center;overflow:hidden;border:1px solid #ffffff50;border-radius:12px;color:#fff}
+.update-card-cover:before,.update-card-cover:after{content:"";position:absolute;border:1px solid #ffffff55;border-radius:50%;pointer-events:none}
+.update-card-cover:before{width:105px;height:105px;right:-45px;top:-39px}
+.update-card-cover:after{width:74px;height:74px;left:-32px;bottom:-31px}
+.update-card-tone-1 .update-card-cover{background:linear-gradient(145deg,#315d52,#78998a)}
+.update-card-tone-2 .update-card-cover{background:linear-gradient(145deg,#756052,#b99a7e)}
+.update-card-tone-3 .update-card-cover{background:linear-gradient(145deg,#3d586d,#8297a8)}
+.update-card-tone-4 .update-card-cover{background:linear-gradient(145deg,#8c765c,#c4ad8d)}
+.update-card-symbol{position:relative;z-index:1;font-size:38px;line-height:1;text-shadow:0 3px 12px #0002}
+.update-card-mark{position:absolute;z-index:2;left:7px;bottom:7px;width:23px;height:23px;display:grid;place-items:center;border:1px solid #ffffff75;border-radius:50%;background:#ffffff24;font-size:15px;line-height:1}
+.update-card-content{min-width:0;flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.update-card-meta{width:100%;display:flex;align-items:center;justify-content:space-between;gap:6px;min-width:0}
+.update-card-type{font-size:9px;font-weight:750;color:var(--muted);white-space:nowrap}
+.update-card-status{display:inline-flex;align-items:center;gap:5px;flex-shrink:0;padding:3px 7px;border-radius:999px;background:var(--primary-soft);color:var(--primary-dark);font-size:9px;font-weight:800;white-space:nowrap}
+.update-card-status i{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 17%,transparent)}
+.update-card-content h3{width:100%;margin:1px 0 0;font-size:12px;line-height:1.65;font-weight:850;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:39px}
+.update-card-content p{margin:0;color:var(--muted);font-size:10px;line-height:1.6}
+.update-card-action{display:inline-flex;align-items:center;gap:7px;margin-top:3px;color:var(--primary-dark);font-size:10px;font-weight:850}
+.update-card-action b{font-size:14px;line-height:1;transition:transform .18s ease}
+.update-card:hover .update-card-action b{transform:translateX(-3px)}
+@container (max-width:1000px){.updates-row{grid-auto-columns:calc((100% - 13px)/2)}}
+@container (max-width:650px){.updates-row{grid-auto-columns:minmax(255px,84%);gap:9px}.update-card{min-height:126px;padding:10px;gap:10px;border-radius:12px}.update-card-cover{flex-basis:82px;border-radius:10px}.update-card-symbol{font-size:33px}.update-card-content h3{font-size:11px;min-height:36px}.update-card-content p{font-size:9px}.update-card-action{font-size:9px}}
+@container (max-width:390px){.updates-row{grid-auto-columns:88%}.update-card-cover{flex-basis:74px}.update-card-meta{gap:4px}.update-card-status{padding:3px 6px;font-size:8px}.update-card-type{font-size:8px}}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -739,6 +769,24 @@ function sect(title,inner,{future=false,more='',desc='',className=''}={}){return
 function cover(n,symbol='✦'){return `<div class="cover cover-${(n%4)+1}"><span class="cover-symbol">${symbol}</span><small>تصویر نمونه</small></div>`}
 function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'آلبوم سخنرانی'} · ${uri}${id}</small></a>`}
 function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i)=>aCard(x,type,i)).join('')}</div>`}
+function siteUpdates(){
+ const items=albumData.slice(0,10);
+ return `<div class="updates-row" role="list" aria-label="آلبوم‌های دارای جلسه تازه">
+  ${items.map((item,i)=>`
+   <a class="update-card update-card-tone-${(i%4)+1}" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده آلبوم ${es(item[0])}">
+    <div class="update-card-cover" aria-hidden="true">
+     <span class="update-card-symbol">♫</span>
+     <span class="update-card-mark">↻</span>
+    </div>
+    <div class="update-card-content">
+     <div class="update-card-meta"><span class="update-card-type">آلبوم سخنرانی</span><span class="update-card-status"><i></i> جلسه تازه</span></div>
+     <h3>${es(item[0])}</h3>
+     <p>جلسه تازه‌ای به این مجموعه افزوده شده است.</p>
+     <span class="update-card-action">مشاهده آلبوم <b aria-hidden="true">←</b></span>
+    </div>
+   </a>`).join('')}
+ </div>`;
+}
 function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href="#album" onclick="go('album');return false"><div class="poster poster-${i+1}"><span>${es(a[0])}</span></div><div class="poster-title">${es(a[0])}</div></a>`).join('')}</div>`}
 function packs(){const names=['زیارت اربعین','عتبات عراق','ماه رمضان','محرم','فاطمیه','غدیر','شب‌های قدر','ماه رجب','ماه شعبان','ماه صفر'];const icons=['✦','◇','☽','✺','❃','☀','✧','◈','☾','❋'];return '<div class="packs">'+names.map((t,i)=>'<button class="pack" onclick="toast(\'آلبوم‌های داخل این بسته از دسته‌بندی متصل خوانده می‌شوند\')" style="background:none;border:0"><div class="pack-circle">'+icons[i]+'</div><strong>'+t+'</strong><small class="pack-count">تعداد محتوا از پنل</small></button>').join('')+'</div>'}
 
@@ -778,7 +826,7 @@ function homeMediaSection(){return sect('رسانه','<div class="media-home-gri
 function homeTopicsSection(){return sect('موضوعات','<div class="categories-grid">'+categories.map(x=>'<button class="topic-card" onclick="go(\'topics\')"><span>'+x[2]+'</span><b>'+x[0]+'</b></button>').join('')+'</div>',{className:'desktop-home-entry',more:'topics',desc:'در دسکتاپ این بخش در خانه دیده می‌شود؛ در موبایل دسترسی اصلی از تب «موضوعات» است.'})}
 function home(){return hero()+
 latestShowcase()+
-sect('به‌روزرسانی‌های سایت',cards(albumData),{more:'albums',desc:'آلبوم‌هایی که جلسه تازه دارند؛ ردیف مستقل با زمینه متناوب و حداکثر ۱۰ مورد در طرح مقصد. ترتیب نمونه ادعای جدیدترین‌بودن ندارد.'})+
+sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',desc:'آلبوم‌هایی که به‌تازگی جلسه‌ای تازه به آن‌ها اضافه شده است.'})+
 sect('آلبوم‌های منتخب',posters(),{desc:'چهار پوستر افقی ۱۶:۹؛ انتخاب محتوا از پنل مدیریت در طرح مقصد. تصاویر این نمونه جایگاه طراحی‌اند و عکس واقعی را کراپ نمی‌کنند.'})+
 sect('محبوب‌ترین سخنرانی‌ها',cards(albumData),{desc:'۱۲ آلبوم بر اساس مجموع پسند جلسات در طرح مقصد؛ این نمونه رتبه‌بندی واقعی را نمایش نمی‌دهد.'})+
 sect('پربازدیدترین سخنرانی‌ها',cards(albumData.slice().reverse()),{desc:'۱۲ آلبوم بر اساس بازدید واقعی در طرح مقصد؛ ترتیب فعلی صرفاً نمونه چیدمان است.'})+
