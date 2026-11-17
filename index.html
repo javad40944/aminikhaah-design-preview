@@ -761,7 +761,7 @@ function latestShowcase(){
  return `<section class="latest-reel" aria-labelledby="latest-reel-title">
   <div class="latest-reel-head">
    <div class="latest-reel-heading"><h2 id="latest-reel-title">جدیدترین سخنرانی‌ها</h2><span class="latest-reel-count">۰۶</span></div>
-   <div class="latest-reel-actions"><button type="button" class="latest-reel-nav" onclick="scrollLatest(-1)" aria-label="جلسات قبلی">→</button><button type="button" class="latest-reel-nav" onclick="scrollLatest(1)" aria-label="جلسات بعدی">←</button><button type="button" class="latest-reel-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>
+   <div class="latest-reel-actions"><button type="button" class="latest-reel-nav" onclick="scrollLatest(1)" aria-label="جلسات قبلی">→</button><button type="button" class="latest-reel-nav" onclick="scrollLatest(-1)" aria-label="جلسات بعدی">←</button><button type="button" class="latest-reel-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>
   </div>
   <div class="latest-reel-track" role="list" aria-label="جلسات سخنرانی">
    ${songData.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1} ${i===0?'latest-reel-featured':''}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
