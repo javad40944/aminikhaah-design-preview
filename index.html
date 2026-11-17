@@ -826,7 +826,7 @@ function homeMediaSection(){return sect('رسانه','<div class="media-home-gri
 function homeTopicsSection(){return sect('موضوعات','<div class="categories-grid">'+categories.map(x=>'<button class="topic-card" onclick="go(\'topics\')"><span>'+x[2]+'</span><b>'+x[0]+'</b></button>').join('')+'</div>',{className:'desktop-home-entry',more:'topics',desc:'در دسکتاپ این بخش در خانه دیده می‌شود؛ در موبایل دسترسی اصلی از تب «موضوعات» است.'})}
 function home(){return hero()+
 latestShowcase()+
-sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',desc:'آلبوم‌هایی که به‌تازگی جلسه‌ای تازه به آن‌ها اضافه شده است.'})+
+sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',desc:'مجموعه‌هایی که به‌تازگی جلسه‌ای جدید به آن‌ها اضافه شده است.'})+
 sect('آلبوم‌های منتخب',posters(),{desc:'چهار پوستر افقی ۱۶:۹؛ انتخاب محتوا از پنل مدیریت در طرح مقصد. تصاویر این نمونه جایگاه طراحی‌اند و عکس واقعی را کراپ نمی‌کنند.'})+
 sect('محبوب‌ترین سخنرانی‌ها',cards(albumData),{desc:'۱۲ آلبوم بر اساس مجموع پسند جلسات در طرح مقصد؛ این نمونه رتبه‌بندی واقعی را نمایش نمی‌دهد.'})+
 sect('پربازدیدترین سخنرانی‌ها',cards(albumData.slice().reverse()),{desc:'۱۲ آلبوم بر اساس بازدید واقعی در طرح مقصد؛ ترتیب فعلی صرفاً نمونه چیدمان است.'})+
