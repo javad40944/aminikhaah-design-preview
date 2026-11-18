@@ -750,6 +750,19 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .cover-real:after{display:none}
 .cover-real img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 
+
+/* Home section titles — one consistent size across the primary homepage content blocks. */
+:root{--home-section-title-size:18px;--home-section-title-leading:1.5}
+#content>.hero-grid>.quick-rail .quick-rail-title,
+#content .latest-reel-heading h2,
+#content .site-updates-section .section-head h2,
+#content .popular-showcase-heading h2,
+#content .most-viewed-section .section-head h2,
+#content .audio-packs-section .section-head h2{
+  font-size:var(--home-section-title-size)!important;
+  line-height:var(--home-section-title-leading)!important;
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -904,8 +917,8 @@ function home(){return hero()+
 latestShowcase()+
 sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',className:'site-updates-section'})+
 popularShowcase()+
-sect('پربازدیدترین سخنرانی‌ها',cards(albumData.slice().reverse()),{desc:'۱۲ مجموعه بر اساس بازدید واقعی در طرح مقصد؛ ترتیب فعلی صرفاً نمونه چیدمان است.'})+
-sect('بسته‌های شنیداری',packs(),{future:true,desc:'کارت‌های گرد کوچک؛ حداقل سه مورد در عرض موبایل. عنوان، تصویر، تعداد و ترتیب از پنل مدیریت در محصول مقصد تنظیم می‌شود.'})+
+sect('پربازدیدترین سخنرانی‌ها',cards(albumData.slice().reverse()),{desc:'۱۲ مجموعه بر اساس بازدید واقعی در طرح مقصد؛ ترتیب فعلی صرفاً نمونه چیدمان است.',className:'most-viewed-section'})+
+sect('بسته‌های شنیداری',packs(),{future:true,desc:'کارت‌های گرد کوچک؛ حداقل سه مورد در عرض موبایل. عنوان، تصویر، تعداد و ترتیب از پنل مدیریت در محصول مقصد تنظیم می‌شود.',className:'audio-packs-section'})+
 subjectBlock('از جهان پس از مرگ چه می‌دانید؟','subject-feature--wide')+
 subjectBlock('چگونه با قرآن زندگی کنیم؟','subject-feature--editorial')+
 subjectBlock('مسیر خودسازی و تهذیب نفس','subject-feature--compact')+
