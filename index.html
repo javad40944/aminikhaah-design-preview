@@ -720,9 +720,6 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .popular-showcase-heading{display:flex;align-items:center;min-width:0;gap:9px;}
 .popular-showcase-heading:before{content:"";flex:0 0 3px;height:25px;border-radius:8px;background:var(--accent);}
 .popular-showcase-heading h2{font-size:clamp(19px,1.9vw,23px);font-weight:850;line-height:1.5;color:var(--ink);}
-.popular-see-all{display:inline-flex;align-items:center;gap:7px;border:0;border-radius:8px;background:var(--primary-soft);color:var(--primary-dark);padding:7px 11px;font-size:12px;font-weight:800;white-space:nowrap;cursor:pointer;}
-.popular-see-all:hover{background:color-mix(in srgb,var(--primary-soft) 75%,var(--primary) 25%);}
-.popular-see-all span{font-size:16px;line-height:1;}
 .popular-gallery{display:flex;flex-wrap:nowrap;gap:13px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--primary) 45%,var(--line)) transparent;padding:3px 2px 14px;}
 .popular-album-card{display:flex;flex:0 0 168px;flex-direction:column;min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:15px;background:var(--white);color:var(--ink);text-align:right;text-decoration:none;box-shadow:0 5px 16px #1b3b300c;scroll-snap-align:start;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;}
 .popular-album-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--primary) 35%,var(--line));box-shadow:0 10px 25px #1b3b3018;}
@@ -733,11 +730,12 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .popular-cover-shell.is-missing .popular-cover-fallback{display:flex;}
 .popular-card-info{display:flex;flex:1 1 auto;flex-direction:column;align-items:stretch;gap:4px;min-width:0;padding:10px 12px 12px;}
 .popular-card-type{display:block;font-size:10px;font-weight:700;line-height:1.5;color:var(--muted);}
-.popular-card-title{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;font-size:12px;font-weight:800;line-height:1.65;min-height:3.3em;}
+ .popular-card-title{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;font-size:12px;font-weight:800;line-height:1.65;min-height:3.3em;}
+.popular-card-views{display:block;align-self:flex-start;margin:1px 0 5px;font-size:9px;font-weight:650;line-height:1.4;color:var(--muted);white-space:nowrap;}
 .popular-card-action{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:8px;border-top:1px solid var(--line);font-size:10.5px;font-weight:800;color:var(--primary-dark);}
 .popular-card-action b{font-size:15px;line-height:1;}
-.popular-album-card:focus-visible,.popular-see-all:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
-@container (max-width:650px){.popular-showcase{margin:19px 0 21px;padding:15px 13px 13px;border-radius:13px;}.popular-showcase-head{margin-bottom:12px;}.popular-showcase-heading:before{height:22px;}.popular-showcase-heading h2{font-size:17px;}.popular-see-all{font-size:10px;padding:6px 8px;}.popular-gallery{gap:10px;padding-bottom:12px;}.popular-album-card{flex-basis:148px;border-radius:13px;}.popular-cover-shell{width:calc(100% - 18px);margin:9px 9px 0;border-radius:9px;}.popular-card-info{padding:9px 10px 10px;}.popular-card-title{font-size:11px;}.popular-card-type,.popular-card-action{font-size:10px;}}
+.popular-album-card:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
+@container (max-width:650px){.popular-showcase{margin:19px 0 21px;padding:15px 13px 13px;border-radius:13px;}.popular-showcase-head{margin-bottom:12px;}.popular-showcase-heading:before{height:22px;}.popular-showcase-heading h2{font-size:17px;}.popular-gallery{gap:10px;padding-bottom:12px;}.popular-album-card{flex-basis:148px;border-radius:13px;}.popular-cover-shell{width:calc(100% - 18px);margin:9px 9px 0;border-radius:9px;}.popular-card-info{padding:9px 10px 10px;}.popular-card-title{font-size:11px;}.popular-card-type,.popular-card-action{font-size:10px;}}
 @container (max-width:390px){.popular-album-card{flex-basis:137px;}.popular-gallery{gap:9px;}}
 
 
@@ -899,21 +897,21 @@ function siteUpdates(){
 }
 function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href="#album" onclick="go('album');return false"><div class="poster poster-${i+1}"><span>${es(a[0])}</span></div><div class="poster-title">${es(a[0])}</div></a>`).join('')}</div>`}
 function popularShowcase(){
- // Fourteen real album covers from the published aminikhaah.ir catalogue; order is representative for the design preview.
- // Popularity order is only illustrative until connected to backend metrics.
- const items=[{"id":"21","title":"شرح و بررسی کتاب سه دقیقه در قیامت","image":"https://aminikhaah.ir/storage/albums/tWxIobaTltfQhcNu6NFaxv8MVaoo3s0dIGnqyQKC.jpg"},{"id":"133","title":"به وقت شام","image":"https://aminikhaah.ir/storage/albums/aoOYIUlXL2s0fdKX5Cjmzsiq3KKTEbbB26IzzYaR.jpg"},{"id":"1","title":"شرح و بررسی کتاب آن سوی مرگ","image":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg"},{"id":"18","title":"جهاد با نفس","image":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg"},{"id":"24","title":"تاثیر درک مهندسی خلقت بر معنویت","image":"https://aminikhaah.ir/storage/albums/9iMRDCmQ0igmcpVL7TLaLS0cMI16gihzKeMqE7Xf.jpg"},{"id":"101","title":"گریز از رجیم","image":"https://aminikhaah.ir/storage/albums/gTWPWEOEFR1ZhYUiGKkIGa9FJEkVtKpbkm8zORYB.jpg"},{"id":"98","title":"درآمدی بر برزخ در المیزان","image":"https://aminikhaah.ir/storage/albums/s5XUUFy3HfsXiJdpgmqCNF27vfla5HIrPmKZPTWt.jpg"},{"id":"20","title":"حقی که به گردن ماست","image":"https://aminikhaah.ir/storage/albums/riyRYGxDoGdDmCV3V22ugNyKiysRhore9gIjDMKB.jpg"},{"id":"161","title":"آن مانایی","image":"https://aminikhaah.ir/storage/albums/ej6t8B91rXJXb2Qi0V2xx4JpsKdhNoNggUt9u1iD.jpg"},{"id":"252","title":"لعل روانبخش","image":"https://aminikhaah.ir/storage/albums/19yGyVXBfJfMbAyhA6nG2NYKcQHjuLDXP5t1Syjf.jpg"},{"id":"31","title":"ایمان درمانی","image":"https://aminikhaah.ir/storage/albums/ایمان-درمانی-1024x682.jpg"},{"id":"420","title":"امام منصور","image":"https://aminikhaah.ir/storage/albums/dvt61Pa1oorMP2MdWbQtW1dV0ZoUx0laGGVIVtVt.jpg"},{"id":"76","title":"شرح کتاب «رحمت واسعه»","image":"https://aminikhaah.ir/storage/albums/TsHVDW0KUFDeWnT5SsRSUAHKp4e6cZ6TQ0TrVSuf.jpg"},{"id":"428","title":"خطای محاسباتی","image":"https://aminikhaah.ir/storage/albums/t9oUvOZTwmb8BhoWqDMq7Irxh4uEDLVQAvDLGPdb.jpg"}];
+ // Twelve real album covers from the published aminikhaah.ir catalogue; order is representative for the design preview.
+ // Popularity order and view counts are illustrative until connected to backend metrics.
+ const items=[{"id":"21","title":"شرح و بررسی کتاب سه دقیقه در قیامت","image":"https://aminikhaah.ir/storage/albums/tWxIobaTltfQhcNu6NFaxv8MVaoo3s0dIGnqyQKC.jpg"},{"id":"133","title":"به وقت شام","image":"https://aminikhaah.ir/storage/albums/aoOYIUlXL2s0fdKX5Cjmzsiq3KKTEbbB26IzzYaR.jpg"},{"id":"1","title":"شرح و بررسی کتاب آن سوی مرگ","image":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg"},{"id":"18","title":"جهاد با نفس","image":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg"},{"id":"24","title":"تاثیر درک مهندسی خلقت بر معنویت","image":"https://aminikhaah.ir/storage/albums/9iMRDCmQ0igmcpVL7TLaLS0cMI16gihzKeMqE7Xf.jpg"},{"id":"101","title":"گریز از رجیم","image":"https://aminikhaah.ir/storage/albums/gTWPWEOEFR1ZhYUiGKkIGa9FJEkVtKpbkm8zORYB.jpg"},{"id":"98","title":"درآمدی بر برزخ در المیزان","image":"https://aminikhaah.ir/storage/albums/s5XUUFy3HfsXiJdpgmqCNF27vfla5HIrPmKZPTWt.jpg"},{"id":"20","title":"حقی که به گردن ماست","image":"https://aminikhaah.ir/storage/albums/riyRYGxDoGdDmCV3V22ugNyKiysRhore9gIjDMKB.jpg"},{"id":"161","title":"آن مانایی","image":"https://aminikhaah.ir/storage/albums/ej6t8B91rXJXb2Qi0V2xx4JpsKdhNoNggUt9u1iD.jpg"},{"id":"252","title":"لعل روانبخش","image":"https://aminikhaah.ir/storage/albums/19yGyVXBfJfMbAyhA6nG2NYKcQHjuLDXP5t1Syjf.jpg"},{"id":"31","title":"ایمان درمانی","image":"https://aminikhaah.ir/storage/albums/ایمان-درمانی-1024x682.jpg"},{"id":"420","title":"امام منصور","image":"https://aminikhaah.ir/storage/albums/dvt61Pa1oorMP2MdWbQtW1dV0ZoUx0laGGVIVtVt.jpg"}];
+ const sampleViewCounts=[12480,11960,10850,9760,8420,7910,7260,6880,6120,5470,4930,4580];
  return `<section class="popular-showcase" aria-labelledby="popular-showcase-heading">
   <div class="popular-showcase-head">
    <div class="popular-showcase-heading"><h2 id="popular-showcase-heading">محبوب‌ترین سخنرانی‌ها</h2></div>
-   <button type="button" class="popular-see-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button>
   </div>
-  <div class="popular-gallery" role="list" aria-label="چهارده مجموعه سخنرانی">
-   ${items.map(item=>`<a class="popular-album-card" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.title)}">
+  <div class="popular-gallery" role="list" aria-label="دوازده مجموعه سخنرانی">
+   ${items.map((item,i)=>`<a class="popular-album-card" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.title)}؛ ${sampleViewCounts[i].toLocaleString('fa-IR')} بازدید نمونه">
     <span class="popular-cover-shell">
      <img class="popular-cover-img" src="${es(item.image)}" alt="تصویر مجموعه ${es(item.title)}" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('is-missing')">
      <span class="popular-cover-fallback" aria-hidden="true">${es(item.title)}</span>
     </span>
-    <span class="popular-card-info"><small class="popular-card-type">مجموعه سخنرانی</small><strong class="popular-card-title">${es(item.title)}</strong><span class="popular-card-action">مشاهده مجموعه <b aria-hidden="true">←</b></span></span>
+    <span class="popular-card-info"><small class="popular-card-type">مجموعه سخنرانی</small><strong class="popular-card-title">${es(item.title)}</strong><small class="popular-card-views" title="آمار بازدید نمونه برای پیش‌نمایش طراحی">${sampleViewCounts[i].toLocaleString('fa-IR')} بازدید</small><span class="popular-card-action">مشاهده مجموعه <b aria-hidden="true">←</b></span></span>
    </a>`).join('')}
   </div>
  </section>`;
