@@ -801,16 +801,22 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 
 
-/* Popular talks — remove the desktop side gutters; keep the mobile horizontal shelf unchanged. */
+
+
+/* Popular talks — align the first and last covers to the section's outer edges. */
 @container (min-width:551px){
   #content .popular-gallery{
     width:100%;
     max-width:none;
-    margin-left:0;
-    margin-right:0;
+    margin-inline:0;
   }
 }
-
+#content .popular-album-card:first-child .popular-cover-shell{
+  align-self:flex-start;
+}
+#content .popular-album-card:last-child .popular-cover-shell{
+  align-self:flex-end;
+}
 </style>
 </head>
 <body data-palette="olive">
