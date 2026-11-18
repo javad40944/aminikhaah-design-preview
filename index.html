@@ -763,6 +763,25 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   line-height:var(--home-section-title-leading)!important;
 }
 
+
+/* Latest talks — album title is always fully readable and centered; session title remains unchanged. */
+#content .latest-reel-card{height:auto;min-height:322px}
+#content .latest-reel-album-title{
+  display:block;
+  flex:0 0 auto;
+  width:100%;
+  text-align:center;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+@container (max-width:650px){
+  #content .latest-reel-card{height:auto;min-height:290px}
+  #content .latest-reel-album-title{font-size:10px;line-height:1.5}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -890,7 +909,7 @@ function latestShowcase(){
   <div class="latest-reel-track" role="list" aria-label="جلسات سخنرانی">
    ${items.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
     <div class="latest-reel-cover has-real-image"><span class="latest-reel-art" aria-hidden="true">♫</span><img class="latest-reel-photo" src="${es(albumCoverUrl('1'))}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-duration">${es(item[2])}</span></div>
-    <div class="latest-reel-meta"><small>شرح و بررسی کتاب آن سوی مرگ</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
+    <div class="latest-reel-meta"><small class="latest-reel-album-title">شرح و بررسی کتاب آن سوی مرگ</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
    </a>`).join('')}
   </div>
  </section>`;
