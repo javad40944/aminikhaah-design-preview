@@ -714,31 +714,160 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 
 
 
-/* Stage 08.4 — compact cover shelf: ten real square album covers without oversized cards. */
-.popular-showcase{position:relative;margin:25px 0 18px;padding:8px 0 13px;background:transparent;border:0;border-radius:0;}
-.popular-showcase-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:15px;padding:0 1px;}
-.popular-showcase-heading{display:flex;align-items:center;min-width:0;gap:9px;}
-.popular-showcase-heading:before{content:"";flex:0 0 3px;height:26px;border-radius:8px;background:var(--accent);}
-.popular-showcase-heading h2{font-size:clamp(19px,1.9vw,23px);font-weight:850;line-height:1.5;color:var(--ink);}
-.popular-see-all{display:inline-flex;align-items:center;gap:8px;border:0;background:none;color:var(--primary-dark);padding:5px 0;font-size:12px;font-weight:800;white-space:nowrap;}
-.popular-see-all span{font-size:17px;}
-.popular-gallery{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));max-width:1120px;margin:0 auto;gap:14px 14px;align-items:start;justify-items:center;}
-.popular-album-card{display:flex;flex-direction:column;align-items:center;min-width:0;width:100%;gap:7px;text-align:center;text-decoration:none;color:var(--ink);transition:transform .18s ease;}
-.popular-album-card:hover{transform:translateY(-3px);}
-.popular-cover-shell{position:relative;display:block;width:108px;max-width:100%;aspect-ratio:1;overflow:hidden;border-radius:8px;background:var(--alt);box-shadow:0 3px 10px #182c251c;outline:1px solid color-mix(in srgb,var(--line) 65%,transparent);transition:box-shadow .18s ease,outline-color .18s ease;}
-.popular-album-card:hover .popular-cover-shell{box-shadow:0 6px 17px #182c2530;outline-color:var(--accent);}
-.popular-cover-img{display:block;width:100%;height:100%;aspect-ratio:1;object-fit:contain;background:var(--alt);}
-.popular-cover-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:8px;text-align:center;background:var(--primary-dark);color:#fff1d6;font-size:11px;font-weight:700;line-height:1.6;}
-.popular-cover-shell.is-missing .popular-cover-img{display:none;}
-.popular-cover-shell.is-missing .popular-cover-fallback{display:flex;}
-.popular-card-info{display:block;width:100%;min-width:0;max-width:155px;padding:0 3px;}
-.popular-card-title{font-size:12px;font-weight:770;line-height:1.55;min-height:3.1em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere;}
-.popular-album-card:focus-visible,.popular-see-all:focus-visible{outline:3px solid var(--accent);outline-offset:3px;}
-@container (max-width:760px){.popular-gallery{max-width:100%;gap:17px 11px;}.popular-cover-shell{width:98px;}.popular-card-title{font-size:11px;}}
-@container (max-width:550px){.popular-showcase{margin:20px 0 14px;padding:0 0 7px;}.popular-showcase-head{margin-bottom:12px;}.popular-showcase-heading:before{height:22px;}.popular-showcase-heading h2{font-size:17px;}.popular-see-all{font-size:10px;gap:4px;}.popular-gallery{box-sizing:border-box;display:grid;grid-template-columns:repeat(7,132px);grid-template-rows:repeat(2,auto);gap:15px 9px;justify-items:center;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--accent) 56%,var(--line)) transparent;padding:0 1px 15px;margin:0;}.popular-album-card{scroll-snap-align:start;}.popular-cover-shell{width:101px;border-radius:7px;}.popular-card-title{font-size:11px;min-height:3.1em;}.popular-card-info{max-width:125px;}}
-@container (max-width:355px){.popular-gallery{grid-template-columns:repeat(7,119px);}.popular-cover-shell{width:94px;}}
+/* Stage 08.4 — library-framed popular talks: 14 real albums, ornate panel, ranked cards. */
+.popular-showcase{
+ position:relative;isolation:isolate;overflow:hidden;
+ margin:25px 0 20px;padding:20px 18px 22px;
+ border:1px solid #dfc9a9;border-radius:26px;
+ background:linear-gradient(135deg,#fffaf2 0%,#f8f0e4 52%,#f5ecde 100%);
+ box-shadow:0 9px 24px rgba(83,62,39,.075),inset 0 1px 0 #fffdf8;
+}
+.popular-showcase:before{
+ content:"";position:absolute;inset:6px;z-index:-1;pointer-events:none;
+ border:1px solid rgba(213,192,161,.55);border-radius:20px;
+}
+.popular-ornament-corner{position:absolute;top:0;left:0;width:112px;height:112px;opacity:.38;z-index:0;pointer-events:none}
+.popular-library-art{position:absolute;right:12px;bottom:3px;width:190px;height:82px;opacity:.22;z-index:0;pointer-events:none}
+.popular-showcase-head{
+ position:relative;z-index:1;display:flex;align-items:center;gap:17px;
+ margin-bottom:20px;padding:0 4px;
+}
+.popular-showcase-heading{display:flex;align-items:center;min-width:max-content;gap:10px}
+.popular-showcase-heading:before{content:"";flex:0 0 4px;height:27px;border-radius:9px;background:#ad6343}
+.popular-showcase-heading h2{font-size:18px;font-weight:850;line-height:1.5;color:#193f35}
+.popular-heading-rule{display:flex;align-items:center;justify-content:center;gap:10px;flex:1;min-width:22px;color:#cdb493}
+.popular-heading-rule:before,.popular-heading-rule:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#d9c3a4)}
+.popular-heading-rule:after{background:linear-gradient(90deg,#d9c3a4,transparent)}
+.popular-heading-rule span{font-size:20px;line-height:1;color:#cdb493}
+.popular-see-all{
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;
+ padding:7px 15px;border:1px solid #dfc9a9;border-radius:999px;
+ background:linear-gradient(180deg,#fffaf1,#f6ecdc);color:#21483d;
+ box-shadow:0 2px 5px rgba(83,62,39,.08);
+ font-size:12px;font-weight:800;white-space:nowrap;
+}
+.popular-see-all b{font-size:19px;line-height:1;font-weight:700}
+.popular-gallery{
+ position:relative;z-index:1;direction:rtl;
+ display:grid;grid-template-columns:repeat(7,minmax(0,1fr));
+ width:100%;max-width:none;margin:0;gap:14px 11px;
+ align-items:stretch;justify-items:stretch;
+}
+.popular-album-card{
+ position:relative;display:flex;flex-direction:column;align-items:center;
+ min-width:0;width:100%;min-height:286px;gap:8px;padding:12px 8px 9px;
+ border:1px solid #e4d3bb;border-radius:19px;
+ background:linear-gradient(180deg,rgba(255,251,243,.98),rgba(248,239,224,.97));
+ box-shadow:0 3px 8px rgba(89,67,43,.075),inset 0 1px 0 #fff;
+ text-align:center;text-decoration:none;color:#1d4438;
+ transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.popular-album-card:hover{transform:translateY(-3px);border-color:#c9a77d;box-shadow:0 8px 17px rgba(89,67,43,.13),inset 0 1px 0 #fff}
+.popular-cover-shell{
+ position:relative;display:block;flex:0 0 auto;
+ width:clamp(98px,9.2vw,145px);max-width:100%;aspect-ratio:1;
+ padding:5px;border:1px solid #d6c09f;border-radius:15px;
+ background:linear-gradient(145deg,#fffdf8,#eadcc5);
+ box-shadow:0 3px 8px rgba(81,59,35,.12),inset 0 1px 0 #fff;
+}
+.popular-cover-shell:before{
+ content:"";position:absolute;inset:-5px;border:1.5px solid #d9c4a5;
+ border-radius:19px;pointer-events:none;
+}
+.popular-cover-shell:after{
+ content:"";position:absolute;inset:-2px;border:1px solid rgba(255,255,255,.9);
+ border-radius:16px;pointer-events:none;
+}
+.popular-cover-frame{position:relative;display:block;width:100%;height:100%;overflow:hidden;border:1px solid #fff8eb;border-radius:10px;background:#eee4d3}
+.popular-cover-img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#eee4d3}
+.popular-cover-fallback{position:absolute;inset:0;display:none;align-items:center;justify-content:center;padding:8px;text-align:center;background:#183f37;color:#fff7e9;font-size:10px;font-weight:750;line-height:1.55}
+.popular-cover-shell.is-missing .popular-cover-img{display:none}
+.popular-cover-shell.is-missing .popular-cover-fallback{display:flex}
+.popular-rank{
+ position:absolute;top:-10px;right:-10px;z-index:3;
+ display:grid;place-items:center;width:34px;height:36px;
+ clip-path:polygon(50% 0%,63% 8%,78% 3%,86% 18%,100% 29%,94% 45%,100% 61%,86% 74%,83% 90%,66% 94%,50% 100%,34% 94%,17% 90%,14% 74%,0 61%,6% 45%,0 29%,14% 18%,22% 3%,37% 8%);
+ background:#a95736;color:#fff9ed;
+ border:0;font-size:14px;font-weight:900;line-height:1;
+ filter:drop-shadow(0 2px 2px rgba(70,42,26,.24));
+}
+.popular-card-info{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;max-width:none;flex:1 1 auto;padding:0 2px}
+.popular-card-title{
+ display:-webkit-box;width:100%;min-height:3.1em;overflow:hidden;
+ -webkit-line-clamp:2;-webkit-box-orient:vertical;
+ color:#173e34;font-size:12px;font-weight:850;line-height:1.55;
+ overflow-wrap:anywhere;text-align:center;
+}
+.popular-card-meta{
+ display:flex;align-items:center;justify-content:space-between;gap:4px;
+ width:100%;min-width:0;padding-top:6px;border-top:1px solid rgba(213,192,161,.5);
+ color:#665746;font-size:9px;line-height:1.3;
+}
+.popular-card-category,.popular-card-audio{
+ display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:0;
+ white-space:nowrap;
+}
+.popular-card-category{padding:3px 6px;border-radius:999px;background:rgba(235,224,205,.58);color:#24483d}
+.popular-card-category i{font-style:normal;font-size:12px;color:#876342}
+.popular-card-category span{overflow:hidden;text-overflow:ellipsis}
+.popular-card-audio{color:#695b49}
+.popular-card-audio svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+.popular-album-card:focus-visible,.popular-see-all:focus-visible{outline:3px solid #ad6343;outline-offset:3px}
+@container (max-width:1050px){
+ .popular-showcase{padding:17px 14px 20px}
+ .popular-gallery{gap:12px 8px}
+ .popular-album-card{min-height:270px;padding:10px 6px 8px}
+ .popular-cover-shell{width:clamp(88px,9vw,120px)}
+ .popular-card-title{font-size:11px}
+ .popular-card-meta{font-size:8px}
+}
+@container (max-width:760px){
+ .popular-showcase{padding:16px 12px 18px}
+ .popular-gallery{
+  box-sizing:border-box;grid-template-columns:repeat(7,132px);grid-template-rows:repeat(2,auto);
+  gap:13px 9px;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x proximity;scrollbar-width:thin;
+  scrollbar-color:rgba(173,99,67,.6) rgba(224,207,181,.35);
+  padding:6px 3px 15px;margin:0;
+ }
+ .popular-album-card{width:132px;min-height:252px;padding:10px 7px 8px;gap:7px;scroll-snap-align:start}
+ .popular-cover-shell{width:100px}
+ .popular-card-title{font-size:10.5px;min-height:3.1em}
+ .popular-card-meta{font-size:8px;gap:3px}
+ .popular-card-category{padding:3px 5px}
+ .popular-card-audio svg{width:12px;height:12px}
+ .popular-rank{width:30px;height:32px;font-size:12px;top:-8px;right:-8px}
+ .popular-library-art{width:105px;height:55px;opacity:.15}
+ .popular-ornament-corner{width:70px;height:70px;opacity:.22}
+}
+@container (max-width:550px){
+ .popular-showcase{margin:20px 0 16px;padding:14px 10px 14px;border-radius:19px}
+ .popular-showcase:before{inset:4px;border-radius:15px}
+ .popular-showcase-head{gap:8px;margin-bottom:13px;padding:0 2px}
+ .popular-showcase-heading{gap:7px}
+ .popular-showcase-heading:before{height:22px;width:3px;flex-basis:3px}
+ .popular-showcase-heading h2{font-size:18px}
+ .popular-heading-rule{gap:5px}
+ .popular-heading-rule span{font-size:14px}
+ .popular-see-all{padding:5px 9px;gap:4px;font-size:10px}
+ .popular-see-all b{font-size:15px}
+ .popular-gallery{grid-template-columns:repeat(7,128px);gap:11px 8px}
+ .popular-album-card{width:128px;min-height:242px;padding:9px 6px 7px}
+ .popular-cover-shell{width:94px}
+ .popular-card-title{font-size:10px}
+ .popular-card-meta{font-size:7.5px}
+ .popular-card-category{padding:2px 4px}
+}
+@container (max-width:355px){
+ .popular-showcase{padding-inline:8px}
+ .popular-gallery{grid-template-columns:repeat(7,118px)}
+ .popular-album-card{width:118px;min-height:232px}
+ .popular-cover-shell{width:88px}
+ .popular-card-meta{font-size:7px}
+}
 
 
+/* Stage 08.5 — real image assets for recent sessions, new updates, and album cards. */
 /* Stage 08.5 — real image assets for recent sessions, new updates, and album cards. */
 #content .latest-reel-cover.has-real-image:before,#content .latest-reel-cover.has-real-image:after{display:none}
 #content .latest-reel-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block}
@@ -897,22 +1026,73 @@ function siteUpdates(){
 }
 function posters(){return `<div class="posters">${albumData.map((a,i)=>`<a href="#album" onclick="go('album');return false"><div class="poster poster-${i+1}"><span>${es(a[0])}</span></div><div class="poster-title">${es(a[0])}</div></a>`).join('')}</div>`}
 function popularShowcase(){
- // Fourteen real album covers from the published aminikhaah.ir catalogue; order is representative for the design preview.
- // Popularity order is only illustrative until connected to backend metrics.
- const items=[{"id":"21","title":"شرح و بررسی کتاب سه دقیقه در قیامت","image":"https://aminikhaah.ir/storage/albums/tWxIobaTltfQhcNu6NFaxv8MVaoo3s0dIGnqyQKC.jpg"},{"id":"133","title":"به وقت شام","image":"https://aminikhaah.ir/storage/albums/aoOYIUlXL2s0fdKX5Cjmzsiq3KKTEbbB26IzzYaR.jpg"},{"id":"1","title":"شرح و بررسی کتاب آن سوی مرگ","image":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg"},{"id":"18","title":"جهاد با نفس","image":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg"},{"id":"24","title":"تاثیر درک مهندسی خلقت بر معنویت","image":"https://aminikhaah.ir/storage/albums/9iMRDCmQ0igmcpVL7TLaLS0cMI16gihzKeMqE7Xf.jpg"},{"id":"101","title":"گریز از رجیم","image":"https://aminikhaah.ir/storage/albums/gTWPWEOEFR1ZhYUiGKkIGa9FJEkVtKpbkm8zORYB.jpg"},{"id":"98","title":"درآمدی بر برزخ در المیزان","image":"https://aminikhaah.ir/storage/albums/s5XUUFy3HfsXiJdpgmqCNF27vfla5HIrPmKZPTWt.jpg"},{"id":"20","title":"حقی که به گردن ماست","image":"https://aminikhaah.ir/storage/albums/riyRYGxDoGdDmCV3V22ugNyKiysRhore9gIjDMKB.jpg"},{"id":"161","title":"آن مانایی","image":"https://aminikhaah.ir/storage/albums/ej6t8B91rXJXb2Qi0V2xx4JpsKdhNoNggUt9u1iD.jpg"},{"id":"252","title":"لعل روانبخش","image":"https://aminikhaah.ir/storage/albums/19yGyVXBfJfMbAyhA6nG2NYKcQHjuLDXP5t1Syjf.jpg"},{"id":"31","title":"ایمان درمانی","image":"https://aminikhaah.ir/storage/albums/ایمان-درمانی-1024x682.jpg"},{"id":"420","title":"امام منصور","image":"https://aminikhaah.ir/storage/albums/dvt61Pa1oorMP2MdWbQtW1dV0ZoUx0laGGVIVtVt.jpg"},{"id":"76","title":"شرح کتاب «رحمت واسعه»","image":"https://aminikhaah.ir/storage/albums/TsHVDW0KUFDeWnT5SsRSUAHKp4e6cZ6TQ0TrVSuf.jpg"},{"id":"428","title":"خطای محاسباتی","image":"https://aminikhaah.ir/storage/albums/t9oUvOZTwmb8BhoWqDMq7Irxh4uEDLVQAvDLGPdb.jpg"}];
+ // Real album names and cover images; ranking is a visual preview until real popularity analytics are connected.
+ const items=[
+  {"id":"21","title":"شرح و بررسی کتاب سه دقیقه در قیامت","image":"https://aminikhaah.ir/storage/albums/tWxIobaTltfQhcNu6NFaxv8MVaoo3s0dIGnqyQKC.jpg","category":"142"},
+  {"id":"133","title":"به وقت شام","image":"https://aminikhaah.ir/storage/albums/aoOYIUlXL2s0fdKX5Cjmzsiq3KKTEbbB26IzzYaR.jpg","category":"149"},
+  {"id":"1","title":"شرح و بررسی کتاب آن سوی مرگ","image":"https://aminikhaah.ir/storage/albums/IDlHVmP7P1BPg5IssupHuy0lYqzOIZReWpWUeIiN.jpg","category":"142"},
+  {"id":"18","title":"جهاد با نفس","image":"https://aminikhaah.ir/storage/albums/Q8WFCWR46LLk1st4dfG44W0hpVa8a5Xeckj9rSDw.jpg","category":"137"},
+  {"id":"24","title":"تأثیر درک مهندسی خلقت بر معنویت","image":"https://aminikhaah.ir/storage/albums/9iMRDCmQ0igmcpVL7TLaLS0cMI16gihzKeMqE7Xf.jpg","category":"142"},
+  {"id":"101","title":"گریز از رجیم","image":"https://aminikhaah.ir/storage/albums/gTWPWEOEFR1ZhYUiGKkIGa9FJEkVtKpbkm8zORYB.jpg","category":"142"},
+  {"id":"98","title":"درآمدی بر برزخ در المیزان","image":"https://aminikhaah.ir/storage/albums/s5XUUFy3HfsXiJdpgmqCNF27vfla5HIrPmKZPTWt.jpg","category":"142"},
+  {"id":"20","title":"حقی که به گردن ماست","image":"https://aminikhaah.ir/storage/albums/riyRYGxDoGdDmCV3V22ugNyKiysRhore9gIjDMKB.jpg","category":"137"},
+  {"id":"161","title":"آن مانایی","image":"https://aminikhaah.ir/storage/albums/ej6t8B91rXJXb2Qi0V2xx4JpsKdhNoNggUt9u1iD.jpg","category":"140"},
+  {"id":"252","title":"لعل روانبخش","image":"https://aminikhaah.ir/storage/albums/19yGyVXBfJfMbAyhA6nG2NYKcQHjuLDXP5t1Syjf.jpg","category":"140"},
+  {"id":"31","title":"ایمان درمانی","image":"https://aminikhaah.ir/storage/albums/ایمان-درمانی-1024x682.jpg","category":"136"},
+  {"id":"420","title":"امام منصور","image":"https://aminikhaah.ir/storage/albums/dvt61Pa1oorMP2MdWbQtW1dV0ZoUx0laGGVIVtVt.jpg","category":"149"},
+  {"id":"76","title":"شرح کتاب «رحمت واسعه»","image":"https://aminikhaah.ir/storage/albums/TsHVDW0KUFDeWnT5SsRSUAHKp4e6cZ6TQ0TrVSuf.jpg","category":"153"},
+  {"id":"428","title":"خطای محاسباتی","image":"https://aminikhaah.ir/storage/albums/t9oUvOZTwmb8BhoWqDMq7Irxh4uEDLVQAvDLGPdb.jpg","category":"145"}
+ ];
+ const faNumber=n=>String(n).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
+ const categoryFor=id=>categories.find(c=>c[1]===String(id))||['سخنرانی','', '▤'];
  return `<section class="popular-showcase" aria-labelledby="popular-showcase-heading">
+  <svg class="popular-ornament popular-ornament-corner" viewBox="0 0 150 150" aria-hidden="true">
+   <g fill="none" stroke="#cdb493" stroke-width="1.35" stroke-linecap="round">
+    <path d="M2 126C28 126 34 108 34 89C34 70 22 59 10 59C-1 59-5 72 2 80C10 89 22 82 19 74"/>
+    <path d="M2 143C42 143 53 119 53 91C53 61 35 43 15 43C-4 43-13 63-3 78"/>
+    <path d="M16 148C58 135 69 107 69 78C69 47 49 23 25 23C7 23-3 36 0 51"/>
+    <path d="M0 105C25 103 28 84 28 69C28 54 18 44 8 44"/>
+    <path d="M4 18C29 18 43 30 48 49C53 68 68 77 87 73C106 69 111 53 101 43C92 34 79 39 81 49"/>
+    <path d="M0 3C38 2 61 19 67 46C73 72 91 88 116 82C140 76 146 55 132 41C120 29 102 35 105 49"/>
+    <path d="M42 2C60 17 76 19 91 10M74 1C89 18 108 22 126 13"/>
+    <path d="M5 94C20 94 38 102 42 120M10 117C26 113 39 119 45 136"/>
+    <path d="M30 58C38 48 51 45 61 52C72 60 69 75 57 78C46 81 40 69 47 63"/>
+   </g>
+   <g fill="#cdb493"><circle cx="12" cy="19" r="2.2"/><circle cx="45" cy="11" r="2"/><circle cx="91" cy="11" r="2"/><circle cx="132" cy="40" r="2"/><circle cx="10" cy="138" r="2"/></g>
+  </svg>
+  <svg class="popular-library-art" viewBox="0 0 260 112" aria-hidden="true">
+   <g fill="none" stroke="#bca27e" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M20 91h144v9H20zM29 76h124v14H29zM39 61h103v14H39z"/>
+    <path d="M31 76l8-7h102l8 7M22 91l8-7h132l8 7"/>
+    <path d="M178 99V53M178 66c-18-5-23-18-17-24 12 1 19 11 17 24ZM179 76c18-8 25-20 19-28-13 3-20 13-19 28ZM178 56c-2-17 5-27 15-28 5 11-1 23-15 28Z"/>
+    <path d="M205 98V66h31v32M201 66h39M209 66V57h23v9"/>
+   </g>
+   <g fill="#d7c4a5" opacity=".72"><rect x="31" y="78" width="119" height="10" rx="2"/><rect x="41" y="63" width="99" height="10" rx="2"/><rect x="22" y="93" width="143" height="5" rx="2"/></g>
+   <path d="M179 54c-13-12-10-24-2-29 10 7 11 18 2 29Zm1 10c14-16 28-14 31-6-7 13-18 15-31 6Zm-2-7c-17-4-22-16-16-23 13 2 19 11 16 23Z" fill="#b9b58a" opacity=".7"/>
+  </svg>
   <div class="popular-showcase-head">
    <div class="popular-showcase-heading"><h2 id="popular-showcase-heading">محبوب‌ترین سخنرانی‌ها</h2></div>
-   <button type="button" class="popular-see-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button>
+   <div class="popular-heading-rule" aria-hidden="true"><span>✥</span></div>
+   <button type="button" class="popular-see-all" onclick="go('albums')"><span>مشاهده همه</span><b aria-hidden="true">‹</b></button>
   </div>
   <div class="popular-gallery" role="list" aria-label="چهارده مجموعه سخنرانی">
-   ${items.map(item=>`<a class="popular-album-card" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.title)}">
-    <span class="popular-cover-shell">
-     <img class="popular-cover-img" src="${es(item.image)}" alt="تصویر مجموعه ${es(item.title)}" loading="lazy" decoding="async" onerror="this.parentElement.classList.add('is-missing')">
-     <span class="popular-cover-fallback" aria-hidden="true">${es(item.title)}</span>
-    </span>
-    <span class="popular-card-info"><strong class="popular-card-title">${es(item.title)}</strong></span>
-   </a>`).join('')}
+   ${items.map((item,i)=>{
+    const category=categoryFor(item.category);
+    return `<a class="popular-album-card" role="listitem" href="#album" onclick="go('album');return false" aria-label="مشاهده مجموعه ${es(item.title)}">
+     <span class="popular-cover-shell">
+      <span class="popular-cover-frame">
+       <img class="popular-cover-img" src="${es(item.image)}" alt="تصویر مجموعه ${es(item.title)}" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.classList.add('is-missing')">
+       <span class="popular-cover-fallback" aria-hidden="true">${es(item.title)}</span>
+      </span>
+      <span class="popular-rank" aria-label="رتبه ${faNumber(i+1)}">${faNumber(i+1)}</span>
+     </span>
+     <span class="popular-card-info"><strong class="popular-card-title">${es(item.title)}</strong></span>
+     <span class="popular-card-meta">
+      <span class="popular-card-category"><i aria-hidden="true">${es(category[2]||'▤')}</i><span>${es(category[0])}</span></span>
+      <span class="popular-card-audio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0 1 16 0v2M4 12H3a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v-8H4Zm16 0h1a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-2v-8h1ZM8 20h4"/></svg><span>شنیداری</span></span>
+     </span>
+    </a>`;
+   }).join('')}
   </div>
  </section>`;
 }
