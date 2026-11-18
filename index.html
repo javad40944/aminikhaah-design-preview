@@ -764,22 +764,40 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 
 
-/* Latest talks — album title is always fully readable and centered; session title remains unchanged. */
-#content .latest-reel-card{height:auto;min-height:322px}
-#content .latest-reel-album-title{
+/* Latest talks — keep the original card size; give the album title priority. */
+#content .latest-reel-card{
+  height:322px;
+  min-height:0;
+}
+#content .latest-reel-meta small.latest-reel-album-title{
   display:block;
   flex:0 0 auto;
   width:100%;
+  min-width:0;
   text-align:center;
-  white-space:normal;
-  overflow:visible;
-  text-overflow:clip;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
   overflow-wrap:anywhere;
   word-break:normal;
 }
+#content .latest-reel-meta h3{
+  flex:1 1 auto;
+  min-height:0;
+}
+#content .latest-reel-open{
+  flex:0 0 auto;
+  margin-top:0;
+}
 @container (max-width:650px){
-  #content .latest-reel-card{height:auto;min-height:290px}
-  #content .latest-reel-album-title{font-size:10px;line-height:1.5}
+  #content .latest-reel-card{
+    height:290px;
+    min-height:0;
+  }
+  #content .latest-reel-meta small.latest-reel-album-title{
+    font-size:10px;
+    line-height:1.5;
+  }
 }
 
 </style>
