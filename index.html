@@ -1173,10 +1173,10 @@ function homeQaSection(){
  </div>`,{future:true,className:'qa-showcase-section'});
 }
 function moreReadingSection(){
- const bookletItems=['فهرست جزوه‌ها','جزوه‌های موضوعی','جزوه‌های آموزشی'].map(name=>`<span class="reading-subitem reading-subitem-static">${es(name)}</span>`).join('');
+ const articleItems=['مقالات معرفتی','مقالات اخلاقی','مقالات تربیتی'].map(name=>`<span class="reading-subitem reading-subitem-static">${es(name)}</span>`).join('');
  const bookItems=['سیرهای مطالعاتی','سیرهای شنیداری','کتاب‌ها','بسته‌ها'].map(name=>`<button type="button" class="reading-subitem" onclick="booksTab='${name}';go('books')">${es(name)}</button>`).join('');
- const blogItems=['مقاله‌ها','یادداشت‌ها','نوشته‌های منتخب'].map(name=>`<span class="reading-subitem reading-subitem-static">${es(name)}</span>`).join('');
- const menu=[['جزوه‌ها',bookletItems],['سیرهای مطالعاتی',bookItems],['بلاگ امینی‌خواه',blogItems]].map(([name,items])=>
+ const tipItems=['نکته‌های اخلاقی','نکته‌های تربیتی','نکته‌های زندگی'].map(name=>`<span class="reading-subitem reading-subitem-static">${es(name)}</span>`).join('');
+ const menu=[['مقالات',articleItems],['سیرهای مطالعاتی',bookItems],['نکته‌های کاربردی',tipItems]].map(([name,items])=>
   `<details class="reading-menu-row"><summary><span class="reading-menu-accent" aria-hidden="true"></span><strong class="reading-menu-label">${es(name)}</strong><span class="reading-menu-toggle" aria-hidden="true"></span></summary><div class="reading-submenu">${items}</div></details>`
  ).join('');
  return sect('بیشتر بخوانید',`<div class="reading-menu">${menu}</div>`,{future:true,className:'more-reading-section'});
