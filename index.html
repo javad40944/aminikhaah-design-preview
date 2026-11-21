@@ -958,25 +958,23 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:540px){.site-app .site-footer.footer-redesign{padding:28px 18px 92px;margin-top:18px}.footer-redesign-inner{grid-template-columns:1fr;gap:24px}.footer-redesign-brand{grid-column:auto}.footer-brand-logo{width:115px;height:53px}.footer-redesign-nav h3,.footer-redesign-connect h3{margin:0 0 10px}.footer-nav-items{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-social-items{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-redesign-bottom{margin-top:23px;padding-top:11px;flex-wrap:wrap;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.footer-social-items a{transition:none}}
 
-/* Refined footer identity: logo and purpose side by side, with a quiet visual learning path. */
+/* Open footer identity: only the logo has a frame; the visual journey sits below the separator. */
 .footer-redesign-inner{grid-template-columns:1.45fr 1fr 1.05fr;gap:30px}
-.footer-redesign-brand{position:relative;max-width:none;min-width:0;padding:18px 19px 14px;overflow:hidden;border:1px solid color-mix(in srgb,var(--gold) 30%,var(--line));border-radius:18px 6px 18px 18px;background:linear-gradient(120deg,color-mix(in srgb,var(--primary-soft) 60%,var(--surface)) 0%,var(--surface) 76%);box-shadow:0 7px 22px color-mix(in srgb,var(--primary) 6%,transparent)}
-.footer-redesign-brand::before{content:"";position:absolute;left:-17px;top:-27px;width:100px;height:100px;border:1px solid color-mix(in srgb,var(--gold) 34%,transparent);border-radius:24px;transform:rotate(45deg);pointer-events:none}
-.footer-redesign-brand::after{content:"";position:absolute;left:9px;top:5px;width:50px;height:50px;border:1px solid color-mix(in srgb,var(--gold) 24%,transparent);border-radius:14px;transform:rotate(45deg);pointer-events:none}
-.footer-brand-identity{position:relative;z-index:1;display:flex;align-items:center;gap:17px;direction:rtl}
-.footer-brand-home{flex:0 0 129px;display:grid;place-items:center;min-height:88px;padding:10px 8px;border:1px solid color-mix(in srgb,var(--primary) 14%,var(--line));border-radius:13px 4px 13px 13px;background:color-mix(in srgb,var(--surface) 91%,var(--primary-soft));transition:border-color .18s,transform .18s}
+.footer-redesign-brand{max-width:none;min-width:0;padding:6px 0;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible}
+.footer-redesign-brand::before,.footer-redesign-brand::after{content:none}
+.footer-brand-identity{display:flex;align-items:center;gap:18px;direction:rtl}
+.footer-brand-home{flex:0 0 129px;display:grid;place-items:center;min-height:88px;padding:10px 8px;border:1px solid color-mix(in srgb,var(--primary) 16%,var(--line));border-radius:13px 4px 13px 13px;background:color-mix(in srgb,var(--surface) 91%,var(--primary-soft));transition:border-color .18s,transform .18s}
 .footer-brand-home:hover,.footer-brand-home:focus-visible{border-color:var(--gold);transform:translateY(-2px)}
 .footer-brand-logo{width:112px;height:56px}
 .footer-brand-message{flex:1;min-width:0;text-align:right}
-.footer-brand-overline{display:block;margin-bottom:3px;color:var(--primary);font-size:12px;font-weight:800;letter-spacing:.01em}
-.footer-redesign-brand .footer-brand-message p{margin:0;color:var(--ink);font-size:17px;font-weight:760;line-height:1.85}
+.footer-redesign-brand .footer-brand-message p{margin:0;color:var(--ink);font-size:18px;font-weight:780;line-height:1.9}
 .footer-brand-message strong{color:var(--primary);font-weight:920}
-.footer-brand-journey{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:0;margin:16px 4px 0;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--primary) 13%,var(--line));direction:rtl}
+.footer-redesign-bottom .footer-brand-journey{display:flex;align-items:center;justify-content:center;gap:0;flex:0 1 220px;width:220px;max-width:220px;margin:0;padding:0;border:0;direction:rtl}
 .footer-journey-glyph{flex:0 0 34px;display:grid;place-items:center;width:34px;height:34px;border:1px solid color-mix(in srgb,var(--gold) 28%,var(--line));border-radius:11px 3px 11px 11px;background:var(--surface);color:var(--primary)}
 .footer-journey-glyph svg{display:block;width:19px;height:19px}
 .footer-journey-line{flex:1;max-width:77px;height:1px;margin:0 5px;background:linear-gradient(90deg,color-mix(in srgb,var(--gold) 38%,transparent),var(--gold),color-mix(in srgb,var(--gold) 38%,transparent))}
 @container (max-width:850px){.footer-redesign-brand{max-width:560px}.footer-redesign-inner{grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}}
-@container (max-width:540px){.footer-redesign-inner{grid-template-columns:minmax(0,1fr);gap:24px}.footer-redesign-brand{max-width:none;padding:15px 13px 12px}.footer-brand-identity{gap:11px}.footer-brand-home{flex-basis:108px;min-height:75px;padding:7px 6px}.footer-brand-logo{width:94px;height:47px}.footer-redesign-brand .footer-brand-message p{font-size:15px;line-height:1.85}.footer-brand-journey{margin-top:12px;padding-top:10px}.footer-journey-glyph{flex-basis:32px;width:32px;height:32px}}
+@container (max-width:540px){.footer-redesign-inner{grid-template-columns:minmax(0,1fr);gap:24px}.footer-redesign-brand{max-width:none;padding:0}.footer-brand-identity{gap:12px}.footer-brand-home{flex-basis:108px;min-height:75px;padding:7px 6px}.footer-brand-logo{width:94px;height:47px}.footer-redesign-brand .footer-brand-message p{font-size:16px;line-height:1.9}.footer-redesign-bottom .footer-brand-journey{flex:0 1 180px;max-width:180px}.footer-journey-glyph{flex-basis:32px;width:32px;height:32px}}
 @media(prefers-reduced-motion:reduce){.footer-brand-home{transition:none}}
 </style>
 </head>
@@ -1007,16 +1005,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
    <div class="footer-brand-identity">
     <a href="#home" class="footer-brand-home" onclick="go('home');return false" aria-label="بازگشت به صفحه اصلی امینی‌خواه"><span class="footer-brand-logo" aria-hidden="true"></span></a>
     <div class="footer-brand-message">
-     <span class="footer-brand-overline">امینی‌خواه</span>
      <p>برای شنیدن، آموختن<br>و <strong>به‌کاربستن</strong></p>
     </div>
-   </div>
-   <div class="footer-brand-journey" aria-hidden="true">
-    <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/></svg></span>
-    <span class="footer-journey-line"></span>
-    <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6C9.2 4 6.1 3.7 3 5v13c3.1-1.3 6.2-1 9 1 2.8-2 5.9-2.3 9-1V5c-3.1-1.3-6.2-1-9 1Z"/><path d="M12 6v13"/></svg></span>
-    <span class="footer-journey-line"></span>
-    <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 14C6 14 4 11 4 6c5 0 8 3 8 8Z"/><path d="M12 12c0-5 3-8 8-8 0 5-2 8-8 8Z"/><path d="M6 21h12"/></svg></span>
    </div>
   </div>
   <nav class="footer-redesign-nav" aria-label="دسترسی‌های پایگاه">
@@ -1042,7 +1032,13 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   </div>
  </div>
  <div class="footer-redesign-bottom">
-  <span>امینی‌خواه</span>
+  <div class="footer-brand-journey" aria-hidden="true">
+     <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15 9a4 4 0 0 1 0 6"/><path d="M18 6a8 8 0 0 1 0 12"/></svg></span>
+     <span class="footer-journey-line"></span>
+     <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6C9.2 4 6.1 3.7 3 5v13c3.1-1.3 6.2-1 9 1 2.8-2 5.9-2.3 9-1V5c-3.1-1.3-6.2-1-9 1Z"/><path d="M12 6v13"/></svg></span>
+     <span class="footer-journey-line"></span>
+     <span class="footer-journey-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9"/><path d="M12 14C6 14 4 11 4 6c5 0 8 3 8 8Z"/><path d="M12 12c0-5 3-8 8-8 0 5-2 8-8 8Z"/><path d="M6 21h12"/></svg></span>
+    </div>
   <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">بازگشت به بالای صفحه <span aria-hidden="true">↑</span></button>
  </div>
 </footer>
