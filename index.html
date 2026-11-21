@@ -1204,16 +1204,16 @@ function moreReadingSection(){
  return sect('بیشتر بخوانید',`<div class="reading-menu">${menu}</div>`,{future:true,className:'more-reading-section'});
 }
 function homeSelectedCommentsSection(){
- // Illustrative display names, dates and comments for homepage wireframe only.
+ // Illustrative display names and comments for homepage wireframe only.
  const items=[
-  {name:'مهدی رضایی',initials:'مر',date:'۳ روز پیش',context:'جهاد با نفس',text:'گاهی فکر می‌کردم برای خودسازی باید از کارهای بزرگی شروع کنم. این سخنرانی کمکم کرد اهمیت مراقبت روزانه و قدم‌های کوچک اما پیوسته را بهتر بفهمم.'},
-  {name:'فاطمه حسینی',initials:'فح',date:'۱ هفته پیش',context:'شرح و بررسی کتاب آن سوی مرگ',text:'توضیح مطالب به‌صورت مرحله‌به‌مرحله خیلی به فهم موضوع کمک می‌کند. برای من چند پرسش قدیمی درباره عالم برزخ روشن‌تر شد و دوست دارم جلسات بعدی را هم دنبال کنم.'},
-  {name:'علی موسوی',initials:'عم',date:'۱۰ روز پیش',context:'از حیوانیت تا حیات',text:'دسته‌بندی موضوعی سخنرانی‌ها کار را راحت‌تر کرده است. توانستم چند بحث مرتبط را کنار هم پیدا کنم و برای گوش دادن به آن‌ها برنامه منظم‌تری داشته باشم.'},
-  {name:'زهرا احمدی',initials:'زا',date:'۲ هفته پیش',context:'حقی که به گردن ماست',text:'بخش حق‌الناس برایم بسیار تأمل‌برانگیز بود، به‌خصوص مثال‌های مربوط به رفتارهای روزمره. امیدوارم مطالب بیشتری درباره حقوق اعضای خانواده هم در دسترس باشد.'}
+  {name:'مهدی رضایی',initials:'مر',context:'جهاد با نفس',text:'گاهی فکر می‌کردم برای خودسازی باید از کارهای بزرگی شروع کنم. این سخنرانی کمکم کرد اهمیت مراقبت روزانه و قدم‌های کوچک اما پیوسته را بهتر بفهمم.'},
+  {name:'فاطمه حسینی',initials:'فح',context:'شرح و بررسی کتاب آن سوی مرگ',text:'توضیح مطالب به‌صورت مرحله‌به‌مرحله خیلی به فهم موضوع کمک می‌کند. برای من چند پرسش قدیمی درباره عالم برزخ روشن‌تر شد و دوست دارم جلسات بعدی را هم دنبال کنم.'},
+  {name:'علی موسوی',initials:'عم',context:'از حیوانیت تا حیات',text:'دسته‌بندی موضوعی سخنرانی‌ها کار را راحت‌تر کرده است. توانستم چند بحث مرتبط را کنار هم پیدا کنم و برای گوش دادن به آن‌ها برنامه منظم‌تری داشته باشم.'},
+  {name:'زهرا احمدی',initials:'زا',context:'حقی که به گردن ماست',text:'بخش حق‌الناس برایم بسیار تأمل‌برانگیز بود، به‌خصوص مثال‌های مربوط به رفتارهای روزمره. امیدوارم مطالب بیشتری درباره حقوق اعضای خانواده هم در دسترس باشد.'}
  ];
  const cards=items.map((item,i)=>`<article class="featured-comment-card featured-comment-tone-${i+1}" role="listitem">
   <div class="featured-comment-header">
-   <div class="featured-comment-author"><span class="featured-comment-avatar" aria-hidden="true">${es(item.initials)}</span><span class="featured-comment-author-info"><strong>${es(item.name)}</strong><small>${es(item.date)}</small></span></div>
+   <div class="featured-comment-author"><span class="featured-comment-avatar" aria-hidden="true">${es(item.initials)}</span><span class="featured-comment-author-info"><strong>${es(item.name)}</strong></span></div>
    <span class="featured-comment-quote" aria-hidden="true">“</span>
   </div>
   <p class="featured-comment-text">${es(item.text)}</p>
