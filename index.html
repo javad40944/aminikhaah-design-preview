@@ -839,11 +839,11 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .qa-filter:hover{border-color:var(--primary);background:var(--primary-soft)}
 .qa-filter.is-active,.qa-filter.is-active:hover{background:var(--primary);border-color:var(--primary);color:var(--white)}
 .qa-filter:focus-visible,.qa-preview-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-.qa-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.qa-showcase-grid{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-template-rows:minmax(0,1fr);grid-auto-columns:calc((100% - 36px)/4);gap:12px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:2px 2px 11px}
 .qa-preview-card{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;min-height:169px;padding:16px 15px 13px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--ink);font-family:inherit;text-align:right;cursor:pointer;box-shadow:0 5px 16px #193d3210;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
 .qa-preview-card:before{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:var(--gold);opacity:.85}
 .qa-preview-card:after{content:"؟";position:absolute;top:7px;left:13px;font-size:43px;font-weight:800;color:var(--primary);opacity:.045;pointer-events:none}
-.qa-preview-card:hover{transform:translateY(-3px);border-color:#b9cdbf;box-shadow:0 10px 26px #193d3219}
+.qa-preview-card{scroll-snap-align:start}.qa-preview-card:hover{transform:translateY(-3px);border-color:#b9cdbf;box-shadow:0 10px 26px #193d3219}
 .qa-preview-kicker{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;margin-bottom:12px;font-size:10px;color:var(--primary);font-weight:800}
 .qa-preview-kicker em{font-style:normal;color:var(--muted);font-size:9px;font-weight:500}
 .qa-preview-card strong{position:relative;z-index:1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:40px;font-size:13px;font-weight:850;line-height:1.75}
@@ -851,8 +851,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .qa-preview-action{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:9px;border-top:1px solid var(--line);font-size:10px;font-weight:850;color:var(--primary)}
 .qa-preview-action span{font-size:15px;transition:transform .18s}
 .qa-preview-card:hover .qa-preview-action span{transform:translateX(-3px)}
-@container (max-width:950px){.qa-showcase-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.qa-preview-card{min-height:164px}}
-@container (max-width:650px){.qa-showcase-filters{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-inline:contain;padding:0 0 11px;margin-bottom:12px;gap:6px}.qa-filter{flex:0 0 auto;min-height:32px;padding:6px 10px;font-size:10px}.qa-showcase-grid{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-columns:calc((100% - 8px)/2);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:thin;overscroll-behavior-inline:contain;gap:8px;padding:2px 2px 10px}.qa-preview-card{min-height:155px;padding:11px 10px 10px;border-radius:11px;scroll-snap-align:start}.qa-preview-kicker{margin-bottom:8px;font-size:9px}.qa-preview-kicker em{font-size:8px}.qa-preview-card strong{min-height:35px;font-size:10.5px;line-height:1.7}.qa-preview-card p{font-size:9px;margin:5px 0 10px}.qa-preview-action{font-size:9px;padding-top:8px}}
+@container (max-width:950px){.qa-showcase-grid{grid-template-columns:none;grid-auto-columns:calc((100% - 20px)/3);gap:10px}.qa-preview-card{min-height:164px}}
+@container (max-width:650px){.qa-showcase-filters{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-inline:contain;padding:0 0 11px;margin-bottom:12px;gap:6px}.qa-filter{flex:0 0 auto;min-height:32px;padding:6px 10px;font-size:10px}.qa-showcase-grid{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:minmax(0,1fr);grid-auto-columns:calc((100% - 8px)/2);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:thin;overscroll-behavior-inline:contain;gap:8px;padding:2px 2px 10px}.qa-preview-card{min-height:155px;padding:11px 10px 10px;border-radius:11px;scroll-snap-align:start}.qa-preview-kicker{margin-bottom:8px;font-size:9px}.qa-preview-kicker em{font-size:8px}.qa-preview-card strong{min-height:35px;font-size:10.5px;line-height:1.7}.qa-preview-card p{font-size:9px;margin:5px 0 10px}.qa-preview-action{font-size:9px;padding-top:8px}}
 @container (max-width:370px){.qa-showcase-grid{grid-auto-columns:calc((100% - 6px)/2);gap:6px}}
 
 </style>
@@ -1080,17 +1080,17 @@ function homeQaSection(){
   ['خودسازی','چگونه هدف‌های معنوی واقع‌بینانه انتخاب کنیم؟','توجه به تدریج و توان فردی.']
  ];
  const shownCategories=categoriesQA.slice(0,12);
- const filters=[['همه پرسش‌ها',-1],...shownCategories.map((cat,i)=>[cat,i])];
+ const filters=shownCategories.map((cat,i)=>[cat,i]);
  const shown=homeQaFilter===-1
   ?shownCategories.map(cat=>sampleQuestions.find(item=>item[0]===cat)).filter(Boolean)
   :sampleQuestions.filter(item=>item[0]===shownCategories[homeQaFilter]);
  return sect('پرسش‌وپاسخ',`<div class="qa-showcase">
   <div class="qa-showcase-filters" role="group" aria-label="دسته‌بندی پرسش‌ها">
-   ${filters.map(([name,index])=>`<button type="button" class="qa-filter ${homeQaFilter===index?'is-active':''}" aria-pressed="${homeQaFilter===index}" onclick="homeQaFilter=${index};render()">${es(name)}</button>`).join('')}
+   ${filters.map(([name,index])=>`<button type="button" class="qa-filter ${homeQaFilter===index?'is-active':''}" aria-pressed="${homeQaFilter===index}" onclick="homeQaFilter=homeQaFilter===${index}?-1:${index};render()">${es(name)}</button>`).join('')}
   </div>
-  <div class="qa-showcase-grid" aria-label="پرسش‌های نمونه">
+  <div class="qa-showcase-grid" aria-label="پرسش‌ها">
    ${shown.map(([category,title,description],i)=>`<button type="button" class="qa-preview-card" aria-label="مشاهده دسته ${es(category)}؛ ${es(title)}" onclick="qaTab=${categoriesQA.indexOf(category)};go('questions')">
-    <span class="qa-preview-kicker"><span>${es(category)}</span><em>پرسش نمونه</em></span>
+    <span class="qa-preview-kicker"><span>${es(category)}</span></span>
     <strong>${es(title)}</strong>
     <p>${es(description)}</p>
     <span class="qa-preview-action">رفتن به دسته پرسش‌ها <span aria-hidden="true">←</span></span>
