@@ -829,6 +829,31 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:650px){.occasion-packs{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-columns:calc((100% - 16px)/3);gap:8px;overflow-x:auto;overflow-y:hidden;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--primary) 45%,var(--line)) transparent;padding:2px 2px 11px;}.occasion-pack{border-radius:12px;scroll-snap-align:start;}.occasion-cover{aspect-ratio:1/1;}.occasion-pack-copy{min-height:37px;padding:7px 4px;}.occasion-pack-copy strong{font-size:10px;line-height:1.55;}.occasion-pack-arrow{display:none;}}
 @container (max-width:370px){.occasion-packs{grid-auto-columns:calc((100% - 12px)/3);gap:6px;}.occasion-pack-copy strong{font-size:9px;}}
 
+
+/* Homepage questions and answers — editorial collection with useful category filters. */
+.qa-showcase-section .scope.future{display:none}
+.qa-showcase{min-width:0}
+.qa-showcase-filters{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 17px;padding-bottom:15px;border-bottom:1px solid var(--line)}
+.qa-filter{display:inline-flex;align-items:center;justify-content:center;min-height:35px;padding:7px 13px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink);font-family:inherit;font-size:11px;font-weight:750;white-space:nowrap;cursor:pointer;transition:background .18s,border-color .18s,color .18s}
+.qa-filter:hover{border-color:var(--primary);background:var(--primary-soft)}
+.qa-filter.is-active,.qa-filter.is-active:hover{background:var(--primary);border-color:var(--primary);color:var(--white)}
+.qa-filter:focus-visible,.qa-preview-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.qa-showcase-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.qa-preview-card{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;min-height:169px;padding:16px 15px 13px;border:1px solid var(--line);border-radius:13px;background:var(--surface);color:var(--ink);font-family:inherit;text-align:right;cursor:pointer;box-shadow:0 5px 16px #193d3210;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.qa-preview-card:before{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:var(--gold);opacity:.85}
+.qa-preview-card:after{content:"؟";position:absolute;top:7px;left:13px;font-size:43px;font-weight:800;color:var(--primary);opacity:.045;pointer-events:none}
+.qa-preview-card:hover{transform:translateY(-3px);border-color:#b9cdbf;box-shadow:0 10px 26px #193d3219}
+.qa-preview-kicker{display:flex;align-items:center;justify-content:space-between;gap:7px;min-width:0;margin-bottom:12px;font-size:10px;color:var(--primary);font-weight:800}
+.qa-preview-kicker em{font-style:normal;color:var(--muted);font-size:9px;font-weight:500}
+.qa-preview-card strong{position:relative;z-index:1;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;min-height:40px;font-size:13px;font-weight:850;line-height:1.75}
+.qa-preview-card p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:6px 0 14px;line-height:1.7;font-size:10px;color:var(--muted)}
+.qa-preview-action{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:9px;border-top:1px solid var(--line);font-size:10px;font-weight:850;color:var(--primary)}
+.qa-preview-action span{font-size:15px;transition:transform .18s}
+.qa-preview-card:hover .qa-preview-action span{transform:translateX(-3px)}
+@container (max-width:950px){.qa-showcase-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.qa-preview-card{min-height:164px}}
+@container (max-width:650px){.qa-showcase-filters{flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;scrollbar-width:thin;overscroll-behavior-inline:contain;padding:0 0 11px;margin-bottom:12px;gap:6px}.qa-filter{flex:0 0 auto;min-height:32px;padding:6px 10px;font-size:10px}.qa-showcase-grid{grid-auto-flow:column;grid-template-columns:none;grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-columns:calc((100% - 8px)/2);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:thin;overscroll-behavior-inline:contain;gap:8px;padding:2px 2px 10px}.qa-preview-card{min-height:155px;padding:11px 10px 10px;border-radius:11px;scroll-snap-align:start}.qa-preview-kicker{margin-bottom:8px;font-size:9px}.qa-preview-kicker em{font-size:8px}.qa-preview-card strong{min-height:35px;font-size:10.5px;line-height:1.7}.qa-preview-card p{font-size:9px;margin:5px 0 10px}.qa-preview-action{font-size:9px;padding-top:8px}}
+@container (max-width:370px){.qa-showcase-grid{grid-auto-columns:calc((100% - 6px)/2);gap:6px}}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -886,7 +911,7 @@ const songData=[['جلسه یک : از تخت بیمارستان تا طبقات
 const categories=[['اخلاق','136','◈'],['شرح حدیث','137','✦'],['قرآن','140','۞'],['اهل‌بیت (ع)','141','✧'],['عالم ملکوت','142','◇'],['دروس تخصصی','151','▤']];
 const categoriesQA=['اعتقادات','معصومان','مهدویت','آخرت','خواب و امور غیبی','قرآن و حدیث','عبادات','دعا و زیارت','احکام','حق‌الناس','گناه و توبه','خودسازی','معاشرت','ازدواج','خانواده','سلامت روان','آموزش','کار و درآمد','جامعه','تاریخ'];
 const sliderData=[['شرح و بررسی کتاب آن سوی مرگ','1','روایتی از تجربه‌های نزدیک به مرگ','✦'],['جهاد با نفس','18','گفتارهایی برای خودسازی و تهذیب','◈'],['تجمعات شبانه','396','مروری بر مجموعه سخنرانی‌ها','☾']];
-let page='home',mode='full',slide=0,slideTimer=null,hover=false,playName='',audioOn=false,speed=0,playIndex=0,playingMediaIndex=-1,queueType='song',albumType='no',currentTab='سخنرانی‌ها',qaTab=0,booksTab='کتاب‌ها',mediaFilter='همه',mediaSort='جدیدترین',mediaView='grid',selectedMedia=-1,searchText='',searchHasResult=false,searchJump=false,scenario='عادی',toastTimer;
+let page='home',mode='full',slide=0,slideTimer=null,hover=false,playName='',audioOn=false,speed=0,playIndex=0,playingMediaIndex=-1,queueType='song',albumType='no',currentTab='سخنرانی‌ها',qaTab=0,homeQaFilter=-1,booksTab='کتاب‌ها',mediaFilter='همه',mediaSort='جدیدترین',mediaView='grid',selectedMedia=-1,searchText='',searchHasResult=false,searchJump=false,scenario='عادی',toastTimer;
 const byId=id=>document.getElementById(id);
 const es=t=>String(t).replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[m]));
 function toast(t){const n=byId('toast');n.textContent=t;n.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>n.classList.remove('show'),4500)}
@@ -990,12 +1015,70 @@ function subjectSlots(style){return '<div class="subject-feature '+style+'"><div
 function subjectBlock(t,style){return sect(t,subjectSlots(style),{future:true,desc:'نمونه ساختار و تنوع ارائه؛ عنوان، ترتیب و مجموعه‌های هر ردیف در محصول مقصد از انتخاب‌های مدیر.'})}
 function homeMediaSection(){return sect('رسانه','<div class="media-home-grid"><button class="media-home-card media-home-podcast" onclick="mediaFilter=\'پادکست\';go(\'media\')"><span class="media-home-icon">♫</span><b>پادکست‌های صوتی</b><small>مسیر عمومی موجود</small></button><button class="media-home-card media-home-video future-only" onclick="toast(\'نمایش ویدئو در طرح جامع حفظ شده؛ مسیر عمومی آن نیازمند توسعه است\')"><span class="media-home-icon">▷</span><b>کلیپ‌های تصویری</b><small>در طرح جامع</small></button><button class="media-home-card media-home-roza future-only" onclick="toast(\'بخش رسانه‌ای روضه در طرح جامع حفظ شده؛ مسیر عمومی مستقل نیازمند توسعه است\')"><span class="media-home-icon">✧</span><b>روضه</b><small>در طرح جامع</small></button><button class="media-home-card media-home-poster future-only" onclick="toast(\'پوستر و عکس‌نوشته در طرح جامع حفظ شده؛ مسیر عمومی نیازمند توسعه است\')"><span class="media-home-icon">▣</span><b>پوستر و عکس‌نوشته</b><small>در طرح جامع</small></button></div>',{className:'desktop-home-entry',desc:'در دسکتاپ، رسانه به‌صورت یک بخش مستقل در خانه قرار می‌گیرد؛ در موبایل دسترسی اصلی از تب پایین صفحه است.'})}
 function homeTopicsSection(){return sect('موضوعات','<div class="categories-grid">'+categories.map(x=>'<button class="topic-card" onclick="go(\'topics\')"><span>'+x[2]+'</span><b>'+x[0]+'</b></button>').join('')+'</div>',{className:'desktop-home-entry',more:'topics',desc:'در دسکتاپ این بخش در خانه دیده می‌شود؛ در موبایل دسترسی اصلی از تب «موضوعات» است.'})}
+function homeQaSection(){
+ const sampleQuestions=[
+  ['اعتقادات','چگونه می‌توان خدا را بهتر شناخت؟','پرسشی درباره راه‌های عقلانی و قلبی خداشناسی.'],
+  ['اعتقادات','آیا پرسیدن سؤال اعتقادی نشانه ضعف ایمان است؟','جایگاه پرسش و جست‌وجوی حقیقت در مسیر ایمان.'],
+  ['اعتقادات','رابطه اختیار انسان و تقدیر الهی چیست؟','مروری بر مسئله انتخاب، مسئولیت و سرنوشت.'],
+  ['معصومان','چرا سیره اهل‌بیت(ع) برای امروز ما اهمیت دارد؟','پیوند سبک زندگی امروز با الگوهای دینی.'],
+  ['معصومان','عصمت امامان به چه معناست؟','پرسشی درباره مفهوم و مبنای عصمت.'],
+  ['معصومان','چگونه محبت اهل‌بیت را در عمل نشان دهیم؟','نقش رفتار و پیروی در محبت دینی.'],
+  ['مهدویت','انتظار واقعی امام زمان(عج) چه ویژگی‌هایی دارد؟','از انتظار قلبی تا مسئولیت‌های روزمره.'],
+  ['مهدویت','وظیفه ما در دوران غیبت چیست؟','مروری بر راه‌های آمادگی و اصلاح فردی.'],
+  ['مهدویت','چرا زمان ظهور مشخص نیست؟','پرسشی درباره حکمت پنهان‌بودن زمان ظهور.'],
+  ['آخرت','زندگی انسان پس از مرگ چگونه ادامه پیدا می‌کند؟','آشنایی با پرسش‌های بنیادین درباره برزخ.'],
+  ['آخرت','تفاوت برزخ و قیامت چیست؟','بررسی دو مرحله از حیات پس از مرگ.'],
+  ['آخرت','آیا اعمال کوچک ما در آخرت اثر دارند؟','نقش نیت و رفتار روزانه در سرنوشت انسان.'],
+  ['خواب و امور غیبی','آیا همه خواب‌ها تعبیر دارند؟','شناخت تفاوت خواب‌های معمولی و رؤیاهای معنادار.'],
+  ['خواب و امور غیبی','چگونه درباره یک خواب قضاوت کنیم؟','احتیاط در برداشت از تجربه‌های شخصی.'],
+  ['خواب و امور غیبی','آیا تجربه‌های غیبی قابل اعتمادند؟','مرز تجربه فردی و معیارهای شناخت.'],
+  ['قرآن و حدیث','از کجا تدبر در قرآن را شروع کنیم؟','چند پرسش اولیه برای فهم عمیق‌تر آیات.'],
+  ['قرآن و حدیث','چرا برخی آیات نیازمند تفسیر هستند؟','تفاوت ترجمه، فهم اولیه و تفسیر تخصصی.'],
+  ['قرآن و حدیث','چگونه اعتبار یک روایت را بررسی کنیم؟','آشنایی با پرسش‌های اولیه درباره سند و متن.'],
+  ['عبادات','چطور در نماز حضور قلب بیشتری داشته باشیم؟','راه‌های توجه و تمرکز هنگام عبادت.'],
+  ['عبادات','چرا گاهی عبادت برایمان سخت می‌شود؟','نگاهی به عادت، انگیزه و استمرار.'],
+  ['عبادات','چه کنیم نماز اول وقت را فراموش نکنیم؟','راهکارهایی برای نظم‌دادن به برنامه روزانه.'],
+  ['دعا و زیارت','چرا بعضی دعاها مستجاب نمی‌شوند؟','پرسشی درباره دعا، خواسته‌ها و حکمت الهی.'],
+  ['دعا و زیارت','چگونه با متن دعا ارتباط عمیق‌تری بگیریم؟','نقش فهم معنا در تجربه دعاخوانی.'],
+  ['دعا و زیارت','آداب زیارت چیست و از کجا شروع کنیم؟','آمادگی قلبی و رفتاری پیش از زیارت.'],
+  ['احکام','وقتی حکم شرعی را نمی‌دانیم چه کنیم؟','راه درست پرسیدن و یافتن پاسخ معتبر.'],
+  ['احکام','تفاوت احتیاط و وسواس در عمل چیست؟','شناخت مرز دقت شرعی و سخت‌گیری بی‌جا.'],
+  ['احکام','چگونه احکام موردنیازمان را یاد بگیریم؟','روش مطالعه و مراجعه به منابع معتبر.'],
+  ['حق‌الناس','اگر ناخواسته حق کسی را ضایع کردیم چه کنیم؟','پرسشی درباره جبران و مسئولیت اخلاقی.'],
+  ['حق‌الناس','آیا حق‌الناس فقط به مسائل مالی مربوط است؟','بررسی گستره حقوق دیگران در زندگی روزانه.'],
+  ['حق‌الناس','چطور برای جبران یک اشتباه اقدام کنیم؟','توجه به رضایت و ترمیم رابطه با دیگران.'],
+  ['گناه و توبه','توبه واقعی از کجا شروع می‌شود؟','شناخت گام‌های بازگشت و جبران اشتباه.'],
+  ['گناه و توبه','اگر دوباره اشتباه کردیم چه کنیم؟','امید، پایداری و اصلاح رفتار در مسیر توبه.'],
+  ['گناه و توبه','چگونه از موقعیت‌های گناه فاصله بگیریم؟','توجه به عوامل محیطی و عادت‌های روزانه.'],
+  ['خودسازی','برای خودسازی از چه کاری شروع کنیم؟','چند گام کوچک برای یک تغییر پایدار.'],
+  ['خودسازی','چگونه مراقبه و محاسبه نفس داشته باشیم؟','مروری بر تمرین توجه به رفتارهای روزانه.'],
+  ['خودسازی','چرا تصمیم‌های خوب ما گاهی دوام ندارند؟','پرسشی درباره استمرار، اراده و عادت‌ها.']
+ ];
+ const shownCategories=categoriesQA.slice(0,12);
+ const filters=[['همه پرسش‌ها',-1],...shownCategories.map((cat,i)=>[cat,i])];
+ const shown=homeQaFilter===-1
+  ?shownCategories.map(cat=>sampleQuestions.find(item=>item[0]===cat)).filter(Boolean)
+  :sampleQuestions.filter(item=>item[0]===shownCategories[homeQaFilter]);
+ return sect('پرسش‌وپاسخ',`<div class="qa-showcase">
+  <div class="qa-showcase-filters" role="group" aria-label="دسته‌بندی پرسش‌ها">
+   ${filters.map(([name,index])=>`<button type="button" class="qa-filter ${homeQaFilter===index?'is-active':''}" aria-pressed="${homeQaFilter===index}" onclick="homeQaFilter=${index};render()">${es(name)}</button>`).join('')}
+  </div>
+  <div class="qa-showcase-grid" aria-label="پرسش‌های نمونه">
+   ${shown.map(([category,title,description],i)=>`<button type="button" class="qa-preview-card" aria-label="مشاهده دسته ${es(category)}؛ ${es(title)}" onclick="qaTab=${categoriesQA.indexOf(category)};go('questions')">
+    <span class="qa-preview-kicker"><span>${es(category)}</span><em>پرسش نمونه</em></span>
+    <strong>${es(title)}</strong>
+    <p>${es(description)}</p>
+    <span class="qa-preview-action">رفتن به دسته پرسش‌ها <span aria-hidden="true">←</span></span>
+   </button>`).join('')}
+  </div>
+ </div>`,{future:true,className:'qa-showcase-section'});
+}
 function home(){return hero()+
 latestShowcase()+
 sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',className:'site-updates-section'})+
 popularShowcase()+
 sect('بسته‌های مناسبتی',packs(),{future:true,className:'occasion-packs-section'})+
-sect('پرسش‌وپاسخ منتخب','<div class="pill-row">'+categoriesQA.slice(0,6).map((t,i)=>'<button class="pill '+(i===qaTab?'active':'')+'" onclick="qaTab='+i+';render()">'+t+'</button>').join('')+'</div><div class="qa-home-grid"><button class="qa-home-item" onclick="go(\'questions\')"><b>جایگاه عنوان پرسش منتخب اول</b><p>خلاصه پاسخ کوتاه از داده واقعی</p><span>مشاهده پاسخ ‹</span></button><button class="qa-home-item" onclick="go(\'questions\')"><b>جایگاه عنوان پرسش منتخب دوم</b><p>خلاصه پاسخ کوتاه از داده واقعی</p><span>مشاهده پاسخ ‹</span></button><button class="qa-home-item" onclick="go(\'questions\')"><b>جایگاه عنوان پرسش منتخب سوم</b><p>خلاصه پاسخ کوتاه از داده واقعی</p><span>مشاهده پاسخ ‹</span></button></div>',{future:true,desc:'مدیر دسته‌های منتخب و پرسش‌های هر دسته را برای نمایش در خانه تعیین می‌کند.'})+
+homeQaSection()+
 homeTopicsSection()+
 sect('منوهای کشویی و پیوندهای منتخب','<div class="accordion"><details><summary>پرسش‌وپاسخ‌ها</summary><p>پیوند به دسته‌های مستقل سؤال و جواب‌های منتخب.</p></details><details><summary>سیرهای مطالعاتی</summary><p>پیوند به سیرهای مطالعاتی منتشرشده و کتاب‌های مرتبط.</p></details><details><summary>بلاگ امینی‌خواه</summary><p>پیوند به مقالات متنی منتخب و نوشته‌های سایت.</p></details></div>',{future:true,desc:'عنوان، تعداد و پیوندهای هر منوی کشویی در محصول مقصد از پنل مدیریت تنظیم می‌شود.'})+
 sect('دیدگاه‌های منتخب','<div class="selected-comments-grid"><div class="selected-comment"><b>دیدگاه منتخب اول</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب دوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب سوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div></div>',{future:true})}
