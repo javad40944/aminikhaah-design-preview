@@ -931,6 +931,32 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .featured-comments-section .featured-comment-footer strong{color:var(--primary);font-weight:780}
 @container (max-width:850px){.featured-comments-section .featured-comments-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container (max-width:540px){.featured-comments-section .featured-comments-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:7px;scrollbar-width:thin}.featured-comments-section .featured-comment-card{flex:0 0 min(86%,310px);scroll-snap-align:start;padding:15px}.featured-comments-section .featured-comment-text{font-size:14px;line-height:1.9}}
+/* Calm-library footer: identity, essential navigation and official social channels. */
+.site-app .site-footer.footer-redesign{position:relative;display:block;overflow:hidden;padding:38px max(26px,calc((100% - 1190px)/2)) 18px;margin-top:26px;border-top:3px solid var(--gold);background:linear-gradient(135deg,color-mix(in srgb,var(--primary-soft) 44%,var(--surface)),var(--surface) 66%);color:var(--ink);font-size:14px;line-height:1.9}
+.site-app .site-footer.footer-redesign::after{content:'';position:absolute;pointer-events:none;width:240px;height:240px;left:-145px;top:-170px;border:1px solid color-mix(in srgb,var(--gold) 30%,transparent);border-radius:50%}
+.footer-redesign-inner{display:grid;grid-template-columns:1.25fr 1fr 1.05fr;gap:42px;align-items:start}
+.footer-redesign-brand{max-width:360px}
+.footer-brand-home{display:inline-flex;flex-direction:column;align-items:flex-start;gap:7px;text-decoration:none;color:var(--ink)}
+.footer-brand-logo{display:block;width:145px;height:65px;background:var(--primary);-webkit-mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat;mask:url("./assets/aminikhaah-logo.svg") center / contain no-repeat}
+.footer-brand-home strong{font-size:14px;color:var(--primary);font-weight:820}
+.footer-redesign-brand p{font-size:14px;color:var(--muted);line-height:2;margin:11px 0 10px}
+.footer-brand-line{display:block;width:45px;height:3px;background:var(--gold);border-radius:8px}
+.footer-redesign-nav h3,.footer-redesign-connect h3{margin:4px 0 15px;font-size:16px;font-weight:850;color:var(--ink)}
+.footer-nav-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px}
+.footer-nav-items button{display:block;position:relative;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;text-align:right;cursor:pointer;padding:5px 0;min-height:35px}
+.footer-nav-items button:hover,.footer-nav-items button:focus-visible{color:var(--primary);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px}
+.footer-redesign-connect>p{font-size:13px;margin:-9px 0 13px;color:var(--muted)}
+.footer-social-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.footer-social-items a{display:flex;align-items:center;gap:8px;min-height:40px;padding:6px 9px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);text-decoration:none;font-size:13px;font-weight:750;transition:border-color .18s,background .18s}
+.footer-social-items a:hover,.footer-social-items a:focus-visible{border-color:var(--gold);background:var(--primary-soft)}
+.footer-social-icon{display:grid;place-items:center;flex:0 0 27px;width:27px;height:27px;border-radius:8px;background:var(--primary-soft);color:var(--primary)}
+.footer-social-icon svg{display:block;width:16px;height:16px}
+.footer-redesign-bottom{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-top:28px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.footer-redesign-bottom button{border:0;background:transparent;color:var(--primary);font:inherit;font-weight:800;cursor:pointer;padding:5px 0}
+.footer-redesign-bottom button span{font-family:Arial,sans-serif;margin-inline-start:4px}
+@container (max-width:850px){.footer-redesign-inner{grid-template-columns:1fr 1fr;gap:26px}.footer-redesign-brand{grid-column:1/-1;max-width:none}.footer-redesign-brand p{max-width:470px}}
+@container (max-width:540px){.site-app .site-footer.footer-redesign{padding:28px 18px 92px;margin-top:18px}.footer-redesign-inner{grid-template-columns:1fr;gap:24px}.footer-redesign-brand{grid-column:auto}.footer-brand-logo{width:115px;height:53px}.footer-redesign-nav h3,.footer-redesign-connect h3{margin:0 0 10px}.footer-nav-items{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-social-items{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-redesign-bottom{margin-top:23px;padding-top:11px;flex-wrap:wrap;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.footer-social-items a{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -954,24 +980,39 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   </div>
 </div></header>
 <main class="app-main" id="content"></main>
-<footer class="site-footer">
-<div class="footer-main">
-  <div class="footer-brand"><b>امینی‌خواه</b><p>کتابخانه سخنرانی‌ها، روضه‌ها و معارف</p><small>نمونه طراحی جامع — نه وب‌سایت زنده</small></div>
-  <div class="footer-links" aria-label="پیوندهای تکمیلی">
-    <button class="future-nav" onclick="toast('صفحه درباره استاد در طراحی جامع محفوظ است؛ متن و تصویر رسمی باید تأیید شود')">درباره استاد</button>
-    <button class="future-nav" onclick="toast('فرم دعوت از استاد در طراحی جامع محفوظ است و به توسعه فرم نیاز دارد')">فرم دعوت از استاد</button>
-    <button onclick="go('albums')">سخنرانی‌ها</button>
-    <button class="future-nav" onclick="go('questions')">پرسش‌وپاسخ</button>
+<footer class="site-footer footer-redesign" aria-label="پاورقی سایت امینی‌خواه">
+ <div class="footer-redesign-inner">
+  <div class="footer-redesign-brand">
+   <a href="#home" class="footer-brand-home" onclick="go('home');return false" aria-label="بازگشت به صفحه اصلی امینی‌خواه"><span class="footer-brand-logo" aria-hidden="true"></span><strong>پایگاه حفظ و نشر آثار</strong></a>
+   <p>آثار صوتی و مکتوب استاد امینی‌خواه، در یک کتابخانه منظم و آرام.</p>
+   <span class="footer-brand-line" aria-hidden="true"></span>
   </div>
-</div>
-<div class="footer-social">
-  <span class="footer-social-title">همراه ما باشید</span>
-  <a href="tg://resolve?domain=Aminikhaah" aria-label="تلگرام امینی‌خواه" rel="noopener">تلگرام</a>
-  <a href="https://eitaa.com/Aminikhaah" aria-label="ایتا امینی‌خواه" target="_blank" rel="noopener noreferrer">ایتا</a>
-  <a href="https://www.instagram.com/aminikhaah/" aria-label="اینستاگرام امینی‌خواه" target="_blank" rel="noopener noreferrer">اینستاگرام</a>
-  <a href="https://twitter.com/Aminikhaah" aria-label="توییتر امینی‌خواه" target="_blank" rel="noopener noreferrer">توییتر</a>
-</div>
-<div class="footer-note">چهار پیوند شبکه اجتماعی مطابق تنظیمات رسمی config/app.php و docker-compose-aminikhah.yml؛ جایگاه دستخط و فرم دعوت نیازمند فایل/امکان رسمی است.</div>
+  <nav class="footer-redesign-nav" aria-label="دسترسی‌های پایگاه">
+   <h3>دسترسی‌ها</h3>
+   <div class="footer-nav-items">
+    <button type="button" onclick="go('albums')">سخنرانی‌ها</button>
+    <button type="button" onclick="go('media')">رسانه‌ها</button>
+    <button type="button" class="future-nav" onclick="go('questions')">پرسش‌وپاسخ</button>
+    <button type="button" class="future-nav" onclick="booksTab='کتاب‌ها';go('books')">کتاب‌ها</button>
+    <button type="button" class="future-nav" onclick="toast('صفحه درباره استاد در مرحله تکمیل صفحات داخلی طراحی می‌شود')">درباره استاد</button>
+    <button type="button" class="future-nav" onclick="toast('فرم دعوت از استاد در مرحله توسعه صفحات داخلی تکمیل می‌شود')">دعوت از استاد</button>
+   </div>
+  </nav>
+  <div class="footer-redesign-connect">
+   <h3>همراه ما باشید</h3>
+   <p>برای دنبال‌کردن مطالب و آثار تازه</p>
+   <div class="footer-social-items">
+    <a href="https://t.me/Aminikhaah" aria-label="کانال تلگرام امینی‌خواه" target="_blank" rel="noopener noreferrer"><span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21 3-7.5 18-4-7-6.5-3L21 3Z"></path><path d="m9.5 14 5-4"></path></svg></span>تلگرام</a>
+    <a href="https://eitaa.com/Aminikhaah" aria-label="کانال ایتا امینی‌خواه" target="_blank" rel="noopener noreferrer"><span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a8 8 0 0 1-8 8 8.5 8.5 0 0 1-3.4-.7L4 20l1.2-4.3a8 8 0 1 1 14.8-4.2Z"></path><path d="M8.5 11.5h7"></path></svg></span>ایتا</a>
+    <a href="https://www.instagram.com/aminikhaah/" aria-label="اینستاگرام امینی‌خواه" target="_blank" rel="noopener noreferrer"><span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"></circle></svg></span>اینستاگرام</a>
+    <a href="https://twitter.com/Aminikhaah" aria-label="توییتر امینی‌خواه" target="_blank" rel="noopener noreferrer"><span class="footer-social-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 4 19 20M19 4 5 20"></path><path d="M6.5 4h3L20 20h-3"></path></svg></span>توییتر</a>
+   </div>
+  </div>
+ </div>
+ <div class="footer-redesign-bottom">
+  <span>امینی‌خواه · پایگاه حفظ و نشر آثار</span>
+  <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">بازگشت به بالای صفحه <span aria-hidden="true">↑</span></button>
+ </div>
 </footer>
 <nav class="mobile-bottombar future-nav" aria-label="تب‌های اصلی موبایل"><button data-dest="home" onclick="go('home')"><b>⌂</b>خانه</button><button data-dest="media" onclick="go('media')"><b>◈</b>رسانه</button><button data-dest="topics" onclick="go('topics')"><b>▦</b>موضوعات</button><button data-dest="profile" onclick="go('profile')"><b>♙</b>پروفایل</button></nav>
 <div class="audio-dock" id="audio-dock"><div class="audio-dock-main"><button id="aud-play" onclick="togglePlay()" aria-label="پخش/توقف">▶</button><div class="aud-titles"><button class="audtitle" id="audtitle" onclick="openPlayerItem()">عنوان جلسه</button><button class="audalbum" id="audalbum" onclick="openPlayerSource()">نام مجموعه</button></div><button onclick="closePlayer()" aria-label="بستن پلیر">×</button></div><div class="audio-dock-controls"><button onclick="prevTrack()" aria-label="جلسه قبلی">قبلی</button><button onclick="seekAudio(-10)" aria-label="۱۰ ثانیه عقب">↶۱۰</button><div class="audio-progress" aria-label="نوار پیشرفت صوت"></div><span class="audtime" id="audtime">۰۰:۰۰</span><button onclick="seekAudio(10)" aria-label="۱۰ ثانیه جلو">۱۰↷</button><button onclick="nextTrack()" aria-label="جلسه بعدی">بعدی</button><button class="speed-btn" onclick="cycleSpeed()" id="speed">۱×</button><button class="queue-btn" onclick="showQueue()">صف</button><button onclick="expandPlayer()" aria-label="بازکردن پلیر تمام‌صفحه">▢</button></div></div>
