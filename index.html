@@ -888,6 +888,30 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:650px){.home-topics-section .categories-grid{grid-auto-columns:139px;gap:9px}}
 @media (prefers-reduced-motion:reduce){.home-topics-section .topic-card,.home-topics-section .topic-art img{transition:none}}
 
+/* Three illustrated, expandable cards for curated reading. */
+.more-reading-section .reading-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:14px}
+.more-reading-section .reading-card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:var(--surface);box-shadow:0 6px 17px rgba(27,49,38,.045);transition:border-color .2s,box-shadow .2s,transform .2s}
+.more-reading-section .reading-card:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:0 9px 23px rgba(27,49,38,.1)}
+.more-reading-section .reading-card[open]{border-color:var(--gold);box-shadow:0 10px 28px rgba(27,49,38,.09)}
+.more-reading-section .reading-card summary{cursor:pointer;display:block;list-style:none;outline-offset:-3px}
+.more-reading-section .reading-card summary::-webkit-details-marker{display:none}
+.more-reading-section .reading-photo{display:block;height:145px;overflow:hidden;background:var(--alt)}
+.more-reading-section .reading-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .28s ease}
+.more-reading-section .reading-card:hover .reading-photo img,.more-reading-section .reading-card[open] .reading-photo img{transform:scale(1.035)}
+.more-reading-section .reading-info{display:block;padding:12px 15px 14px}
+.more-reading-section .reading-titleline{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.more-reading-section .reading-title{font-size:15px;line-height:1.6;font-weight:800;color:var(--ink)}
+.more-reading-section .reading-subtitle{display:block;color:var(--muted);font-size:12px;line-height:1.6;margin-top:3px}
+.more-reading-section .reading-expand{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--primary-soft);color:var(--primary-dark);display:grid;place-items:center;font:700 19px/1 Tahoma,Arial,sans-serif}
+.more-reading-section .reading-expand::before{content:'+'}
+.more-reading-section .reading-card[open] .reading-expand::before{content:'−'}
+.more-reading-section .reading-details{padding:12px 15px 14px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--primary-soft) 35%,var(--surface))}
+.more-reading-section .reading-details p{margin:0 0 10px;color:var(--muted);font-size:13px;line-height:1.95}
+.more-reading-section .reading-details p:last-child{margin-bottom:0}
+.more-reading-section .reading-action{font:inherit;font-size:13px;font-weight:750;border:1px solid var(--line);border-radius:10px;padding:8px 13px;color:var(--primary-dark);background:var(--surface);cursor:pointer}
+.more-reading-section .reading-action:hover{border-color:var(--gold)}
+@container (max-width:700px){.more-reading-section .reading-gallery{grid-template-columns:1fr;gap:11px}.more-reading-section .reading-card summary{display:grid;grid-template-columns:100px minmax(0,1fr);align-items:stretch}.more-reading-section .reading-photo{height:103px}.more-reading-section .reading-info{display:flex;flex-direction:column;justify-content:center;padding:9px 12px}.more-reading-section .reading-title{font-size:14px}.more-reading-section .reading-subtitle{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.more-reading-section .reading-card,.more-reading-section .reading-photo img{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -1151,6 +1175,17 @@ function homeQaSection(){
   </div>
  </div>`,{future:true,className:'qa-showcase-section'});
 }
+function moreReadingSection(){
+ const entries=[
+  ['qa','پرسش‌وپاسخ‌ها','پاسخ دغدغه‌ها و پرسش‌های شما','دسته‌های پرسش‌وپاسخ را مرور کنید و پاسخ موضوع موردنظرتان را بیابید.','questions','مشاهده پرسش‌ها'],
+  ['paths','سیرهای مطالعاتی','مطالعه منظم، گام‌به‌گام','در قالب مسیرهای پیشنهادی، کتاب‌ها و مجموعه‌های مرتبط را کنار هم ببینید.','books','مشاهده سیرها'],
+  ['blog','بلاگ امینی‌خواه','مقاله‌ها و یادداشت‌ها','جایی برای مرور مقاله‌های منتخب، یادداشت‌ها و نوشته‌های سایت.','','']
+ ];
+ const cards=entries.map(([image,name,caption,description,dest,action])=>
+  `<details class="reading-card"><summary><span class="reading-photo"><img src="assets/reading/${image}.webp" alt="" loading="lazy" decoding="async" width="720" height="360"></span><span class="reading-info"><span class="reading-titleline"><strong class="reading-title">${es(name)}</strong><span class="reading-expand" aria-hidden="true"></span></span><span class="reading-subtitle">${es(caption)}</span></span></summary><div class="reading-details"><p>${es(description)}</p>${dest?`<button type="button" class="reading-action" onclick="go('${dest}')">${es(action)}</button>`:''}</div></details>`
+ ).join('');
+ return sect('بیشتر بخوانید',`<div class="reading-gallery">${cards}</div>`,{future:true,className:'more-reading-section'});
+}
 function home(){return hero()+
 latestShowcase()+
 sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',className:'site-updates-section'})+
@@ -1158,7 +1193,7 @@ popularShowcase()+
 sect('بسته‌های مناسبتی',packs(),{future:true,className:'occasion-packs-section'})+
 homeQaSection()+
 homeTopicsSection()+
-sect('منوهای کشویی و پیوندهای منتخب','<div class="accordion"><details><summary>پرسش‌وپاسخ‌ها</summary><p>پیوند به دسته‌های مستقل سؤال و جواب‌های منتخب.</p></details><details><summary>سیرهای مطالعاتی</summary><p>پیوند به سیرهای مطالعاتی منتشرشده و کتاب‌های مرتبط.</p></details><details><summary>بلاگ امینی‌خواه</summary><p>پیوند به مقالات متنی منتخب و نوشته‌های سایت.</p></details></div>',{future:true,desc:'عنوان، تعداد و پیوندهای هر منوی کشویی در محصول مقصد از پنل مدیریت تنظیم می‌شود.'})+
+moreReadingSection()+
 sect('دیدگاه‌های منتخب','<div class="selected-comments-grid"><div class="selected-comment"><b>دیدگاه منتخب اول</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب دوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب سوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div></div>',{future:true})}
 
 function albums(){return `${title('فهرست مجموعه‌های سخنرانی','جست‌وجو و پیمایش موضوعی در کنار شبکه مجموعه‌ها؛ صفحه‌بندی مطابق داده واقعی سایت.')}${sect('مجموعه‌ها',`<div class="grid4">${albumData.map((x,i)=>aCard(x,'album',i)).join('')}</div><div class="actions"><button class="btn" onclick="toast('نمونه ظاهر صفحه‌بندی؛ در سایت واقعی با pagination کار می‌کند')">۱</button><button class="btn">۲</button><button class="btn">صفحه بعد ‹</button></div>`,{desc:'نمونه ۴ مجموعه عمومی واقعی؛ فهرست تمام مجموعه‌ها هنگام اتصال به سایت از داده فعلی می‌آید.'})}${sect('جدیدترین و برترین‌ها',cards(albumData.slice().reverse()),{desc:'کنترل مرتب‌سازی و مسیرهای عمومی فعلی /album/updated و /album/top/{mode} حفظ می‌شوند.'})}`}
