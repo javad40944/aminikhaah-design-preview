@@ -909,6 +909,28 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .more-reading-section .reading-subitem-static{opacity:.8;cursor:default}
 @container (max-width:700px){.more-reading-section .reading-menu-row>summary{padding:11px 13px}.more-reading-section .reading-submenu{grid-template-columns:repeat(2,minmax(0,1fr));padding:4px 12px 13px;gap:7px}.more-reading-section .reading-subitem{font-size:12px;padding:8px 9px}.more-reading-section .reading-menu-label{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.more-reading-section .reading-menu-row>summary{transition:none}}
+/* Reader comments: compact editorial cards, tuned for both preview widths. */
+.featured-comments-section .featured-comments-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch}
+.featured-comments-section .featured-comment-card{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;padding:17px 17px 15px;border:1px solid var(--line);border-radius:15px;background:var(--surface);box-shadow:0 5px 15px rgba(35,48,40,.035);text-align:right}
+.featured-comments-section .featured-comment-card::before{content:'';position:absolute;inset:0 0 auto;height:3px;background:var(--gold)}
+.featured-comments-section .featured-comment-tone-2::before{background:var(--primary)}
+.featured-comments-section .featured-comment-tone-3::before{background:var(--accent)}
+.featured-comments-section .featured-comment-tone-4::before{background:color-mix(in srgb,var(--primary) 60%,var(--gold))}
+.featured-comments-section .featured-comment-header{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.featured-comments-section .featured-comment-author{display:flex;align-items:center;gap:9px;min-width:0}
+.featured-comments-section .featured-comment-avatar{display:grid;place-items:center;flex:0 0 39px;width:39px;height:39px;border-radius:11px;background:var(--primary-soft);color:var(--primary-dark);font-size:13px;font-weight:850;letter-spacing:-1px}
+.featured-comments-section .featured-comment-tone-2 .featured-comment-avatar{background:var(--accent-soft);color:var(--accent)}
+.featured-comments-section .featured-comment-tone-3 .featured-comment-avatar{background:var(--alt);color:var(--primary)}
+.featured-comments-section .featured-comment-author-info{display:flex;flex-direction:column;gap:2px;min-width:0}
+.featured-comments-section .featured-comment-author-info strong{color:var(--ink);font-size:14px;line-height:1.5;font-weight:850}
+.featured-comments-section .featured-comment-author-info small{color:var(--muted);font-size:12px;line-height:1.6}
+.featured-comments-section .featured-comment-quote{align-self:flex-start;color:var(--gold);opacity:.45;font:700 47px/.9 Georgia,serif;direction:ltr}
+.featured-comments-section .featured-comment-text{flex:1;margin:13px 0 17px;color:var(--ink);font-size:14px;line-height:2;text-align:right}
+.featured-comments-section .featured-comment-footer{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 7px;margin-top:auto;padding-top:11px;border-top:1px solid var(--line);font-size:12px;line-height:1.7}
+.featured-comments-section .featured-comment-footer span{color:var(--muted)}
+.featured-comments-section .featured-comment-footer strong{color:var(--primary);font-weight:780}
+@container (max-width:850px){.featured-comments-section .featured-comments-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:540px){.featured-comments-section .featured-comments-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:7px;scrollbar-width:thin}.featured-comments-section .featured-comment-card{flex:0 0 min(86%,310px);scroll-snap-align:start;padding:15px}.featured-comments-section .featured-comment-text{font-size:14px;line-height:1.9}}
 </style>
 </head>
 <body data-palette="olive">
@@ -1181,6 +1203,24 @@ function moreReadingSection(){
  ).join('');
  return sect('بیشتر بخوانید',`<div class="reading-menu">${menu}</div>`,{future:true,className:'more-reading-section'});
 }
+function homeSelectedCommentsSection(){
+ // Illustrative display names, dates and comments for homepage wireframe only.
+ const items=[
+  {name:'مهدی رضایی',initials:'مر',date:'۳ روز پیش',context:'مجموعهٔ جهاد با نفس',text:'گاهی فکر می‌کردم برای خودسازی باید از کارهای بزرگی شروع کنم. این سخنرانی کمکم کرد اهمیت مراقبت روزانه و قدم‌های کوچک اما پیوسته را بهتر بفهمم.'},
+  {name:'فاطمه حسینی',initials:'فح',date:'۱ هفته پیش',context:'شرح کتاب آن سوی مرگ',text:'توضیح مطالب به‌صورت مرحله‌به‌مرحله خیلی به فهم موضوع کمک می‌کند. برای من چند پرسش قدیمی درباره عالم برزخ روشن‌تر شد و دوست دارم جلسات بعدی را هم دنبال کنم.'},
+  {name:'علی موسوی',initials:'عم',date:'۱۰ روز پیش',context:'موضوع سبک زندگی',text:'دسته‌بندی موضوعی سخنرانی‌ها کار را راحت‌تر کرده است. توانستم چند بحث مرتبط را کنار هم پیدا کنم و برای گوش دادن به آن‌ها برنامه منظم‌تری داشته باشم.'},
+  {name:'زهرا احمدی',initials:'زا',date:'۲ هفته پیش',context:'مجموعهٔ حقی که به گردن ماست',text:'بخش حق‌الناس برایم بسیار تأمل‌برانگیز بود، به‌خصوص مثال‌های مربوط به رفتارهای روزمره. امیدوارم مطالب بیشتری درباره حقوق اعضای خانواده هم در دسترس باشد.'}
+ ];
+ const cards=items.map((item,i)=>`<article class="featured-comment-card featured-comment-tone-${i+1}" role="listitem">
+  <div class="featured-comment-header">
+   <div class="featured-comment-author"><span class="featured-comment-avatar" aria-hidden="true">${es(item.initials)}</span><span class="featured-comment-author-info"><strong>${es(item.name)}</strong><small>${es(item.date)}</small></span></div>
+   <span class="featured-comment-quote" aria-hidden="true">“</span>
+  </div>
+  <p class="featured-comment-text">${es(item.text)}</p>
+  <div class="featured-comment-footer"><span>در پاسخ به</span><strong>${es(item.context)}</strong></div>
+ </article>`).join('');
+ return sect('دیدگاه‌های منتخب',`<div class="featured-comments-row" role="list" aria-label="دیدگاه‌های منتخب مخاطبان">${cards}</div>`,{className:'featured-comments-section'});
+}
 function home(){return hero()+
 latestShowcase()+
 sect('به‌روزرسانی‌های سایت',siteUpdates(),{more:'albums',className:'site-updates-section'})+
@@ -1189,7 +1229,7 @@ sect('بسته‌های مناسبتی',packs(),{future:true,className:'occasion
 homeQaSection()+
 homeTopicsSection()+
 moreReadingSection()+
-sect('دیدگاه‌های منتخب','<div class="selected-comments-grid"><div class="selected-comment"><b>دیدگاه منتخب اول</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب دوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div><div class="selected-comment"><b>دیدگاه منتخب سوم</b><p>جایگاه متن دیدگاه واقعی انتخاب‌شده توسط مدیر</p></div></div>',{future:true})}
+homeSelectedCommentsSection()}
 
 function albums(){return `${title('فهرست مجموعه‌های سخنرانی','جست‌وجو و پیمایش موضوعی در کنار شبکه مجموعه‌ها؛ صفحه‌بندی مطابق داده واقعی سایت.')}${sect('مجموعه‌ها',`<div class="grid4">${albumData.map((x,i)=>aCard(x,'album',i)).join('')}</div><div class="actions"><button class="btn" onclick="toast('نمونه ظاهر صفحه‌بندی؛ در سایت واقعی با pagination کار می‌کند')">۱</button><button class="btn">۲</button><button class="btn">صفحه بعد ‹</button></div>`,{desc:'نمونه ۴ مجموعه عمومی واقعی؛ فهرست تمام مجموعه‌ها هنگام اتصال به سایت از داده فعلی می‌آید.'})}${sect('جدیدترین و برترین‌ها',cards(albumData.slice().reverse()),{desc:'کنترل مرتب‌سازی و مسیرهای عمومی فعلی /album/updated و /album/top/{mode} حفظ می‌شوند.'})}`}
 function album(){
