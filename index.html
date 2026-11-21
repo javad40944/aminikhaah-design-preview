@@ -854,13 +854,62 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 @container (max-width:370px){.qa-showcase-grid{grid-auto-columns:46%;gap:6px}}
 
 
-/* Homepage topics use the fourteen current categories from aminikhaah.ir. */
-.home-topics-section .categories-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
-.home-topics-section .topic-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:100px;text-decoration:none;color:var(--ink);transition:background .2s,border-color .2s,transform .2s}
-.home-topics-section .topic-card:hover{background:var(--accent-soft);border-color:var(--gold);transform:translateY(-2px)}
+/* A single horizontal gallery of fourteen individually illustrated topic cards. */
+.home-topics-section .categories-grid{
+ display:grid;grid-template-columns:none;grid-template-rows:minmax(0,1fr);grid-auto-flow:column;
+ grid-auto-columns:154px;gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;
+ scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+ padding:3px 3px 12px;direction:rtl
+}
+.home-topics-section .topic-card{
+ display:flex;flex-direction:column;min-width:0;min-height:150px;overflow:hidden;
+ padding:0;border:1px solid var(--line);border-radius:16px;background:var(--surface);
+ text-align:center;text-decoration:none;color:var(--ink);scroll-snap-align:start;
+ box-shadow:0 4px 11px rgba(29,48,37,.045);
+ transition:transform .2s,box-shadow .2s,border-color .2s
+}
+.home-topics-section .topic-art{
+ display:grid;place-items:center;isolation:isolate;position:relative;
+ height:104px;flex:0 0 104px;width:100%;overflow:hidden;
+ background:linear-gradient(135deg,var(--topic-a),var(--topic-b))
+}
+.home-topics-section .topic-art::before{
+ content:'';position:absolute;z-index:-1;width:110px;height:110px;right:-34px;top:-40px;
+ border:1.5px solid var(--topic-ink);opacity:.14;border-radius:30px;transform:rotate(25deg)
+}
+.home-topics-section .topic-art::after{
+ content:'';position:absolute;z-index:-1;width:95px;height:95px;left:-34px;bottom:-48px;
+ background:var(--topic-ink);opacity:.08;border-radius:35px;transform:rotate(-28deg)
+}
+.home-topics-section .topic-art svg{
+ display:block;width:66px;height:66px;color:var(--topic-ink);
+ filter:drop-shadow(0 4px 5px rgba(30,45,41,.09));transition:transform .2s
+}
+.home-topics-section .topic-name{
+ display:flex;flex:1;justify-content:center;align-items:center;
+ min-height:47px;padding:9px 6px;font-size:12px;line-height:1.45;font-weight:780
+}
+.home-topics-section .topic-card:hover{
+ transform:translateY(-3px);border-color:var(--topic-ink);box-shadow:0 9px 21px rgba(29,48,37,.11)
+}
+.home-topics-section .topic-card:hover .topic-art svg{transform:translateY(-3px) scale(1.05)}
 .home-topics-section .topic-card:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-@container (max-width:1000px){.home-topics-section .categories-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@container (max-width:650px){.home-topics-section .categories-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.home-topics-section .topic-card-137 .topic-art::before,
+.home-topics-section .topic-card-151 .topic-art::before{border-radius:7px;transform:rotate(-15deg)}
+.home-topics-section .topic-card-140 .topic-art::after,
+.home-topics-section .topic-card-165 .topic-art::after{border-radius:8px;transform:rotate(28deg)}
+.home-topics-section .topic-card-141 .topic-art::before,
+.home-topics-section .topic-card-149 .topic-art::before{border-radius:55% 55% 12% 12%;transform:rotate(0)}
+.home-topics-section .topic-card-142 .topic-art::before,
+.home-topics-section .topic-card-144 .topic-art::before{border-radius:50%;width:135px;height:135px}
+.home-topics-section .topic-card-145 .topic-art::after,
+.home-topics-section .topic-card-170 .topic-art::after{border-radius:9px;transform:rotate(45deg)}
+.home-topics-section .topic-card-146 .topic-art::after,
+.home-topics-section .topic-card-148 .topic-art::after{border-radius:50%;width:120px;height:120px}
+.home-topics-section .topic-card-147 .topic-art::before{border-radius:5px 58px 5px 58px;transform:rotate(-35deg)}
+@container (max-width:650px){.home-topics-section .categories-grid{grid-auto-columns:139px;gap:9px}}
+@media (prefers-reduced-motion:reduce){.home-topics-section .topic-card,.home-topics-section .topic-art svg{transition:none}}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -1022,24 +1071,43 @@ function subjectSlots(style){return '<div class="subject-feature '+style+'"><div
 function subjectBlock(t,style){return sect(t,subjectSlots(style),{future:true,desc:'نمونه ساختار و تنوع ارائه؛ عنوان، ترتیب و مجموعه‌های هر ردیف در محصول مقصد از انتخاب‌های مدیر.'})}
 function homeMediaSection(){return sect('رسانه','<div class="media-home-grid"><button class="media-home-card media-home-podcast" onclick="mediaFilter=\'پادکست\';go(\'media\')"><span class="media-home-icon">♫</span><b>پادکست‌های صوتی</b><small>مسیر عمومی موجود</small></button><button class="media-home-card media-home-video future-only" onclick="toast(\'نمایش ویدئو در طرح جامع حفظ شده؛ مسیر عمومی آن نیازمند توسعه است\')"><span class="media-home-icon">▷</span><b>کلیپ‌های تصویری</b><small>در طرح جامع</small></button><button class="media-home-card media-home-roza future-only" onclick="toast(\'بخش رسانه‌ای روضه در طرح جامع حفظ شده؛ مسیر عمومی مستقل نیازمند توسعه است\')"><span class="media-home-icon">✧</span><b>روضه</b><small>در طرح جامع</small></button><button class="media-home-card media-home-poster future-only" onclick="toast(\'پوستر و عکس‌نوشته در طرح جامع حفظ شده؛ مسیر عمومی نیازمند توسعه است\')"><span class="media-home-icon">▣</span><b>پوستر و عکس‌نوشته</b><small>در طرح جامع</small></button></div>',{className:'desktop-home-entry',desc:'در دسکتاپ، رسانه به‌صورت یک بخش مستقل در خانه قرار می‌گیرد؛ در موبایل دسترسی اصلی از تب پایین صفحه است.'})}
 const homeTopicCategories=[
- ['اخلاق','136','◈'],
- ['شرح حدیث','137','✦'],
- ['قرآن','140','۞'],
- ['اهل بیت (ع)','141','✧'],
- ['عالم ملکوت','142','◇'],
- ['معرفتی','144','✺'],
- ['سیاست','145','⚖'],
- ['شخصیت شناسی','146','♙'],
- ['سبک زندگی','147','❖'],
- ['رسانه','148','▣'],
- ['مهدویت','149','☀'],
- ['دروس تخصصی','151','▤'],
- ['مدرسه تعالی','165','✶'],
- ['چند رسانه ای','170','▦']
+ ['اخلاق','136','#346b52','#e5f2df','#c8e7d4'],
+ ['شرح حدیث','137','#946239','#f7ead8','#ead1ad'],
+ ['قرآن','140','#16786d','#e0f5ec','#b5e3d1'],
+ ['اهل بیت (ع)','141','#7f5b78','#f1e9f2','#ddc4dc'],
+ ['عالم ملکوت','142','#4d609c','#e6edfc','#c6d4f4'],
+ ['معرفتی','144','#b16f32','#fbefd8','#f0d6a3'],
+ ['سیاست','145','#566d7b','#e6f0f3','#c5dbe6'],
+ ['شخصیت شناسی','146','#a05e73','#f9e7ea','#edc6d2'],
+ ['سبک زندگی','147','#56815a','#eaf4df','#cfe8c5'],
+ ['رسانه','148','#4379a5','#e0f2fa','#b9dcf0'],
+ ['مهدویت','149','#a87526','#fff2d8','#f4d5a2'],
+ ['دروس تخصصی','151','#765f9d','#eee9fa','#d6c6f2'],
+ ['مدرسه تعالی','165','#6b7852','#edf3e3','#d5e2b9'],
+ ['چند رسانه ای','170','#477d88','#e3f4f3','#bee2e1']
 ];
+const homeTopicArt={
+ '136':'<path d="M36 59V36m0 6c-8-11-19-10-23-12 2 13 10 20 23 20m0-8c8-11 19-10 23-12-2 13-10 20-23 20"/><path d="M27 23c0-7 8-9 9-4 1-5 9-3 9 4 0 5-9 12-9 12s-9-7-9-12Z"/>',
+ '137':'<path d="M24 16h28v36H25c-5 0-8-3-8-8V23c0-4 3-7 7-7Zm0 0v36"/><path d="M32 27h12M32 34h12M32 41h8"/><path d="M17 44c0-4 3-7 7-7" opacity=".55"/>',
+ '140':'<path d="M36 24c-8-6-18-8-27-5v33c10-3 20-1 27 5 7-6 17-8 27-5V19c-9-3-19-1-27 5Zm0 0v33"/><path d="m36 10 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5ZM18 29c5-1 10 0 14 3m8 0c4-3 9-4 14-3"/>',
+ '141':'<path d="M13 58h46M21 58V38c0-12 9-20 15-24 6 4 15 12 15 24v20"/><path d="M29 58V43c0-5 3-8 7-8s7 3 7 8v15M18 30h36"/><path d="m36 8 1.6 3.4L41 13l-3.4 1.6L36 18l-1.6-3.4L31 13l3.4-1.6L36 8Z"/>',
+ '142':'<path d="M45 13a24 24 0 1 0 14 43 24 24 0 0 1-14-43Z"/><path d="m53 17 2 5 5 2-5 2-2 5-2-5-5-2 5-2 2-5Zm-1 22 1.5 3.5L57 44l-3.5 1.5L52 49l-1.5-3.5L47 44l3.5-1.5L52 39ZM19 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z"/>',
+ '144':'<path d="M36 15c-12 0-20 9-20 20 0 8 4 14 10 18h20c6-4 10-10 10-18 0-11-8-20-20-20Z"/><path d="M27 53v6h18v-6M30 64h12M30 38l6 6 6-6M36 44V28m-6 2 6-6 6 6"/><path d="M8 35h4m48 0h4M16 13l4 4m36-4-4 4"/>',
+ '145':'<path d="M36 12v46M19 21h34M22 21 12 44h20L22 21Zm28 0L40 44h20L50 21Z"/><path d="M27 58h18m-23 5h28M33 17h6" />',
+ '146':'<path d="M44 56H31c-9 0-16-7-16-16s7-16 16-16 16 7 16 16v4l8 6-11 3v3Z"/><path d="M31 29c-6 0-10 5-10 11m16-11c5 3 7 7 6 12M28 48c4 3 8 3 12 0"/><circle cx="28" cy="39" r="1.5" fill="currentColor" stroke="none"/><circle cx="39" cy="39" r="1.5" fill="currentColor" stroke="none"/><path d="m50 16 2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4Z"/>',
+ '147':'<path d="m11 35 25-20 25 20M18 32v26h36V32M31 58V43h10v15"/><path d="M46 43c3-8 9-10 14-9-1 8-5 13-14 13m0-4v13"/>',
+ '148':'<rect x="25" y="13" width="22" height="34" rx="11"/><path d="M16 35c0 11 9 20 20 20s20-9 20-20M36 55v9m-12 0h24"/><path d="M18 19c-4 4-6 9-6 15m42-15c4 4 6 9 6 15" opacity=".55"/>',
+ '149':'<path d="M10 56h52M20 56a16 16 0 0 1 32 0M36 11v11M15 26l8 8m34-8-8 8M9 43h8m38 0h8"/><path d="M30 62h12M26 67h20" opacity=".6"/>',
+ '151':'<path d="m11 26 25-12 25 12-25 12-25-12ZM21 34v15c9 8 21 8 30 0V34m10-8v20"/><path d="M28 45c5 2 11 2 16 0M61 46l-3 7 6 0-3-7Z"/>',
+ '165':'<path d="m9 29 27-15 27 15H9ZM15 33h42M20 35v21m12-21v21m12-21v21m12-21v21M12 58h48M9 64h54"/><path d="M33 24h6" />',
+ '170':'<rect x="10" y="17" width="42" height="32" rx="5"/><path d="m28 27 13 6-13 7V27ZM17 55h39M21 60h30"/><path d="M57 24v23a5 5 0 1 1-4-5V29l9-3v-8l-9 3"/>'
+};
 function homeTopicsSection(){
- const cards=homeTopicCategories.map(([name,id,symbol])=>`<a class="topic-card" href="https://aminikhaah.ir/category/${id}" target="_blank" rel="noopener noreferrer" aria-label="مشاهده موضوع ${es(name)} در سایت امینی‌خواه"><span aria-hidden="true">${symbol}</span><b>${es(name)}</b></a>`).join('');
- return sect('موضوعات',`<div class="categories-grid">${cards}</div>`,{className:'desktop-home-entry home-topics-section'});
+ const cards=homeTopicCategories.map(([name,id,ink,bgA,bgB])=>{
+  const art='<svg viewBox="0 0 72 72" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+homeTopicArt[id]+'</svg>';
+  return `<a class="topic-card topic-card-${id}" href="https://aminikhaah.ir/category/${id}" target="_blank" rel="noopener noreferrer" style="--topic-ink:${ink};--topic-a:${bgA};--topic-b:${bgB}" aria-label="مشاهده موضوع ${es(name)} در سایت امینی‌خواه"><span class="topic-art" aria-hidden="true">${art}</span><b class="topic-name">${es(name)}</b></a>`;
+ }).join('');
+ return sect('موضوعات',`<div class="categories-grid" aria-label="موضوعات سخنرانی‌ها">${cards}</div>`,{className:'desktop-home-entry home-topics-section'});
 }
 function homeQaSection(){
  const sampleQuestions=[
