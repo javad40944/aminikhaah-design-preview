@@ -1080,6 +1080,103 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 .mobile-bottombar button{min-width:0;min-height:48px;padding:2px 0;gap:1px;line-height:1.3;font-size:11px}
 .mobile-bottombar button b{font-size:19px;line-height:1.1}
 .preview.mobile-forced .mobile-bottombar{position:fixed;left:50%;right:auto;bottom:0;width:390px;max-width:100vw;transform:translateX(-50%);border-inline:1px solid var(--line);border-radius:12px 12px 0 0}
+
+/* Unified collection detail: chaptered and non-chaptered albums share one layout. */
+.collection-page{width:100%;max-width:1260px;margin:0 auto;padding-bottom:24px}
+.collection-breadcrumb{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:11px;flex-wrap:wrap;margin:2px 2px 20px}
+.collection-breadcrumb button{border:0;padding:0;background:none;color:inherit}
+.collection-breadcrumb button:hover{color:var(--primary)}
+.collection-breadcrumb>span{color:var(--gold);font-size:16px}
+.collection-breadcrumb strong{color:var(--ink);font-weight:750}
+.collection-intro{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(230px,31%) 1fr;gap:clamp(28px,4vw,56px);align-items:center;min-height:338px;padding:34px clamp(30px,4.2vw,64px);border:1px solid var(--line);border-radius:23px;background:linear-gradient(115deg,color-mix(in srgb,var(--primary-soft) 53%,var(--surface)),var(--surface) 70%);overflow:hidden;box-shadow:var(--shadow)}
+.collection-intro:after{content:"";position:absolute;inset:auto auto -160px -100px;width:440px;height:440px;border:1px solid color-mix(in srgb,var(--primary) 15%,transparent);border-radius:50%;box-shadow:0 0 0 34px color-mix(in srgb,var(--primary) 2%,transparent),0 0 0 80px color-mix(in srgb,var(--primary) 2%,transparent);pointer-events:none;z-index:-1}
+.collection-intro:before{content:"✧";position:absolute;top:12px;left:30px;color:var(--gold);opacity:.55;font-size:31px}
+.collection-art{position:relative;justify-self:center;width:min(100%,245px);padding:13px 13px 0}
+.collection-art:before{content:"";position:absolute;inset:0 0 28px 25px;border:1px solid color-mix(in srgb,var(--gold) 65%,var(--line));border-radius:17px;transform:rotate(-5deg)}
+.collection-cover-frame{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#254b44,#65877a);box-shadow:0 17px 38px #152d2436;border:5px solid var(--white);z-index:1}
+.collection-cover-frame img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:2}
+.collection-art-watermark{position:absolute;inset:0;display:grid;place-items:center;font-size:100px;color:#fff9}
+.collection-art-caption{position:relative;z-index:2;text-align:center;margin-top:14px;color:var(--muted);font-size:10px;letter-spacing:.4px}
+.collection-intro-content{min-width:0}
+.collection-kicker{display:flex;gap:9px;align-items:center;color:var(--primary);font-size:12px;font-weight:780}
+.collection-kicker-line{width:23px;height:2px;border-radius:5px;background:var(--gold)}
+.collection-kicker-sep{color:var(--gold);margin-inline:3px}
+.collection-intro h1{margin:10px 0 13px;font-size:clamp(29px,3.2vw,42px);line-height:1.55;font-weight:880;color:var(--ink)}
+.collection-description{max-width:720px;font-size:13px;line-height:2.18;color:var(--muted);text-align:justify}
+.collection-highlights{display:flex;gap:0;align-items:center;margin:22px 0 20px;padding:13px 0;border-top:1px solid color-mix(in srgb,var(--line) 80%,transparent);border-bottom:1px solid color-mix(in srgb,var(--line) 80%,transparent);width:max-content;max-width:100%}
+.collection-highlights>span{display:flex;align-items:center;gap:7px;padding:0 20px;border-left:1px solid var(--line);white-space:nowrap}
+.collection-highlights>span:first-child{padding-right:0}
+.collection-highlights>span:last-child{border:0}
+.collection-highlights b{font-size:21px;font-weight:850;color:var(--primary);line-height:1}
+.collection-highlights small{font-size:11px;color:var(--muted)}
+.collection-highlight-audio b{font-size:24px}
+.collection-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.collection-actions button{min-height:42px;border-radius:10px;border:1px solid var(--line);padding:8px 18px;font-size:12px;font-weight:750;transition:transform .2s ease,background-color .2s ease}
+.collection-actions button:hover{transform:translateY(-2px)}
+.collection-action-primary{display:flex;align-items:center;gap:10px;background:var(--primary);border-color:var(--primary)!important;color:var(--white)}
+.collection-action-play{background:#ffffff2a;border-radius:50%;display:grid;place-items:center;width:25px;height:25px;font-size:9px}
+.collection-action-secondary{display:flex;align-items:center;gap:10px;background:var(--surface);color:var(--primary-dark)}
+.collection-action-secondary span{font-size:18px;line-height:1}
+.collection-actions .collection-action-icon{width:42px;padding:5px;font-size:19px;background:var(--surface);color:var(--primary)}
+.collection-main{display:grid;grid-template-columns:minmax(245px,300px) minmax(0,1fr);gap:23px;align-items:start;margin-top:27px}
+.collection-sidebar,.collection-content{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);min-width:0;overflow:hidden}
+.collection-sidebar{padding:22px 15px 15px}
+.collection-aside-heading{display:flex;align-items:center;gap:11px;padding:0 7px 17px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.collection-aside-heading h2{font-size:17px;font-weight:840}
+.collection-aside-heading small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.collection-aside-symbol{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:var(--primary-soft);color:var(--primary);font-size:24px}
+.collection-seasons{display:grid;gap:4px}
+.collection-season,.collection-disabled-season{display:flex;align-items:center;width:100%;gap:10px;text-align:right;border:1px solid transparent;border-radius:12px;background:transparent;padding:9px 10px;min-width:0;min-height:61px}
+.collection-season:hover{background:var(--primary-soft)}
+.collection-season.is-selected{background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 25%,var(--line))}
+.collection-season-num{display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;border-radius:10px;background:var(--alt);color:var(--muted);font-size:11px;font-weight:800;font-variant-numeric:tabular-nums;direction:ltr}
+.collection-season.is-selected .collection-season-num{background:var(--primary);color:var(--white)}
+.collection-season-text{display:block;flex:1;min-width:0}
+.collection-season-text small{display:block;color:var(--muted);font-size:10px;line-height:1.5;margin-bottom:3px}
+.collection-season-text b{font-size:11.5px;line-height:1.7;font-weight:720;display:block}
+.collection-season.is-selected .collection-season-text b{color:var(--primary-dark)}
+.collection-season-arrow{color:var(--gold);font-size:25px;opacity:0}
+.collection-season.is-selected .collection-season-arrow,.collection-season:hover .collection-season-arrow{opacity:1}
+.collection-disabled-season{opacity:.48;background:var(--alt);cursor:not-allowed;border-style:dashed;border-color:var(--line)}
+.collection-content{padding:0 0 12px}
+.collection-content-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 25px 20px}
+.collection-small-eyebrow{font-size:11px;color:var(--accent);font-weight:800;margin-bottom:4px}
+.collection-content-head h2{font-size:22px;font-weight:830;color:var(--ink)}
+.collection-content-head p{font-size:12px;color:var(--muted);margin-top:3px}
+.collection-episode-count{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:6px 13px;border:1px solid var(--line);border-radius:999px;background:var(--alt);font-size:11px;color:var(--primary-dark);font-weight:760}
+.collection-track-head{display:flex;justify-content:space-between;background:var(--alt);border-block:1px solid var(--line);font-size:10px;font-weight:730;color:var(--muted);padding:10px 25px}
+.collection-track-head span:last-child{margin-left:72px}
+.collection-episode{display:grid;grid-template-columns:28px 37px minmax(0,1fr) 79px 34px;align-items:center;gap:12px;min-height:78px;padding:12px 22px;border-bottom:1px solid var(--line)}
+.collection-episode:last-child{border-bottom:0}
+.collection-episode:hover{background:color-mix(in srgb,var(--primary-soft) 25%,var(--surface))}
+.collection-episode-index{font-size:11px;color:var(--muted);font-weight:800;direction:ltr;text-align:center}
+.collection-episode-play{display:grid;place-items:center;width:37px;height:37px;border-radius:50%;border:1px solid color-mix(in srgb,var(--primary) 20%,var(--line));background:var(--primary-soft);color:var(--primary);font-size:12px;padding:0}
+.collection-episode-play span{transform:scale(.82)}
+.collection-episode:hover .collection-episode-play{background:var(--primary);color:var(--surface)}
+.collection-episode-copy{min-width:0}
+.collection-episode-title{display:block;text-align:right;border:0;background:none;padding:0;font-size:12px;font-weight:760;line-height:1.9;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.collection-episode-title:hover{color:var(--primary)}
+.collection-episode-copy small{display:block;font-size:10px;color:var(--muted);margin-top:1px}
+.collection-mini-dot{margin-inline:5px;color:var(--gold)}
+.collection-episode-duration{direction:ltr;color:var(--muted);white-space:nowrap;font-size:11px;font-variant-numeric:tabular-nums}
+.collection-episode-duration span{color:var(--gold)}
+.collection-episode-download{display:grid;place-items:center;width:33px;height:33px;background:transparent;border:1px solid var(--line);border-radius:9px;font-size:19px;color:var(--primary)}
+.collection-episode-download:hover{background:var(--primary-soft)}
+.collection-list-footer{text-align:center;padding:18px 16px 5px}
+.collection-show-all{background:var(--primary-soft);border:1px solid color-mix(in srgb,var(--primary) 19%,var(--line));padding:9px 23px;border-radius:9px;color:var(--primary-dark);font-size:12px;font-weight:760}
+.collection-show-all span{font-size:16px;margin-right:9px}
+.collection-episodes-empty{min-height:260px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:30px;color:var(--muted)}
+.collection-empty-mark{font-size:34px;color:var(--gold);margin-bottom:8px}
+.collection-episodes-empty b{font-size:15px;color:var(--ink)}
+.collection-episodes-empty p{font-size:12px;max-width:350px;margin:8px 0 12px}
+.collection-episodes-empty a{color:var(--primary);text-decoration:underline;text-underline-offset:4px;font-size:12px}
+.collection-related{margin-top:26px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:var(--shadow)}
+.collection-related-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:15px}
+.collection-related-head h2{font-size:19px;font-weight:830}
+.collection-related-head button{background:var(--primary-soft);color:var(--primary-dark);border:0;border-radius:9px;font-size:11px;font-weight:750;padding:7px 12px}
+@container (max-width:880px){.collection-intro{grid-template-columns:200px 1fr;padding:26px;gap:27px}.collection-intro h1{font-size:29px}.collection-description{font-size:12px}.collection-main{grid-template-columns:240px minmax(0,1fr);gap:13px}.collection-episode{grid-template-columns:23px 35px minmax(0,1fr) 67px 30px;gap:7px;padding:12px 11px}.collection-content-head{padding:20px 15px}.collection-track-head{padding:10px 15px}}
+@container (max-width:620px){.collection-page{max-width:100%}.collection-breadcrumb{margin-bottom:13px;font-size:10px}.collection-intro{display:flex;flex-direction:column;gap:14px;padding:22px 18px 20px;border-radius:16px;text-align:center}.collection-intro:before{left:18px;font-size:20px}.collection-intro:after{width:210px;height:210px;bottom:-100px;left:-80px}.collection-art{width:156px;padding:8px 8px 0}.collection-art-caption{margin-top:9px}.collection-intro-content{width:100%}.collection-kicker{justify-content:center;font-size:11px}.collection-intro h1{font-size:25px;margin:7px 0 8px}.collection-description{font-size:11.5px;line-height:2.05;text-align:center}.collection-highlights{justify-content:center;width:100%;margin:14px 0;padding:10px 0}.collection-highlights>span{padding:0 13px;gap:5px}.collection-highlights b{font-size:18px}.collection-highlights small{font-size:10px}.collection-actions{justify-content:center;gap:6px}.collection-actions button{padding:6px 11px;min-height:39px;font-size:11px}.collection-actions .collection-action-icon{width:38px}.collection-main{display:flex;flex-direction:column;gap:14px;margin-top:16px}.collection-sidebar,.collection-content{width:100%;border-radius:15px}.collection-sidebar{padding:14px 12px}.collection-aside-heading{padding-bottom:10px;margin-bottom:9px}.collection-aside-heading h2{font-size:15px}.collection-seasons{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-inline:contain;padding-bottom:6px;scrollbar-width:thin}.collection-season{flex:0 0 184px;width:184px;min-height:78px;background:var(--alt);border-color:var(--line);scroll-snap-align:start;gap:7px;padding:9px}.collection-season-text b{font-size:11px}.collection-season-arrow{display:none}.collection-disabled-season{min-height:62px}.collection-content-head{padding:17px 13px;gap:8px}.collection-content-head h2{font-size:17px}.collection-content-head p{font-size:11px}.collection-episode-count{padding:4px 8px;font-size:10px}.collection-track-head{padding:7px 12px}.collection-track-head span:last-child{margin-left:33px}.collection-episode{grid-template-columns:23px 32px minmax(0,1fr) 30px;gap:6px;min-height:72px;padding:10px 8px}.collection-episode-index{font-size:10px}.collection-episode-play{width:32px;height:32px;font-size:10px}.collection-episode-copy{min-width:0}.collection-episode-title{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.75;font-size:11px}.collection-episode-copy small{font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.collection-episode-duration{grid-column:3;grid-row:auto;font-size:9px;justify-self:start;margin-top:-4px}.collection-episode-download{grid-column:4;grid-row:1 / span 2;width:29px;height:29px;font-size:17px}.collection-related{padding:15px;margin-top:16px}.collection-related-head h2{font-size:16px}.collection-related-head button{font-size:10px}}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -1163,14 +1260,14 @@ const songData=[['جلسه یک : از تخت بیمارستان تا طبقات
 const categories=[['اخلاق','136','◈'],['شرح حدیث','137','✦'],['قرآن','140','۞'],['اهل‌بیت (ع)','141','✧'],['عالم ملکوت','142','◇'],['دروس تخصصی','151','▤']];
 const categoriesQA=['اعتقادات','معصومان','مهدویت','آخرت','خواب و امور غیبی','قرآن و حدیث','عبادات','دعا و زیارت','احکام','حق‌الناس','گناه و توبه','خودسازی','معاشرت','ازدواج','خانواده','سلامت روان','آموزش','کار و درآمد','جامعه','تاریخ'];
 const sliderData=[['شرح و بررسی کتاب آن سوی مرگ','1','روایتی از تجربه‌های نزدیک به مرگ','✦'],['جهاد با نفس','18','گفتارهایی برای خودسازی و تهذیب','◈'],['تجمعات شبانه','396','مروری بر مجموعه سخنرانی‌ها','☾']];
-let page='home',mode='full',slide=0,slideTimer=null,hover=false,playName='',audioOn=false,speed=0,playIndex=0,playingMediaIndex=-1,queueType='song',albumType='no',currentTab='سخنرانی‌ها',qaTab=0,homeQaFilter=-1,booksTab='کتاب‌ها',mediaFilter='همه',mediaSort='جدیدترین',mediaView='grid',selectedMedia=-1,searchText='',searchHasResult=false,searchJump=false,scenario='عادی',toastTimer;
+let page='home',mode='full',slide=0,slideTimer=null,hover=false,playName='',audioOn=false,speed=0,playIndex=0,playingMediaIndex=-1,queueType='song',albumType='chapter',chapterSelection=0,showCollectionAll=false,currentTab='سخنرانی‌ها',qaTab=0,homeQaFilter=-1,booksTab='کتاب‌ها',mediaFilter='همه',mediaSort='جدیدترین',mediaView='grid',selectedMedia=-1,searchText='',searchHasResult=false,searchJump=false,scenario='عادی',toastTimer;
 const byId=id=>document.getElementById(id);
 const es=t=>String(t).replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[m]));
 function toast(t){const n=byId('toast');n.textContent=t;n.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>n.classList.remove('show'),4500)}
 function scope(future=false){return `<span class="scope ${future?'future':''}">${future?'نیازمند توسعه بعدی':'با قابلیت‌های عمومی موجود'}</span>`}
 function sect(title,inner,{future=false,more='',desc='',className=''}={}){return `<section class="section ${future?'future-only':''} ${className}"><div class="section-head"><h2>${title}</h2><div class="section-actions">${future?scope(true):''}${more?`<button class="more" onclick="go('${more}')">مشاهده همه ›</button>`:''}</div></div>${desc?`<p class="section-desc">${desc}</p>`:''}${inner}</section>`}
 function cover(n,symbol='✦'){return `<div class="cover cover-${(n%4)+1}"><span class="cover-symbol">${symbol}</span><small>تصویر نمونه</small></div>`}
-function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';const imgSrc=type==='album'?albumCoverUrl(id):type==='song'?albumCoverUrl('1'):'';return `<a class="content-card" href="#${dest}" onclick="go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${imgSrc?`<div class="cover cover-real"><img src="${es(imgSrc)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>`:cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'مجموعه سخنرانی'} · ${uri}${id}</small></a>`}
+function aCard(item,type='album',idx=0){const title=item[0],id=item[1],dest=type==='song'?'session':type==='category'?'topics':'album',uri=type==='song'?'/song/':type==='category'?'/category/':'/album/';const imgSrc=type==='album'?albumCoverUrl(id):type==='song'?albumCoverUrl('1'):'';return `<a class="content-card" href="#${dest}" onclick="${type==='album'?"albumType='"+(id==='116'?'chapter':'no')+"';chapterSelection=0;showCollectionAll=false;":''}go('${dest}');return false" title="نمونه محتوای موجود، ${uri}${id}">${imgSrc?`<div class="cover cover-real"><img src="${es(imgSrc)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"></div>`:cover(idx,type==='song'?'♫':type==='category'?'◈':'✦')}<div class="card-title">${es(title)}</div><small class="card-sub">${type==='song'?'شرح و بررسی کتاب آن سوی مرگ':type==='category'?'موضوع موجود در سایت':'مجموعه سخنرانی'} · ${uri}${id}</small></a>`}
 function cards(data,type='album'){return `<div class="cards-row">${data.map((x,i)=>aCard(x,type,i)).join('')}</div>`}
 function siteUpdates(){
  // Example update records: the real product will receive each published chapter and session number from the backend.
@@ -1407,13 +1504,51 @@ moreReadingSection()+
 homeSelectedCommentsSection()}
 
 function albums(){return `${title('فهرست مجموعه‌های سخنرانی','جست‌وجو و پیمایش موضوعی در کنار شبکه مجموعه‌ها؛ صفحه‌بندی مطابق داده واقعی سایت.')}${sect('مجموعه‌ها',`<div class="grid4">${albumData.map((x,i)=>aCard(x,'album',i)).join('')}</div><div class="actions"><button class="btn" onclick="toast('نمونه ظاهر صفحه‌بندی؛ در سایت واقعی با pagination کار می‌کند')">۱</button><button class="btn">۲</button><button class="btn">صفحه بعد ‹</button></div>`,{desc:'نمونه ۴ مجموعه عمومی واقعی؛ فهرست تمام مجموعه‌ها هنگام اتصال به سایت از داده فعلی می‌آید.'})}${sect('جدیدترین و برترین‌ها',cards(albumData.slice().reverse()),{desc:'کنترل مرتب‌سازی و مسیرهای عمومی فعلی /album/updated و /album/top/{mode} حفظ می‌شوند.'})}`}
+const chapterData=[{"id":9,"title":"دو راهی طغیان و اطمینان"},{"id":10,"title":"دوگانگی خوبی و خوشی"},{"id":11,"title":"دوگونگی الله و آلهه"},{"id":12,"title":"از فرضیه‌های نفسانی تا مرضیه‌های ربانی"},{"id":13,"title":"فجر متقین، فجور مترفین"},{"id":14,"title":"جعبه مال، کعبه آمال"},{"id":15,"title":"از مرصاد تا مسکین"},{"id":16,"title":"از فرعون تا مأمون"},{"id":17,"title":"انتخاب حیاتی"}];
+const chapterSongsBySection={"9":[["جلسه یک : سوره فجر؛ سوره امام حسین علیه‌السلام","00:47:56"],["جلسه دو : سوره فجر؛ معادل وجودی امام حسین علیه‌السلام","01:02:20"],["جلسه سه : امام حسین؛ نفس مطمئنه قرآن","00:58:20"],["جلسه چهار : زندگی؛ سالن امتحان نه جای خوشی","00:56:58"],["جلسه پنج : سختی امتحان است، نه نشانه تحقیر","01:03:40"],["جلسه شش : طغیان از قدم‌های کوچک آغاز می‌شود","01:06:53"],["جلسه هفت : خدای همه‌کاره یا خدای هیچ‌کاره؟","01:07:25"],["جلسه هشت : دنیا؛ وزنه‌ای برای امتحان یا پاداش؟","01:09:23"],["جلسه نه : خیر و شر در نگاه قرآن","01:16:49"],["جلسه ده : قمر بنی‌هاشم؛ تسلیم مطلق در برابر امام","00:38:16"],["جلسه یازده : هر که بالاتر، بلای بیشتر؛ راز قله ابتلا","01:05:46"],["جلسه دوازده : صبر؛ شاه‌کلید انسانیت و فضائل","00:36:29"],["جلسه سیزده : دنیا ابزار است، نه هدف؛ نگاه قرآنی به زندگی","01:11:10"],["جلسه چهارده : فقر و غنا؛ هر دو وسیله امتحان الهی","01:15:52"],["جلسه پانزده : محورهای اصلی سوره فجر؛ انسان، امتحان، طغیان و اطمینان","01:12:58"]],"10":[["جلسه اول : صبر به‌عنوان کلید رشد و عروج انسان","00:46:13"],["جلسه دوم : تقسیم‌بندی سه‌گانه صبر در روایات: طاعت، معصیت، مصیبت","01:07:21"],["جلسه سوم : چرا ظاهر همیشه با باطن هماهنگ نیست؟","01:04:42"],["جلسه چهارم : زندگی دنیوی؛ از لهو و لعب تا تکاثر در نگاه قرآن","01:06:01"],["جلسه پنجم : هجرت درونی؛ حرکت از من به سوی خدا","01:10:12"]],"11":[["جلسه اول : تقسیم انسان‌ها بر اساس طغیان یا اطمینان","00:36:11"],["جلسه دوم : ریشه طغیان انسان در خودباوری افراطی","00:42:21"],["جلسه سوم : فرق ایمان ظاهری با توحید واقعی","00:45:11"],["جلسه چهارم : پرستش واقعی از نگاه قرآن؛ اطاعت و رضایت","00:46:04"],["جلسه پنجم : تحلیل عمیق ایمان ساحران فرعون","00:40:11"]],"12":[["جلسه اول : نقش سوره فجر در شناخت امام حسین علیه‌السلام","00:36:39"],["جلسه دوم : نگاه تحقیرآمیز سوره فجر به مقیاس‌های دنیامدار","00:55:23"],["جلسه سوم : نقش پیش‌فرض‌ها در شکل‌گیری باورهای دینی","01:01:51"],["جلسه چهارم : تفاوت نگاه مؤمن و طاغوت به رفاه","01:01:53"],["جلسه پنجم : دعواهای ریشه‌ای از تفاوت در تعریف خدا","00:57:10"],["جلسه ششم : معیار خوشایند الهی در تشخیص شرک پنهان","00:57:39"],["جلسه هفتم : علت‌سازی‌های جعلی؛ ابزار کهنهٔ فریب طاغوت","00:59:50"],["جلسه هشتم : دعوا با خدا؛ از توهم خیر تا افترا","00:58:49"],["جلسه نهم : تسلیم کامل؛ شرط ورود به ساحت ربوبی","01:02:21"],["جلسه دهم : مترفین؛ رفاه‌زده‌های دشمن پیامبران","00:51:55"],["جلسه یازده : رابطه خطرناک خوشایند شخصی با تشخیص حقیقت","01:00:50"]],"13":[["جلسه اول : تفکیک دوگانه مترفین و متقین","00:51:31"],["جلسه دوم : تقابل فجور و تقوا در سوره فجر","00:56:24"],["جلسه سوم : زندگی خوش یا خوب؟ مسئله این است","00:57:41"],["جلسه چهارم : سختی‌های دنیا؛ زمینه‌ساز تعالی انسان","00:53:01"],["جلسه پنجم : امتحان در خوشی و ناخوشی؛ معیار بندگی","00:58:53"],["جلسه ششم : از حیوانیت تا اطمینان؛ سیر مراتب نفس در قرآن","00:54:56"],["جلسه هفتم : ترجیح رضایت خدا بر نارضایتی مردم","00:52:26"],["جلسه هشتم : بازخوانی منطق اشرافی‌گری در نگاه دینی","00:56:06"],["جلسه نهم : اشرافی‌گری پنهان در لایه‌های انقلابی","00:52:52"],["جلسه دهم : سبک زندگی توحیدی مقابل عادت‌های اشرافی","00:58:22"]],"14":[["جلسه اول : خطای رایج در فهم اکرام و اهانت الهی","00:40:05"],["جلسه دوم : اصحاب کهف؛ فراریان از طاغوت","00:45:13"],["جلسه سوم : داستان دو رفیق در سوره کهف و سراب دنیا","00:32:08"],["جلسه چهارم : پیش‌فرض‌های غلط، ریشه طغیان","00:43:53"],["جلسه پنجم : نگاه حیوانی به انسان و بحران ارزش‌ها","00:45:31"],["جلسه ششم : از خود راضی بودن، اولین گام سقوط","00:48:08"],["جلسه هفتم : علت‌سازی جعلی؛ ابزار فتنه‌گران در تاریخ","00:43:32"],["جلسه هشتم : ادعای عقلانیت بدون تعقل قرآنی","00:47:35"],["جلسه نهم : مؤمنِ ظاهری؛ تهدید پنهان برای دین","00:46:27"]],"15":[["جلسه اول : مرصاد الهی؛ راهی از قدرت‌طلبی تا مسکنت","01:06:17"],["جلسه دوم : مسکنت؛ نتیجه تقابل حیوانیت با عبودیت","00:59:31"],["جلسه سوم : رزق ممسوح؛ ظاهر نعمت، باطن بلا","00:59:38"],["جلسه چهارم : رزق ممدود؛ وقتی نعمت مقدمه سقوط است","01:14:20"],["جلسه پنجم : رزق ممسوح؛ مرحله نهایی انحراف از تذکر","01:16:21"]],"16":[],"17":[]};
+function selectChapter(n){if(albumType!=='chapter')return;chapterSelection=n;showCollectionAll=false;render()}
+
+function toggleAlbumList(){showCollectionAll=!showCollectionAll;render()}
+
+function playAlbumSession(i){
+ const isChapter=albumType==='chapter';
+ const section=isChapter?chapterData[chapterSelection].id:null;
+ const rows=isChapter?(chapterSongsBySection[section]||[]):songData.map(x=>[x[0],x[2]]);
+ const selected=rows[i];if(!selected)return;
+ playName=selected[0];playIndex=i;audioOn=true;
+ const dock=byId('audio-dock');if(dock)dock.classList.add('show');
+ byId('audtitle').textContent=playName;
+ byId('audalbum').textContent=isChapter?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ';
+ byId('aud-play').textContent='❚❚';
+ byId('expanded-meta').textContent=playName+' · '+byId('audalbum').textContent;
+ byId('expanded-play').textContent='❚❚';
+ toast('این پلیر در پیش‌نمایش نمایشی است؛ فایل صوتی در نسخه متصل پخش می‌شود');
+}
+
 function album(){
- const chapter=albumType==='chapter';
- const albumTitle=chapter?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ';
- const meta=chapter?'<span class="chip">دارای فصل‌بندی</span><span class="chip">تعداد فصل و جلسه از داده مجموعه</span>':'<span class="chip">موضوع: عالم ملکوت</span><span class="chip">۴۱ جلسه در مجموعه</span>';
- const chapterList=chapter?sect('فصل‌های مجموعه','<div class="chapter-choice"><button class="pill active" data-section-id="9" onclick="toast(\'فصل با شناسه واقعی ۹ انتخاب شده است\')">فصل اول - دو راهی طغیان و اطمینان</button><button class="pill" onclick="toast(\'سایر فصل‌های واقعی همین مجموعه در این فهرست قرار می‌گیرند\')">سایر فصل‌ها</button></div><p class="section-desc">شناسه فصل در مسیر واقعی حفظ می‌شود؛ با انتخاب فصل، فقط جلسات همان فصل نمایش داده می‌شوند.</p>',{desc:'مجموعه ۱۱۶ دارای فصل واقعی است؛ نمونه فصل اول با شناسه ۹ نمایش داده می‌شود.'}):'';
- const sessionList=chapter?sect('جلسات فصل انتخاب‌شده','<div class="soft-panel">جایگاه جلسات فصل انتخاب‌شده؛ عنوان، زمان و فایل صوتی فقط از داده واقعی همین مجموعه خوانده می‌شود. در این پیش‌نمایش برای جلوگیری از نسبت‌دادن جلسه اشتباه، عنوان جلسه ساختگی درج نشده است.</div>',{desc:'با انتخاب هر فصل، فقط جلسات همان فصل نمایش داده می‌شوند.'}):sect('جلسات مجموعه','<div class="panel" style="padding:5px 13px">'+songData.map((x,i)=>track(x,i)).join('')+'</div>',{desc:'این شش ردیف نمونه‌ای از جلسات مجموعه «شرح و بررسی کتاب آن سوی مرگ» هستند.'});
- return '<div class="bread"><a href="#home" onclick="go(\'home\');return false">خانه</a> / <a href="#albums" onclick="go(\'albums\');return false">مجموعه‌ها</a> / جزئیات مجموعه</div><div class="pill-row"><button class="pill '+(!chapter?'active':'')+'" onclick="albumType=\'no\';render()">مجموعه بدون فصل — نمونه /album/1</button><button class="pill '+(chapter?'active':'')+'" onclick="albumType=\'chapter\';render()">مجموعه فصل‌دار — نمونه /album/116</button></div><div class="panel album-hero"><div class="album-cover">'+cover(chapter?3:0,'✦')+'</div><div class="album-info"><span class="eyebrow">جزئیات مجموعه</span><h1>'+albumTitle+'</h1><div class="meta-line">'+meta+'</div><p class="muted">'+(chapter?'نمونه ساختار مجموعه فصل‌دار؛ اطلاعات فصل و جلسات فقط از همین مجموعه خوانده می‌شود.':'این مجموعه شرح کتاب آن سوی مرگ است و از تجربه‌های نزدیک به مرگ سخن می‌گوید.')+'</p><div class="actions"><button class="btn primary" onclick="playSong(0)">▶ شنیدن جلسه اول</button><button class="btn" onclick="toast(\'دانلود ZIP مجموعه از لینک واقعی موجود استفاده می‌کند\')">⇩ دانلود مجموعه</button><button class="btn" onclick="go(\'topics\')">دسته مرتبط</button></div></div></div>'+chapterList+sessionList+sect('مجموعه‌های مرتبط',cards(albumData.slice(1)),{desc:'فقط مجموعه‌هایی در این ردیف می‌آیند که رابطه آن‌ها با مجموعه فعلی در داده واقعی ثبت شده باشد.'});
+ const hasChapters=albumType==='chapter';
+ const collectionTitle=hasChapters?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ';
+ const active=chapterData[Math.max(0,Math.min(chapterSelection,chapterData.length-1))];
+ const sectionId=hasChapters?active.id:null;
+ const allRows=hasChapters?(chapterSongsBySection[sectionId]||[]):songData.map(x=>[x[0],x[2]]);
+ const listRows=showCollectionAll?allRows:allRows.slice(0,8);
+ const coverSrc=albumCoverUrl(hasChapters?'116':'1');
+ const coverMarkup=coverSrc?`<img src="${es(coverSrc)}" alt="جلد مجموعه ${es(collectionTitle)}" loading="eager" onerror="this.style.display='none'">`:'';
+ const description=hasChapters?'دنیا سالن تمرین رشد است، نه مقصد خوشی؛ جایی که هر نعمت و رنج صحنه آزمون و انتخاب انسان می‌شود. این مجموعه با نگاهی به قرآن، تاریخ انبیا و کربلا، مسیر حرکت از طغیان به سوی نفس مطمئنه را روایت می‌کند.':'مجموعه‌ای از گفتارهای استاد مصطفی امینی‌خواه درباره تجربه‌های نزدیک به مرگ، عالم ملکوت و تأمل در زندگی پس از مرگ.';
+ const chapterMarkup=hasChapters?chapterData.map((ch,i)=>`<button type="button" class="collection-season ${i===chapterSelection?'is-selected':''}" data-section-id="${ch.id}" aria-pressed="${i===chapterSelection}" onclick="selectChapter(${i})"><span class="collection-season-num">${String(i+1).padStart(2,'0')}</span><span class="collection-season-text"><small>فصل ${['اول','دوم','سوم','چهارم','پنجم','ششم','هفتم','هشتم','نهم'][i]}</small><b>${es(ch.title)}</b></span><span class="collection-season-arrow" aria-hidden="true">‹</span></button>`).join(''):`<div class="collection-disabled-season" aria-disabled="true"><span class="collection-season-num">—</span><span class="collection-season-text"><b>فصل‌بندی ندارد</b><small>جلسات این مجموعه مستقیماً فهرست شده‌اند.</small></span></div>`;
+ const episodes=listRows.map((x,i)=>`<div class="collection-episode"><span class="collection-episode-index">${String(i+1).padStart(2,'0')}</span><button type="button" class="collection-episode-play" onclick="playAlbumSession(${i})" aria-label="پخش جلسه ${i+1}"><span aria-hidden="true">▶</span></button><div class="collection-episode-copy"><button type="button" class="collection-episode-title" onclick="go('session')">${es(x[0])}</button><small>سخنرانی صوتی <span class="collection-mini-dot">•</span> ${hasChapters?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ'}</small></div><span class="collection-episode-duration"><span aria-hidden="true">◷</span> ${es(x[1])}</span><button type="button" class="collection-episode-download" onclick="toast('لینک دانلود هر فایل پس از اتصال به داده واقعی فعال می‌شود')" aria-label="دریافت جلسه ${i+1}" title="دریافت فایل">↓</button></div>`).join('');
+ const sessionHeading=hasChapters?`جلسات فصل ${['اول','دوم','سوم','چهارم','پنجم','ششم','هفتم','هشتم','نهم'][chapterSelection]}`:'همه جلسات مجموعه';
+ const sessionSubtitle=hasChapters?active.title:'فهرست سخنرانی‌های این مجموعه';
+ const count=allRows.length;
+ const hasMore=allRows.length>8;
+ const empty=`<div class="collection-episodes-empty"><span class="collection-empty-mark">♫</span><b>فهرست جلسات این فصل</b><p>عنوان‌های جلسات این فصل در نسخه متصل، مستقیماً از داده‌های همین مجموعه نمایش داده می‌شود.</p><a href="https://aminikhaah.ir/album/116?section_id=${sectionId}" target="_blank" rel="noopener noreferrer">مشاهده فصل در سایت اصلی</a></div>`;
+ const relatedData=hasChapters?albumData.slice(0,3):albumData.slice(1);
+ return `<div class="collection-page"><div class="collection-breadcrumb"><button onclick="go('home')">خانه</button><span>›</span><button onclick="go('albums')">مجموعه سخنرانی‌ها</button><span>›</span><strong>${es(collectionTitle)}</strong></div>
+ <section class="collection-intro"><div class="collection-art"><div class="collection-cover-frame">${coverMarkup}<div class="collection-art-watermark" aria-hidden="true">✧</div></div><div class="collection-art-caption">مجموعه سخنرانی</div></div><div class="collection-intro-content"><div class="collection-kicker"><span class="collection-kicker-line"></span> مجموعه سخنرانی <span class="collection-kicker-sep">/</span> ${hasChapters?'معرفتی':'عالم ملکوت'}</div><h1>${es(collectionTitle)}</h1><p class="collection-description">${description}</p><div class="collection-highlights"><span><b>${hasChapters?'۹':'—'}</b><small>${hasChapters?'فصل':'بدون فصل‌بندی'}</small></span><span><b>${hasChapters?'۱۵':'۴۱'}</b><small>${hasChapters?'جلسه در فصل اول':'جلسه'}</small></span><span class="collection-highlight-audio"><b>♫</b><small>فایل صوتی</small></span></div><div class="collection-actions"><button class="collection-action-primary" type="button" onclick="playAlbumSession(0)"><span class="collection-action-play" aria-hidden="true">▶</span> شروع شنیدن</button><button class="collection-action-secondary" type="button" onclick="toast('دریافت یکجای مجموعه پس از اتصال لینک واقعی دانلود فعال می‌شود')"><span aria-hidden="true">↓</span> دریافت مجموعه</button><button class="collection-action-icon" type="button" onclick="toast('اشتراک‌گذاری لینک مجموعه در نسخه محصول فعال می‌شود')" aria-label="اشتراک‌گذاری مجموعه" title="اشتراک‌گذاری">↗</button></div></div></section>
+ <div class="collection-main"><aside class="collection-sidebar"><div class="collection-aside-heading"><span class="collection-aside-symbol" aria-hidden="true">☷</span><div><h2>فصل‌های مجموعه</h2><small>${hasChapters?'۹ فصل برای این مجموعه':'این مجموعه فصل ندارد'}</small></div></div><div class="collection-seasons">${chapterMarkup}</div></aside>
+ <section class="collection-content"><div class="collection-content-head"><div class="collection-content-title"><div class="collection-small-eyebrow">${hasChapters?'فصل '+String(chapterSelection+1).padStart(2,'0'):'فهرست کامل'}</div><h2>${sessionHeading}</h2><p>${es(sessionSubtitle)}</p></div><span class="collection-episode-count">${count.toLocaleString('fa-IR')} جلسه</span></div><div class="collection-track-head"><span>فهرست سخنرانی‌ها</span><span>مدت‌زمان</span></div><div class="collection-episode-list">${episodes||empty}</div>${hasMore?`<div class="collection-list-footer"><button type="button" class="collection-show-all" onclick="toggleAlbumList()">${showCollectionAll?'نمایش کمتر':'نمایش همه '+count.toLocaleString('fa-IR')+' جلسه'} <span aria-hidden="true">${showCollectionAll?'⌃':'⌄'}</span></button></div>`:''}</section></div>
+ <section class="collection-related"><div class="collection-related-head"><h2>مجموعه‌های دیگر</h2><button type="button" onclick="go('albums')">مشاهده مجموعه‌ها <span aria-hidden="true">←</span></button></div>${cards(relatedData)}</section>
+ </div>`;
 }
 
 function track(x,i){return `<div class="track"><button class="play-circle" onclick="playSong(${i})" aria-label="پخش ${es(x[0])}">▶</button><span><button style="border:0;background:none;text-align:right;padding:0" class="track-title" onclick="go('session')">${es(x[0])}</button><small>شرح و بررسی کتاب آن سوی مرگ</small></span><span class="track-time">${x[2]}</span><button class="track-link" onclick="toast('پیوند دانلود با فایل واقعی جلسه تنظیم می‌شود')">دریافت</button></div>`}
