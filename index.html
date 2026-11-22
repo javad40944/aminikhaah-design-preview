@@ -1311,21 +1311,21 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
   .collection-actions button,.collection-actions .collection-action-download{transition:none}
 }
 
-/* Chapter list heading: one descriptive title, styled as a quiet library chapter opener. */
-.collection-content-head.is-chapter-heading{position:relative;isolation:isolate;overflow:hidden;min-height:132px;align-items:center;padding:25px 30px 27px;background:linear-gradient(110deg,color-mix(in srgb,var(--primary-soft) 64%,var(--surface)),var(--surface) 83%);border-bottom:1px solid color-mix(in srgb,var(--gold) 26%,var(--line))}
-.collection-content-head.is-chapter-heading::before{content:"";position:absolute;top:22px;right:0;bottom:22px;width:3px;border-radius:3px 0 0 3px;background:linear-gradient(180deg,var(--gold),var(--primary));pointer-events:none}
-.collection-content-head.is-chapter-heading::after{content:"";position:absolute;left:27px;top:-35px;width:94px;height:94px;transform:rotate(45deg);border:1px solid color-mix(in srgb,var(--gold) 27%,transparent);border-radius:14px;pointer-events:none;opacity:.55}
+/* Chapter list heading: compact, descriptive chapter opener with a restrained library motif. */
+.collection-content-head.is-chapter-heading{position:relative;isolation:isolate;overflow:hidden;min-height:80px;align-items:center;padding:10px 22px 11px;background:linear-gradient(110deg,color-mix(in srgb,var(--primary-soft) 64%,var(--surface)),var(--surface) 83%);border-bottom:1px solid color-mix(in srgb,var(--gold) 26%,var(--line))}
+.collection-content-head.is-chapter-heading::before{content:"";position:absolute;top:11px;right:0;bottom:11px;width:3px;border-radius:3px 0 0 3px;background:linear-gradient(180deg,var(--gold),var(--primary));pointer-events:none}
+.collection-content-head.is-chapter-heading::after{content:"";position:absolute;left:19px;top:-31px;width:68px;height:68px;transform:rotate(45deg);border:1px solid color-mix(in srgb,var(--gold) 27%,transparent);border-radius:14px;pointer-events:none;opacity:.55}
 .collection-content-head.is-chapter-heading .collection-content-title{position:relative;z-index:1;min-width:0;flex:1}
-.collection-content-head.is-chapter-heading .collection-small-eyebrow{display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:3px 10px;margin-bottom:9px;border:1px solid color-mix(in srgb,var(--gold) 28%,var(--line));border-radius:999px;background:color-mix(in srgb,var(--surface) 80%,var(--gold));font-size:10px;font-weight:780;color:var(--accent)}
-.collection-content-head.is-chapter-heading h2{max-width:100%;font-size:clamp(21px,2.1vw,28px);line-height:1.52;font-weight:850;color:var(--primary-dark);overflow-wrap:anywhere}
-.collection-content-head.is-chapter-heading .collection-content-title::after{content:"";display:block;width:67px;max-width:50%;height:2px;margin-top:12px;border-radius:4px;background:linear-gradient(to left,var(--gold),transparent)}
+.collection-content-head.is-chapter-heading .collection-small-eyebrow{display:inline-flex;align-items:center;width:max-content;max-width:100%;padding:1px 8px;margin-bottom:4px;border:1px solid color-mix(in srgb,var(--gold) 28%,var(--line));border-radius:999px;background:color-mix(in srgb,var(--surface) 80%,var(--gold));font-size:9px;font-weight:780;color:var(--accent)}
+.collection-content-head.is-chapter-heading h2{max-width:100%;font-size:clamp(19px,1.9vw,23px);line-height:1.4;font-weight:850;color:var(--primary-dark);overflow-wrap:anywhere}
+.collection-content-head.is-chapter-heading .collection-content-title::after{content:"";display:block;width:38px;max-width:50%;height:1px;margin-top:5px;border-radius:4px;background:linear-gradient(to left,var(--gold),transparent)}
 .collection-content-head.is-chapter-heading .collection-episode-count{position:relative;z-index:1;background:var(--surface);border-color:color-mix(in srgb,var(--primary) 15%,var(--line));box-shadow:0 3px 10px rgba(27,62,49,.045);color:var(--primary-dark)}
 @container (max-width:620px){
- .collection-content-head.is-chapter-heading{min-height:108px;padding:17px 16px 19px;gap:9px;align-items:center}
- .collection-content-head.is-chapter-heading h2{font-size:19px;line-height:1.55}
- .collection-content-head.is-chapter-heading .collection-small-eyebrow{font-size:9px;padding:2px 8px;margin-bottom:7px}
- .collection-content-head.is-chapter-heading .collection-content-title::after{margin-top:9px;width:47px}
- .collection-content-head.is-chapter-heading::after{width:61px;height:61px;left:15px;top:-25px}
+ .collection-content-head.is-chapter-heading{min-height:72px;padding:8px 13px 9px;gap:9px;align-items:center}
+ .collection-content-head.is-chapter-heading h2{font-size:17px;line-height:1.4}
+ .collection-content-head.is-chapter-heading .collection-small-eyebrow{font-size:9px;padding:1px 7px;margin-bottom:3px}
+ .collection-content-head.is-chapter-heading .collection-content-title::after{margin-top:4px;width:34px}
+ .collection-content-head.is-chapter-heading::after{width:45px;height:45px;left:14px;top:-21px}
  .collection-content-head.is-chapter-heading .collection-episode-count{flex-shrink:0;font-size:10px}
 }
 </style>
