@@ -2933,7 +2933,7 @@ function session(){
      <div class="session-clean-controls" aria-label="امکانات جلسه">
       <button type="button" class="session-control-play" onclick="sessionStartPlayback()" ${canPlay?"":"disabled"}><span class="session-control-play-icon">${sessionIcon("play",17)}</span><span>پخش جلسه</span></button>
       ${canPlay?`<a class="session-control-download" href="${es(d.file)}" target="_blank" rel="noopener noreferrer" download><span class="session-control-download-icon">${sessionIcon("down",18)}</span><span>دریافت صوت</span><small>MP3</small></a>`:`<button type="button" class="session-control-download" disabled><span class="session-control-download-icon">${sessionIcon("down",18)}</span><span>دریافت صوت</span></button>`}
-      <button type="button" class="session-control-quiet" title="افزودن به لیست پخش" aria-label="افزودن به لیست پخش" onclick="toast('افزودن به لیست پخش پس از ورود به حساب کاربری فعال می‌شود')"><span class="session-control-quiet-icon">${sessionIcon("list",17)}</span><span>لیست پخش</span></button>
+      <button type="button" class="session-control-quiet" title="افزودن به لیست پخش" aria-label="افزودن به لیست پخش" onclick="toast('افزودن به لیست پخش پس از ورود به حساب کاربری فعال می‌شود')"><span class="session-control-quiet-icon">${sessionIcon("list",17)}</span><span>افزودن به لیست پخش</span></button>
       <button type="button" class="session-control-quiet" title="اشتراک‌گذاری" onclick="sessionShare()"><span class="session-control-quiet-icon">${sessionIcon("share",17)}</span><span>اشتراک‌گذاری</span></button>
      </div>
     </div>
