@@ -1326,6 +1326,151 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
  .collection-content-head.is-chapter-heading::after{width:45px;height:45px;left:14px;top:-21px}
  .collection-content-head.is-chapter-heading .collection-episode-count{flex-shrink:0;font-size:10px}
 }
+
+/* Season catalogue — compact Persian library cards, responsive with the same identity. */
+.collection-sidebar{
+  position:relative;
+  padding:17px 13px 15px;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--paper) 47%,var(--surface)),var(--surface) 45%);
+  border-color:color-mix(in srgb,var(--gold) 22%,var(--line));
+}
+.collection-sidebar:before{
+  content:"";position:absolute;inset-inline:22px;top:0;height:3px;border-radius:0 0 5px 5px;
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--gold) 70%,var(--primary)),transparent);
+}
+.collection-aside-heading{
+  display:flex;align-items:center;gap:10px;
+  padding:1px 5px 13px;margin-bottom:12px;
+  border-bottom:1px solid color-mix(in srgb,var(--gold) 20%,var(--line));
+}
+.collection-aside-heading h2{font-size:16px;line-height:1.5;font-weight:850;color:var(--ink)}
+.collection-aside-heading small{font-size:10px;line-height:1.6;margin-top:1px}
+.collection-aside-symbol{
+  width:39px;height:39px;flex:0 0 39px;
+  border-radius:12px;
+  color:var(--primary);
+  background:linear-gradient(135deg,var(--primary-soft),var(--surface));
+  border:1px solid color-mix(in srgb,var(--primary) 16%,var(--line));
+}
+.collection-aside-symbol svg{display:block}
+.collection-seasons-hint{display:none}
+.collection-seasons{display:grid;gap:7px}
+.collection-season{
+  position:relative;isolation:isolate;overflow:hidden;
+  width:100%;min-height:67px;padding:9px 10px 9px 11px;gap:10px;
+  background:color-mix(in srgb,var(--surface) 86%,var(--paper));
+  border:1px solid color-mix(in srgb,var(--gold) 13%,var(--line));
+  border-radius:13px;
+  box-shadow:0 2px 8px rgba(24,63,55,.035);
+  transition:transform .18s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.collection-season:before{
+  content:"";position:absolute;inset-inline-start:0;top:16%;bottom:16%;width:3px;
+  border-radius:4px;background:color-mix(in srgb,var(--gold) 55%,transparent);
+  opacity:0;transition:opacity .18s ease;
+}
+.collection-season:hover:not(.is-selected){
+  transform:translateX(-2px);background:var(--primary-soft);
+  border-color:color-mix(in srgb,var(--primary) 34%,var(--line));
+  box-shadow:0 4px 15px rgba(24,63,55,.06);
+}
+.collection-season:hover:before,.collection-season.is-selected:before{opacity:1}
+.collection-season:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+body:not(.dark) .collection-season.is-selected{
+  background:linear-gradient(115deg,var(--primary-dark),var(--primary));
+  border-color:var(--primary-dark);color:#fff;
+  box-shadow:0 5px 14px color-mix(in srgb,var(--primary-dark) 18%,transparent);
+}
+.collection-season.is-selected:before{background:var(--gold)}
+.collection-season-num{
+  flex:0 0 34px;width:34px;height:34px;border-radius:11px;
+  border:1px solid color-mix(in srgb,var(--gold) 19%,var(--line));
+  background:var(--alt);color:var(--primary-dark);
+  font-size:12px;font-weight:850;
+}
+body:not(.dark) .collection-season.is-selected .collection-season-num{
+  background:rgba(255,255,255,.13);color:#fff;
+  border-color:rgba(255,255,255,.24);
+}
+.collection-season-text{min-width:0}
+.collection-season-text small{
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:2px 6px;font-size:10px;line-height:1.45;margin-bottom:4px;
+  color:var(--muted);
+}
+.collection-season-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:1px 6px;white-space:nowrap;border-radius:20px;
+  background:var(--alt);color:var(--muted);
+  font-size:9px;font-weight:650;line-height:1.65;
+}
+.collection-season-text b{
+  display:block;font-size:12px;line-height:1.55;
+  color:var(--ink);font-weight:760;overflow-wrap:anywhere;
+}
+body:not(.dark) .collection-season.is-selected .collection-season-text b{color:#fff}
+body:not(.dark) .collection-season.is-selected .collection-season-text small{color:rgba(255,255,255,.8)}
+body:not(.dark) .collection-season.is-selected .collection-season-count{
+  background:rgba(255,255,255,.13);color:#f9e8c4;
+}
+.collection-season-arrow{
+  display:inline-grid;place-items:center;flex:0 0 9px;
+  font-size:19px;line-height:1;color:var(--gold);
+  opacity:.45;transition:opacity .18s ease;
+}
+.collection-season:hover .collection-season-arrow,.collection-season.is-selected .collection-season-arrow{opacity:1}
+body.dark .collection-season.is-selected{
+  background:linear-gradient(115deg,var(--primary-soft),var(--surface));
+  border-color:var(--primary);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary) 16%,transparent);
+}
+body.dark .collection-season.is-selected .collection-season-text b{color:var(--ink)}
+body.dark .collection-season.is-selected .collection-season-text small{color:var(--muted)}
+body.dark .collection-season.is-selected .collection-season-num{
+  background:color-mix(in srgb,var(--primary) 22%,var(--alt));color:var(--ink);border-color:var(--primary);
+}
+body.dark .collection-season.is-selected .collection-season-count{
+  background:var(--alt);color:var(--primary);
+}
+@container (max-width:650px){
+  .collection-sidebar{padding:12px 11px 11px;border-radius:15px}
+  .collection-aside-heading{
+    gap:9px;padding:0 3px 10px;margin-bottom:10px;
+  }
+  .collection-aside-heading h2{font-size:14px}
+  .collection-aside-symbol{width:35px;height:35px;flex-basis:35px;border-radius:10px}
+  .collection-seasons-hint{
+    display:inline-flex;align-items:center;gap:4px;
+    margin-inline-start:auto;white-space:nowrap;
+    color:var(--muted);font-size:9px;font-weight:650;
+  }
+  .collection-seasons-hint span{color:var(--gold);font-size:17px}
+  .collection-seasons-viewport{position:relative;min-width:0}
+  .collection-seasons-viewport:after{
+    content:"";position:absolute;inset-inline-end:0;top:0;bottom:3px;width:15px;
+    pointer-events:none;background:linear-gradient(to left,transparent,var(--surface));
+    opacity:.6;
+  }
+  .collection-seasons{
+    display:flex;gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:1px 1px 7px;
+    scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+  }
+  .collection-season{
+    flex:0 0 202px;width:202px;min-height:92px;
+    padding:10px 10px 9px;align-items:flex-start;gap:9px;
+    scroll-snap-align:start;border-radius:13px;
+  }
+  .collection-season-num{flex:0 0 33px;width:33px;height:33px}
+  .collection-season-text small{font-size:9.5px;gap:2px 5px}
+  .collection-season-count{font-size:8.5px;padding:1px 5px}
+  .collection-season-text b{
+    font-size:12px;line-height:1.5;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .collection-season-arrow{display:none}
+  .collection-season:hover:not(.is-selected){transform:none}
+}
+@media (prefers-reduced-motion:reduce){.collection-season,.collection-season:before,.collection-season-arrow{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -1657,7 +1802,7 @@ const chapterData=[{"id":9,"title":"دو راهی طغیان و اطمینان"}
 // Official totals for each section of album 116; sections 16 and 17 are not yet fully transcribed in this wireframe.
 const chapterSessionCounts={9:15,10:5,11:5,12:11,13:10,14:9,15:5,16:34,17:34};
 const chapterSongsBySection={"9":[["جلسه یک : سوره فجر؛ سوره امام حسین علیه‌السلام","00:47:56"],["جلسه دو : سوره فجر؛ معادل وجودی امام حسین علیه‌السلام","01:02:20"],["جلسه سه : امام حسین؛ نفس مطمئنه قرآن","00:58:20"],["جلسه چهار : زندگی؛ سالن امتحان نه جای خوشی","00:56:58"],["جلسه پنج : سختی امتحان است، نه نشانه تحقیر","01:03:40"],["جلسه شش : طغیان از قدم‌های کوچک آغاز می‌شود","01:06:53"],["جلسه هفت : خدای همه‌کاره یا خدای هیچ‌کاره؟","01:07:25"],["جلسه هشت : دنیا؛ وزنه‌ای برای امتحان یا پاداش؟","01:09:23"],["جلسه نه : خیر و شر در نگاه قرآن","01:16:49"],["جلسه ده : قمر بنی‌هاشم؛ تسلیم مطلق در برابر امام","00:38:16"],["جلسه یازده : هر که بالاتر، بلای بیشتر؛ راز قله ابتلا","01:05:46"],["جلسه دوازده : صبر؛ شاه‌کلید انسانیت و فضائل","00:36:29"],["جلسه سیزده : دنیا ابزار است، نه هدف؛ نگاه قرآنی به زندگی","01:11:10"],["جلسه چهارده : فقر و غنا؛ هر دو وسیله امتحان الهی","01:15:52"],["جلسه پانزده : محورهای اصلی سوره فجر؛ انسان، امتحان، طغیان و اطمینان","01:12:58"]],"10":[["جلسه اول : صبر به‌عنوان کلید رشد و عروج انسان","00:46:13"],["جلسه دوم : تقسیم‌بندی سه‌گانه صبر در روایات: طاعت، معصیت، مصیبت","01:07:21"],["جلسه سوم : چرا ظاهر همیشه با باطن هماهنگ نیست؟","01:04:42"],["جلسه چهارم : زندگی دنیوی؛ از لهو و لعب تا تکاثر در نگاه قرآن","01:06:01"],["جلسه پنجم : هجرت درونی؛ حرکت از من به سوی خدا","01:10:12"]],"11":[["جلسه اول : تقسیم انسان‌ها بر اساس طغیان یا اطمینان","00:36:11"],["جلسه دوم : ریشه طغیان انسان در خودباوری افراطی","00:42:21"],["جلسه سوم : فرق ایمان ظاهری با توحید واقعی","00:45:11"],["جلسه چهارم : پرستش واقعی از نگاه قرآن؛ اطاعت و رضایت","00:46:04"],["جلسه پنجم : تحلیل عمیق ایمان ساحران فرعون","00:40:11"]],"12":[["جلسه اول : نقش سوره فجر در شناخت امام حسین علیه‌السلام","00:36:39"],["جلسه دوم : نگاه تحقیرآمیز سوره فجر به مقیاس‌های دنیامدار","00:55:23"],["جلسه سوم : نقش پیش‌فرض‌ها در شکل‌گیری باورهای دینی","01:01:51"],["جلسه چهارم : تفاوت نگاه مؤمن و طاغوت به رفاه","01:01:53"],["جلسه پنجم : دعواهای ریشه‌ای از تفاوت در تعریف خدا","00:57:10"],["جلسه ششم : معیار خوشایند الهی در تشخیص شرک پنهان","00:57:39"],["جلسه هفتم : علت‌سازی‌های جعلی؛ ابزار کهنهٔ فریب طاغوت","00:59:50"],["جلسه هشتم : دعوا با خدا؛ از توهم خیر تا افترا","00:58:49"],["جلسه نهم : تسلیم کامل؛ شرط ورود به ساحت ربوبی","01:02:21"],["جلسه دهم : مترفین؛ رفاه‌زده‌های دشمن پیامبران","00:51:55"],["جلسه یازده : رابطه خطرناک خوشایند شخصی با تشخیص حقیقت","01:00:50"]],"13":[["جلسه اول : تفکیک دوگانه مترفین و متقین","00:51:31"],["جلسه دوم : تقابل فجور و تقوا در سوره فجر","00:56:24"],["جلسه سوم : زندگی خوش یا خوب؟ مسئله این است","00:57:41"],["جلسه چهارم : سختی‌های دنیا؛ زمینه‌ساز تعالی انسان","00:53:01"],["جلسه پنجم : امتحان در خوشی و ناخوشی؛ معیار بندگی","00:58:53"],["جلسه ششم : از حیوانیت تا اطمینان؛ سیر مراتب نفس در قرآن","00:54:56"],["جلسه هفتم : ترجیح رضایت خدا بر نارضایتی مردم","00:52:26"],["جلسه هشتم : بازخوانی منطق اشرافی‌گری در نگاه دینی","00:56:06"],["جلسه نهم : اشرافی‌گری پنهان در لایه‌های انقلابی","00:52:52"],["جلسه دهم : سبک زندگی توحیدی مقابل عادت‌های اشرافی","00:58:22"]],"14":[["جلسه اول : خطای رایج در فهم اکرام و اهانت الهی","00:40:05"],["جلسه دوم : اصحاب کهف؛ فراریان از طاغوت","00:45:13"],["جلسه سوم : داستان دو رفیق در سوره کهف و سراب دنیا","00:32:08"],["جلسه چهارم : پیش‌فرض‌های غلط، ریشه طغیان","00:43:53"],["جلسه پنجم : نگاه حیوانی به انسان و بحران ارزش‌ها","00:45:31"],["جلسه ششم : از خود راضی بودن، اولین گام سقوط","00:48:08"],["جلسه هفتم : علت‌سازی جعلی؛ ابزار فتنه‌گران در تاریخ","00:43:32"],["جلسه هشتم : ادعای عقلانیت بدون تعقل قرآنی","00:47:35"],["جلسه نهم : مؤمنِ ظاهری؛ تهدید پنهان برای دین","00:46:27"]],"15":[["جلسه اول : مرصاد الهی؛ راهی از قدرت‌طلبی تا مسکنت","01:06:17"],["جلسه دوم : مسکنت؛ نتیجه تقابل حیوانیت با عبودیت","00:59:31"],["جلسه سوم : رزق ممسوح؛ ظاهر نعمت، باطن بلا","00:59:38"],["جلسه چهارم : رزق ممدود؛ وقتی نعمت مقدمه سقوط است","01:14:20"],["جلسه پنجم : رزق ممسوح؛ مرحله نهایی انحراف از تذکر","01:16:21"]],"16":[],"17":[]};
-function selectChapter(n){if(albumType!=='chapter')return;chapterSelection=n;showCollectionAll=false;render()}
+function selectChapter(n){if(albumType!=='chapter')return;const currentRail=document.querySelector('.collection-seasons');const railOffset=currentRail?currentRail.scrollLeft:0;chapterSelection=n;showCollectionAll=false;render();const updatedRail=document.querySelector('.collection-seasons');if(updatedRail)updatedRail.scrollLeft=railOffset}
 
 const playlistCollectionIds=new Set();
 try{const storedPlaylist=JSON.parse(localStorage.getItem('aminikhaah_preview_album_playlist')||'[]');if(Array.isArray(storedPlaylist))storedPlaylist.filter(id=>['1','116'].includes(id)).forEach(id=>playlistCollectionIds.add(id))}catch(e){}
@@ -1704,7 +1849,7 @@ function album(){
  const coverSrc=albumCoverUrl(hasChapters?'116':'1');
  const coverMarkup=coverSrc?`<img src="${es(coverSrc)}" alt="جلد مجموعه ${es(collectionTitle)}" loading="eager" onerror="this.style.display='none'">`:'';
  const description=hasChapters?"در دل این جلسات، پرده‌ای از حقیقت کنار می‌رود: اینکه دنیا سالن تمرینِ رشد است، نه مقصدِ خوشی؛ جایی که هر نعمت و هر رنج صحنۀ آزمون و انتخاب انسان می‌شود. این مجموعه با روایت‌های تکان‌دهنده از قرآن، تاریخ انبیا و کربلا نشان می‌دهد چطور نگاهِ درست به امتحان، انسان را از سطح حیوانی به مقام «نفس مطمئنه» می‌رساند. در این مسیر، نقاب از چهرۀ طغیان، دنیازدگی و فرعونیت امروز برداشته می‌شود و حقیقتِ قهرمانان ایمان روشن می‌گردد.<br>اگر می‌خواهید جهان را عمیق‌تر ببینید و زاویۀ نگاه‌تان به زندگی، امتحان، نعمت و حقیقت دگرگون شود، این جلسات راهی تازه پیش پای شما می‌گذارند":"کتاب آن سوی مرگ کوششی کم‌سابقه برای به تصویر کشیدن عالم پس از مرگ است.<br>✔ نویسنده ی این کتاب کوشیده است تا با بهره‌گیری از گفته‌های افرادی که پیش از این تجربه‌ای نزدیک به مرگ را داشته‌اند، تصویری واقعی از عالم پس از مرگ به تصویر بکشد.<br>✔ مطالب این کتاب بر اساس آیات قرآن کریم، روایات اهل بیت (ع) و نکات عقلی و فلسفی ، طی ۳۹ جلسه در دانشگاه فردوسی مشهد، شرح و تبیین شده است.<br>✔ این مطالب در ادامه بخش سوم از مباحث تأثیر درک مهندسی خلقت بر معنویت / نظام تقدیم، بیان گردیده است.<br>✔ پس از اتمام شرح کتاب طی دو جلسه در تهران به پرسش و پاسخ پیرامون مباحث مطرح شده پرداخته شده است.";
- const chapterMarkup=hasChapters?chapterData.map((ch,i)=>`<button type="button" class="collection-season ${i===chapterSelection?'is-selected':''}" data-section-id="${ch.id}" aria-pressed="${i===chapterSelection}" onclick="selectChapter(${i})"><span class="collection-season-num">${String(i+1).padStart(2,'0')}</span><span class="collection-season-text"><small>فصل ${['اول','دوم','سوم','چهارم','پنجم','ششم','هفتم','هشتم','نهم'][i]}</small><b>${es(ch.title)}</b></span><span class="collection-season-arrow" aria-hidden="true">‹</span></button>`).join(''):`<div class="collection-disabled-season" aria-disabled="true"><span class="collection-season-num">—</span><span class="collection-season-text"><b>فصل‌بندی ندارد</b><small>جلسات این مجموعه مستقیماً فهرست شده‌اند.</small></span></div>`;
+ const chapterMarkup=hasChapters?chapterData.map((ch,i)=>`<button type="button" class="collection-season ${i===chapterSelection?'is-selected':''}" data-section-id="${ch.id}" aria-pressed="${i===chapterSelection}" title="${es(ch.title)}" aria-label="فصل ${(i+1).toLocaleString('fa-IR')}، ${es(ch.title)}، ${(chapterSessionCounts[ch.id]||0).toLocaleString('fa-IR')} جلسه" onclick="selectChapter(${i})"><span class="collection-season-num">${String(i+1).padStart(2,'0')}</span><span class="collection-season-text"><small><span>فصل ${['اول','دوم','سوم','چهارم','پنجم','ششم','هفتم','هشتم','نهم'][i]}</span><span class="collection-season-count">${(chapterSessionCounts[ch.id]||0).toLocaleString('fa-IR')} جلسه</span></small><b>${es(ch.title)}</b></span><span class="collection-season-arrow" aria-hidden="true">‹</span></button>`).join(''):`<div class="collection-disabled-season" aria-disabled="true"><span class="collection-season-num">—</span><span class="collection-season-text"><b>فصل‌بندی ندارد</b><small>جلسات این مجموعه مستقیماً فهرست شده‌اند.</small></span></div>`;
  const episodes=listRows.map((x,i)=>`<div class="collection-episode"><span class="collection-episode-index">${String(i+1).padStart(2,'0')}</span><button type="button" class="collection-episode-play" onclick="playAlbumSession(${i})" aria-label="پخش جلسه ${i+1}"><span aria-hidden="true">▶</span></button><div class="collection-episode-copy"><button type="button" class="collection-episode-title" onclick="go('session')">${es(x[0])}</button><small>${es(collectionTitle)}${hasChapters?` <span class="collection-mini-dot">•</span> فصل ${(chapterSelection+1).toLocaleString('fa-IR')} <span class="collection-mini-dot">•</span> ${es(active.title)}`:''}</small></div><span class="collection-episode-duration"><span aria-hidden="true">◷</span> ${es(x[1])}</span><button type="button" class="collection-episode-download" onclick="toast('لینک دانلود هر فایل پس از اتصال به داده واقعی فعال می‌شود')" aria-label="دریافت جلسه ${i+1}" title="دریافت فایل">↓</button></div>`).join('');
  const sessionHeading=hasChapters?active.title:'همه جلسات مجموعه';
  const sessionSubtitle=hasChapters?'':'فهرست سخنرانی‌های این مجموعه';
@@ -1719,7 +1864,7 @@ function album(){
  const hasMore=allRows.length>8;
  const empty=`<div class="collection-episodes-empty"><span class="collection-empty-mark">♫</span><b>فهرست جلسات این فصل</b><p>عنوان‌های جلسات این فصل در نسخه متصل، مستقیماً از داده‌های همین مجموعه نمایش داده می‌شود.</p><a href="https://aminikhaah.ir/album/116?section_id=${sectionId}" target="_blank" rel="noopener noreferrer">مشاهده فصل در سایت اصلی</a></div>`;
  const relatedData=hasChapters?albumData.slice(0,3):albumData.slice(1);
- const sidebarMarkup=hasChapters?`<aside class="collection-sidebar"><div class="collection-aside-heading"><span class="collection-aside-symbol" aria-hidden="true">☷</span><div><h2>فصل‌های مجموعه</h2><small>${hasChapters?'۹ فصل برای این مجموعه':'این مجموعه فصل ندارد'}</small></div></div><div class="collection-seasons">${chapterMarkup}</div></aside>`:'';
+ const sidebarMarkup=hasChapters?`<aside class="collection-sidebar"><div class="collection-aside-heading"><span class="collection-aside-symbol" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-2.6-1.6-6-1.7-9-1v14.1c3-.7 6.4-.6 9 1 2.6-1.6 6-1.7 9-1V4.5c-3-.7-6.4-.6-9 1Z"/><path d="M12 5.5v14"/><path d="M5.5 8.5c1.5-.2 3-.1 4 .4M14.5 8.9c1.1-.5 2.6-.6 4-.4"/></svg></span><div><h2>فصل‌های مجموعه</h2><small>${hasChapters?'۹ فصل برای این مجموعه':'این مجموعه فصل ندارد'}</small></div><span class="collection-seasons-hint" aria-hidden="true">ورق بزنید <span>←</span></span></div><div class="collection-seasons-viewport"><div class="collection-seasons" role="group" aria-label="انتخاب فصل مجموعه">${chapterMarkup}</div></div></aside>`:'';
  return `<div class="collection-page"><div class="collection-breadcrumb"><button onclick="go('home')">خانه</button><span>›</span><button onclick="go('albums')">مجموعه سخنرانی‌ها</button><span>›</span><strong>${es(collectionTitle)}</strong></div>
  <section class="collection-intro"><div class="collection-art"><div class="collection-cover-frame">${coverMarkup}<div class="collection-art-watermark" aria-hidden="true">✧</div></div></div><div class="collection-intro-content"><a class="collection-kicker" href="${hasChapters?'https://aminikhaah.ir/category/144':'https://aminikhaah.ir/category/142'}" target="_blank" rel="noopener noreferrer" aria-label="مشاهده دسته‌بندی ${hasChapters?'معرفتی':'عالم ملکوت'}" title="مشاهده دسته‌بندی"><span class="collection-category-emblem" aria-hidden="true">✧</span><strong class="collection-category-name">${hasChapters?'معرفتی':'عالم ملکوت'}</strong></a><h1>${es(collectionTitle)}</h1><p class="collection-description">${description}</p><div class="collection-highlights">${hasChapters?'<span><b>۹</b><small>فصل</small></span>':''}<span><b>${totalSessionCount.toLocaleString('fa-IR')}</b><small>جلسه</small></span><span class="collection-highlight-duration"><b>${hasChapters?'۱۴۴ ساعت و ۳۳ دقیقه':'۲۱ ساعت و ۳ دقیقه'}</b></span></div><div class="collection-actions"><button class="collection-action-primary" type="button" onclick="playAlbumSession(0)"><span class="collection-action-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.8a1.2 1.2 0 0 1 1.8-1L20 11a1.2 1.2 0 0 1 0 2L8.8 20.2a1.2 1.2 0 0 1-1.8-1V4.8Z"/></svg></span> شروع شنیدن</button>${downloadMarkup}<button class="collection-action-playlist" type="button" aria-pressed="${isInPlaylist}" onclick="toggleCollectionPlaylist()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2V21l-7-4-7 4V6.5a2 2 0 0 1 2-2Z"/><path d="${isInPlaylist?'M9 11.5l2 2 4-4':'M12 8.5v6m-3-3h6'}"/></svg>${isInPlaylist?'حذف از لیست پخش':'افزودن به لیست پخش'}</button><div class="collection-action-utilities"><button class="collection-action-views" type="button" aria-label="${sampleViewCount} بازدید" title="تعداد بازدید نمایشی در پیش‌نمایش؛ عدد واقعی در نسخه متصل نمایش داده می‌شود" onclick="toast('تعداد بازدید فعلاً نمونه طراحی است و پس از اتصال به آمار واقعی جایگزین می‌شود')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="collection-view-count"><b>${sampleViewCount}</b></span></button><button class="collection-action-icon" type="button" onclick="shareCollection()" aria-label="اشتراک‌گذاری مجموعه" title="اشتراک‌گذاری"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4.4"/></svg></button></div></div></div></section>
  <div class="collection-main ${hasChapters?'':'collection-main-no-seasons'}">${sidebarMarkup}
