@@ -1968,6 +1968,11 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 .audio-dock input.audio-progress:after{display:none}
 .audio-dock input.audio-progress:disabled{opacity:.45;cursor:not-allowed}
 .audio-dock .audtime{direction:ltr;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* Bottom player is revealed by the explicit session play button only. */
+.session-actionbar .session-play-trigger{background:var(--primary);color:#fff;border-color:var(--primary);min-width:116px}
+.session-actionbar .session-play-trigger svg{color:#f8dbab}
+.session-actionbar .session-play-trigger:hover:not(:disabled){background:var(--primary-dark);border-color:var(--primary-dark);color:#fff}
+.session-actionbar .session-play-trigger:disabled{opacity:.5;cursor:not-allowed}
 </style>
 </head>
 <body data-palette="olive">
@@ -2481,10 +2486,13 @@ function sessionShare(){
 
 
 /* Session audio lives outside #content so navigation never destroys playback. */
-function dockCurrent(){return sessionFallback?{...sessionFallback}: {...sessionPreviewTracks[sessionPreviewIndex],album:"از حیوانیت تا حیات"}}
+let dockActiveSession=null;
+function sessionSelectedRecord(){return sessionFallback?{...sessionFallback}: {...sessionPreviewTracks[sessionPreviewIndex],album:"از حیوانیت تا حیات"}}
+function dockCurrent(){return dockActiveSession||sessionSelectedRecord()}
 function dockSetup(){
- const rec=dockCurrent(),a=byId("dock-real-audio"),bar=byId("audio-dock");
+ const rec=sessionSelectedRecord(),a=byId("dock-real-audio"),bar=byId("audio-dock");
  if(!a||!bar)return;
+ dockActiveSession={...rec};
  const file=rec.file||"";
  if(a.dataset.mediaSrc!==file){
   a.pause();a.removeAttribute("src");
@@ -2512,25 +2520,31 @@ function dockSync(){
  const total=duration?sessionAudioTime(duration).replace(/^00:/,""):(dockCurrent().duration||"").replace(/^00:/,"");
  byId("audtime").textContent=sessionPersian(sessionAudioTime(a.currentTime||0).replace(/^00:/,""))+(total?" / "+sessionPersian(total):"");
 }
+function sessionStartPlayback(){
+ const rec=sessionSelectedRecord();
+ if(!rec.file){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return;}
+ dockSetup();
+ dockPlay();
+}
 function dockPlay(){
  const a=byId("dock-real-audio");
  if(!a||!a.getAttribute("src")){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return;}
  const p=a.play();if(p&&typeof p.catch==="function")p.catch(()=>toast("امکان پخش فایل صوتی در این مرورگر وجود ندارد"));
 }
 function dockToggle(){const a=byId("dock-real-audio");if(a&&!a.paused)a.pause();else dockPlay()}
-function dockStop(){const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}}
+function dockStop(){const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}dockActiveSession=null}
 function dockSeek(v){if(queueType!=="session")return;const a=byId("dock-real-audio");if(a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=a.duration*Number(v)/1000}
 function dockSkip(n){const a=byId("dock-real-audio");if(a&&a.getAttribute("src"))a.currentTime=Math.max(0,Math.min(Number.isFinite(a.duration)?a.duration:Infinity,a.currentTime+n))}
 function dockSpeed(){const a=byId("dock-real-audio");if(!a)return;const vals=[1,1.25,1.5,2];const i=vals.findIndex(x=>Math.abs(x-a.playbackRate)<.01);a.playbackRate=vals[(i+1)%vals.length];const t=sessionPersian(String(a.playbackRate).replace(".","٫"))+"×";byId("speed").textContent=t;byId("expanded-speed").textContent=t}
 function dockStep(n){
  if(sessionFallback){const i=sessionFallback.rows.findIndex(x=>x[0]===sessionFallback.title);if(i+n<0||i+n>=sessionFallback.rows.length)return;sessionSwitch(n)}
  else{const i=sessionPreviewIndex+n;if(i<0||i>=sessionPreviewTracks.length)return;sessionSelect(i)}
- dockPlay();
+ dockSetup();dockPlay();
 }
 function dockChoose(i){
  if(sessionFallback){const n=sessionFallback.rows.findIndex(x=>x[0]===sessionFallback.title);if(i!==n)sessionSwitch(i-n)}
  else sessionSelect(i);
- dockPlay();
+ dockSetup();dockPlay();
  if(!byId("audio-expanded").classList.contains("hide"))byId("queue-items").innerHTML=queueMarkup();
 }
 function dockAudioError(){if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
@@ -2578,7 +2592,8 @@ function session(){
  </div>
  <div class="session-actionbar">
    <span class="session-actionbar-title">دسترسی‌های جلسه</span>
-   ${canPlay?`<a class="session-action-primary" href="${es(d.file)}" target="_blank" rel="noopener noreferrer" download>${sessionIcon("down",17)} دریافت صوت <small>MP3</small></a>`:`<button class="session-action-primary" type="button" disabled>${sessionIcon("down",17)} دریافت صوت</button>`}
+   <button type="button" class="session-action-primary session-play-trigger" onclick="sessionStartPlayback()" ${canPlay?"":"disabled"}>${sessionIcon("sound",17)} پخش جلسه</button>
+   ${canPlay?`<a class="session-action-download" href="${es(d.file)}" target="_blank" rel="noopener noreferrer" download>${sessionIcon("down",17)} دریافت صوت <small>MP3</small></a>`:`<button class="session-action-download" type="button" disabled>${sessionIcon("down",17)} دریافت صوت</button>`}
    <button type="button" onclick="toast('افزودن به لیست پخش پس از ورود به حساب کاربری فعال می‌شود')">${sessionIcon("list",17)} افزودن به لیست پخش</button>
    <button type="button" onclick="sessionShare()">${sessionIcon("share",17)} اشتراک‌گذاری</button>
    <button type="button" onclick="toast('پسندیدن در نسخه متصل به حساب کاربری فعال می‌شود')">${sessionIcon("heart",17)} پسندیدن</button>
@@ -2686,7 +2701,7 @@ function profile(){
 
 const views={home,albums,album,session,roza,media,topics,search,questions,lessons,books,profile};
 function go(id){if(!views[id])return;page=id;render();window.scrollTo({top:0,behavior:'instant'});if(id==='session'&&searchJump){setTimeout(()=>{const target=byId('session-match');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});searchJump=false},80)}}
-function render(){const c=byId('content');c.innerHTML=views[page]();if(page==='session')dockSetup();byId('app').classList.toggle('mode-current',mode==='current');byId('app').classList.toggle('mode-full',mode==='full');document.querySelectorAll('.mobile-bottombar button').forEach(b=>b.classList.toggle('active',b.dataset.dest===page));document.querySelectorAll('.head-nav button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===pages.find(x=>x[0]===page)?.[1]));document.querySelectorAll('.future-nav').forEach(b=>b.classList.toggle('hide',mode==='current'));if(page==='home')startSlider();else stopSlider();if(mode==='current'&&['questions','books','lessons'].includes(page)){c.innerHTML=`${title('این بخش در طرح جامع نهایی محفوظ است')}<div class="soft-panel">این صفحه به انتشار عمومی یا توسعه فنی مستقل نیاز دارد. برای دیدن طرح آن حالت «طرح جامع» را انتخاب کنید.</div>`} }
+function render(){const c=byId('content');c.innerHTML=views[page]();byId('app').classList.toggle('mode-current',mode==='current');byId('app').classList.toggle('mode-full',mode==='full');document.querySelectorAll('.mobile-bottombar button').forEach(b=>b.classList.toggle('active',b.dataset.dest===page));document.querySelectorAll('.head-nav button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===pages.find(x=>x[0]===page)?.[1]));document.querySelectorAll('.future-nav').forEach(b=>b.classList.toggle('hide',mode==='current'));if(page==='home')startSlider();else stopSlider();if(mode==='current'&&['questions','books','lessons'].includes(page)){c.innerHTML=`${title('این بخش در طرح جامع نهایی محفوظ است')}<div class="soft-panel">این صفحه به انتشار عمومی یا توسعه فنی مستقل نیاز دارد. برای دیدن طرح آن حالت «طرح جامع» را انتخاب کنید.</div>`} }
 function goSlide(n){slide=(n+sliderData.length)%sliderData.length;document.querySelectorAll('.hero-slider .slide').forEach((el,i)=>{el.classList.toggle('active',i===slide);el.setAttribute('aria-hidden',i===slide?'false':'true')});document.querySelectorAll('.hero-slider .slider-dots button').forEach((el,i)=>el.classList.toggle('active',i===slide))}
 function moveSlide(n){goSlide(slide+n);startSlider()}
 function stopSlider(){clearInterval(slideTimer);slideTimer=null}
