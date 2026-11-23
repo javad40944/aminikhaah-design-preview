@@ -2443,7 +2443,7 @@ function openSessionFromAlbum(i){
  sessionFallback={
    id:null,title:selected[0],duration:selected[1],date:"",venue:"",file:"",
    album:chapter?"از حیوانیت تا حیات":"شرح و بررسی کتاب آن سوی مرگ",
-   chapter:chapter?sec.title:"",rows
+   chapter:chapter?sec.title:"",chapterNumber:chapter?chapterSelection+1:null,rows
  };
  sessionTextExpanded=false;go("session");
 }
@@ -2497,6 +2497,10 @@ function sessionShare(){
  else toast("مرورگر اجازه کپی پیوند را نمی‌دهد");
 }
 
+function sessionOrdinal(n){
+ const values=["اول","دوم","سوم","چهارم","پنجم","ششم","هفتم","هشتم","نهم","دهم","یازدهم","دوازدهم","سیزدهم","چهاردهم","پانزدهم"];
+ return values[n-1]||sessionPersian(n);
+}
 function session(){
  const fallback=!!sessionFallback;
  const d=fallback?sessionFallback:sessionPreviewTracks[sessionPreviewIndex];
@@ -2504,6 +2508,9 @@ function session(){
  const all=fallback?d.rows.map((x,i)=>({title:x[0],duration:x[1],i})):sessionPreviewTracks.map((x,i)=>({...x,i}));
  const albumTitle=fallback?d.album:"از حیوانیت تا حیات";
  const chapterTitle=fallback?(d.chapter||""):"دو راهی طغیان و اطمینان";
+ const isChaptered=albumTitle==="از حیوانیت تا حیات";
+ const chapterIndex=fallback?Math.max(0,(d.chapterNumber||chapterSelection+1)-1):0;
+ const chapterCrumb=isChaptered?`<span>›</span><button type="button" onclick="albumType='chapter';chapterSelection=${chapterIndex};go('album')">فصل ${sessionOrdinal(chapterIndex+1)}</button>`:"";
  const cover=albumCoverUrl(fallback&&d.album!=="از حیوانیت تا حیات"?"1":"116");
  const hasText=!fallback&&sessionPreviewIndex===0;
  const topics=hasText?sessionPreviewTopics:[];
@@ -2515,7 +2522,7 @@ function session(){
  const topicMarkup=topics.length?`<div class="session-topic-grid">${topics.slice(0,6).map((t,i)=>`<span class="session-topic-chip"><i>${sessionPersian(i+1)}</i>${es(t)}</span>`).join("")}</div>${topics.length>6?`<details class="session-topics-more"><summary>نمایش سایر موضوعات (${sessionPersian(topics.length-6)} مورد)</summary><div class="session-topic-grid">${topics.slice(6).map((t,i)=>`<span class="session-topic-chip"><i>${sessionPersian(i+7)}</i>${es(t)}</span>`).join("")}</div></details>`:""}`:`<p class="session-unavailable">موضوعات این جلسه در پیش‌نمایش فعلی وارد نشده‌اند.</p>`;
  const textMarkup=hasText?`<div class="session-ai-notice">${sessionIcon("file",17)} متن این جلسه در سایت با کمک هوش مصنوعی پیاده‌سازی شده و ممکن است نیازمند بازبینی باشد.</div><div class="session-transcript" id="session-transcript" style="font-size:${15+sessionTextFont}px">${sessionTranscriptMarkup(sessionTextExpanded)}</div><button class="session-readmore" id="session-readmore" type="button" onclick="sessionTextToggle()">${sessionTextExpanded?"نمایش بخش کوتاه‌تر":"مشاهده متن کامل جلسه"} ${sessionIcon("arrow",14)}</button>`:`<div class="session-empty-text">${sessionIcon("file",24)}<strong>متن این جلسه هنوز در این نسخه از پیش‌نمایش وارد نشده است.</strong><p>در طراحی نهایی، متن واقعی همین جلسه در این محل نمایش داده می‌شود.</p></div>`;
  return `<div class="session-page">
- <nav class="session-breadcrumb" aria-label="مسیر صفحه"><button type="button" onclick="go('home')">خانه</button><span>›</span><button type="button" onclick="go('albums')">مجموعه‌ها</button><span>›</span><button type="button" onclick="albumType='${albumTitle==="از حیوانیت تا حیات"?"chapter":"no"}';go('album')">${es(albumTitle)}</button><span>›</span><strong>جزئیات جلسه</strong></nav>
+ <nav class="session-breadcrumb" aria-label="مسیر صفحه"><button type="button" onclick="go('home')">خانه</button><span>›</span><button type="button" onclick="go('albums')">مجموعه‌ها</button><span>›</span><button type="button" onclick="albumType='${albumTitle==="از حیوانیت تا حیات"?"chapter":"no"}';go('album')">${es(albumTitle)}</button>${chapterCrumb}<span>›</span><strong>جلسه ${sessionOrdinal(index+1)}</strong></nav>
  <div class="session-hero">
   <section class="session-overview">
    <div class="session-miniheading">${sessionIcon("book",18)}<span>صفحه اختصاصی سخنرانی</span><em>جلسه ${sessionPersian(index+1)} از ${sessionPersian(all.length)}</em></div>
