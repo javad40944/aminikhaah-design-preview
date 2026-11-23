@@ -1702,14 +1702,22 @@ body.dark .collection-season.is-selected .collection-season-count{
 .collection-related-image img{
  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
 }
-.collection-related-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0;flex:1;align-self:stretch;gap:4px}
+.collection-related-copy{
+ display:flex;flex-direction:column;align-items:stretch;
+ min-width:0;flex:1;align-self:stretch;gap:5px;
+}
+.collection-related-titles{
+ display:flex;flex:1 1 auto;min-height:0;
+ flex-direction:column;justify-content:center;align-items:flex-start;
+ gap:9px;
+}
 .collection-related-kicker{font-size:9.5px;font-weight:700;line-height:1.5;color:var(--muted)}
 .collection-related-name{
  display:block;min-width:0;width:100%;
  color:var(--ink);font-weight:850;font-size:13px;line-height:1.65;
  overflow-wrap:anywhere;
 }
-.collection-related-link{display:inline-flex;align-items:center;gap:5px;margin-top:auto;padding-top:4px;color:var(--primary);font-size:10px;font-weight:760}
+.collection-related-link{display:inline-flex;align-items:center;align-self:flex-start;flex-shrink:0;gap:5px;margin-top:0;padding-top:2px;color:var(--primary);font-size:10px;font-weight:760}
 .collection-related-link svg{color:var(--gold);transition:transform .2s ease}
 .collection-related-card:hover .collection-related-link svg{transform:translateX(-3px)}
 @container (max-width:950px){
@@ -1738,6 +1746,7 @@ body.dark .collection-season.is-selected .collection-season-count{
  .collection-related-image{flex:0 0 94px;width:94px;height:94px;padding:4px;border-radius:10px}
  .collection-related-name{font-size:11.5px;line-height:1.55}
  .collection-related-kicker{font-size:9px}
+ .collection-related-titles{gap:8px}
  .collection-related-link{font-size:9px}
  .collection-related-link svg{width:14px;height:14px}
 }
@@ -2133,7 +2142,7 @@ function collectionRelatedCards(data){
    <span class="collection-related-image" aria-hidden="true"><span class="collection-related-image-frame">
     ${picture?`<img src="${es(picture)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">`:''}
    </span></span>
-   <span class="collection-related-copy"><span class="collection-related-kicker">مجموعه سخنرانی</span><strong class="collection-related-name">${es(name)}</strong><span class="collection-related-link">مشاهده مجموعه <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></span></span>
+   <span class="collection-related-copy"><span class="collection-related-titles"><span class="collection-related-kicker">مجموعه سخنرانی</span><strong class="collection-related-name">${es(name)}</strong></span><span class="collection-related-link">مشاهده مجموعه <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></span></span>
   </a>`;
  }).join('')}</div>`;
 }
