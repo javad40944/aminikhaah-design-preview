@@ -1544,15 +1544,17 @@ body.dark .collection-season.is-selected .collection-season-count{
 }
 .collection-mini-dot{display:inline-block;margin-inline:4px;color:var(--gold)}
 .collection-episode-duration{
-  display:inline-flex;align-items:center;justify-content:center;gap:5px;
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
   justify-self:center;direction:ltr;white-space:nowrap;
-  min-height:29px;padding:4px 7px;
-  border:1px solid color-mix(in srgb,var(--gold) 15%,var(--line));
-  border-radius:9px;background:var(--paper);
-  color:var(--muted);font-size:10.5px;font-variant-numeric:tabular-nums;
+  min-height:32px;padding:5px 9px;
+  border:1px solid color-mix(in srgb,var(--gold) 32%,var(--line));
+  border-radius:999px;
+  background:linear-gradient(135deg,color-mix(in srgb,var(--surface) 73%,var(--paper)),color-mix(in srgb,var(--primary-soft) 24%,var(--surface)));
+  color:var(--primary-dark);font-size:10.5px;font-variant-numeric:tabular-nums;
+  box-shadow:0 2px 8px color-mix(in srgb,var(--primary) 5%,transparent),inset 0 1px 0 color-mix(in srgb,var(--surface) 75%,transparent);
 }
-.collection-episode-duration svg{color:var(--gold);flex-shrink:0}
-.collection-episode-duration b{font-weight:650;letter-spacing:.05px}
+.collection-episode-duration svg{color:var(--gold);flex-shrink:0;width:13px;height:13px;stroke-width:2}
+.collection-episode-duration b{font-weight:780;letter-spacing:.1px}
 .collection-episode-download{
   display:grid;place-items:center;width:37px;height:37px;min-height:37px;
   border-radius:11px;background:var(--surface);
@@ -1609,8 +1611,8 @@ body.dark .collection-season.is-selected .collection-season-count{
   }
   .collection-episode-duration{
     grid-column:3;grid-row:2;align-self:start;justify-self:start;
-    margin:0;min-height:21px;gap:4px;padding:2px 5px;
-    font-size:9px;line-height:1.35;border-radius:6px;
+    margin:2px 0 0;min-height:24px;gap:4px;padding:3px 8px;
+    font-size:9px;line-height:1.35;border-radius:999px;
   }
   .collection-episode-duration svg{width:11px;height:11px}
   .collection-episode-download{
