@@ -1630,6 +1630,117 @@ body.dark .collection-season.is-selected .collection-season-count{
   .collection-episode-title{font-size:11.2px}
 }
 @media (prefers-reduced-motion:reduce){.collection-episode,.collection-episode:before,.collection-episode-play,.collection-episode-download{transition:none}.collection-episode:hover{transform:none}}
+
+/* Related collections: a quiet, image-led listening shelf, isolated to the album page. */
+.collection-related{
+ position:relative;overflow:hidden;
+ margin-top:22px;padding:18px 18px 19px;
+ border:1px solid color-mix(in srgb,var(--gold) 23%,var(--line));border-radius:18px;
+ background:linear-gradient(145deg,color-mix(in srgb,var(--paper) 39%,var(--surface)),var(--surface) 66%);
+ box-shadow:var(--shadow);
+}
+.collection-related:before{
+ content:"";position:absolute;inset-inline:26px;top:0;height:3px;
+ border-radius:0 0 8px 8px;
+ background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:.63;
+}
+.collection-related-head{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:15px}
+.collection-related-heading{display:flex;align-items:center;gap:10px;min-width:0}
+.collection-related-heading-icon{
+ flex:0 0 37px;width:37px;height:37px;display:grid;place-items:center;border-radius:11px;
+ border:1px solid color-mix(in srgb,var(--primary) 15%,var(--line));
+ background:var(--primary-soft);color:var(--primary);
+}
+.collection-related-heading h2{font-size:17px;line-height:1.35;font-weight:850;color:var(--ink)}
+.collection-related-heading p{color:var(--muted);font-size:10px;line-height:1.5;margin:2px 0 0}
+.collection-related-head button{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;flex-shrink:0;
+ min-height:34px;padding:6px 11px;border-radius:999px;
+ border:1px solid color-mix(in srgb,var(--primary) 22%,var(--line));
+ background:var(--surface);color:var(--primary-dark);font-size:11px;font-weight:760;
+ transition:background .18s ease,border-color .18s ease;
+}
+.collection-related-head button span{font-size:16px;color:var(--gold);line-height:1}
+.collection-related-head button:hover{background:var(--primary-soft);border-color:var(--primary)}
+.collection-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.collection-related-card{
+ position:relative;isolation:isolate;overflow:hidden;min-width:0;min-height:138px;
+ display:flex;align-items:center;gap:12px;padding:11px;
+ border:1px solid color-mix(in srgb,var(--gold) 20%,var(--line));border-radius:15px;
+ background:var(--surface);box-shadow:0 3px 12px color-mix(in srgb,var(--primary) 5%,transparent);
+ text-decoration:none;color:var(--ink);
+ transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease;
+}
+.collection-related-card:after{
+ content:"";position:absolute;inset-inline-start:0;top:18%;bottom:18%;
+ width:3px;border-radius:4px;background:var(--gold);opacity:0;transition:opacity .2s ease;
+}
+.collection-related-card:hover{
+ border-color:color-mix(in srgb,var(--primary) 32%,var(--line));
+ box-shadow:0 8px 22px color-mix(in srgb,var(--primary) 10%,transparent);
+ transform:translateY(-2px);
+}
+.collection-related-card:hover:after{opacity:1}
+.collection-related-card:focus-visible,.collection-related-head button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.collection-related-image{
+ flex:0 0 110px;width:110px;height:110px;padding:5px;
+ border-radius:12px;border:1px solid color-mix(in srgb,var(--gold) 16%,var(--line));
+ background:linear-gradient(135deg,var(--primary-soft),var(--paper));
+ display:grid;place-items:center;
+}
+.collection-related-image-frame{position:relative;display:grid;place-items:center;width:100%;height:100%;overflow:hidden;border-radius:8px;background:color-mix(in srgb,var(--surface) 55%,var(--paper))}
+.collection-related-image-frame:before{content:"✦";color:var(--gold);opacity:.34;font-size:24px}
+.collection-related-image img{
+ position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
+}
+.collection-related-copy{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-width:0;flex:1;align-self:stretch;gap:4px}
+.collection-related-kicker{font-size:9.5px;font-weight:700;line-height:1.5;color:var(--muted)}
+.collection-related-name{
+ display:block;min-width:0;width:100%;
+ color:var(--ink);font-weight:850;font-size:13px;line-height:1.65;
+ overflow-wrap:anywhere;
+}
+.collection-related-link{display:inline-flex;align-items:center;gap:5px;margin-top:auto;padding-top:4px;color:var(--primary);font-size:10px;font-weight:760}
+.collection-related-link svg{color:var(--gold);transition:transform .2s ease}
+.collection-related-card:hover .collection-related-link svg{transform:translateX(-3px)}
+@container (max-width:950px){
+ .collection-related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .collection-related-image{flex-basis:103px;width:103px;height:103px}
+ .collection-related-card{min-height:126px}
+}
+@container (max-width:650px){
+ .collection-related{margin-top:15px;padding:13px 10px 12px;border-radius:15px}
+ .collection-related-head{gap:9px;margin-bottom:11px}
+ .collection-related-heading{gap:8px}
+ .collection-related-heading-icon{width:33px;height:33px;flex-basis:33px;border-radius:10px}
+ .collection-related-heading h2{font-size:14px}
+ .collection-related-heading p{font-size:9px}
+ .collection-related-head button{font-size:10px;min-height:31px;padding:5px 9px;gap:4px}
+ .collection-related-grid{
+  display:flex;gap:9px;overflow-x:auto;overscroll-behavior-inline:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+  padding:2px 1px 7px;
+ }
+ .collection-related-card{
+  flex:0 0 265px;width:265px;min-height:117px;
+  padding:9px;gap:10px;border-radius:13px;scroll-snap-align:start;
+ }
+ .collection-related-image{flex:0 0 94px;width:94px;height:94px;padding:4px;border-radius:10px}
+ .collection-related-name{font-size:11.5px;line-height:1.55}
+ .collection-related-kicker{font-size:9px}
+ .collection-related-link{font-size:9px}
+ .collection-related-link svg{width:14px;height:14px}
+}
+@container (max-width:360px){
+ .collection-related-card{flex-basis:244px;width:244px}
+ .collection-related-image{flex-basis:85px;width:85px;height:85px}
+ .collection-related-heading p{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+ .collection-related-card,.collection-related-card:after,.collection-related-head button,.collection-related-link svg{transition:none}
+ .collection-related-card:hover{transform:none}
+ .collection-related-card:hover .collection-related-link svg{transform:none}
+}
 </style>
 </head>
 <body data-palette="olive">
@@ -1998,6 +2109,21 @@ function playAlbumSession(i){
  toast('این پلیر در پیش‌نمایش نمایشی است؛ فایل صوتی در نسخه متصل پخش می‌شود');
 }
 
+
+/* The collection footer uses dedicated editorial cards, without fake stats or raw IDs. */
+function collectionRelatedCards(data){
+ return `<div class="collection-related-grid" role="list">${data.map((item,i)=>{
+  const name=item[0],id=item[1],picture=albumCoverUrl(id);
+  const openAction="albumType='"+(id==='116'?'chapter':'no')+"';chapterSelection=0;showCollectionAll=false;go('album');return false";
+  return `<a class="collection-related-card" role="listitem" href="#album" onclick="${openAction}" aria-label="مشاهده مجموعه ${es(name)}">
+   <span class="collection-related-image" aria-hidden="true"><span class="collection-related-image-frame">
+    ${picture?`<img src="${es(picture)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">`:''}
+   </span></span>
+   <span class="collection-related-copy"><span class="collection-related-kicker">مجموعه سخنرانی</span><strong class="collection-related-name">${es(name)}</strong><span class="collection-related-link">مشاهده مجموعه <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></span></span>
+  </a>`;
+ }).join('')}</div>`;
+}
+
 function album(){
  const hasChapters=albumType==='chapter';
  const collectionTitle=hasChapters?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ';
@@ -2028,7 +2154,7 @@ function album(){
  <section class="collection-intro"><div class="collection-art"><div class="collection-cover-frame">${coverMarkup}<div class="collection-art-watermark" aria-hidden="true">✧</div></div></div><div class="collection-intro-content"><a class="collection-kicker" href="${hasChapters?'https://aminikhaah.ir/category/144':'https://aminikhaah.ir/category/142'}" target="_blank" rel="noopener noreferrer" aria-label="مشاهده دسته‌بندی ${hasChapters?'معرفتی':'عالم ملکوت'}" title="مشاهده دسته‌بندی"><span class="collection-category-emblem" aria-hidden="true">✧</span><strong class="collection-category-name">${hasChapters?'معرفتی':'عالم ملکوت'}</strong></a><h1>${es(collectionTitle)}</h1><p class="collection-description">${description}</p><div class="collection-highlights">${hasChapters?'<span><b>۹</b><small>فصل</small></span>':''}<span><b>${totalSessionCount.toLocaleString('fa-IR')}</b><small>جلسه</small></span><span class="collection-highlight-duration"><b>${hasChapters?'۱۴۴ ساعت و ۳۳ دقیقه':'۲۱ ساعت و ۳ دقیقه'}</b></span></div><div class="collection-actions"><button class="collection-action-primary" type="button" onclick="playAlbumSession(0)"><span class="collection-action-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.8a1.2 1.2 0 0 1 1.8-1L20 11a1.2 1.2 0 0 1 0 2L8.8 20.2a1.2 1.2 0 0 1-1.8-1V4.8Z"/></svg></span> شروع شنیدن</button>${downloadMarkup}<button class="collection-action-playlist" type="button" aria-pressed="${isInPlaylist}" onclick="toggleCollectionPlaylist()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2V21l-7-4-7 4V6.5a2 2 0 0 1 2-2Z"/><path d="${isInPlaylist?'M9 11.5l2 2 4-4':'M12 8.5v6m-3-3h6'}"/></svg>${isInPlaylist?'حذف از لیست پخش':'افزودن به لیست پخش'}</button><div class="collection-action-utilities"><button class="collection-action-views" type="button" aria-label="${sampleViewCount} بازدید" title="تعداد بازدید نمایشی در پیش‌نمایش؛ عدد واقعی در نسخه متصل نمایش داده می‌شود" onclick="toast('تعداد بازدید فعلاً نمونه طراحی است و پس از اتصال به آمار واقعی جایگزین می‌شود')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="collection-view-count"><b>${sampleViewCount}</b></span></button><button class="collection-action-icon" type="button" onclick="shareCollection()" aria-label="اشتراک‌گذاری مجموعه" title="اشتراک‌گذاری"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4.4"/></svg></button></div></div></div></section>
  <div class="collection-main ${hasChapters?'':'collection-main-no-seasons'}">${sidebarMarkup}
  <section class="collection-content"><div class="collection-content-head ${hasChapters?'is-chapter-heading':''}"><div class="collection-content-title"><div class="collection-small-eyebrow">${hasChapters?'فصل '+String(chapterSelection+1).padStart(2,'0'):'فهرست کامل'}</div><h2>${es(sessionHeading)}</h2>${sessionSubtitle?`<p>${es(sessionSubtitle)}</p>`:''}</div><span class="collection-episode-count">${count.toLocaleString('fa-IR')} جلسه</span></div><div class="collection-episode-list">${episodes||empty}</div>${hasMore?`<div class="collection-list-footer"><button type="button" class="collection-show-all" onclick="toggleAlbumList()">${showCollectionAll?'نمایش کمتر':'نمایش همه '+count.toLocaleString('fa-IR')+' جلسه'} <span aria-hidden="true">${showCollectionAll?'⌃':'⌄'}</span></button></div>`:''}</section></div>
- <section class="collection-related"><div class="collection-related-head"><h2>مجموعه‌های دیگر</h2><button type="button" onclick="go('albums')">مشاهده مجموعه‌ها <span aria-hidden="true">←</span></button></div>${cards(relatedData)}</section>
+ <section class="collection-related" aria-label="مجموعه‌های دیگر"><div class="collection-related-head"><div class="collection-related-heading"><span class="collection-related-heading-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.8" width="12" height="16.4" rx="2"/><path d="M8 7.5h4M8 10.5h4M19 7v12.5a1 1 0 0 1-1 1h-9"/></svg></span><div><h2>مجموعه‌های دیگر</h2><p>پیشنهادهایی برای ادامه شنیدن</p></div></div><button type="button" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>${collectionRelatedCards(relatedData)}</section>
  </div>`;
 }
 
