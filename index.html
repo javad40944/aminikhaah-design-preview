@@ -2577,7 +2577,7 @@ function session(){
  <nav class="session-breadcrumb" aria-label="مسیر صفحه"><button type="button" onclick="go('home')">خانه</button><span>›</span><button type="button" onclick="go('albums')">مجموعه‌ها</button><span>›</span><button type="button" onclick="albumType='${albumTitle==="از حیوانیت تا حیات"?"chapter":"no"}';go('album')">${es(albumTitle)}</button>${chapterCrumb}<span>›</span><strong>جلسه ${sessionOrdinal(index+1)}</strong></nav>
  <div class="session-hero">
   <section class="session-overview">
-   <div class="session-miniheading">${sessionIcon("book",18)}<span>صفحه اختصاصی سخنرانی</span><em>جلسه ${sessionPersian(index+1)} از ${sessionPersian(all.length)}</em></div>
+   <div class="session-miniheading"><em>جلسه ${sessionPersian(index+1)} از ${sessionPersian(all.length)}</em></div>
    <div class="session-intro">
     <div class="session-cover"><img src="${es(cover)}" alt="تصویر مجموعه ${es(albumTitle)}" onerror="this.style.display='none'"><span>مجموعه سخنرانی</span></div>
     <div class="session-intro-copy"><span class="session-chapter-label">${chapterTitle?`فصل: ${es(chapterTitle)}`:"سخنرانی"}</span><h1>${es(d.title)}</h1><p>${es(albumTitle)}</p></div>
