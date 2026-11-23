@@ -2195,14 +2195,14 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-clean-meta svg{width:13px;height:13px}
  .session-clean-controls{
   grid-column:1/-1;grid-row:3;display:grid;
-  grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;
+  grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;
  }
  .session-clean-controls>.session-control-play,.session-clean-controls>.session-control-download{
-  grid-column:span 3;width:100%;min-width:0;min-height:43px;font-size:10.5px;padding:7px 8px;
+  grid-column:span 1;width:100%;min-width:0;min-height:43px;font-size:10.5px;padding:7px 8px;
  }
  .session-control-play-icon{width:26px;height:26px}
  .session-clean-controls>.session-control-quiet{
-  grid-column:span 2;min-width:0;min-height:37px;padding:6px 3px;
+  grid-column:span 1;min-width:0;min-height:37px;padding:6px 3px;
   font-size:9.5px;gap:5px;
  }
  .session-clean-controls>.session-control-quiet svg{width:15px;height:15px}
@@ -2225,6 +2225,27 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 }
 
 .session-clean-meta .session-clean-views{white-space:nowrap;font-weight:700;color:var(--muted)}
+
+/* Place the heart action with engagement metadata rather than playback controls. */
+.session-clean-meta .session-like-inline{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ min-width:0;min-height:31px;margin-inline-start:-7px;
+ padding:5px 9px;border:1px solid transparent;border-radius:8px;
+ background:transparent;color:var(--muted);font-family:inherit;
+ font-size:10.5px;font-weight:650;white-space:nowrap;cursor:pointer;
+ transition:background .16s ease,color .16s ease,border-color .16s ease;
+}
+.session-clean-meta .session-like-inline svg{color:var(--gold);flex-shrink:0}
+.session-clean-meta .session-like-inline:hover{
+ background:var(--primary-soft);color:var(--primary-dark);
+ border-color:color-mix(in srgb,var(--gold) 12%,var(--line));
+}
+.session-clean-meta .session-like-inline:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@container (max-width:620px){
+ .session-clean-meta .session-like-inline{font-size:9px;min-height:25px;margin-inline-start:-5px;padding:3px 6px}
+ .session-clean-meta .session-like-inline svg{width:14px;height:14px}
+}
+@media(prefers-reduced-motion:reduce){.session-clean-meta .session-like-inline{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -2847,13 +2868,13 @@ function session(){
       ${d.date?`<span title="تاریخ انتشار">${sessionIcon("calendar",15)} ${sessionPersian(d.date.replace(/-/g,"/"))}</span>`:""}
       ${d.venue?`<span title="محل برگزاری">${sessionIcon("pin",15)} ${es(d.venue)}</span>`:""}
       <span class="session-clean-views" title="آمار بازدید سایت (برای نمونهٔ اول؛ ممکن است بعداً تغییر کرده باشد)">${sessionIcon("eye",15)} بازدید ${Number.isFinite(d.views)?sessionPersian(d.views):"—"}</span>
+      <button type="button" class="session-like-inline" title="پسندیدن این جلسه" aria-label="پسندیدن این جلسه" onclick="toast('پسندیدن در نسخه متصل به حساب کاربری فعال می‌شود')">${sessionIcon("heart",16)} پسندیدن</button>
      </div>
      <div class="session-clean-controls" aria-label="امکانات جلسه">
       <button type="button" class="session-control-play" onclick="sessionStartPlayback()" ${canPlay?"":"disabled"}><span class="session-control-play-icon">${sessionIcon("play",17)}</span><span>پخش جلسه</span></button>
       ${canPlay?`<a class="session-control-download" href="${es(d.file)}" target="_blank" rel="noopener noreferrer" download>${sessionIcon("down",17)}<span>دریافت صوت</span><small>MP3</small></a>`:`<button type="button" class="session-control-download" disabled>${sessionIcon("down",17)}<span>دریافت صوت</span></button>`}
       <button type="button" class="session-control-quiet" title="افزودن به لیست پخش" aria-label="افزودن به لیست پخش" onclick="toast('افزودن به لیست پخش پس از ورود به حساب کاربری فعال می‌شود')">${sessionIcon("list",17)}<span>لیست پخش</span></button>
       <button type="button" class="session-control-quiet" title="اشتراک‌گذاری" onclick="sessionShare()">${sessionIcon("share",17)}<span>اشتراک‌گذاری</span></button>
-      <button type="button" class="session-control-quiet" title="پسندیدن" onclick="toast('پسندیدن در نسخه متصل به حساب کاربری فعال می‌شود')">${sessionIcon("heart",17)}<span>پسندیدن</span></button>
      </div>
     </div>
    </div>
