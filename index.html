@@ -2306,93 +2306,89 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 @media(prefers-reduced-motion:reduce){.session-page .session-overview.session-clean .session-like-corner{transition:none}}
 
 
-/* Session topics: editorial numbered index, not disconnected tags or pills. */
+/* Compact flowing topic index: all items share one continuous list and expansion stays inline. */
 .session-page .session-topics{
  position:relative;overflow:hidden;
- border-color:color-mix(in srgb,var(--gold) 23%,var(--line));
- background:linear-gradient(145deg,color-mix(in srgb,var(--paper) 14%,var(--surface)),var(--surface) 53%);
+ border-color:color-mix(in srgb,var(--gold) 20%,var(--line));
+ background:var(--surface);padding:16px 18px 18px;
 }
 .session-page .session-topics::before{
- content:"";position:absolute;top:0;right:22px;width:68px;height:2px;
- border-radius:0 0 3px 3px;background:linear-gradient(90deg,transparent,var(--gold));
+ content:"";position:absolute;top:0;right:22px;width:60px;height:2px;
+ background:linear-gradient(90deg,transparent,var(--gold));
 }
 .session-page .session-topics-heading{
- display:flex;align-items:center;gap:11px;
- margin-bottom:7px;padding-bottom:15px;
- border-bottom:1px solid color-mix(in srgb,var(--line) 85%,var(--paper));
+ display:flex;align-items:center;gap:9px;margin-bottom:12px;padding-bottom:10px;
+ border-bottom:1px solid color-mix(in srgb,var(--line) 76%,transparent);
 }
 .session-page .session-topics-heading .session-panel-symbol{
- flex:0 0 36px;width:36px;height:36px;border-radius:10px;
- background:color-mix(in srgb,var(--primary-soft) 78%,var(--surface));
+ flex:0 0 30px;width:30px;height:30px;border-radius:9px;
+ background:color-mix(in srgb,var(--primary-soft) 80%,var(--surface));
 }
+.session-page .session-topics-heading .session-panel-symbol svg{width:17px;height:17px}
 .session-page .session-topics-heading h2{
- margin:0;min-width:0;font-size:16px;font-weight:830;color:var(--ink);
+ min-width:0;margin:0;font-size:15px;line-height:1.5;
+ font-weight:820;color:var(--ink);
 }
 .session-topics-count{
- display:inline-flex;align-items:center;justify-content:center;
- margin-inline-start:auto;padding:5px 10px;
- border:1px solid color-mix(in srgb,var(--gold) 24%,var(--line));
- border-radius:8px;color:var(--muted);font-size:10px;line-height:1.4;
- background:color-mix(in srgb,var(--paper) 55%,var(--surface));
- white-space:nowrap;font-weight:720;
+ display:inline-flex;align-items:center;justify-content:center;margin-inline-start:auto;
+ padding:3px 9px;border:1px solid color-mix(in srgb,var(--gold) 20%,var(--line));
+ border-radius:999px;font-size:9.5px;font-weight:700;white-space:nowrap;
+ color:var(--muted);background:color-mix(in srgb,var(--paper) 37%,var(--surface));
 }
 .session-page .session-topic-list{
- display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
- gap:0 20px;margin:0;padding:1px 0;list-style:none;
+ display:flex;align-items:center;align-content:flex-start;flex-wrap:wrap;gap:7px;
+ padding:0;margin:0;list-style:none;min-width:0;
 }
 .session-page .session-topic-item{
- display:flex;align-items:flex-start;gap:10px;min-width:0;
- padding:13px 3px 13px 2px;
- border-bottom:1px solid color-mix(in srgb,var(--line) 62%,var(--surface));
- background:transparent;line-height:1.85;
+ display:inline-flex;align-items:center;min-width:0;max-width:100%;
+ padding:5px 11px;min-height:31px;
+ background:color-mix(in srgb,var(--paper) 35%,var(--surface));
+ border:1px solid color-mix(in srgb,var(--gold) 15%,var(--line));
+ border-radius:9px;box-sizing:border-box;
 }
-.session-page .session-topic-index{
- display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;
- border:1px solid color-mix(in srgb,var(--gold) 27%,var(--line));
- border-radius:9px;color:var(--primary);font-size:10px;
- font-weight:810;line-height:1;background:color-mix(in srgb,var(--paper) 60%,var(--surface));
- font-variant-numeric:tabular-nums;
+.session-page .session-topic-item::before{
+ content:"";flex:0 0 5px;width:5px;height:5px;border-radius:50%;
+ margin-inline-end:8px;background:color-mix(in srgb,var(--gold) 77%,var(--primary));
 }
 .session-page .session-topic-text{
- display:block;min-width:0;padding-top:1px;
- color:var(--ink);font-size:11.5px;font-weight:630;
- line-height:1.9;overflow-wrap:anywhere;
+ display:block;min-width:0;padding:0;line-height:1.7;
+ font-size:10.5px;font-weight:640;color:var(--ink);
+ overflow-wrap:anywhere;
 }
-.session-page .session-topics-more{margin:13px 0 0}
-.session-page .session-topics-more summary{
- list-style:none;display:flex;align-items:center;justify-content:center;gap:9px;
- min-height:40px;padding:8px 12px;border-radius:9px;
- border:1px solid color-mix(in srgb,var(--primary) 15%,var(--line));
- background:color-mix(in srgb,var(--primary-soft) 45%,var(--surface));
- color:var(--primary-dark);font-size:11px;font-weight:780;cursor:pointer;
- transition:background .15s ease,border-color .15s ease;
+.session-page .session-topic-item.is-extra{display:none}
+.session-page .session-topic-list.is-expanded .session-topic-item.is-extra{display:inline-flex}
+.session-topics-toggle-item{display:inline-flex;align-items:center;max-width:100%}
+.session-page .session-topics-toggle{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ min-height:31px;padding:5px 10px;border-radius:9px;
+ border:1px solid color-mix(in srgb,var(--primary) 20%,var(--line));
+ background:color-mix(in srgb,var(--primary-soft) 38%,var(--surface));
+ font-family:inherit;font-size:10.5px;line-height:1.5;font-weight:760;
+ color:var(--primary-dark);cursor:pointer;
+ transition:background .16s ease,border-color .16s ease;
 }
-.session-page .session-topics-more summary::-webkit-details-marker{display:none}
-.session-page .session-topics-more summary:hover{
- background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 35%,var(--line));
+.session-page .session-topics-toggle:hover{
+ background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 40%,var(--line));
 }
-.session-page .session-topics-more summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.session-page .session-topics-more summary svg{
- height:15px;width:15px;transition:transform .2s ease;
+.session-page .session-topics-toggle:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.session-page .session-topics-toggle small{
+ color:var(--muted);font-size:9px;font-weight:600;white-space:nowrap;
 }
-.session-page .session-topics-more[open] summary svg{transform:rotate(-90deg)}
-.session-topics-more-total{font-size:10px;color:var(--muted);font-weight:570}
-.session-page .session-topic-list-extra{margin-top:12px}
-.session-page .session-topics-more[open] summary{margin-bottom:0}
+.session-page .session-topics-toggle svg{width:13px;height:13px;transition:transform .16s ease}
+.session-page .session-topic-list.is-expanded .session-topics-toggle svg{transform:rotate(90deg)}
 @container (max-width:620px){
- .session-page .session-topics-heading{gap:9px;margin-bottom:5px;padding-bottom:12px}
- .session-page .session-topics-heading h2{font-size:15px}
- .session-page .session-topics-heading .session-panel-symbol{width:32px;height:32px;flex-basis:32px}
- .session-topics-count{padding:4px 8px;font-size:9px}
- .session-page .session-topic-list{grid-template-columns:minmax(0,1fr);gap:0}
- .session-page .session-topic-item{padding:10px 1px;gap:9px}
- .session-page .session-topic-index{width:26px;height:26px;flex-basis:26px;font-size:9px;border-radius:8px}
- .session-page .session-topic-text{font-size:11px;line-height:1.9}
- .session-page .session-topics-more{margin-top:10px}
- .session-page .session-topics-more summary{font-size:10.5px;min-height:39px}
+ .session-page .session-topics{padding:13px 12px 14px}
+ .session-page .session-topics-heading{gap:8px;margin-bottom:10px;padding-bottom:9px}
+ .session-page .session-topics-heading h2{font-size:14px}
+ .session-page .session-topics-heading .session-panel-symbol{width:29px;height:29px;flex-basis:29px}
+ .session-topics-count{font-size:9px;padding:3px 7px}
+ .session-page .session-topic-list{gap:6px}
+ .session-page .session-topic-item{padding:5px 9px;min-height:30px;border-radius:8px}
+ .session-page .session-topic-text{font-size:10px;line-height:1.65}
+ .session-page .session-topics-toggle{min-height:30px;padding:4px 8px;font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
- .session-page .session-topics-more summary,.session-page .session-topics-more summary svg{transition:none}
+ .session-page .session-topics-toggle,.session-page .session-topics-toggle svg{transition:none}
 }
 </style>
 </head>
@@ -2972,6 +2968,15 @@ function dockChoose(i){
 }
 function dockAudioError(){if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
 
+function sessionTopicsToggle(button){
+ const list=button?.closest(".session-topic-list");
+ if(!list)return;
+ const expanded=list.classList.toggle("is-expanded");
+ button.setAttribute("aria-expanded",String(expanded));
+ const label=button.querySelector(".session-topics-toggle-label");
+ if(label)label.textContent=expanded?"نمایش کمتر":"نمایش سایر موضوعات";
+}
+
 function sessionOrdinal(n){
  const values=["اول","دوم","سوم","چهارم","پنجم","ششم","هفتم","هشتم","نهم","دهم","یازدهم","دوازدهم","سیزدهم","چهاردهم","پانزدهم"];
  return values[n-1]||sessionPersian(n);
@@ -2994,8 +2999,8 @@ function session(){
  const displayTime=sessionPersian((d.duration||"").replace(/^00:/,""));
  const queue=all.map(x=>`<button class="session-queue-item ${x.i===index?"is-active":""}" type="button" onclick="${fallback?`openSessionFromAlbum(${x.i})`:`sessionSelect(${x.i})`}" aria-current="${x.i===index?"true":"false"}"><span class="session-queue-num">${sessionPersian(x.i+1)}</span><span class="session-queue-copy"><strong>${es(x.title)}</strong><small>${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</small></span><span class="session-queue-play" aria-hidden="true">${x.i===index?"●":"›"}</span></button>`).join("");
  const nav=(i,dir)=>i<0||i>=all.length?`<div class="session-nav-cell is-disabled"><small>${dir}</small><b>—</b></div>`:`<button class="session-nav-cell" type="button" onclick="sessionSwitch(${i-index})"><small>${dir}</small><b>${es(all[i].title)}</b><span>مشاهده جلسه ${sessionPersian(i+1)} ${sessionIcon("arrow",13)}</span></button>`;
- const topicItem=(t,i)=>`<li class="session-topic-item"><span class="session-topic-index">${sessionPersian(String(i+1).padStart(2,"0"))}</span><span class="session-topic-text">${es(t)}</span></li>`;
- const topicMarkup=topics.length?`<ol class="session-topic-list">${topics.slice(0,6).map((t,i)=>topicItem(t,i)).join("")}</ol>${topics.length>6?`<details class="session-topics-more"><summary><span class="session-topics-more-main">نمایش سایر موضوعات</span><span class="session-topics-more-total">${sessionPersian(topics.length-6)} مورد دیگر</span>${sessionIcon("chevron",16)}</summary><ol class="session-topic-list session-topic-list-extra" start="7">${topics.slice(6).map((t,i)=>topicItem(t,i+6)).join("")}</ol></details>`:""}`:`<p class="session-unavailable">موضوعات این جلسه در پیش‌نمایش فعلی وارد نشده‌اند.</p>`;
+ const topicItem=(t,i)=>`<li class="session-topic-item${i>=6?" is-extra":""}"><span class="session-topic-text">${es(t)}</span></li>`;
+ const topicMarkup=topics.length?`<ul class="session-topic-list">${topics.map((t,i)=>topicItem(t,i)).join("")}${topics.length>6?`<li class="session-topics-toggle-item"><button type="button" class="session-topics-toggle" aria-expanded="false" onclick="sessionTopicsToggle(this)"><span class="session-topics-toggle-label">نمایش سایر موضوعات</span><small>${sessionPersian(topics.length-6)} مورد دیگر</small>${sessionIcon("chevron",14)}</button></li>`:""}</ul>`:`<p class="session-unavailable">موضوعات این جلسه در پیش‌نمایش فعلی وارد نشده‌اند.</p>`;
  const textMarkup=hasText?`<div class="session-ai-notice">${sessionIcon("file",17)} متن این جلسه در سایت با کمک هوش مصنوعی پیاده‌سازی شده و ممکن است نیازمند بازبینی باشد.</div><div class="session-transcript" id="session-transcript" style="font-size:${15+sessionTextFont}px">${sessionTranscriptMarkup(sessionTextExpanded)}</div><button class="session-readmore" id="session-readmore" type="button" onclick="sessionTextToggle()">${sessionTextExpanded?"نمایش بخش کوتاه‌تر":"مشاهده متن کامل جلسه"} ${sessionIcon("arrow",14)}</button>`:`<div class="session-empty-text">${sessionIcon("file",24)}<strong>متن این جلسه هنوز در این نسخه از پیش‌نمایش وارد نشده است.</strong><p>در طراحی نهایی، متن واقعی همین جلسه در این محل نمایش داده می‌شود.</p></div>`;
  return `<div class="session-page">
  <nav class="session-breadcrumb" aria-label="مسیر صفحه"><button type="button" onclick="go('home')">خانه</button><span>›</span><button type="button" onclick="go('albums')">مجموعه‌ها</button><span>›</span><button type="button" onclick="albumType='${albumTitle==="از حیوانیت تا حیات"?"chapter":"no"}';go('album')">${es(albumTitle)}</button>${chapterCrumb}<span>›</span><strong>جلسه ${sessionOrdinal(index+1)}</strong></nav>
