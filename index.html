@@ -4213,7 +4213,7 @@ function sessionCommentSubmit(key,root){
  sessionCommentCancel();toast("در پیش‌نمایش ثبت شد؛ به سایت اصلی ارسال نشد");
 }
 function sessionCommentPanel(d,fallback){
- const showSamples=!fallback&&d.id===2277;
+ const showSamples=mode!=="current"&&!fallback&&d.id===2277;
  const knownEmpty=!fallback&&d.id>=2277&&d.id<=2286;
  return `<section class="session-panel session-comments" id="session-comments"><div class="session-panel-title session-comments-heading"><span class="session-panel-symbol">${sessionCommentMessage}</span><div><h2>دیدگاه‌های شنوندگان</h2></div><button class="session-comment-add" type="button" onclick="${showSamples?"sessionCommentBeginNew()":"previewGuestLogin('برای ثبت دیدگاه در سایت اصلی وارد حساب کاربری شوید.')"}"><span aria-hidden="true">+</span> ثبت دیدگاه</button></div>${showSamples?`<div id="session-comment-dynamic">${sessionCommentListMarkup()}</div>`:`<div class="session-comments-empty"><div>${sessionCommentMessage}</div><p>${knownEmpty?"هنوز دیدگاهی برای این جلسه ثبت نشده است.":"دیدگاه‌های این جلسه در پیش‌نمایش فعلی دریافت نشده‌اند."}</p></div>`}</section>`;
 }
