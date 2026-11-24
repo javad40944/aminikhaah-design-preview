@@ -3416,11 +3416,41 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
 .ds-special-comment small{font-size:10px;color:var(--muted)}
 .ds-special-reply{margin-inline-start:40px;padding:8px 10px;border-inline-start:2px solid var(--line);font-size:11px;color:var(--muted)}
 
+
+/* Stage 11: mobile widths, usable playback seek and bottom safe area. */
+.preview.mobile-forced .app-frame{width:min(100%,var(--preview-device-width,390px));max-width:var(--preview-device-width,390px)}
+.preview.mobile-forced .mobile-bottombar{width:min(100vw,var(--preview-device-width,390px));max-width:100vw}
+.demo-bar .toolbar{flex-wrap:wrap;max-width:100%}
+@container(max-width:650px){
+ .preview .site-app.mode-full{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+ .preview .site-app.mode-current{padding-bottom:8px}
+ .preview .site-app.mode-full:has(#audio-dock.show){padding-bottom:calc(181px + env(safe-area-inset-bottom,0px))}
+ .preview .site-app.mode-current:has(#audio-dock.show){padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+ .mobile-bottombar{bottom:0;height:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))}
+ #audio-dock{bottom:calc(66px + env(safe-area-inset-bottom,0px));width:min(calc(100vw - 18px),calc(var(--preview-device-width,100vw) - 18px));min-height:0}
+ .mode-current #audio-dock{bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+ #audio-dock input#aud-seek{display:block;min-width:28px;flex:1;max-width:none;width:100%;height:7px}
+ #audio-dock .global-dock-progress{flex:1;min-width:0}
+ #audio-dock .audtime{white-space:nowrap}
+ #audio-dock .audio-dock-controls{min-width:0}
+ .preview.mobile-forced #audio-expanded.player-fullscreen{left:50%;right:auto;transform:translateX(-50%);width:min(100vw,var(--preview-device-width,390px));height:100dvh;max-width:100vw;box-sizing:border-box}
+ .global-player-transport button{min-width:44px;min-height:44px}
+ .global-player-header button{width:44px;height:44px}
+ .mobile-bottombar button{min-height:44px}
+ :is(.library-album-categories,.topic-directory-tabs,.media-library-tabs,.qa-directory-category-list,.book-hub-tabs,.account-tabs,.library-search-filters) button{min-height:36px}
+ .session-chapter-card .session-queue{overscroll-behavior:auto;touch-action:pan-y}
+}
+@media(max-width:600px){
+ .demo-bar{flex-wrap:wrap;gap:6px}
+ .demo-bar .toolbar{justify-content:flex-start}
+ .demo-bar .toolbar button{white-space:nowrap}
+}
+
 </style>
 </head>
 <body data-palette="olive">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption" title="مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button><button type="button" onclick="go('designSystem')">سیستم طراحی</button></div></div>
+<div class="toolbar"><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob360" type="button">موبایل ۳۶۰</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button><button type="button" onclick="go('designSystem')">سیستم طراحی</button></div></div>
 
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline bismillah-band" role="img" aria-label="بسم الله الرحمن الرحیم"><span class="bismillah-star" aria-hidden="true">✦</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-script" lang="ar" dir="rtl" aria-hidden="true">﷽</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-star" aria-hidden="true">✦</span></div>
@@ -4515,7 +4545,7 @@ function closeExpandedPlayer(){const p=byId("audio-expanded");p.classList.add("h
 
 function openDrawer(){const d=byId('drawer');d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>!['roza','lessons','questions','books'].includes(id)):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('')}
 function setMode(m){mode=m;if(mode==='current'){if(['questions','books','lessons'].includes(page))page='home';if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
-function setDevice(m){byId('preview').classList.toggle('mobile-forced',m==='mobile');byId('desk').classList.toggle('active',m==='desktop');byId('mob').classList.toggle('active',m==='mobile')}
+function setDevice(m){const preview=byId('preview'),mobile=m==='mobile'||m==='mobile360';preview.classList.toggle('mobile-forced',mobile);preview.style.setProperty('--preview-device-width',mobile?(m==='mobile360'?'360px':'390px'):'100vw');byId('desk').classList.toggle('active',!mobile);byId('mob').classList.toggle('active',m==='mobile');byId('mob360').classList.toggle('active',m==='mobile360')}
 const paletteNotes={olive:'یشم و عاج',lapis:'لاجورد و خورشید',clay:'انار و کاغذ'};
 function setPalette(value){
  if(!paletteNotes[value])value='olive';
@@ -4528,7 +4558,7 @@ function setPalette(value){
  try{localStorage.setItem('aminikhaah_design_preview_palette_v2',value)}catch(e){}
 }
 try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette_v2');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
-byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
+byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('mob360').onclick=()=>setDevice('mobile360');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});
 // Use separate enter/exit thresholds: a collapsing header changes document height,
 // so a single scrollY cutoff can otherwise cause an endless expand/collapse loop.
