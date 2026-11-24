@@ -2390,6 +2390,79 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 @media(prefers-reduced-motion:reduce){
  .session-page .session-topics-toggle,.session-page .session-topics-toggle svg{transition:none}
 }
+
+/* Mobile collection catalogue: vertical chapter accordions containing their own episodes. Desktop unchanged. */
+.collection-mobile-chapters{display:none}
+@container (max-width:650px){
+ .collection-main-has-seasons>.collection-sidebar,.collection-main-has-seasons>.collection-content{display:none}
+ .collection-main-has-seasons>.collection-mobile-chapters{display:block;width:100%;min-width:0}
+ .collection-mobile-chapters{
+  border:1px solid color-mix(in srgb,var(--gold) 20%,var(--line));
+  border-radius:15px;background:var(--surface);padding:12px;box-sizing:border-box;
+ }
+ .collection-mobile-chapters-heading{
+  display:flex;align-items:center;gap:9px;padding:0 1px 11px;margin-bottom:10px;
+  border-bottom:1px solid var(--line);
+ }
+ .collection-mobile-chapters-heading h2{font-size:15px;color:var(--ink);font-weight:820;margin:0;line-height:1.5}
+ .collection-mobile-chapters-symbol{
+  display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;
+  border-radius:9px;color:var(--primary);background:var(--primary-soft);
+ }
+ .collection-mobile-chapters-total{
+  margin-inline-start:auto;color:var(--muted);font-size:10px;white-space:nowrap;
+ }
+ .collection-mobile-chapters-list{display:grid;gap:7px;min-width:0}
+ .collection-mobile-chapter{
+  min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden;
+ }
+ .collection-mobile-chapter>summary{
+  display:flex;align-items:center;gap:9px;padding:10px;min-height:62px;
+  list-style:none;cursor:pointer;box-sizing:border-box;
+  background:color-mix(in srgb,var(--paper) 37%,var(--surface));
+ }
+ .collection-mobile-chapter>summary::-webkit-details-marker{display:none}
+ .collection-mobile-chapter>summary:focus-visible{outline:2px solid var(--gold);outline-offset:-3px}
+ .collection-mobile-chapter-num{
+  display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;
+  background:var(--surface);border:1px solid var(--line);border-radius:9px;
+  font-size:12px;font-weight:800;color:var(--primary);
+ }
+ .collection-mobile-chapter-name{display:flex;flex:1;min-width:0;flex-direction:column;gap:2px}
+ .collection-mobile-chapter-name small{font-size:9px;line-height:1.4;color:var(--muted)}
+ .collection-mobile-chapter-name b{font-size:12px;font-weight:760;line-height:1.6;color:var(--ink);overflow-wrap:anywhere}
+ .collection-mobile-chapter-count{flex-shrink:0;font-size:9px;color:var(--muted);white-space:nowrap}
+ .collection-mobile-chapter-chevron{
+  display:grid;place-items:center;flex:0 0 20px;width:20px;height:20px;color:var(--primary);
+ }
+ .collection-mobile-chapter-chevron svg{transform:rotate(-90deg);transition:transform .18s ease}
+ .collection-mobile-chapter[open]{border-color:color-mix(in srgb,var(--primary) 40%,var(--line))}
+ .collection-mobile-chapter[open]>summary{background:var(--primary-soft);border-bottom:1px solid var(--line)}
+ .collection-mobile-chapter[open] .collection-mobile-chapter-chevron svg{transform:rotate(90deg)}
+ .collection-mobile-chapter-body{padding:3px 0 5px;min-width:0}
+ .collection-mobile-chapter-body .collection-episode-list{gap:0;padding:0 8px;background:transparent}
+ .collection-mobile-chapter-body .collection-episode{
+  grid-template-columns:32px minmax(0,1fr) 29px;column-gap:8px;row-gap:3px;
+  padding:10px 2px;min-height:64px;border:0;border-bottom:1px solid var(--line);
+  border-radius:0;box-shadow:none;background:transparent;transform:none;
+ }
+ .collection-mobile-chapter-body .collection-episode:last-child{border-bottom:0}
+ .collection-mobile-chapter-body .collection-episode-index{display:none}
+ .collection-mobile-chapter-body .collection-episode-play{grid-column:1;grid-row:1/span 2;width:32px;height:32px;min-height:32px;border-radius:9px}
+ .collection-mobile-chapter-body .collection-episode-copy{grid-column:2;grid-row:1;align-self:end}
+ .collection-mobile-chapter-body .collection-episode-copy small{display:none}
+ .collection-mobile-chapter-body .collection-episode-title{font-size:11.5px;line-height:1.65}
+ .collection-mobile-chapter-body .collection-episode-duration{grid-column:2;grid-row:2;margin:0;padding:0;border:0;background:none;box-shadow:none;min-height:18px;justify-self:start;color:var(--muted);font-size:9px}
+ .collection-mobile-chapter-body .collection-episode-download{grid-column:3;grid-row:1/span 2;width:29px;height:29px;min-height:29px}
+ .collection-mobile-chapter-body .collection-episodes-empty{padding:16px 5px;font-size:11px;line-height:1.8}
+}
+@container (max-width:390px){
+ .collection-mobile-chapters{padding:10px}
+ .collection-mobile-chapter>summary{padding:9px 8px;gap:7px}
+ .collection-mobile-chapter-name b{font-size:11px}
+ .collection-mobile-chapter-count{font-size:8.5px}
+}
+@media(prefers-reduced-motion:reduce){.collection-mobile-chapter-chevron svg{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -2744,7 +2817,8 @@ async function shareCollection(){
 }
 function toggleAlbumList(){showCollectionAll=!showCollectionAll;render()}
 
-function playAlbumSession(i){
+function playAlbumSession(i,chapterIndex=chapterSelection){
+ if(albumType==="chapter"&&Number.isInteger(chapterIndex)&&chapterData[chapterIndex])chapterSelection=chapterIndex;
  dockStop();
  const isChapter=albumType==='chapter';
  const section=isChapter?chapterData[chapterSelection].id:null;
@@ -2790,7 +2864,8 @@ function album(){
  const coverMarkup=coverSrc?`<img src="${es(coverSrc)}" alt="جلد مجموعه ${es(collectionTitle)}" loading="eager" onerror="this.style.display='none'">`:'';
  const description=hasChapters?"در دل این جلسات، پرده‌ای از حقیقت کنار می‌رود: اینکه دنیا سالن تمرینِ رشد است، نه مقصدِ خوشی؛ جایی که هر نعمت و هر رنج صحنۀ آزمون و انتخاب انسان می‌شود. این مجموعه با روایت‌های تکان‌دهنده از قرآن، تاریخ انبیا و کربلا نشان می‌دهد چطور نگاهِ درست به امتحان، انسان را از سطح حیوانی به مقام «نفس مطمئنه» می‌رساند. در این مسیر، نقاب از چهرۀ طغیان، دنیازدگی و فرعونیت امروز برداشته می‌شود و حقیقتِ قهرمانان ایمان روشن می‌گردد.<br>اگر می‌خواهید جهان را عمیق‌تر ببینید و زاویۀ نگاه‌تان به زندگی، امتحان، نعمت و حقیقت دگرگون شود، این جلسات راهی تازه پیش پای شما می‌گذارند":"کتاب آن سوی مرگ کوششی کم‌سابقه برای به تصویر کشیدن عالم پس از مرگ است.<br>✔ نویسنده ی این کتاب کوشیده است تا با بهره‌گیری از گفته‌های افرادی که پیش از این تجربه‌ای نزدیک به مرگ را داشته‌اند، تصویری واقعی از عالم پس از مرگ به تصویر بکشد.<br>✔ مطالب این کتاب بر اساس آیات قرآن کریم، روایات اهل بیت (ع) و نکات عقلی و فلسفی ، طی ۳۹ جلسه در دانشگاه فردوسی مشهد، شرح و تبیین شده است.<br>✔ این مطالب در ادامه بخش سوم از مباحث تأثیر درک مهندسی خلقت بر معنویت / نظام تقدیم، بیان گردیده است.<br>✔ پس از اتمام شرح کتاب طی دو جلسه در تهران به پرسش و پاسخ پیرامون مباحث مطرح شده پرداخته شده است.";
  const chapterMarkup=hasChapters?chapterData.map((ch,i)=>`<button type="button" class="collection-season ${i===chapterSelection?'is-selected':''}" data-section-id="${ch.id}" aria-pressed="${i===chapterSelection}" title="${es(ch.title)}" aria-label="فصل ${(i+1).toLocaleString('fa-IR')}، ${es(ch.title)}، ${(chapterSessionCounts[ch.id]||0).toLocaleString('fa-IR')} جلسه" onclick="selectChapter(${i})"><span class="collection-season-num">${String(i+1).padStart(2,'0')}</span><span class="collection-season-text"><small><span>فصل ${['اول','دوم','سوم','چهارم','پنجم','ششم','هفتم','هشتم','نهم'][i]}</span><span class="collection-season-count">${(chapterSessionCounts[ch.id]||0).toLocaleString('fa-IR')} جلسه</span></small><b>${es(ch.title)}</b></span><span class="collection-season-arrow" aria-hidden="true">‹</span></button>`).join(''):`<div class="collection-disabled-season" aria-disabled="true"><span class="collection-season-num">—</span><span class="collection-season-text"><b>فصل‌بندی ندارد</b><small>جلسات این مجموعه مستقیماً فهرست شده‌اند.</small></span></div>`;
- const episodes=listRows.map((x,i)=>`<div class="collection-episode"><span class="collection-episode-index">${String(i+1).padStart(2,'0')}</span><button type="button" class="collection-episode-play" onclick="playAlbumSession(${i})" aria-label="پخش جلسه ${i+1}"><span class="collection-episode-play-glyph" aria-hidden="true"><svg class="collection-episode-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.3a1.1 1.1 0 0 1 1.65-.95l10.2 6.7a1.14 1.14 0 0 1 0 1.9l-10.2 6.7A1.1 1.1 0 0 1 8 18.7V5.3Z"/></svg></span><span class="collection-episode-play-label">پخش</span></button><div class="collection-episode-copy"><button type="button" class="collection-episode-title" onclick="openSessionFromAlbum(${i})">${es(x[0])}</button><small>${es(collectionTitle)}${hasChapters?` <span class="collection-mini-dot">•</span> فصل ${(chapterSelection+1).toLocaleString('fa-IR')} <span class="collection-mini-dot">•</span> ${es(active.title)}`:''}</small></div><span class="collection-episode-duration"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>${es(x[1])}</b></span><button type="button" class="collection-episode-download" onclick="toast('لینک دانلود هر فایل پس از اتصال به داده واقعی فعال می‌شود')" aria-label="دریافت جلسه ${i+1}" title="دریافت فایل"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11m-4-4 4 4 4-4"/><path d="M5 16v4h14v-4"/></svg></button></div>`).join('');
+ const renderEpisodeRows=(rows,chapterIndex=chapterSelection)=>rows.map((x,i)=>`<div class="collection-episode"><span class="collection-episode-index">${String(i+1).padStart(2,'0')}</span><button type="button" class="collection-episode-play" onclick="playAlbumSession(${i},${chapterIndex})" aria-label="پخش جلسه ${i+1}"><span class="collection-episode-play-glyph" aria-hidden="true"><svg class="collection-episode-play-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.3a1.1 1.1 0 0 1 1.65-.95l10.2 6.7a1.14 1.14 0 0 1 0 1.9l-10.2 6.7A1.1 1.1 0 0 1 8 18.7V5.3Z"/></svg></span><span class="collection-episode-play-label">پخش</span></button><div class="collection-episode-copy"><button type="button" class="collection-episode-title" onclick="openSessionFromAlbum(${i},${chapterIndex})">${es(x[0])}</button><small>${es(collectionTitle)}${hasChapters?` <span class="collection-mini-dot">•</span> فصل ${(chapterIndex+1).toLocaleString('fa-IR')} <span class="collection-mini-dot">•</span> ${es(chapterData[chapterIndex]?.title||"")}`:''}</small></div><span class="collection-episode-duration"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>${es(x[1])}</b></span><button type="button" class="collection-episode-download" onclick="toast('لینک دانلود هر فایل پس از اتصال به داده واقعی فعال می‌شود')" aria-label="دریافت جلسه ${i+1}" title="دریافت فایل"><svg aria-hidden="true" width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v11m-4-4 4 4 4-4"/><path d="M5 16v4h14v-4"/></svg></button></div>`).join('');
+ const episodes=renderEpisodeRows(listRows);
  const sessionHeading=hasChapters?active.title:'همه جلسات مجموعه';
  const sessionSubtitle=hasChapters?'':'فهرست سخنرانی‌های این مجموعه';
  const count=allRows.length;
@@ -2804,10 +2879,21 @@ function album(){
  const hasMore=allRows.length>8;
  const empty=`<div class="collection-episodes-empty"><span class="collection-empty-mark">♫</span><b>فهرست جلسات این فصل</b><p>عنوان‌های جلسات این فصل در نسخه متصل، مستقیماً از داده‌های همین مجموعه نمایش داده می‌شود.</p><a href="https://aminikhaah.ir/album/116?section_id=${sectionId}" target="_blank" rel="noopener noreferrer">مشاهده فصل در سایت اصلی</a></div>`;
  const relatedData=relatedAlbumData.filter(item=>item[1] !== (hasChapters?'116':'1')).slice(0,10);
+ const mobileChapters=hasChapters?`<section class="collection-mobile-chapters" aria-label="فصل‌ها و جلسات مجموعه">
+ <header class="collection-mobile-chapters-heading"><span class="collection-mobile-chapters-symbol">${sessionIcon("book",18)}</span><h2>فصل‌های مجموعه</h2><span class="collection-mobile-chapters-total">${sessionPersian(chapterData.length)} فصل</span></header>
+ <div class="collection-mobile-chapters-list">${chapterData.map((ch,j)=>{
+ const rows=chapterSongsBySection[ch.id]||[];
+ const total=chapterSessionCounts[ch.id]||rows.length;
+ return `<details class="collection-mobile-chapter" name="collection-mobile-season" data-chapter-index="${j}">
+ <summary><span class="collection-mobile-chapter-num">${sessionPersian(j+1)}</span><span class="collection-mobile-chapter-name"><small>فصل ${sessionOrdinal(j+1)}</small><b>${es(ch.title)}</b></span><span class="collection-mobile-chapter-count">${sessionPersian(total)} جلسه</span><span class="collection-mobile-chapter-chevron" aria-hidden="true">${sessionIcon("chevron",18)}</span></summary>
+ <div class="collection-mobile-chapter-body"><div class="collection-episode-list">${rows.length?renderEpisodeRows(rows,j):`<div class="collection-episodes-empty"><b>فهرست این فصل هنوز در پیش‌نمایش وارد نشده است.</b><a href="https://aminikhaah.ir/album/116?section_id=${ch.id}" target="_blank" rel="noopener noreferrer">مشاهده جلسات فصل در سایت اصلی</a></div>`}</div></div>
+ </details>`;
+ }).join("")}</div>
+ </section>`:"";
  const sidebarMarkup=hasChapters?`<aside class="collection-sidebar"><div class="collection-aside-heading"><span class="collection-aside-symbol" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5c-2.6-1.6-6-1.7-9-1v14.1c3-.7 6.4-.6 9 1 2.6-1.6 6-1.7 9-1V4.5c-3-.7-6.4-.6-9 1Z"/><path d="M12 5.5v14"/><path d="M5.5 8.5c1.5-.2 3-.1 4 .4M14.5 8.9c1.1-.5 2.6-.6 4-.4"/></svg></span><div><h2>${hasChapters?`${chapterData.length.toLocaleString('fa-IR')} فصل برای این مجموعه`:'این مجموعه فصل ندارد'}</h2></div><span class="collection-seasons-hint" aria-hidden="true">فصل‌های دیگر <span>←</span></span></div><div class="collection-seasons-viewport"><div class="collection-seasons" role="group" aria-label="انتخاب فصل مجموعه">${chapterMarkup}</div></div></aside>`:'';
  return `<div class="collection-page"><div class="collection-breadcrumb"><button onclick="go('home')">خانه</button><span>›</span><button onclick="go('albums')">مجموعه سخنرانی‌ها</button><span>›</span><strong>${es(collectionTitle)}</strong></div>
  <section class="collection-intro"><div class="collection-art"><div class="collection-cover-frame">${coverMarkup}<div class="collection-art-watermark" aria-hidden="true">✧</div></div></div><div class="collection-intro-content"><a class="collection-kicker" href="${hasChapters?'https://aminikhaah.ir/category/144':'https://aminikhaah.ir/category/142'}" target="_blank" rel="noopener noreferrer" aria-label="مشاهده دسته‌بندی ${hasChapters?'معرفتی':'عالم ملکوت'}" title="مشاهده دسته‌بندی"><span class="collection-category-emblem" aria-hidden="true">✧</span><strong class="collection-category-name">${hasChapters?'معرفتی':'عالم ملکوت'}</strong></a><h1>${es(collectionTitle)}</h1><p class="collection-description">${description}</p><div class="collection-highlights">${hasChapters?'<span><b>۹</b><small>فصل</small></span>':''}<span><b>${totalSessionCount.toLocaleString('fa-IR')}</b><small>جلسه</small></span><span class="collection-highlight-duration"><b>${hasChapters?'۱۴۴ ساعت و ۳۳ دقیقه':'۲۱ ساعت و ۳ دقیقه'}</b></span></div><div class="collection-actions"><button class="collection-action-primary" type="button" onclick="playAlbumSession(0)"><span class="collection-action-play" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.8a1.2 1.2 0 0 1 1.8-1L20 11a1.2 1.2 0 0 1 0 2L8.8 20.2a1.2 1.2 0 0 1-1.8-1V4.8Z"/></svg></span> شروع شنیدن</button>${downloadMarkup}<button class="collection-action-playlist" type="button" aria-pressed="${isInPlaylist}" onclick="toggleCollectionPlaylist()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4.5h10a2 2 0 0 1 2 2V21l-7-4-7 4V6.5a2 2 0 0 1 2-2Z"/><path d="${isInPlaylist?'M9 11.5l2 2 4-4':'M12 8.5v6m-3-3h6'}"/></svg>${isInPlaylist?'حذف از لیست پخش':'افزودن به لیست پخش'}</button><div class="collection-action-utilities"><button class="collection-action-views" type="button" aria-label="${sampleViewCount} بازدید" title="تعداد بازدید نمایشی در پیش‌نمایش؛ عدد واقعی در نسخه متصل نمایش داده می‌شود" onclick="toast('تعداد بازدید فعلاً نمونه طراحی است و پس از اتصال به آمار واقعی جایگزین می‌شود')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg><span class="collection-view-count"><b>${sampleViewCount}</b></span></button><button class="collection-action-icon" type="button" onclick="shareCollection()" aria-label="اشتراک‌گذاری مجموعه" title="اشتراک‌گذاری"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4m-6.6 7 6.6 4.4"/></svg></button></div></div></div></section>
- <div class="collection-main ${hasChapters?'':'collection-main-no-seasons'}">${sidebarMarkup}
+ <div class="collection-main ${hasChapters?'collection-main-has-seasons':'collection-main-no-seasons'}">${sidebarMarkup}${mobileChapters}
  <section class="collection-content"><div class="collection-content-head ${hasChapters?'is-chapter-heading':''}"><div class="collection-content-title"><div class="collection-small-eyebrow">${hasChapters?'فصل '+String(chapterSelection+1).padStart(2,'0'):'فهرست کامل'}</div><h2>${es(sessionHeading)}</h2>${sessionSubtitle?`<p>${es(sessionSubtitle)}</p>`:''}</div><span class="collection-episode-count">${count.toLocaleString('fa-IR')} جلسه</span></div><div class="collection-episode-list">${episodes||empty}</div>${hasMore?`<div class="collection-list-footer"><button type="button" class="collection-show-all" onclick="toggleAlbumList()">${showCollectionAll?'نمایش کمتر':'نمایش همه '+count.toLocaleString('fa-IR')+' جلسه'} <span aria-hidden="true">${showCollectionAll?'⌃':'⌄'}</span></button></div>`:''}</section></div>
  <section class="collection-related" aria-label="مجموعه‌های دیگر"><div class="collection-related-head"><div class="collection-related-heading"><span class="collection-related-heading-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.8" width="12" height="16.4" rx="2"/><path d="M8 7.5h4M8 10.5h4M19 7v12.5a1 1 0 0 1-1 1h-9"/></svg></span><div><h2>مجموعه‌های دیگر</h2><p>پیشنهادهایی برای ادامه شنیدن</p></div></div></div>${collectionRelatedCards(relatedData)}</section>
  </div>`;
@@ -2865,7 +2951,8 @@ function sessionSelect(i){
  go("session");
 }
 
-function openSessionFromAlbum(i){
+function openSessionFromAlbum(i,chapterIndex=chapterSelection){
+ if(albumType==="chapter"&&Number.isInteger(chapterIndex)&&chapterData[chapterIndex])chapterSelection=chapterIndex;
  const chapter=albumType==="chapter";
  const sec=chapter?chapterData[chapterSelection]:null;
  const rows=chapter?(chapterSongsBySection[sec.id]||[]):songData.map(x=>[x[0],x[2]]);
