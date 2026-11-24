@@ -3172,6 +3172,73 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 @container(max-width:1000px){.book-hub-grid-books,.book-hub-grid-paths{grid-template-columns:repeat(2,minmax(0,1fr))}.book-hub-grid-packs{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @container(max-width:620px){.book-hub-head{flex-direction:column;align-items:stretch;gap:12px;padding:13px 12px;border-radius:13px;margin-bottom:10px}.book-hub-heading>span{width:34px;height:34px;flex-basis:34px;font-size:20px}.book-hub-heading h1{font-size:16px}.book-hub-heading p{font-size:10px}.book-hub-search{width:100%;padding:9px}.book-hub-tabs button{font-size:10px;padding:7px 9px;gap:4px}.book-hub-tabs button span{font-size:13px}.book-hub-section-head h2{font-size:13px}.book-hub-grid-books,.book-hub-grid-paths{grid-template-columns:1fr;gap:8px}.book-hub-grid-packs{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.book-hub-book-art{width:68px;flex-basis:68px}.book-hub-book-card h3{font-size:12px}.book-hub-pack-main{padding:10px 6px}.book-hub-pack-art{width:min(100%,76px)}.book-hub-path{padding:11px}}
 
+
+/* Account page: clear guest state, local library and illustrative member view. */
+.account-page{max-width:1200px;margin:auto;padding-bottom:20px;min-width:0}
+.account-head,.account-login,.account-panel{background:var(--surface);border:1px solid var(--line);border-radius:15px}
+.account-head{padding:20px 22px;margin-bottom:12px}
+.account-identity{display:flex;align-items:center;gap:12px}
+.account-avatar{width:53px;height:53px;flex:0 0 53px;border-radius:50%;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary)}
+.account-avatar svg{width:27px;height:27px}
+.account-identity>div{flex:1;min-width:0}
+.account-identity h1{font-size:20px;font-weight:830;color:var(--ink);line-height:1.5}
+.account-identity p{font-size:11px;color:var(--muted);line-height:1.8;margin-top:4px}
+.account-secondary{border:1px solid var(--line);background:var(--paper);color:var(--primary);font-size:11px;font-weight:750;padding:8px 12px;border-radius:9px}
+.account-login{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 20px;margin-bottom:15px}
+.account-login-copy{flex:1;min-width:0}
+.account-login-copy h2{font-size:16px;font-weight:810;color:var(--ink)}
+.account-login-copy p{font-size:12px;line-height:1.9;color:var(--muted);margin-top:7px;max-width:430px}
+.account-login-actions{display:flex;flex-direction:column;gap:6px;width:min(100%,245px)}
+.account-primary,.account-google{display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 11px;min-height:38px;border-radius:9px;font-size:12px;font-weight:750;text-decoration:none}
+.account-primary{background:var(--primary);color:white;border:0}.account-primary span{font-size:17px}
+.account-login-actions small{font-size:9px;color:var(--muted);text-align:center}
+.account-google{background:var(--paper);border:1px solid var(--line);color:var(--ink)}
+.account-google b{font-size:17px;font-family:Arial,sans-serif;color:#4285f4}
+.account-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;padding:2px 0 12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.account-tabs button{display:flex;align-items:center;gap:6px;flex:0 0 auto;white-space:nowrap;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:8px 13px;font-size:12px;font-weight:720}
+.account-tabs button span{font-size:16px;color:var(--primary)}
+.account-tabs button.is-active{background:var(--primary);border-color:var(--primary);color:white}
+.account-tabs button.is-active span{color:white}
+.account-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.account-panel{padding:15px 16px;min-width:0}
+.account-panel-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:5px}
+.account-panel-head h2{font-size:15px;font-weight:810;color:var(--ink)}
+.account-panel-head button,.account-empty button,.account-more{border:0;background:transparent;color:var(--primary);font-size:11px;font-weight:750}
+.account-panel-note{color:var(--muted);font-size:10px;line-height:1.7;padding:7px 1px}
+.account-content-list{display:flex;flex-direction:column}
+.account-content-row{display:flex;align-items:center;gap:9px;padding:10px 0;width:100%;min-width:0;text-align:right;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--ink)}
+.account-content-row:last-child{border-bottom:0}
+.account-row-cover{width:47px;height:47px;flex:0 0 47px;display:grid;place-items:center;border-radius:8px;overflow:hidden;background:var(--primary-soft);color:var(--primary);font-size:22px}
+.account-row-cover img{width:100%;height:100%;object-fit:contain}
+.account-row-copy{display:flex;flex:1;min-width:0;flex-direction:column;gap:4px}
+.account-row-copy strong{font-size:12px;font-weight:780;line-height:1.7;overflow-wrap:anywhere}
+.account-row-copy small{font-size:10px;color:var(--muted);line-height:1.6}
+.account-content-row i{font-style:normal;color:var(--primary);font-size:14px}
+.account-progress{height:4px;border-radius:4px;background:var(--line);overflow:hidden;max-width:180px}
+.account-progress>span{height:100%;background:var(--primary);display:block;border-radius:4px}
+.account-empty{min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:13px 6px}
+.account-empty>span{display:grid;place-items:center;width:34px;height:34px;background:var(--primary-soft);color:var(--primary);border-radius:9px;font-size:19px}
+.account-empty p{font-size:11px;color:var(--muted);line-height:1.8}
+.account-more{display:block;margin:10px auto 0}
+@container(max-width:620px){
+.account-head{padding:13px 12px;border-radius:13px;margin-bottom:9px}
+.account-identity{gap:8px;flex-wrap:wrap}
+.account-avatar{width:40px;height:40px;flex-basis:40px}
+.account-avatar svg{width:21px;height:21px}
+.account-identity h1{font-size:16px}.account-identity p{font-size:10px}
+.account-secondary{font-size:10px;padding:7px 9px}
+.account-login{flex-direction:column;align-items:stretch;gap:12px;padding:13px 12px;border-radius:13px}
+.account-login-copy h2{font-size:14px}.account-login-copy p{font-size:11px;margin-top:4px}
+.account-login-actions{width:100%}
+.account-tabs button{font-size:10px;padding:7px 10px}
+.account-tabs button span{font-size:13px}
+.account-overview-grid{grid-template-columns:1fr;gap:9px}
+.account-panel{padding:11px 12px;border-radius:12px}
+.account-panel-head h2{font-size:13px}
+.account-row-cover{width:41px;height:41px;flex-basis:41px}
+.account-row-copy strong{font-size:11.5px}.account-row-copy small{font-size:9px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -4179,12 +4246,35 @@ function bookHubResults(){
 }
 function books(){return `<div class="book-hub-page"><section class="book-hub-head"><div class="book-hub-heading"><span>▥</span><div><h1>کتاب‌ها و سیرها</h1><p>مسیر مطالعه، شنیدن و بسته‌های مناسبتی را انتخاب کنید.</p></div></div><label class="book-hub-search"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="1.7"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input type="search" aria-label="جست‌وجو در کتاب‌ها و سیرها" placeholder="جست‌وجو در این بخش…" value="${es(bookHubQuery)}" oninput="bookHubSearch(this.value)"></label></section><nav class="book-hub-tabs" aria-label="نوع محتوا">${bookHubTabs.map((t,i)=>`<button type="button" class="${booksTab===t?"is-active":""}" aria-pressed="${booksTab===t}" onclick="bookHubSelect('${t}')"><span>${["▥","▤","♫","✧"][i]}</span>${t==="بسته‌ها"?"بسته‌های مناسبتی":t}</button>`).join("")}</nav><section id="book-hub-results">${bookHubResults()}</section></div>`}
 
+
+/* Profile design: guest, explicitly illustrative account, and browser-local saved collections. No authentication or personal data collection. */
+let profileDemo=false,profileSection="overview",profileShowAll=false;
+const profileTabs=[["overview","نمای کلی","▦"],["history","سابقه شنیدن","◷"],["playlists","فهرست‌های پخش","▤"],["liked","پسندیده‌ها","♡"],["comments","دیدگاه‌های من","؟"]];
+const profileSampleHistory=[{index:0,progress:64},{index:1,progress:28},{index:2,progress:91},{index:3,progress:12},{index:4,progress:46}];
+function profileSwitch(v){profileSection=v;profileShowAll=false;render()}
+function profileToggleDemo(v){profileDemo=v;profileSection="overview";profileShowAll=false;render()}
+function profileMore(){profileShowAll=true;render()}
+function profileOpenAlbum(id){albumType=id==="116"?"chapter":"no";chapterSelection=0;showCollectionAll=false;go("album")}
+function profileLocalAlbums(){return [...playlistCollectionIds].map(id=>({id,title:id==="116"?"از حیوانیت تا حیات":"شرح و بررسی کتاب آن سوی مرگ",cover:albumCoverUrl(id)}))}
+function profileAlbumRow(x){return `<button type="button" class="account-content-row" onclick="profileOpenAlbum('${x.id}')"><span class="account-row-cover">${x.cover?`<img src="${es(x.cover)}" alt="" loading="lazy" onerror="this.hidden=true">`:"▤"}</span><span class="account-row-copy"><strong>${es(x.title)}</strong><small>مجموعه ذخیره‌شده در همین مرورگر</small></span><i>‹</i></button>`}
+function profileTrackRow(index,progress=null){const d=sessionPreviewTracks[index];if(!d)return "";return `<button type="button" class="account-content-row" onclick="sessionSelect(${index})"><span class="account-row-cover"><img src="${es(albumCoverUrl("116"))}" alt="" loading="lazy" onerror="this.hidden=true"></span><span class="account-row-copy"><strong>${es(d.title)}</strong><small>از حیوانیت تا حیات${progress!==null?" · پیشرفت نمونه "+sessionPersian(progress)+"٪":""}</small>${progress!==null?`<span class="account-progress" aria-label="پیشرفت نمونه ${progress} درصد"><span style="width:${progress}%"></span></span>`:""}</span><i>${progress!==null?"▶":"‹"}</i></button>`}
+function profileCommentJump(key){sessionSelect(0);sessionCommentLimit=Math.max(sessionCommentLimit,sessionCommentSamples.length+sessionCommentLocal.length);for(const c of sessionCommentSamples)sessionCommentOpen.add(c.key);for(const c of sessionCommentLocal)if(!c.parent)sessionCommentOpen.add(c.key);sessionCommentRefresh();setTimeout(()=>{const target=[...document.querySelectorAll("[data-comment-key]")].find(el=>el.dataset.commentKey===key)||byId("session-comments");target?.scrollIntoView({behavior:"smooth",block:"center"})},70)}
+function profileEmpty(text,action=""){return `<div class="account-empty"><span>◈</span><p>${text}</p>${action}</div>`}
+function profilePanel(key,title,content,more=false){return `<section class="account-panel"><div class="account-panel-head"><h2>${title}</h2>${more?`<button type="button" onclick="profileSwitch('${key}')">مشاهده همه ‹</button>`:""}</div>${content}</section>`}
+function profileSectionContent(key,overview=false){
+ if(key==="history"){const rows=profileDemo?profileSampleHistory:[];return profilePanel(key,"سابقه شنیدن",rows.length?`<div class="account-panel-note">پیشرفت‌های زیر فقط برای نمایش طراحی هستند. انتخاب جلسه، صفحه آن را باز می‌کند.</div><div class="account-content-list">${rows.slice(0,overview?3:5).map(x=>profileTrackRow(x.index,x.progress)).join("")}</div>`:profileEmpty("سابقه شنیدن حساب واقعی در این پیش‌نمایش در دسترس نیست."),overview&&rows.length>3)}
+ if(key==="playlists"){const albums=profileLocalAlbums();return profilePanel(key,"فهرست‌های پخش من",albums.length?`<div class="account-content-list">${albums.map(profileAlbumRow).join("")}</div>`:profileEmpty("هنوز مجموعه‌ای در این مرورگر به فهرست پخش اضافه نکرده‌اید.",'<button type="button" onclick="go(\'albums\')">مشاهده مجموعه‌ها ‹</button>'))}
+ if(key==="liked"){const idx=profileDemo?[0,2,4]:[];return profilePanel(key,"پسندیده‌ها",idx.length?`<div class="account-panel-note">نمونه نمای حساب کاربری</div><div class="account-content-list">${idx.map(i=>profileTrackRow(i)).join("")}</div>`:profileEmpty("پسندیده‌های حساب واقعی هنوز متصل نیستند."))}
+ if(key==="comments"){const rows=sessionCommentLocal.slice().reverse(),shown=overview?rows.slice(0,3):rows.slice(0,profileShowAll?rows.length:8);return profilePanel(key,"دیدگاه‌های من",rows.length?`<div class="account-panel-note">دیدگاه‌های ثبت‌شده در همین پیش‌نمایش؛ در سایت اصلی منتشر نشده‌اند.</div><div class="account-content-list">${shown.map(x=>`<button type="button" class="account-content-row" onclick="profileCommentJump('${x.key}')"><span class="account-row-cover">؟</span><span class="account-row-copy"><strong>${es(x.body)}</strong><small>جلسه نمونه · ${es(x.time)}</small></span><i>‹</i></button>`).join("")}</div>${!overview&&shown.length<rows.length?'<button class="account-more" onclick="profileMore()">نمایش بیشتر</button>':""}`:profileEmpty("دیدگاهی در این پیش‌نمایش ثبت نکرده‌اید."),overview&&rows.length>3)}
+ return "";
+}
 function profile(){
- const history=[1,2,3,4,5].map((x)=>'<div class="profile-history-card"><div class="profile-history-cover">♫</div><div class="profile-history-body"><b>عنوان جلسه از سابقه حساب</b><small>مجموعه مرتبط · ادامه از جایگاه ذخیره‌شده</small><div class="history-progress"><span></span></div></div></div>').join('');
- const playlists=['بعداً گوش می‌کنم','فهرست پخش شخصی','جلسات ذخیره‌شده'].map(x=>'<div class="profile-list-card"><div class="profile-list-icon">▤</div><b>'+x+'</b><small>عنوان و تعداد واقعی از حساب کاربر</small></div>').join('');
- const liked=['موردپسند ۱','موردپسند ۲','موردپسند ۳'].map(x=>'<div class="profile-list-card"><div class="profile-list-icon">♡</div><b>'+x+'</b><small>جایگاه محتوای پسندیده‌شده</small></div>').join('');
- const comments=['دیدگاه ثبت‌شده ۱','دیدگاه ثبت‌شده ۲','دیدگاه ثبت‌شده ۳'].map(x=>'<div class="profile-list-card"><div class="profile-list-icon">▤</div><b>'+x+'</b><small>بازگشت به همان صفحه و محل دیدگاه</small></div>').join('');
- return title('حساب کاربری و ادامه شنیدن','مدیریت سابقه شنیدن، فهرست‌های پخش، پسندیده‌ها و دیدگاه‌های ثبت‌شده.')+'<div class="profile-identity future-only"><div class="profile-avatar">◉</div><div><b>نام و نام خانوادگی کاربر</b><small>نمایش اطلاعات حساب پس از ورود</small></div><button class="btn soft" onclick="toast(\'ویرایش اطلاعات پروفایل در پنل کاربری\')">ویرایش پروفایل</button></div>'+sect('ورود با شماره تلفن','<div class="phone-login"><div><h3>ورود یا ساخت حساب با شماره تلفن</h3><p>روش پیشنهادی سند اصلی برای دسترسی آسان‌تر و امکان ارتباط ضروری با مخاطب.</p><small>نیازمند توسعه احراز هویت در فاز Backend؛ در این مرحله فقط طراحی شده است.</small></div><div class="phone-login-action"><input type="tel" placeholder="شماره تلفن همراه" aria-label="شماره تلفن همراه"><button class="btn primary" onclick="toast(\'ارسال کد یک‌بارمصرف پس از پیاده‌سازی Backend فعال می‌شود\')">ادامه</button></div></div>',{future:true,desc:'شماره تلفن روش اصلی پیشنهادی است؛ اجرای آن نیازمند توسعه فنی و رعایت رضایت و حریم خصوصی است.'})+sect('روش ورود فعلی سایت','<div class="soft-panel"><b>ورود با حساب گوگل</b><p>روش فعلی سایت؛ در طراحی مقصد، ورود تلفنی گزینه اصلی خواهد بود.</p><button class="btn" onclick="toast(\'ورود گوگل در این پیش‌نمایش به سایت واقعی متصل نیست\')">ورود با گوگل</button></div>',{desc:'برای تفکیک وضعیت فعلی از پیشنهاد آینده.'})+sect('سابقه مشاهده و ادامه شنیدن','<div class="profile-history-row">'+history+'</div>',{future:true,desc:'پنج مورد آخر؛ نوار پیشرفت از محل توقف واقعی ذخیره می‌شود و با کلیک، پخش از همان نقطه ادامه می‌یابد.'})+sect('فهرست‌های پخش من','<div class="profile-list-grid">'+playlists+'</div>',{future:true,desc:'فهرست‌هایی که کاربر ساخته یا ذخیره کرده است.'})+sect('مورد علاقه‌ها','<div class="profile-list-grid">'+liked+'</div><div class="actions"><button class="more" onclick="toast(\'نمایش همه موارد پسندیده‌شده\')">مشاهده بیشتر ‹</button></div>',{future:true,desc:'حداکثر سه مورد در پیش‌نمایش؛ موارد بیشتر با دکمه مشاهده بیشتر.'})+sect('نظرات من','<div class="profile-list-grid">'+comments+'</div><div class="actions"><button class="more" onclick="toast(\'نمایش همه دیدگاه‌های ثبت‌شده کاربر\')">مشاهده بیشتر ‹</button></div>',{future:true,desc:'حداکثر سه دیدگاه؛ پیوند باید به همان صفحه و همان جایگاه دیدگاه برگردد.'});
+ const demo=mode!=="current"&&profileDemo;
+ const identity=demo?`<div class="account-identity"><span class="account-avatar">${sessionCommentAvatar}</span><div><h1>حساب کاربری نمونه</h1><p>نمای آزمایشی کاربر واردشده · بدون اتصال به حساب واقعی</p></div><button class="account-secondary" onclick="profileToggleDemo(false)">بازگشت به نمای مهمان</button></div>`:`<div class="account-identity"><span class="account-avatar">${sessionCommentAvatar}</span><div><h1>حساب کاربری</h1><p>به کتابخانه شخصی خود خوش آمدید.</p></div>${mode!=="current"?'<button class="account-secondary" onclick="profileToggleDemo(true)">مشاهده حساب نمونه</button>':""}</div>`;
+ const login=demo?"":`<section class="account-login"><div class="account-login-copy"><h2>وارد حساب خود شوید</h2><p>فهرست‌های پخش، سابقه شنیدن و علاقه‌مندی‌ها را در حساب خود مدیریت کنید.</p></div><div class="account-login-actions">${mode!=="current"?'<button class="account-primary" onclick="toast(\'ورود تلفنی پس از توسعه احراز هویت فعال می‌شود\')"><span>▯</span> ورود با شماره تلفن</button><small>طرح پیشنهادی ورود تلفنی؛ هنوز فعال نیست.</small>':""}<a class="account-google" href="https://aminikhaah.ir/google/redirect" target="_blank" rel="noopener noreferrer"><b aria-hidden="true">G</b> ورود با گوگل در سایت اصلی</a></div></section>`;
+ const tabs=`<nav class="account-tabs" aria-label="بخش‌های حساب کاربری">${profileTabs.map(([key,label,icon])=>`<button type="button" aria-pressed="${profileSection===key}" class="${profileSection===key?"is-active":""}" onclick="profileSwitch('${key}')"><span>${icon}</span>${label}</button>`).join("")}</nav>`;
+ const content=profileSection==="overview"?`<div class="account-overview-grid">${["history","playlists","liked","comments"].map(k=>profileSectionContent(k,true)).join("")}</div>`:profileSectionContent(profileSection);
+ return `<div class="account-page"><section class="account-head">${identity}</section>${login}${tabs}${content}</div>`;
 }
 
 const views={home,albums,album,session,roza,media,topics,search,questions,lessons,books,profile};
