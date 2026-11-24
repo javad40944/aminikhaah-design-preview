@@ -4057,19 +4057,19 @@ function previewReadProgress(){try{const v=JSON.parse(localStorage.getItem(previ
 let previewLastSaved=0,previewResumePending=null;
 function previewSaveProgress(force=false){const a=byId("dock-real-audio"),rec=dockActiveSession;if(queueType!=="session"||!rec?.id||!a||!a.getAttribute("src")||!Number.isFinite(a.duration)||a.duration<=0||a.currentTime<=0)return;const now=Date.now();if(!force&&now-previewLastSaved<4000)return;previewLastSaved=now;const data=previewReadProgress();data[rec.id]={id:rec.id,position:a.currentTime,duration:a.duration,updated:now};try{localStorage.setItem(previewProgressKey,JSON.stringify(data))}catch(e){}}
 function previewResumeMetadata(){const a=byId("dock-real-audio"),rec=dockActiveSession,p=previewResumePending;if(p&&rec?.id===p.id&&a&&Number.isFinite(a.duration)&&a.duration>0){a.currentTime=Math.min(p.position,Math.max(0,a.duration-1));previewResumePending=null}dockSync()}
-function previewResumeSession(id){const i=sessionPreviewTracks.findIndex(x=>x.id===id),saved=previewReadProgress()[id];if(i<0||!saved)return;previewSaveProgress(true);sessionSelect(i);previewResumePending={id,position:saved.position};dockSetup();const a=byId("dock-real-audio");if(a?.readyState>=1)previewResumeMetadata();dockPlay()}
+function previewResumeSession(id){previewSaveProgress(true);const i=sessionPreviewTracks.findIndex(x=>x.id===id),saved=previewReadProgress()[id];if(i<0||!saved)return;sessionSelect(i);dockSetup({id,position:saved.position});const a=byId("dock-real-audio");if(a?.readyState>=1)previewResumeMetadata();dockPlay()}
 function profileRealHistory(){return Object.values(previewReadProgress()).filter(x=>sessionPreviewTracks.some(t=>t.id===x.id)&&Number.isFinite(x.position)&&Number.isFinite(x.duration)&&x.duration>0).sort((a,b)=>b.updated-a.updated)}
 function profileRealHistoryRow(x){const d=sessionPreviewTracks.find(t=>t.id===x.id),percent=Math.min(100,Math.round(x.position/x.duration*100));return `<button type="button" class="account-content-row" onclick="previewResumeSession(${d.id})"><span class="account-row-cover"><img src="${es(albumCoverUrl("116"))}" alt=""></span><span class="account-row-copy"><strong>${es(d.title)}</strong><small>ادامه شنیدن از ${sessionPersian(sessionAudioTime(x.position).replace(/^00:/,""))}</small><span class="account-progress"><span style="width:${percent}%"></span></span></span><i>▶</i></button>`}
 
 function sessionSelectedRecord(){return sessionFallback?{...sessionFallback}: {...sessionPreviewTracks[sessionPreviewIndex],album:"از حیوانیت تا حیات"}}
 function dockCurrent(){return dockActiveSession||sessionSelectedRecord()}
-function dockSetup(){
- previewSaveProgress(true);const rec=sessionSelectedRecord(),a=byId("dock-real-audio"),bar=byId("audio-dock");
+function dockSetup(resume=null){
+ previewSaveProgress(true);previewResumePending=resume;const rec=sessionSelectedRecord(),a=byId("dock-real-audio"),bar=byId("audio-dock");
  if(!a||!bar)return;
  dockActiveSession={...rec};
  const file=rec.file||"";
  if(a.dataset.mediaSrc!==file){
-  a.pause();a.removeAttribute("src");
+  a.pause();a.removeAttribute("src");previewLastSaved=0;
   if(file)a.src=file;
   a.dataset.mediaSrc=file;a.load();
  }
@@ -4079,7 +4079,7 @@ function dockSetup(){
  byId("expanded-meta").textContent=rec.title+" · "+(rec.album||"از حیوانیت تا حیات");
  byId("dock-note").textContent=file?"فایل صوتی اصلی از نوار پایین صفحه پخش می‌شود.":"فایل صوتی این جلسه در پیش‌نمایش موجود نیست.";
  byId("aud-seek").disabled=!file;
- bar.classList.add("show");globalPlayerMeta();dockSync();
+ bar.classList.add("show");const speedLabel=sessionPersian(String(a.playbackRate).replace(".","٫"))+"×";byId("speed").textContent=speedLabel;byId("expanded-speed").textContent=speedLabel;globalPlayerMeta();dockSync();
 }
 function sessionQueuePlaybackState(id){
  if(!id||queueType!=="session"||!dockActiveSession||String(dockActiveSession.id)!==String(id))return "";
@@ -4100,14 +4100,14 @@ function sessionQueueSync(){
 function dockSync(){
  if(queueType!=="session")return;
  const a=byId("dock-real-audio");if(!a)return;
- const playing=!a.paused&&!!a.getAttribute("src");
+ const playing=!a.paused&&!a.ended&&!a.error&&!!a.getAttribute("src");
  audioOn=playing;
  sessionQueueSync();
  byId("aud-play").textContent=playing?"❚❚":"▶";
  byId("expanded-play").textContent=playing?"❚❚":"▶";
  const duration=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;
  const seek=byId("aud-seek");
- if(seek)seek.value=duration?Math.round(a.currentTime/duration*1000):0;
+ if(seek){seek.value=duration?Math.round(a.currentTime/duration*1000):0;seek.disabled=!duration||!!a.error;}
  const total=duration?sessionAudioTime(duration).replace(/^00:/,""):(dockCurrent().duration||"").replace(/^00:/,"");
  previewSaveProgress();const elapsed=sessionPersian(sessionAudioTime(a.currentTime||0).replace(/^00:/,""));
  byId("audtime").textContent=elapsed+(total?" / "+sessionPersian(total):"");
@@ -4124,21 +4124,21 @@ function sessionStartPlayback(){
 function dockPlay(){
  const a=byId("dock-real-audio");
  if(!a||!a.getAttribute("src")){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return;}
- const p=a.play();if(p&&typeof p.catch==="function")p.catch(()=>toast("امکان پخش فایل صوتی در این مرورگر وجود ندارد"));
+ if(a.error)a.load();const p=a.play();if(p&&typeof p.catch==="function")p.catch(e=>{if(e?.name!=="AbortError")toast("امکان پخش فایل صوتی در این مرورگر وجود ندارد")});
 }
 function dockToggle(){const a=byId("dock-real-audio");if(a&&!a.paused)a.pause();else dockPlay()}
-function dockStop(){previewSaveProgress(true);const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}dockActiveSession=null;sessionQueueSync()}
+function dockStop(){previewSaveProgress(true);previewResumePending=null;const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}dockActiveSession=null;sessionQueueSync()}
 function dockSeek(v){if(queueType!=="session")return;const a=byId("dock-real-audio");if(a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=a.duration*Number(v)/1000}
 function dockSkip(n){const a=byId("dock-real-audio");if(a&&a.getAttribute("src"))a.currentTime=Math.max(0,Math.min(Number.isFinite(a.duration)?a.duration:Infinity,a.currentTime+n))}
 function dockSpeed(){const a=byId("dock-real-audio");if(!a)return;const vals=[1,1.25,1.5,2];const i=vals.findIndex(x=>Math.abs(x-a.playbackRate)<.01);a.playbackRate=vals[(i+1)%vals.length];const t=sessionPersian(String(a.playbackRate).replace(".","٫"))+"×";byId("speed").textContent=t;byId("expanded-speed").textContent=t}
 function dockStep(n){const i=globalPlayerIndex()+n;if(i<0||i>=globalPlayerItems().length)return;dockChoose(i)}
 function dockChoose(i){
- const rec=dockActiveSession||sessionSelectedRecord(),items=globalPlayerItems();if(i<0||i>=items.length)return;
+ const rec=dockActiveSession||sessionSelectedRecord(),items=globalPlayerItems();if(i<0||i>=items.length)return;if(rec.id&&!items[i].file){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return;}
  if(rec.id){sessionSelect(i)}else if(rec.rows){albumType=rec.album==="شرح و بررسی کتاب آن سوی مرگ"?"no":"chapter";chapterSelection=rec.chapterNumber?rec.chapterNumber-1:0;openSessionFromAlbum(i,chapterSelection)}
  if(!sessionSelectedRecord().file){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return}
  dockSetup();dockPlay();globalPlayerRefreshQueue();
 }
-function dockAudioError(){sessionQueueSync();if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
+function dockAudioError(){previewResumePending=null;sessionQueueSync();if(queueType==="session"){dockSync();byId("dock-note").textContent="بارگذاری صوت ناموفق بود؛ دوباره پخش را امتحان کنید یا به صفحه جلسه بروید.";toast("بارگذاری فایل صوتی ناموفق بود")}}
 
 function sessionTopicsToggle(button){
  const list=button?.closest(".session-topic-list");
@@ -4580,7 +4580,7 @@ function openPlayerItem(){if(queueType==='media'&&playingMediaIndex>=0){selected
 function openPlayerSource(){if(queueType==='media'&&playingMediaIndex>=0){selectedMedia=playingMediaIndex;go('media');return}if(queueType==='session'){const d=dockCurrent();albumType=d.album==='شرح و بررسی کتاب آن سوی مرگ'?'no':'chapter';chapterSelection=d.chapterNumber?d.chapterNumber-1:0;showCollectionAll=false;}go('album')}
 function nextTrack(){if(queueType==='session'){dockStep(1);return}if(queueType==='media'){playMediaQueue(playIndex+1);return}playSong(playIndex+1)}
 function prevTrack(){if(queueType==='session'){dockStep(-1);return}if(queueType==='media'){playMediaQueue(playIndex-1);return}playSong(playIndex-1)}
-function closePlayer(){if(queueType==='session')dockStop();audioOn=false;byId('audio-dock').classList.remove('show');closeExpandedPlayer()}
+function closePlayer(){if(queueType==='session')dockStop();audioOn=false;byId('audio-dock').classList.remove('show');closeExpandedPlayer();sessionQueueSync()}
 function togglePlay(){if(queueType==='session'){dockToggle();return}audioOn=!audioOn;byId('aud-play').textContent=audioOn?'❚❚':'▶';byId('expanded-play').textContent=audioOn?'❚❚':'▶'}
 function seekAudio(n){if(queueType==='session'){dockSkip(n);return}toast('نمونه کنترل پرش '+Math.abs(n)+' ثانیه‌ای؛ پخش صوت واقعی انجام نمی‌شود')}
 function cycleSpeed(){if(queueType==='session'){dockSpeed();return}speed=(speed+1)%4;const label=['۱×','۱٫۲۵×','۱٫۵×','۲×'][speed];byId('speed').textContent=label;byId('expanded-speed').textContent=label}
