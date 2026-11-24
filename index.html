@@ -3486,6 +3486,8 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
 
 /* Stage 15: keyboard, focus and touch targets */
 .preview-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}.slider-dots{gap:2px;bottom:2px}.slider-dots button,.slider-dots button.active{width:28px;height:28px;display:grid;place-items:center;background:transparent;border-radius:8px;transition:none}.slider-dots button::before{content:"";width:7px;height:7px;border-radius:30px;background:#71877d8f;transition:width .2s}.slider-dots button.active::before{width:24px;background:var(--accent)}.slider-dots button:focus-visible{outline-offset:-2px}.preview-skip{position:absolute;top:4px;right:8px;z-index:9999;padding:8px 14px;background:var(--surface);color:var(--ink);border:2px solid var(--primary);border-radius:8px;transform:translateY(-200%)}.preview-skip:focus{transform:none}.app-main:focus{outline:none}
+
+.preview-list-caption,.preview-source-note,.preview-match-caption{font-size:11px;line-height:1.8;color:var(--muted)}.preview-source-note{margin:12px 0 0;padding:9px 12px;border-top:1px solid var(--line)}.preview-source-note a{text-decoration:underline;text-underline-offset:3px;color:var(--primary)}.preview-match-caption{display:block;overflow-wrap:anywhere}#session-match{scroll-margin-top:110px}#session-match mark,.preview-match-caption mark{background:var(--primary-soft);color:var(--ink);font-weight:700}
 </style>
 </head>
 <body data-palette="olive">
@@ -3642,16 +3644,16 @@ function packs(){
 }
 function latestShowcase(){
  const nums=['۰۱','۰۲','۰۳','۰۴','۰۵','۰۶','۰۷','۰۸','۰۹','۱۰'];
- const items=[...songData,['جلسه هفت : حضور موجودات درخشان و موسیقی آسمانی','7','۲۹:۳۹'],['جلسه هشت : بی‌علاقگی روح به جسم مادی پس از جدایی','8','۲۳:۱۲'],['جلسه نه : وقتی فاتحه به شعاع نور در قبر تبدیل شد','9','۲۶:۴۷'],['جلسه ده : استوانه نور و یادآوری علوم پیش از تولد','10','۲۹:۳۵']];
+ const items=sessionPreviewTracks.slice(0,10).map(x=>[x.title,String(x.id),sessionPersian(x.duration.replace(/^00:/,""))]);
  return `<section class="latest-reel" aria-labelledby="latest-reel-title">
   <div class="latest-reel-head">
-   <div class="latest-reel-heading"><h2 id="latest-reel-title">جدیدترین سخنرانی‌ها</h2></div>
+   <div class="latest-reel-heading"><h2 id="latest-reel-title">جدیدترین سخنرانی‌ها</h2><small class="preview-list-caption">نمونه چیدمان با جلسات واقعی؛ ترتیب انتشار تأیید نشده</small></div>
    <div class="latest-reel-actions"><button type="button" class="latest-reel-all" onclick="go('albums')">مشاهده همه <span aria-hidden="true">←</span></button></div>
   </div>
   <div class="latest-reel-track" role="list" aria-label="جلسات سخنرانی">
-   ${items.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1}" role="listitem" href="#session" onclick="go('session');return false" aria-label="مشاهده ${es(item[0])}">
-    <div class="latest-reel-cover has-real-image"><span class="latest-reel-art" aria-hidden="true">♫</span><img class="latest-reel-photo" src="${es(albumCoverUrl('1'))}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-duration">${es(item[2])}</span></div>
-    <div class="latest-reel-meta"><small class="latest-reel-album-title">شرح و بررسی کتاب آن سوی مرگ</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
+   ${items.map((item,i)=>`<a class="latest-reel-card latest-reel-color-${(i%5)+1}" role="listitem" href="#session" onclick="sessionSelect(${i});return false" aria-label="مشاهده ${es(item[0])}">
+    <div class="latest-reel-cover has-real-image"><span class="latest-reel-art" aria-hidden="true">♫</span><img class="latest-reel-photo" src="${es(albumCoverUrl('116'))}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'"><span class="latest-reel-number">جلسه ${nums[i]}</span><span class="latest-reel-duration">${es(item[2])}</span></div>
+    <div class="latest-reel-meta"><small class="latest-reel-album-title">از حیوانیت تا حیات</small><h3>${es(item[0].split(':').slice(1).join(':').trim()||item[0])}</h3><span class="latest-reel-open"><b>مشاهده جلسه</b><span aria-hidden="true">←</span></span></div>
    </a>`).join('')}
   </div>
  </section>`;
@@ -3662,7 +3664,7 @@ function hero(){if(!sliderData.length||slide>=sliderData.length||slide<0)slide=0
   <aside class="start-guide" aria-labelledby="start-guide-heading">
     <div><h2 id="start-guide-heading">از کجا شروع کنم؟</h2><p class="start-guide-intro">متناسب با نیازتان، یکی از این مسیرها را انتخاب کنید.</p></div>
     <div class="start-guide-paths">
-      <button class="start-guide-path" onclick="go('album')"><span class="start-guide-number" aria-hidden="true">۰۱</span><span class="start-guide-copy"><strong>برای اولین‌بار آمده‌ام</strong><small>با یک مجموعه سخنرانی آشنا شوید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
+      <button class="start-guide-path" onclick="albumType='chapter';chapterSelection=0;go('album')"><span class="start-guide-number" aria-hidden="true">۰۱</span><span class="start-guide-copy"><strong>برای اولین‌بار آمده‌ام</strong><small>با یک مجموعه سخنرانی آشنا شوید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
       <button class="start-guide-path" onclick="go('albums')"><span class="start-guide-number" aria-hidden="true">۰۲</span><span class="start-guide-copy"><strong>می‌خواهم منظم گوش کنم</strong><small>مجموعه‌ها و مجموعه‌های موضوعی را ببینید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
       <button class="start-guide-path" onclick="go('search')"><span class="start-guide-number" aria-hidden="true">۰۳</span><span class="start-guide-copy"><strong>دنبال پاسخ یک سؤال هستم</strong><small>در عنوان‌ها و متن جلسات جست‌وجو کنید</small></span><span class="start-guide-arrow" aria-hidden="true">←</span></button>
     </div>
@@ -3884,14 +3886,8 @@ function playAlbumSession(i,chapterIndex=chapterSelection){
  const section=isChapter?chapterData[chapterSelection].id:null;
  const rows=isChapter?(chapterSongsBySection[section]||[]):songData.map(x=>[x[0],x[2]]);
  const selected=rows[i];if(!selected){toast("فهرست این فصل هنوز در پیش‌نمایش دریافت نشده است.");return;}
- dockStop();playName=selected[0];playIndex=i;audioOn=true;
- const dock=byId('audio-dock');if(dock)dock.classList.add('show');
- byId('audtitle').textContent=playName;
- byId('audalbum').textContent=isChapter?'از حیوانیت تا حیات':'شرح و بررسی کتاب آن سوی مرگ';
- byId('aud-play').textContent='❚❚';
- byId('expanded-meta').textContent=playName+' · '+byId('audalbum').textContent;
- byId('expanded-play').textContent='❚❚';
- toast('این پلیر در پیش‌نمایش نمایشی است؛ فایل صوتی در نسخه متصل پخش می‌شود');
+ if(isChapter&&section===9){const found=sessionPreviewTracks.findIndex(x=>x.title===selected[0]&&x.file);if(found>=0){sessionSelect(found);sessionStartPlayback();return;}}
+ openSessionFromAlbum(i,chapterSelection);toast("فایل صوتی این جلسه در پیش‌نمایش دریافت نشده است.");
 }
 
 
@@ -3989,7 +3985,7 @@ function sessionPersian(value){return String(value??"").replace(/[0-9]/g,x=>"۰�
 function sessionTranscriptMarkup(full=false){
  const ps=sessionPreviewTranscript.split(/\r?\n+/).map(s=>s.trim()).filter(Boolean);
  if(ps[0]?.startsWith("‼"))ps.shift();
- return (full?ps:ps.slice(0,5)).map(p=>`<p>${es(p)}</p>`).join("");
+ const match=previewTranscriptMatch(previewTranscriptQuery);return (full?ps:ps.slice(0,5)).map((p,i)=>`<p${match?.index===i?' id="session-match"':""}>${match?.index===i?searchMarked(p,previewTranscriptQuery):es(p)}</p>`).join("");
 }
 
 function sessionTextToggle(){
@@ -4013,7 +4009,7 @@ function sessionAdjustFont(n){
 
 function sessionSelect(i){
  if(i<0||i>=sessionPreviewTracks.length)return;
- sessionFallback=null;sessionPreviewIndex=i;sessionTextExpanded=false;
+ sessionFallback=null;sessionPreviewIndex=i;sessionTextExpanded=false;previewTranscriptQuery="";
  go("session");
 }
 
@@ -4283,7 +4279,7 @@ function session(){
    </section>
    <section class="session-panel session-text-panel" id="session-text">
     <div class="session-panel-title session-reader-heading"><span class="session-panel-symbol">${sessionIcon("file",20)}</span><h2>متن کامل سخنرانی</h2>${hasText?`<div class="session-fonttools" role="group" aria-label="تنظیم اندازه متن"><button id="session-font-minus" type="button" onclick="sessionAdjustFont(-1)" aria-label="کوچک‌تر کردن قلم" title="کوچک‌تر کردن قلم" ${sessionTextFont<=-2?"disabled":""}>−</button><span aria-hidden="true">قلم</span><button id="session-font-plus" type="button" onclick="sessionAdjustFont(1)" aria-label="بزرگ‌تر کردن قلم" title="بزرگ‌تر کردن قلم" ${sessionTextFont>=5?"disabled":""}>+</button></div>`:""}</div>
-    ${textMarkup}
+    ${textMarkup}${hasText?'<p class="preview-source-note">مأخذ مستقلِ نقل‌ها در این پیش‌نمایش ثبت نشده است؛ متن پیاده‌شده به معنای اعتبارسنجی علمی نقل‌ها نیست. <a href="https://aminikhaah.ir/song/'+d.id+'" target="_blank" rel="noopener noreferrer">صفحه اصلی جلسه</a></p>':""}
    </section>
    ${sessionCommentPanel(d,fallback)}
   </div>
@@ -4420,7 +4416,7 @@ function searchLibrary(){
  const sections=chapterData.map((x,i)=>({type:"section",title:x.title,subtitle:"از حیوانیت تا حیات",cover:albumCoverUrl("116"),href:"https://aminikhaah.ir/album/116?section_id="+x.id,action:"albumType='chapter';chapterSelection="+i+";go('album')"}));
  const topics=topicDirectoryData.map(x=>({type:"category",title:x.name,subtitle:categoryName(x.parent),cover:x.image,href:"https://aminikhaah.ir/category/"+x.id}));
  const first=songData.map((x,i)=>({type:"song",title:x[0],subtitle:albumData[0][0],duration:x[2],cover:albumCoverUrl("1"),action:"albumType='no';openSessionFromAlbum("+i+")"}));
- const tracks=sessionPreviewTracks.map((x,i)=>({type:"song",title:x.title,subtitle:"از حیوانیت تا حیات",duration:x.duration,cover:albumCoverUrl("116"),href:"https://aminikhaah.ir/song/"+x.id,action:"sessionSelect("+i+")"}));
+ const tracks=sessionPreviewTracks.map((x,i)=>({type:"song",title:x.title,subtitle:"از حیوانیت تا حیات",duration:x.duration,cover:albumCoverUrl("116"),href:"https://aminikhaah.ir/song/"+x.id,action:"sessionSelect("+i+")",extra:i===0?sessionPreviewTranscript:"",transcript:i===0}));
  const otherTracks=chapterData.slice(1).flatMap((c,j)=>(chapterSongsBySection[c.id]||[]).map((x,i)=>({type:"song",title:x[0],subtitle:"از حیوانیت تا حیات · "+c.title,duration:x[1],cover:albumCoverUrl("116"),action:"albumType='chapter';openSessionFromAlbum("+i+","+(j+1)+")"})));
  const roza=rozaRecords.map(x=>({type:"roza",title:x.title,subtitle:categoryName(x.category),cover:topicDirectoryData.find(c=>c.id===x.category)?.image,duration:x.duration,href:"https://aminikhaah.ir/podcast/"+x.id}));
  const media=mediaLibraryRecords.map(x=>({type:"media",title:x.title,subtitle:categoryName(x.category),cover:topicDirectoryData.find(c=>c.id===x.category)?.image,duration:x.duration,href:"https://aminikhaah.ir/podcast/"+x.id}));
@@ -4441,12 +4437,16 @@ function openSearch(){searchText="";searchHasResult=false;searchKind="all";searc
 function performSearch(q){searchText=String(q||"").trim();searchHasResult=!!searchText;searchKind="all";searchExpanded.clear();go("search")}
 function searchChooseKind(k){searchKind=k;searchExpanded.clear();const root=byId("search-results-body");if(root)root.innerHTML=searchResultsBody()}
 function searchMore(k){searchExpanded.add(k);const root=byId("search-results-body");if(root)root.innerHTML=searchResultsBody()}
+function previewTranscriptMatch(q){const term=String(q||"").trim();if(!term)return null;const words=searchNormalize(term).split(" ").filter(Boolean);const ps=sessionPreviewTranscript.split(/\r?\n+/).map(s=>s.trim()).filter(p=>p&&!p.startsWith("‼"));let i=ps.findIndex(p=>p.includes(term));if(i<0)i=ps.findIndex(p=>words.every(w=>searchNormalize(p).includes(w)));return i<0?null:{index:i,text:ps[i]}}
+let previewTranscriptQuery="";
+function previewOpenTranscript(){const q=searchText;sessionSelect(0);previewTranscriptQuery=q;sessionTextExpanded=true;render();setTimeout(()=>byId("session-match")?.scrollIntoView({block:"center",behavior:"instant"}),50)}
 function searchCard(x){
  const type=searchTypes.find(t=>t[0]===x.type)?.[2]||"محتوا";
  const thumb=x.cover?`<img src="${es(x.cover)}" alt="" loading="lazy" onerror="this.hidden=true">`:"";
  const label=x.type==="song"?"♫":x.symbol||"▤";
- const action=x.action?`href="#${x.target||(x.type==="song"?"session":"album")}" onclick="${x.action};return false"`:`href="${es(x.href)}" target="_blank" rel="noopener noreferrer"`;
- return `<a class="library-search-card" ${action}><div class="library-search-cover"><span aria-hidden="true">${es(label)}</span>${thumb}${x.type==="song"?'<span class="library-search-audio-symbol" aria-hidden="true">♫</span>':""}</div><div class="library-search-card-copy"><span class="library-search-card-type">${type}</span><strong>${searchMarked(x.title,searchText)}</strong>${x.subtitle?`<small>${searchMarked(x.subtitle,searchText)}</small>`:""}${x.duration?`<span class="library-search-duration">${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</span>`:""}</div></a>`;
+ const match=x.transcript?previewTranscriptMatch(searchText):null;
+ const action=match?`href="#session" onclick="previewOpenTranscript();return false"`:x.action?`href="#${x.target||(x.type==="song"?"session":"album")}" onclick="${x.action};return false"`:`href="${es(x.href)}" target="_blank" rel="noopener noreferrer"`;
+ return `<a class="library-search-card" ${action}><div class="library-search-cover"><span aria-hidden="true">${es(label)}</span>${thumb}${x.type==="song"?'<span class="library-search-audio-symbol" aria-hidden="true">♫</span>':""}</div><div class="library-search-card-copy"><span class="library-search-card-type">${type}</span><strong>${searchMarked(x.title,searchText)}</strong>${x.subtitle?`<small>${searchMarked(x.subtitle,searchText)}</small>`:""}${match?`<small class="preview-match-caption">مطابقت در متن جلسه: ${searchMarked(match.text.slice(Math.max(0,match.text.indexOf(searchText)-25),Math.max(0,match.text.indexOf(searchText)-25)+150),searchText)}</small>`:""}${x.duration?`<span class="library-search-duration">${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</span>`:""}</div></a>`;
 }
 function searchResultsBody(){
  const all=searchResults(searchText),groups=searchTypes.map(t=>({type:t[0],title:t[1],rows:all.filter(x=>x.type===t[0])})).filter(g=>g.rows.length);
