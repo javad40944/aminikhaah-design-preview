@@ -2684,6 +2684,78 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-comment-child .session-comment-avatar{width:25px;height:25px;flex-basis:25px}
 }
 
+
+/* Responsive library search. */
+.library-search-page{max-width:1200px;margin:auto;padding-bottom:16px;color:var(--ink)}
+.library-search-hero{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:23px 26px 22px;box-shadow:var(--shadow);margin-bottom:20px}
+.library-search-title{display:flex;align-items:center;gap:11px;margin-bottom:17px}
+.library-search-title-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;background:var(--primary-soft);color:var(--primary);border-radius:12px}
+.library-search-title h1{font-size:20px;font-weight:820;line-height:1.5}
+.library-search-title p{color:var(--muted);font-size:11px;line-height:1.8;margin-top:3px}
+.library-search-form{display:flex;gap:8px;align-items:center;min-width:0;border:1px solid color-mix(in srgb,var(--primary) 28%,var(--line));border-radius:12px;background:var(--paper);padding:5px}
+.library-search-form:focus-within{border-color:var(--primary)}
+.library-search-form input{font:inherit;font-size:14px;color:var(--ink);background:transparent;border:0;outline:none;flex:1;min-width:0;padding:10px 13px}
+.library-search-form button{flex-shrink:0;display:flex;align-items:center;gap:7px;justify-content:center;background:var(--primary);color:#fff;font-size:12px;font-weight:750;border:0;border-radius:9px;min-height:42px;padding:9px 19px}
+.library-search-results-head{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:3px 1px 11px}
+.library-search-results-head h2{font-size:16px;font-weight:800;line-height:1.6;overflow-wrap:anywhere}
+.library-search-results-head small{color:var(--muted);font-size:10px}
+.library-search-results-head a{font-size:10px;color:var(--primary);text-decoration:none;white-space:nowrap}
+.library-search-filters{display:flex;gap:7px;overflow-x:auto;padding:2px 1px 10px;scrollbar-width:thin}
+.library-search-filters button{display:flex;align-items:center;gap:6px;white-space:nowrap;border:1px solid var(--line);border-radius:9px;min-height:34px;padding:6px 12px;background:var(--surface);color:var(--ink);font-size:11px;font-weight:700}
+.library-search-filters button small{font-size:10px;color:var(--muted)}
+.library-search-filters button.is-current{background:var(--primary);border-color:var(--primary);color:white}
+.library-search-filters button.is-current small{color:white;opacity:.8}
+.library-search-group{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 16px 14px;margin:9px 0 14px;min-width:0}
+.library-search-group-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;padding-bottom:9px;border-bottom:1px solid var(--line)}
+.library-search-group-head h3{font-size:14px;font-weight:810;display:flex;align-items:center;gap:7px}
+.library-search-group-head h3 small{font-size:10px;background:var(--paper);color:var(--muted);border-radius:6px;padding:2px 6px}
+.library-search-group-head button{border:0;background:transparent;color:var(--primary);font-size:11px;font-weight:750}
+.library-search-grid{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px)/5);gap:10px;overflow-x:auto;scrollbar-width:thin;padding:1px 0 5px}
+.library-search-grid.is-expanded{grid-auto-flow:row;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-columns:auto;overflow:visible}
+.library-search-card{display:flex;flex-direction:column;min-width:0;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:11px;overflow:hidden}
+.library-search-card:hover{border-color:var(--primary);background:var(--surface)}
+.library-search-card:focus-visible{outline:2px solid var(--primary);outline-offset:-2px}
+.library-search-cover{aspect-ratio:1.5;position:relative;display:grid;place-items:center;background:var(--primary-soft);overflow:hidden;color:var(--primary);font-size:26px}
+.library-search-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--primary-soft)}
+.library-search-audio-symbol{position:absolute;inset-inline-end:6px;bottom:6px;background:var(--surface);color:var(--primary);border-radius:6px;padding:2px 6px;font-size:12px}
+.library-search-card-copy{display:flex;flex-direction:column;gap:5px;flex:1;min-width:0;padding:9px 9px 10px}
+.library-search-card-type{font-size:9px;color:var(--primary);font-weight:760}
+.library-search-card strong{font-size:12px;line-height:1.75;font-weight:750;overflow-wrap:anywhere}
+.library-search-card small{font-size:10px;line-height:1.65;color:var(--muted);overflow-wrap:anywhere}
+.library-search-duration{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);margin-top:auto}
+.library-search-card mark{background:color-mix(in srgb,var(--gold) 30%,var(--surface));color:var(--ink);border-radius:3px}
+.library-search-discovery{border:1px solid var(--line);background:var(--surface);border-radius:15px;text-align:center;padding:30px 14px;display:flex;flex-direction:column;align-items:center;gap:9px}
+.library-search-empty-icon{width:58px;height:58px;border-radius:16px;background:var(--primary-soft);color:var(--primary);display:grid;place-items:center;margin-bottom:3px}
+.library-search-discovery h2{font-size:16px;font-weight:800}
+.library-search-discovery p{font-size:12px;line-height:1.9;color:var(--muted)}
+.library-search-suggestions{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:6px}
+.library-search-suggestions button{border:1px solid var(--line);background:var(--paper);color:var(--primary);font-size:11px;padding:7px 12px;border-radius:20px}
+@container(max-width:950px){.library-search-grid{grid-auto-columns:calc((100% - 30px)/4)}.library-search-grid.is-expanded{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@container(max-width:620px){
+ .library-search-hero{padding:14px 12px;border-radius:14px;margin-bottom:13px}
+ .library-search-title{gap:8px;margin-bottom:12px}
+ .library-search-title-icon{width:34px;height:34px;flex-basis:34px;border-radius:9px}
+ .library-search-title-icon svg{width:20px;height:20px}
+ .library-search-title h1{font-size:16px}
+ .library-search-title p{font-size:10px}
+ .library-search-form input{font-size:12px;padding:8px 6px}
+ .library-search-form button{min-height:35px;padding:6px 10px;font-size:10px;gap:5px}
+ .library-search-form button svg{width:16px;height:16px}
+ .library-search-results-head h2{font-size:14px}
+ .library-search-results-head a{font-size:9px}
+ .library-search-filters button{min-height:32px;padding:5px 9px;font-size:10px}
+ .library-search-group{padding:10px 9px;border-radius:12px;margin:6px 0 11px}
+ .library-search-group-head{padding-bottom:7px;margin-bottom:9px}
+ .library-search-group-head h3{font-size:13px}
+ .library-search-group-head button{font-size:10px}
+ .library-search-grid{grid-auto-columns:calc((100% - 16px)/2.35);gap:8px}
+ .library-search-grid.is-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .library-search-card-copy{padding:7px 7px 8px;gap:4px}
+ .library-search-card strong{font-size:11px}
+ .library-search-card small{font-size:9px}
+ .library-search-discovery{padding:24px 10px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -3477,34 +3549,48 @@ function topics(){
  return title('دسته‌های موضوعی',mode==='current'?'در امکانات فعلی، دسته‌بندی‌های عمومی سخنرانی نمایش داده می‌شوند.':'درخت دسته‌بندی کامل فقط ابزار داخلی مدیریت است؛ در سایت، صرفاً دسته‌ها و فهرست‌هایی که مدیر انتخاب کرده نمایش داده می‌شوند.')+'<div class="pill-row">'+tabs.map(t=>'<button class="pill '+(active===t?'active':'')+'" onclick="currentTab=\''+t+'\';render()">'+t+'</button>').join('')+'</div>'+sect('فهرست‌های کشویی قابل تنظیم',accordion,{future:true,desc:'تعداد فهرست‌ها، عنوان هر فهرست، محتوای داخل آن و ترتیب نمایش از پنل مدیریت تعیین می‌شوند.'})+sect('دسته‌های '+active,'<div class="topic-image-grid">'+map[active]+'</div>',{future:active!=='سخنرانی‌ها',desc:'تصاویر مربعی؛ فقط موارد منتخب و مرتب‌شده توسط مدیر نمایش داده می‌شوند.'})+sect('دسته‌های موجود','<div class="topic-image-grid">'+categories.slice(0,6).map(x=>topicImageCard(x[0],x[2],'دسته موجود در نمونه سایت')).join('')+'</div>',{desc:'این موارد نمونه‌ای از دسته‌های موجودند؛ انتخاب و ترتیب نهایی باید از داده سایت بیاید.'});
 }
 
-function openSearch(){searchText='';searchHasResult=false;go('search');setTimeout(()=>{const q=byId('inner-q');if(q)q.focus()},0)}
-function performSearch(q){searchText=(q||'').trim();searchHasResult=searchText.length>0;go('search')}
-function searchGroup(t,type,dest,moreDest){
- let inner='';
- if(type==='album'){
-  inner='<div class="cards-row">'+albumData.map((x,i)=>aCard(x,'album',i)).join('')+'<div class="search-placeholder-card"><div class="search-placeholder-thumb">⋯</div><b>جایگاه نتیجه پنجم</b><small>نمونه چیدمان؛ داده زنده نیست</small></div></div>';
- }else if(type==='song'){
-  inner='<div class="cards-row">'+songData.slice(0,5).map((x,i)=>'<a class="content-card" href="#session" onclick="searchJump=true;go(\'session\');return false">'+cover(i,'♫')+'<div class="card-title">'+es(x[0])+'</div><span class="card-sub">'+albumData[0][0]+' · نمونه جلسه؛ نه نتیجه جست‌وجوی زنده</span></a>').join('')+'</div>';
- }else if(type==='category'){
-  inner='<div class="cards-row">'+cards(categories,'category')+'</div>';
- }else if(type==='section'){
-  inner="<div class=\"cards-row\"><a class=\"content-card\" href=\"#album\" onclick=\"albumType='chapter';go('album');return false\">"+cover(0,'§')+"<div class=\"card-title\">فصل اول - دو راهی طغیان و اطمینان</div><small class=\"card-sub\">مجموعه از حیوانیت تا حیات · section_id=9 · نمونه واقعی شناخته‌شده</small></a></div>";
- }else{
-  inner='<div class="search-placeholder-row">'+[1,2,3,4,5].map(i=>'<button class="search-placeholder-card" onclick="go(\''+dest+'\')"><div class="search-placeholder-thumb">⋯</div><b>جایگاه نتیجه '+i+'</b><small>نیازمند داده عمومی و توسعه بعدی</small></button>').join('')+'</div>';
- }
- return sect(t,inner,{future:type==='future',more:moreDest,desc:'تا پنج نتیجه نخست در اسکرول افقی؛ این بخش نمونه ساختار است و نتایج زنده را شبیه‌سازی نمی‌کند.'});
-}
 
+/* Search: local matching against real preview records, not a live search service. */
+let searchKind="all",searchExpanded=new Set();
+const searchTypes=[["album","مجموعه‌ها","مجموعه"],["song","جلسات","جلسه"],["section","فصل‌ها","فصل"],["category","موضوعات","موضوع"],["roza","روضه‌ها","روضه"],["media","رسانه‌ها","رسانه"],["lesson","دروس تخصصی","درس"],["qa","پرسش‌وپاسخ","پرسش"],["book","کتاب‌ها و سیرها","کتاب"]];
+function searchNormalize(v){return String(v||"").replace(/ي|ى/g,"ی").replace(/ك/g,"ک").replace(/[\u064B-\u065F\u0670]/g,"").replace(/\u200c/g," ").replace(/\s+/g," ").trim().toLowerCase()}
+function searchLibrary(){
+ const albums=[...new Map([...relatedAlbumData,...albumData].map(x=>[String(x[1]),x])).values()].map(x=>({type:"album",title:x[0],cover:albumCoverUrl(x[1]),href:"https://aminikhaah.ir/album/"+x[1],action:String(x[1])==="1"?"albumType='no';go('album')":String(x[1])==="116"?"albumType='chapter';chapterSelection=0;go('album')":""}));
+ const sections=chapterData.map((x,i)=>({type:"section",title:x.title,subtitle:"از حیوانیت تا حیات",cover:albumCoverUrl("116"),href:"https://aminikhaah.ir/album/116?section_id="+x.id,action:"albumType='chapter';chapterSelection="+i+";go('album')"}));
+ const topics=categories.map(x=>({type:"category",title:x[0],symbol:x[2],href:"https://aminikhaah.ir/category/"+x[1]}));
+ const first=songData.map((x,i)=>({type:"song",title:x[0],subtitle:albumData[0][0],duration:x[2],cover:albumCoverUrl("1"),href:"https://aminikhaah.ir/song/"+x[1],action:"albumType='no';openSessionFromAlbum("+i+")"}));
+ const tracks=sessionPreviewTracks.map((x,i)=>({type:"song",title:x.title,subtitle:"از حیوانیت تا حیات",duration:x.duration,cover:albumCoverUrl("116"),href:"https://aminikhaah.ir/song/"+x.id,action:"sessionSelect("+i+")"}));
+ const otherTracks=chapterData.slice(1).flatMap((c,j)=>(chapterSongsBySection[c.id]||[]).map((x,i)=>({type:"song",title:x[0],subtitle:"از حیوانیت تا حیات · "+c.title,duration:x[1],cover:albumCoverUrl("116"),action:"albumType='chapter';openSessionFromAlbum("+i+","+(j+1)+")"})));
+ return [...albums,...first,...tracks,...otherTracks,...sections,...topics];
+}
+function searchResults(q){
+ const words=searchNormalize(q).split(" ").filter(Boolean);if(!words.length)return [];
+ return searchLibrary().filter(x=>{const hay=searchNormalize(x.title+" "+(x.subtitle||""));return words.every(w=>hay.includes(w))});
+}
+function searchMarked(value,q){
+ const raw=String(value||""),term=String(q||"").trim();const at=raw.toLowerCase().indexOf(term.toLowerCase());
+ return term&&at>=0?es(raw.slice(0,at))+"<mark>"+es(raw.slice(at,at+term.length))+"</mark>"+es(raw.slice(at+term.length)):es(raw);
+}
+function openSearch(){searchText="";searchHasResult=false;searchKind="all";searchExpanded.clear();go("search");setTimeout(()=>byId("inner-q")?.focus(),0)}
+function performSearch(q){searchText=String(q||"").trim();searchHasResult=!!searchText;searchKind="all";searchExpanded.clear();go("search")}
+function searchChooseKind(k){searchKind=k;searchExpanded.clear();const root=byId("search-results-body");if(root)root.innerHTML=searchResultsBody()}
+function searchMore(k){searchExpanded.add(k);const root=byId("search-results-body");if(root)root.innerHTML=searchResultsBody()}
+function searchCard(x){
+ const type=searchTypes.find(t=>t[0]===x.type)?.[2]||"محتوا";
+ const thumb=x.cover?`<img src="${es(x.cover)}" alt="" loading="lazy" onerror="this.hidden=true">`:"";
+ const label=x.type==="song"?"♫":x.symbol||"▤";
+ const action=x.action?`href="#${x.type==="song"?"session":"album"}" onclick="${x.action};return false"`:`href="${es(x.href)}" target="_blank" rel="noopener noreferrer"`;
+ return `<a class="library-search-card" ${action}><div class="library-search-cover"><span aria-hidden="true">${es(label)}</span>${thumb}${x.type==="song"?'<span class="library-search-audio-symbol" aria-hidden="true">♫</span>':""}</div><div class="library-search-card-copy"><span class="library-search-card-type">${type}</span><strong>${searchMarked(x.title,searchText)}</strong>${x.subtitle?`<small>${searchMarked(x.subtitle,searchText)}</small>`:""}${x.duration?`<span class="library-search-duration">${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</span>`:""}</div></a>`;
+}
+function searchResultsBody(){
+ const all=searchResults(searchText),groups=searchTypes.map(t=>({type:t[0],title:t[1],rows:all.filter(x=>x.type===t[0])})).filter(g=>g.rows.length);
+ if(!searchText)return `<div class="library-search-discovery"><div class="library-search-empty-icon">${sessionIcon("book",28)}</div><h2>چه چیزی می‌خواهید پیدا کنید؟</h2><p>نام مجموعه، عنوان سخنرانی یا موضوع موردنظر را وارد کنید.</p><div class="library-search-suggestions" aria-label="عبارت‌های پیشنهادی">${["قرآن","آن سوی مرگ","جهاد با نفس","سوره فجر","صبر"].map(t=>`<button type="button" onclick="performSearch('${t}')">${t}</button>`).join("")}</div></div>`;
+ const selected=searchKind==="all"?groups:groups.filter(g=>g.type===searchKind);
+ const filters=groups.length?`<div class="library-search-filters" role="group" aria-label="نوع نتیجه"><button type="button" class="${searchKind==="all"?"is-current":""}" aria-pressed="${searchKind==="all"}" onclick="searchChooseKind('all')">همه <small>${sessionPersian(all.length)}</small></button>${groups.map(g=>`<button type="button" class="${searchKind===g.type?"is-current":""}" aria-pressed="${searchKind===g.type}" onclick="searchChooseKind('${g.type}')">${g.title} <small>${sessionPersian(g.rows.length)}</small></button>`).join("")}</div>`:"";
+ return `<div class="library-search-results-head"><div><h2>نتایج «${es(searchText)}»</h2><small>${sessionPersian(all.length)} نتیجه در محتوای نمونه</small></div><a href="https://aminikhaah.ir/search/?q=${encodeURIComponent(searchText)}" target="_blank" rel="noopener noreferrer">جست‌وجو در سایت اصلی ‹</a></div>${filters}${!groups.length?`<div class="library-search-discovery"><div class="library-search-empty-icon">${sessionIcon("book",27)}</div><h2>نتیجه‌ای پیدا نشد</h2><p>عبارت کوتاه‌تر یا املای دیگری را امتحان کنید. این پیش‌نمایش فقط محتوای نمونه را جست‌وجو می‌کند.</p></div>`:selected.map(g=>{const expanded=searchExpanded.has(g.type)||searchKind!=="all";return `<section class="library-search-group"><div class="library-search-group-head"><h3>${g.title} <small>${sessionPersian(g.rows.length)}</small></h3>${!expanded&&g.rows.length>5?`<button type="button" onclick="searchMore('${g.type}')">نمایش همه ‹</button>`:""}</div><div class="library-search-grid${expanded?" is-expanded":""}">${(expanded?g.rows:g.rows.slice(0,5)).map(searchCard).join("")}</div></section>`}).join("")}`;
+}
 function search(){
- const count=searchText?'عبارت «'+es(searchText)+'»':'عبارت جست‌وجو';
- const currentGroups=[['فصل‌ها','section','album','albums'],['دسته‌ها','category','topics','topics'],['مجموعه‌ها','album','album','albums'],['جلسات','song','session','albums']];
- const fullGroups=[['مجموعه‌ها','album','album','albums'],['جلسات','song','session','albums'],['روضه‌ها','future','roza','roza'],['رسانه‌ها','future','media','media'],['دروس تخصصی','future','lessons','lessons'],['پرسش‌وپاسخ','future','questions','questions']];
- const groups=mode==='current'?currentGroups:fullGroups;
- const filters=mode==='current'?['همه انواع','فصل','دسته','مجموعه','جلسه']:['همه انواع','مجموعه','جلسه','روضه','رسانه','درس تخصصی','پرسش‌وپاسخ'];
- const hasDemo=searchText&&(/مرگ|جان|مجموعه|کتاب|اخلاق|قرآن|حدیث|اهل‌بیت|ملکوت|فصل|اطمینان|طغیان/.test(searchText));
- const otherTypes=mode==='current'?'':'<p class="search-extra-note">انواع محتوای دیگری مانند بلاگ، مقاله، کتاب، سیر مطالعاتی و بسته شنیداری فقط در صورت وجود داده و نتیجه واقعی، ردیف مستقل می‌گیرند.</p>';
- const filterHtml=filters.map((t,i)=>'<button class="pill '+(i===0?'active':'')+'" onclick="toast(\'فیلتر نوع محتوا در نمونه طراحی است؛ موتور جست‌وجوی زنده متصل نیست\')">'+t+'</button>').join('');
- return title('جست‌وجو در کتابخانه',mode==='current'?'در امکانات فعلی چهار گروه قابل جست‌وجو در نظر گرفته شده‌اند: فصل، دسته، مجموعه و جلسه.':'در طرح جامع، شش گروه اصلی و انواع محتوای آینده به‌صورت تفکیکی نمایش داده می‌شوند.')+'<div class="panel"><div class="search-box" style="max-width:none"><input type="search" id="inner-q" value="'+es(searchText)+'" placeholder="مثلاً آن سوی مرگ" onkeydown="if(event.key===\'Enter\')performSearch(this.value)"><button onclick="performSearch(byId(\'inner-q\').value)">⌕</button></div><div class="pill-row">'+filterHtml+'</div><div class="search-result-meta">'+(searchText?'عبارت: '+count+' · تعداد نتایج دقیق از سرویس جست‌وجوی زنده دریافت می‌شود.':'پس از واردکردن عبارت، تعداد نتایج و گروه‌های دارای نتیجه نمایش داده می‌شوند.')+'<small>این پیش‌نمایش موتور جست‌وجوی زنده نیست.</small></div></div>'+(searchText?(hasDemo?groups.map(g=>searchGroup(g[0],g[1],g[2],g[3])).join('')+otherTypes:sect('بدون نتیجه','<div class="soft-panel">برای این عبارت در داده نمونه پیش‌نمایش نتیجه‌ای تعریف نشده است. در نسخه متصل، موتور جست‌وجو داده‌های واقعی را بررسی می‌کند.</div>')):sect('پیش‌نمایش حالت بدون جست‌وجو','<div class="soft-panel">پس از واردکردن عبارت و فشردن Enter، گروه‌های دارای نتیجه در ردیف‌های مستقل نمایش داده می‌شوند.</div>'));
+ return `<div class="library-search-page"><section class="library-search-hero"><div class="library-search-title"><span class="library-search-title-icon"><svg width="23" height="23" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span><div><h1>جست‌وجو در کتابخانه</h1><p>سخنرانی، مجموعه و موضوع موردنظر خود را پیدا کنید.</p></div></div><form class="library-search-form" onsubmit="performSearch(byId('inner-q').value);return false"><input type="search" id="inner-q" value="${es(searchText)}" placeholder="نام مجموعه، جلسه یا موضوع…" aria-label="عبارت جست‌وجو"><button type="submit"><svg width="19" height="19" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span>جست‌وجو</span></button></form></section><div id="search-results-body">${searchResultsBody()}</div></div>`;
 }
 
 function questions(){return `${title('پرسش‌وپاسخ استاد','دسته‌بندی مستقل پرسش‌ها؛ نمایش متن کامل سؤال و پاسخ و امکان انتخاب دسته/پاسخ از پنل در محصول مقصد.')}
@@ -3578,6 +3664,7 @@ try{if(localStorage.getItem('aminikhaah_design_preview_dark')==='1')document.bod
 try{
  const initialPage=decodeURIComponent(window.location.hash.replace(/^#/,""));
  if(Object.prototype.hasOwnProperty.call(views,initialPage))page=initialPage;
+ if(initialPage==="search"){searchText=(new URLSearchParams(window.location.search).get("q")||"").trim();searchHasResult=!!searchText}
 }catch(e){}
 render();
 </script>
