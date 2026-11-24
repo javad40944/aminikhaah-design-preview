@@ -3506,11 +3506,6 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
   <a class="site-brand" href="#home" onclick="go('home');return false" aria-label="امینی‌خواه؛ صفحه اصلی"><span class="brand-logo-panel" aria-hidden="true"></span><span class="brand-subtitle">پایگاه حفظ و نشر آثار</span></a>
   <button class="search-box search-launcher" type="button" aria-label="بازکردن جست‌وجوی تمام‌صفحه" onclick="openSearch()"><span>هر چیز که در جستن آنی، آنی ...</span><span class="search-go" aria-hidden="true">⌕</span></button>
   <div class="header-actions">
-    <div class="palette-picker palette-swatches" role="group" aria-label="انتخاب رنگ‌بندی سایت">
-      <button class="palette-dot palette-dot-olive" type="button" data-palette-choice="olive" onclick="setPalette('olive')" aria-label="رنگ‌بندی یشم و عاج" title="یشم و عاج" aria-pressed="true"></button>
-      <button class="palette-dot palette-dot-lapis" type="button" data-palette-choice="lapis" onclick="setPalette('lapis')" aria-label="رنگ‌بندی لاجورد و خورشید" title="لاجورد و خورشید" aria-pressed="false"></button>
-      <button class="palette-dot palette-dot-clay" type="button" data-palette-choice="clay" onclick="setPalette('clay')" aria-label="رنگ‌بندی انار و کاغذ" title="انار و کاغذ" aria-pressed="false"></button>
-    </div>
     <button class="small-icon theme-switch" type="button" onclick="toggleDark()" aria-label="تغییر حالت روز و شب" title="روز / شب">◐</button>
     <button class="header-login" type="button" onclick="go('profile')" aria-label="ورود یا حساب کاربری" title="ورود / حساب"><svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"></circle><path d="M5 20v-1.5a7 7 0 0 1 14 0V20"></path></svg></button>
   </div>
@@ -4644,18 +4639,9 @@ function closeExpandedPlayer(){const p=byId("audio-expanded");p.classList.add("h
 function openDrawer(){const d=byId('drawer'),opening=d.classList.contains('hide');if(opening)previewDrawerFocus=document.activeElement;d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>['home','albums','roza','media','topics','search','lessons','profile'].includes(id)):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('');if(opening)d.querySelector('button')?.focus();else if(previewDrawerFocus?.isConnected)previewDrawerFocus.focus();}
 function setMode(m){mode=m;if(mode==='full'&&page==='currentPodcast')page='media';if(mode==='full'&&page==='currentList')page='albums';if(mode==='current'){profileDemo=false;if(['questions','books'].includes(page))page='home';searchKind='all';libraryAlbumQuery="";libraryAlbumCategory="all";libraryAlbumSort="default";libraryAlbumPage=1;if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
 function setDevice(m){const preview=byId('preview'),mobile=m==='mobile'||m==='mobile360';preview.classList.toggle('mobile-forced',mobile);preview.style.setProperty('--preview-device-width',mobile?(m==='mobile360'?'360px':'390px'):'100vw');byId('desk').classList.toggle('active',!mobile);byId('mob').classList.toggle('active',m==='mobile');byId('mob360').classList.toggle('active',m==='mobile360')}
-const paletteNotes={olive:'یشم و عاج',lapis:'لاجورد و خورشید',clay:'انار و کاغذ'};
-function setPalette(value){
- if(!paletteNotes[value])value='olive';
- document.body.dataset.palette=value;
- document.querySelectorAll('[data-palette-choice]').forEach(b=>{
-  const active=b.dataset.paletteChoice===value;
-  b.setAttribute('aria-pressed',active?'true':'false');
- });
-
- try{localStorage.setItem('aminikhaah_design_preview_palette_v2',value)}catch(e){}
-}
-try{const savedPalette=localStorage.getItem('aminikhaah_design_preview_palette_v2');setPalette(savedPalette||'olive')}catch(e){setPalette('olive')}
+// D47: fixed jade and ivory identity, in both day and night modes.
+document.body.dataset.palette='olive';
+try{localStorage.removeItem('aminikhaah_design_preview_palette_v2')}catch(e){}
 byId('desk').onclick=()=>setDevice('desktop');byId('mob').onclick=()=>setDevice('mobile');byId('mob360').onclick=()=>setDevice('mobile360');byId('full').onclick=()=>setMode('full');byId('current').onclick=()=>setMode('current');
 document.addEventListener('visibilitychange',()=>{if(document.hidden)stopSlider();else startSlider()});
 // Use separate enter/exit thresholds: a collapsing header changes document height,
