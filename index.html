@@ -2462,6 +2462,84 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .collection-mobile-chapter-count{font-size:8.5px}
 }
 @media(prefers-reduced-motion:reduce){.collection-mobile-chapter-chevron svg{transition:none}}
+
+/* Reading surface: calm editorial typography, compact tools, uninterrupted source paragraphs. */
+.session-page .session-text-panel{
+ padding:16px 18px 18px;scroll-margin-top:90px;
+ border-color:color-mix(in srgb,var(--gold) 20%,var(--line));background:var(--surface);
+}
+.session-page .session-reader-heading{
+ display:flex;align-items:center;gap:9px;margin-bottom:12px;padding-bottom:10px;
+ border-bottom:1px solid color-mix(in srgb,var(--line) 78%,transparent);
+}
+.session-page .session-reader-heading .session-panel-symbol{
+ width:30px;height:30px;flex:0 0 30px;border-radius:9px;
+ background:color-mix(in srgb,var(--primary-soft) 80%,var(--surface));
+}
+.session-page .session-reader-heading .session-panel-symbol svg{width:17px;height:17px}
+.session-page .session-reader-heading h2{margin:0;min-width:0;font-size:15px;font-weight:820;line-height:1.5}
+.session-page .session-fonttools{
+ display:flex;align-items:center;gap:3px;flex-shrink:0;margin-inline-start:auto;
+ border:1px solid var(--line);border-radius:8px;background:var(--paper);padding:2px;
+}
+.session-page .session-fonttools button{
+ display:grid;place-items:center;width:28px;height:28px;padding:0;
+ background:var(--surface);border:0;border-radius:6px;font-size:17px;
+ font-weight:600;color:var(--primary);line-height:1;
+}
+.session-page .session-fonttools button:hover:not(:disabled){background:var(--primary-soft)}
+.session-page .session-fonttools button:disabled{opacity:.35;cursor:not-allowed}
+.session-page .session-fonttools span{font-size:10px;color:var(--muted);padding:0 4px}
+.session-reader{min-width:0}
+.session-page .session-ai-notice{
+ display:flex;align-items:center;gap:8px;margin:0 0 14px;padding:7px 10px;
+ border:0;border-radius:7px;background:color-mix(in srgb,var(--paper) 70%,var(--surface));
+ color:var(--muted);font-size:10px;line-height:1.8;
+}
+.session-reader-notice-icon{display:grid;place-items:center;flex:0 0 23px;width:23px;height:23px;color:var(--accent)}
+.session-reader-notice-icon svg{margin:0;stroke-width:1.7}
+.session-page .session-ai-notice p{margin:0}
+.session-page .session-transcript{
+ direction:rtl;max-width:68ch;margin-inline:auto;padding:3px 7px 1px;
+ color:var(--ink);line-height:2.3;overflow-wrap:anywhere;min-width:0;
+}
+.session-page .session-transcript p{
+ margin:0 0 1.05em;text-align:start;line-height:inherit;white-space:pre-wrap;
+}
+.session-page .session-transcript p:last-child{margin-bottom:0}
+.session-reader-footer{
+ display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;
+}
+.session-reader-footer::before,.session-reader-footer::after{
+ content:"";height:1px;flex:1;background:var(--line);
+}
+.session-page .session-reader-footer .session-readmore{
+ display:inline-flex;align-items:center;justify-content:center;gap:7px;
+ width:auto;max-width:100%;min-height:37px;margin:0;padding:7px 16px;
+ border:1px solid color-mix(in srgb,var(--primary) 24%,var(--line));
+ border-radius:9px;background:var(--primary-soft);color:var(--primary-dark);
+ font-size:11px;font-weight:760;
+}
+.session-page .session-readmore svg{flex-shrink:0;transform:rotate(-90deg);transition:transform .16s ease}
+.session-page .session-readmore[aria-expanded="true"] svg{transform:rotate(90deg)}
+.session-page .session-readmore:hover{background:color-mix(in srgb,var(--primary-soft) 75%,var(--surface));border-color:var(--primary)}
+.session-page .session-readmore:focus-visible,.session-page .session-fonttools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.session-page .session-empty-text{padding:22px 12px}
+@container (max-width:620px){
+ .session-page .session-text-panel{padding:13px 12px 15px}
+ .session-page .session-reader-heading{gap:7px;padding-bottom:9px;margin-bottom:10px}
+ .session-page .session-reader-heading h2{font-size:14px}
+ .session-page .session-reader-heading .session-panel-symbol{width:29px;height:29px;flex-basis:29px}
+ .session-page .session-fonttools{gap:1px}
+ .session-page .session-fonttools button{width:29px;height:29px}
+ .session-page .session-fonttools span{font-size:9px;padding:0 3px}
+ .session-page .session-ai-notice{gap:6px;font-size:9.5px;padding:6px 7px;margin-bottom:12px}
+ .session-page .session-transcript{line-height:2.15;padding:0 2px}
+ .session-page .session-transcript p{margin-bottom:.85em}
+ .session-reader-footer{margin-top:13px;gap:7px}
+ .session-page .session-reader-footer .session-readmore{padding:7px 12px;font-size:10.5px}
+}
+@media(prefers-reduced-motion:reduce){.session-page .session-readmore svg{transition:none}}
 </style>
 </head>
 <body data-palette="olive">
@@ -2936,12 +3014,18 @@ function sessionTextToggle(){
  sessionTextExpanded=!sessionTextExpanded;
  const area=byId("session-transcript"),button=byId("session-readmore");
  if(area)area.innerHTML=sessionTranscriptMarkup(sessionTextExpanded);
- if(button)button.innerHTML=sessionTextExpanded?"نمایش بخش کوتاه‌تر "+sessionIcon("chevron",14):"مشاهده متن کامل جلسه "+sessionIcon("arrow",14);
+ if(button){
+   button.setAttribute("aria-expanded",String(sessionTextExpanded));
+   button.innerHTML="<span>"+(sessionTextExpanded?"نمایش کمتر":"مشاهده متن کامل جلسه")+"</span>"+sessionIcon("chevron",15);
+ }
+ if(!sessionTextExpanded&&area&&area.getBoundingClientRect().top<0)byId("session-text")?.scrollIntoView({block:"start",behavior:"instant"});
 }
 
 function sessionAdjustFont(n){
  sessionTextFont=Math.max(-2,Math.min(5,sessionTextFont+n));
  const a=byId("session-transcript");if(a)a.style.fontSize=(15+sessionTextFont)+"px";
+ const minus=byId("session-font-minus"),plus=byId("session-font-plus");
+ if(minus)minus.disabled=sessionTextFont<=-2;if(plus)plus.disabled=sessionTextFont>=5;
 }
 
 function sessionSelect(i){
@@ -3087,7 +3171,7 @@ function session(){
  const nav=(i,dir)=>i<0||i>=all.length?`<div class="session-nav-cell is-disabled"><small>${dir}</small><b>—</b></div>`:`<button class="session-nav-cell" type="button" onclick="sessionSwitch(${i-index})"><small>${dir}</small><b>${es(all[i].title)}</b><span>مشاهده جلسه ${sessionPersian(i+1)} ${sessionIcon("arrow",13)}</span></button>`;
  const topicItem=(t,i)=>`<li class="session-topic-item${i>=6?" is-extra":""}"><span class="session-topic-text">${es(t)}</span></li>`;
  const topicMarkup=topics.length?`<ul class="session-topic-list">${topics.map((t,i)=>topicItem(t,i)).join("")}${topics.length>6?`<li class="session-topics-toggle-item"><button type="button" class="session-topics-toggle" aria-expanded="false" onclick="sessionTopicsToggle(this)"><span class="session-topics-toggle-label">نمایش سایر موضوعات</span><small>${sessionPersian(topics.length-6)} مورد دیگر</small>${sessionIcon("chevron",14)}</button></li>`:""}</ul>`:`<p class="session-unavailable">موضوعات این جلسه در پیش‌نمایش فعلی وارد نشده‌اند.</p>`;
- const textMarkup=hasText?`<div class="session-ai-notice">${sessionIcon("file",17)} متن این جلسه در سایت با کمک هوش مصنوعی پیاده‌سازی شده و ممکن است نیازمند بازبینی باشد.</div><div class="session-transcript" id="session-transcript" style="font-size:${15+sessionTextFont}px">${sessionTranscriptMarkup(sessionTextExpanded)}</div><button class="session-readmore" id="session-readmore" type="button" onclick="sessionTextToggle()">${sessionTextExpanded?"نمایش بخش کوتاه‌تر":"مشاهده متن کامل جلسه"} ${sessionIcon("arrow",14)}</button>`:`<div class="session-empty-text">${sessionIcon("file",24)}<strong>متن این جلسه هنوز در این نسخه از پیش‌نمایش وارد نشده است.</strong><p>در طراحی نهایی، متن واقعی همین جلسه در این محل نمایش داده می‌شود.</p></div>`;
+ const textMarkup=hasText?`<div class="session-reader"><div class="session-ai-notice"><span class="session-reader-notice-icon">${sessionIcon("file",15)}</span><p>متن این جلسه با کمک هوش مصنوعی پیاده‌سازی شده و ممکن است نیازمند بازبینی باشد.</p></div><div class="session-transcript" id="session-transcript" style="font-size:${15+sessionTextFont}px">${sessionTranscriptMarkup(sessionTextExpanded)}</div><div class="session-reader-footer"><button class="session-readmore" id="session-readmore" type="button" aria-controls="session-transcript" aria-expanded="${sessionTextExpanded}" onclick="sessionTextToggle()"><span>${sessionTextExpanded?"نمایش کمتر":"مشاهده متن کامل جلسه"}</span>${sessionIcon("chevron",15)}</button></div></div>`:`<div class="session-empty-text">${sessionIcon("file",24)}<strong>متن این جلسه هنوز در این نسخه از پیش‌نمایش وارد نشده است.</strong><p>در طراحی نهایی، متن واقعی همین جلسه در این محل نمایش داده می‌شود.</p></div>`;
  return `<div class="session-page">
  <nav class="session-breadcrumb" aria-label="مسیر صفحه"><button type="button" onclick="go('home')">خانه</button><span>›</span><button type="button" onclick="go('albums')">مجموعه‌ها</button><span>›</span><button type="button" onclick="albumType='${albumTitle==="از حیوانیت تا حیات"?"chapter":"no"}';go('album')">${es(albumTitle)}</button>${chapterCrumb}<span>›</span><strong>جلسه ${sessionOrdinal(index+1)}</strong></nav>
  <div class="session-hero">
@@ -3128,7 +3212,7 @@ function session(){
      ${topicMarkup}
    </section>
    <section class="session-panel session-text-panel" id="session-text">
-    <div class="session-panel-title"><span class="session-panel-symbol">${sessionIcon("file",20)}</span><div><h2>متن کامل سخنرانی</h2><p>خواندن متن جلسه، همراه با امکان تنظیم اندازه قلم</p></div><div class="session-fonttools" aria-label="تنظیم اندازه متن"><button type="button" onclick="sessionAdjustFont(-1)" aria-label="کوچک‌تر کردن قلم">−</button><span>قلم</span><button type="button" onclick="sessionAdjustFont(1)" aria-label="بزرگ‌تر کردن قلم">+</button></div></div>
+    <div class="session-panel-title session-reader-heading"><span class="session-panel-symbol">${sessionIcon("file",20)}</span><h2>متن کامل سخنرانی</h2>${hasText?`<div class="session-fonttools" role="group" aria-label="تنظیم اندازه متن"><button id="session-font-minus" type="button" onclick="sessionAdjustFont(-1)" aria-label="کوچک‌تر کردن قلم" title="کوچک‌تر کردن قلم" ${sessionTextFont<=-2?"disabled":""}>−</button><span aria-hidden="true">قلم</span><button id="session-font-plus" type="button" onclick="sessionAdjustFont(1)" aria-label="بزرگ‌تر کردن قلم" title="بزرگ‌تر کردن قلم" ${sessionTextFont>=5?"disabled":""}>+</button></div>`:""}</div>
     ${textMarkup}
    </section>
    <section class="session-panel session-comments">
