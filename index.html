@@ -3446,6 +3446,37 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
  .demo-bar .toolbar button{white-space:nowrap}
 }
 
+
+/* Stage 12 — tablet, laptop and wide desktop. Keep the approved 600px / 16:9 hero. */
+@container(min-width:651px){
+ .preview .site-app:has(#audio-dock.show){padding-bottom:144px}
+ .global-player-layout{align-items:start}
+ .global-player-queue #queue-items{max-height:calc(100dvh - 175px);overflow-y:auto;overscroll-behavior:auto;scrollbar-width:thin;padding-inline-end:4px}
+ .global-player-now{padding:16px}
+ .global-player-art{width:min(100%,280px,calc(100dvh - 420px))}
+ .global-player-transport button{min-width:44px;min-height:44px}
+ .global-player-header button{width:44px;height:44px}
+}
+@container(min-width:651px) and (max-width:900px){
+ #content>.hero-grid>.hero-main{display:flex;justify-content:center}
+ #content>.hero-grid .hero-slider{width:min(100%,600px);max-width:600px}
+ #content>.hero-grid>.start-guide{width:min(100%,600px);justify-self:center}
+ .session-layout{grid-template-columns:minmax(0,1fr)}
+ .session-layout>.session-main{display:contents}
+ .session-layout .session-topics{grid-row:1}
+ .session-layout .session-text-panel{grid-row:2}
+ .session-layout>.session-aside{grid-row:3;position:static;margin-bottom:12px}
+ .session-layout .session-comments{grid-row:4}
+ .session-chapter-card .session-queue{max-height:280px;overflow-y:auto;overscroll-behavior:auto}
+ .session-chapter-card .session-queue-item{flex-shrink:0}
+ .global-player-layout{gap:16px}
+}
+@container(min-width:901px){
+ #content>.hero-grid>.hero-main{grid-column:1;grid-row:1}
+ #content>.hero-grid>.start-guide{grid-column:2;grid-row:1}
+ #content>.hero-grid>.quick-rail{grid-column:1/-1;grid-row:2}
+}
+
 </style>
 </head>
 <body data-palette="olive">
