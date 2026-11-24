@@ -7,8 +7,8 @@
 <title>پیش‌نمایش آزمایشی طراحی امینی‌خواه | نسخه ۱</title>
 <style>
 :root{--primary:#24564b;--primary-dark:#183f37;--primary-soft:#e5eee9;--paper:#f5f1e7;--white:#fffdf8;--surface:#fffdf8;--alt:#eee9dc;--ink:#263c36;--muted:#5d6e64;--line:#e3dccd;--gold:#c49a55;--accent:#a96443;--accent-soft:#f4e7dc;--shadow:0 12px 34px rgba(31,55,47,.075);--radius:17px;--target:44px;--font-sans:"Arad",Tahoma,Arial,sans-serif;--layout-max:1240px;--layout-gutter:26px;--grid-columns:12;--grid-gap:24px;--grid-column-min:0;--reading-max:760px;--text-xs:11px;--text-sm:13px;--text-base:15px;--text-lg:17px;--heading-sm:20px;--heading-md:24px;--heading-lg:clamp(30px,2.8vw,40px);--leading-body:26px;--leading-heading:1.42;--display-leading:1.3;--headline-lg-leading:1.375;--headline-md-leading:1.4167;--headline-sm-leading:1.5;--title-md-size:18px;--title-md-leading:1.5556;--body-lg-size:17px;--body-lg-leading:30px;--body-sm-size:13px;--body-sm-leading:22px;--label-lg-size:14px;--label-lg-leading:20px;--label-md-size:12px;--label-md-leading:18px;--label-sm-size:11px;--label-sm-leading:16px;}
-body[data-palette="lapis"]{--primary:#123f62;--primary-dark:#0b2d48;--primary-soft:#e4edf3;--paper:#f2f5f6;--white:#fff;--surface:#fff;--alt:#e9eff2;--ink:#20394c;--muted:#687985;--line:#dbe3e7;--gold:#d3a24f;--accent:#397b83;--accent-soft:#e3eff0}
-body[data-palette="clay"]{--primary:#7b3438;--primary-dark:#512428;--primary-soft:#f1e5df;--paper:#f8f0e8;--white:#fffaf5;--surface:#fffaf5;--alt:#f0e5dc;--ink:#4a3030;--muted:#796961;--line:#e6d9cf;--gold:#c99a58;--accent:#a95740;--accent-soft:#f4e6dc}
+body[data-palette="lapis"]{--primary:#123f62;--primary-dark:#0b2d48;--primary-soft:#e4edf3;--paper:#f2f5f6;--white:#fff;--surface:#fff;--alt:#e9eff2;--ink:#20394c;--muted:#596975;--line:#dbe3e7;--gold:#d3a24f;--accent:#397b83;--accent-soft:#e3eff0}
+body[data-palette="clay"]{--primary:#7b3438;--primary-dark:#512428;--primary-soft:#f1e5df;--paper:#f8f0e8;--white:#fffaf5;--surface:#fffaf5;--alt:#f0e5dc;--ink:#4a3030;--muted:#6d5d54;--line:#e6d9cf;--gold:#c99a58;--accent:#a95740;--accent-soft:#f4e6dc}
 body.dark{--primary:#a5c9b8;--primary-dark:#d0e3d9;--primary-soft:#293f38;--paper:#17221f;--white:#202d28;--surface:#273630;--alt:#202e28;--ink:#f1f3ed;--muted:#b4c5bb;--line:#40544a;--gold:#dfbd7c;--accent:#d9a17d;--accent-soft:#3c332c;--shadow:none}
 body.dark[data-palette="lapis"]{--primary:#9fc4df;--primary-dark:#d7e7f1;--primary-soft:#263e50;--paper:#14212b;--white:#1c2d39;--surface:#263946;--alt:#1d303d;--ink:#f0f4f6;--muted:#b5c5ce;--line:#3b5260;--gold:#e5c37b;--accent:#78b8b9;--accent-soft:#2e4649;--shadow:none}
 body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primary-soft:#482f30;--paper:#241d1b;--white:#312624;--surface:#3c302d;--alt:#2c2422;--ink:#f6efea;--muted:#d0bdb4;--line:#574642;--gold:#e6bc79;--accent:#dc9879;--accent-soft:#49332f;--shadow:none}
@@ -3369,6 +3369,53 @@ body.dark{--ds-on-primary:var(--paper)}
 .ds-player-demo{border-radius:12px;background:#1b312c;color:#fff;padding:12px;display:flex;align-items:center;gap:10px}.ds-player-demo img{width:46px;height:46px;border-radius:7px;object-fit:contain}.ds-player-demo>div{flex:1;min-width:0}.ds-player-demo strong{font-size:12px;display:block}.ds-player-demo small{font-size:10px;color:#c1d0c9}.ds-player-demo button{background:#e5efe8;color:#1b312c;border:0;border-radius:50%;width:36px;height:36px}
 @container(max-width:620px){.ds-panels{grid-template-columns:1fr;gap:8px}.ds-swatches{grid-template-columns:repeat(3,minmax(0,1fr))}.ds-intro,.ds-panel{padding:12px}.ds-intro h1{font-size:18px}.ds-cover-grid{gap:6px}.ds-cover-demo small{font-size:9px}}
 
+
+/* Stage 10 / package 2: semantic contrast and specialist component contracts. */
+:root{--ds-accent-text:#8e5034;--ds-gold-text:#80602e;--ds-gold-icon:#80602e;--ds-reading-size:var(--body-lg-size);--ds-reading-leading:var(--body-lg-leading);--ds-queue-number:28px;--ds-overlay-radius:17px}
+body[data-palette="lapis"]{--ds-accent-text:#316d75}
+body[data-palette="clay"]{--ds-accent-text:#955037}
+body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-accent-text:var(--accent);--ds-gold-text:var(--gold);--ds-gold-icon:var(--gold)}
+/* Gold in artwork remains decorative. Meaningful controls use the contrast-safe role. */
+:is(.collection-episode-duration svg,.collection-related-link svg,.session-queue-copy small svg,.session-queue-play,.session-hero-fact>svg,.session-clean-meta svg,.session-clean-meta .session-clean-likes svg,.session-meta-pill svg,.session-note svg,.session-actionbar svg,.collection-related-head button span,.collection-season-arrow){color:var(--ds-gold-icon)}
+:is(.session-actionbar .session-action-primary,.session-actionbar .session-play-trigger,.session-actionbar .session-action-primary:hover,.session-actionbar .session-play-trigger:hover:not(:disabled),.collection-action-primary,.collection-season.is-selected .collection-season-num,.collection-action-playlist[aria-pressed="true"] svg,.collection-episode:hover .collection-episode-play,.session-queue-item.is-active .session-queue-num,.session-chapter-card .session-queue-item.is-playing .session-queue-num,.session-chapter-card .session-queue-item.is-paused .session-queue-num,.session-chapter-card .is-playing .session-queue-state,.session-comment-add:hover,.session-comment-avatar.is-admin,.session-comment-send,.global-player-transport .global-play,.global-queue-row.is-current .global-queue-number){color:var(--ds-on-primary)}
+.session-actionbar :is(.session-action-primary,.session-play-trigger) svg{color:var(--ds-on-primary)}
+:is(.session-panel,.session-aside-card,.session-actionbar,.session-aside-card.session-chapter-card){border-radius:var(--ds-radius-panel);border-color:var(--line)}
+:is(.session-actionbar button,.session-actionbar a,.session-comment-add,.session-comment-more,.session-comment-compose textarea,.session-comment-compose button,.session-comment-sort,.collection-season,.collection-disabled-season,.global-player-secondary button){border-radius:var(--ds-radius-control)}
+:is(.session-panel-title h2,.collection-related-heading h2){line-height:1.5}
+:is(.session-queue-item,.global-queue-row){border-radius:var(--ds-radius-control)}
+.global-queue-number{width:var(--ds-queue-number);height:var(--ds-queue-number);flex-basis:var(--ds-queue-number)}
+:is(.global-player-now,.global-player-queue){border-radius:var(--ds-overlay-radius);border-color:var(--line)}
+:is(.session-comment-body,.session-comment-compose textarea){overflow-wrap:anywhere}
+.session-comment-compose textarea:focus-visible,.global-player-timeline input:focus-visible{outline:2px solid var(--ds-focus);outline-offset:3px}
+@container(max-width:620px){
+ :is(.session-panel,.session-aside-card,.session-actionbar,.session-aside-card.session-chapter-card){border-radius:var(--ds-radius-card)}
+ :is(.global-player-now,.global-player-queue){border-radius:var(--ds-radius-panel)}
+}
+/* Reference component samples use production tokens and real cover assets. */
+.ds-contrast-wrap{overflow-x:auto}
+.ds-contrast-table{width:100%;border-collapse:collapse;text-align:right;font-size:11px;white-space:nowrap}
+.ds-contrast-table th,.ds-contrast-table td{padding:7px 8px;border-bottom:1px solid var(--line)}
+.ds-contrast-table th{color:var(--muted);font-weight:700}
+.ds-contrast-table td:last-child{color:var(--primary);font-weight:800}
+.ds-contrast-note{font-size:10px;color:var(--muted)}
+.ds-special-actions{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.ds-special-actions button{font-size:11px;padding:8px 10px;border-radius:var(--ds-radius-control)}
+.ds-special-actions .ds-button-primary{color:var(--ds-on-primary)}
+.ds-special-queue{border:1px solid var(--line);border-radius:var(--ds-radius-card);padding:5px 8px;background:var(--surface)}
+.ds-special-row{display:flex;align-items:center;gap:8px;padding:9px 5px;border-bottom:1px solid var(--line);font-size:12px}
+.ds-special-row:last-child{border-bottom:0}
+.ds-special-row.is-current{background:var(--primary-soft);color:var(--primary);border-radius:var(--ds-radius-control)}
+.ds-special-row>strong{flex:1;font-weight:750}
+.ds-special-row>small{font-size:10px;color:var(--muted);white-space:nowrap}
+.ds-special-num{display:grid;place-items:center;width:26px;height:26px;flex:0 0 26px;border-radius:8px;background:var(--paper);color:var(--primary)}
+.ds-special-row.is-current .ds-special-num{background:var(--primary);color:var(--ds-on-primary)}
+.ds-special-comment{display:flex;align-items:flex-start;gap:8px;padding:10px 0;border-bottom:1px solid var(--line)}
+.ds-special-comment .ds-comment-avatar{width:32px;height:32px;flex:0 0 32px;display:grid;place-items:center;border-radius:50%;background:var(--primary-soft);color:var(--primary)}
+.ds-special-comment strong{font-size:12px;color:var(--ink)}
+.ds-special-comment p{font-size:12px;color:var(--ink);margin:3px 0}
+.ds-special-comment small{font-size:10px;color:var(--muted)}
+.ds-special-reply{margin-inline-start:40px;padding:8px 10px;border-inline-start:2px solid var(--line);font-size:11px;color:var(--muted)}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -4409,13 +4456,19 @@ function profile(){
 
 
 /* Review-only design system: uses the same live theme tokens as the actual pages. */
-const dsTokenRoles=[["رنگ اصلی","--primary"],["رنگ تأکید","--accent"],["طلایی","--gold"],["زمینه","--paper"],["سطح کارت","--surface"],["متن","--ink"],["متن فرعی","--muted"],["خط جداکننده","--line"],["زمینه انتخاب","--primary-soft"],["متن روی رنگ اصلی","--ds-on-primary"],["رنگ مکمل","--alt"],["زمینه تأکید","--accent-soft"]];
+const dsTokenRoles=[["رنگ اصلی","--primary"],["رنگ تأکید","--accent"],["طلایی","--gold"],["زمینه","--paper"],["سطح کارت","--surface"],["متن","--ink"],["متن فرعی","--muted"],["خط جداکننده","--line"],["زمینه انتخاب","--primary-soft"],["متن روی رنگ اصلی","--ds-on-primary"],["رنگ مکمل","--alt"],["زمینه تأکید","--accent-soft"],["تأکید خوانا","--ds-accent-text"],["طلایی کاربردی","--ds-gold-text"]];
 let dsChip="all",dsDemoPlaying=false;
 function dsPanel(name,html,wide=false){return `<section class="ds-panel${wide?" ds-wide":""}"><h2>${name}</h2>${html}</section>`}
 function dsSetChip(v){dsChip=v;document.querySelectorAll(".ds-chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.chip===v)))}
 function dsDialog(open){const el=byId("ds-modal");if(!el)return;el.hidden=!open;if(open)byId("ds-modal-close")?.focus();else byId("ds-open-modal")?.focus()}
 function dsToggleDemo(){dsDemoPlaying=!dsDemoPlaying;byId("ds-demo-play").textContent=dsDemoPlaying?"❚❚":"▶"}
 function dsSwatches(){return `<div class="ds-swatches">${dsTokenRoles.map(([name,token])=>`<div class="ds-swatch"><div class="ds-swatch-color" style="--swatch:var(${token})"></div><span>${name}</span><code>${token}</code></div>`).join("")}</div>`}
+
+const dsContrastAudit=[{"name":"یشم و عاج ـ روشن","values":[9.95,4.57,7.07,5.3,4.89,8.37],"pass":true},{"name":"لاجورد و خورشید ـ روشن","values":[10.11,4.78,9.26,4.95,4.88,10.98],"pass":true},{"name":"انار و کاغذ ـ روشن","values":[9.69,5.09,7.12,4.89,4.69,8.78],"pass":true},{"name":"یشم و عاج ـ تیره","values":[10.09,6.25,6.25,5.02,6.29,9.06],"pass":true},{"name":"لاجورد و خورشید ـ تیره","values":[10.05,6.27,6.06,4.96,6.58,8.92],"pass":true},{"name":"انار و کاغذ ـ تیره","values":[10.7,6.74,6.05,5.11,6.86,8.23],"pass":true}];
+function dsContrastTable(){return `<div class="ds-contrast-wrap"><table class="ds-contrast-table"><thead><tr><th>پوسته</th><th>متن</th><th>متن فرعی</th><th>اصلی</th><th>تأکید</th><th>طلایی کاربردی</th><th>روی رنگ اصلی</th><th>نتیجه</th></tr></thead><tbody>${dsContrastAudit.map(x=>`<tr><td>${es(x.name)}</td>${x.values.map(v=>`<td dir="ltr">${v.toFixed(2)}:1</td>`).join("")}<td>${x.pass?"قبول":"نیاز به اصلاح"}</td></tr>`).join("")}</tbody></table></div><p class="ds-contrast-note">اعداد حاصل محاسبه نسبت روشنایی نسبی توکن‌های رنگ‌اند؛ کمترین نسبت هر نقش در سه سطح کارت، زمینه و زمینه انتخاب گزارش شده است. آزمون کامل روی تصاویر، گرادیان‌ها و مرورگر در مرحله ۱۵ باقی است.</p>`}
+function dsSpecialComponents(){return `<div class="ds-special-actions"><button class="ds-button ds-button-primary" onclick="go('session')">▶ شروع شنیدن</button><button class="ds-button" onclick="go('album')">＋ مجموعه</button><button class="ds-button" onclick="go('album')">↗ اشتراک</button></div><div class="ds-special-queue"><div class="ds-special-row is-current"><span class="ds-special-num">▶</span><strong>جلسه اول</strong><small>در حال پخش · ۴۷:۵۶</small></div><div class="ds-special-row"><span class="ds-special-num">۲</span><strong>جلسه دوم</strong><small>۱:۰۲:۲۰</small></div><div class="ds-special-row"><span class="ds-special-num">۳</span><strong>جلسه سوم</strong><small>۵۸:۲۰</small></div></div><p>کنترل‌های آلبوم، فصل و صف جلسه از قواعد مشترک استفاده می‌کنند؛ ترتیب و داده واقعی در صفحات اصلی محفوظ است.</p><div class="ds-demo-row"><button class="ds-button" onclick="go('album')">صفحه مجموعه</button><button class="ds-button" onclick="go('session')">صفحه جلسه</button></div>`}
+function dsCommentExample(){return `<div class="ds-special-comment"><span class="ds-comment-avatar">♙</span><div><strong>شنونده نمونه</strong> <small>نمونه طراحی</small><p>متن دیدگاه در کنار نام کاربر، زمان و کنترل‌های پاسخ.</p><small>♡ پسندیدن · پاسخ</small></div></div><div class="ds-special-reply">پاسخ نمونه به دیدگاه — حالت تو در تو</div><p>تفاوت نقش نویسنده، پاسخ‌ها، پسندیدن و مرتب‌سازی در صفحه جلسه قابل بررسی است.</p>`}
+
 function designSystem(){
  const covers=`<div class="ds-cover-grid"><div class="ds-cover-demo"><div><img src="${es(albumCoverUrl("116"))}" alt="نمونه تصویر مجموعه"></div><small>کاور مربع ۱:۱</small></div><div class="ds-cover-demo wide"><div>بنر / پوستر</div><small>تصویر افقی ۱۶:۹</small></div><div class="ds-cover-demo round"><div><img src="./assets/occasions/arbaeen.webp" alt="نمونه بسته مناسبتی"></div><small>بسته دایره‌ای</small></div></div>`;
  const buttons=`<div class="ds-demo-row"><button class="ds-button ds-button-primary" onclick="toast('نمونه دکمه اصلی')">شروع شنیدن</button><button class="ds-button" onclick="toast('نمونه دکمه فرعی')">افزودن به فهرست</button><button class="ds-button ds-button-text" onclick="go('albums')">مشاهده همه ‹</button><button class="ds-button" disabled>غیرفعال</button></div><div class="ds-demo-row">${[["all","همه"],["audio","صوت"],["video","کلیپ"]].map(([k,t])=>`<button class="ds-chip" data-chip="${k}" aria-pressed="${dsChip===k}" onclick="dsSetChip('${k}')">${t}</button>`).join("")}</div>`;
@@ -4423,7 +4476,7 @@ function designSystem(){
  const spacing=`<div class="ds-space-list">${[4,8,12,16,20,24].map(n=>`<div><i style="--demo-space:${n}px"></i><span>${sessionPersian(n)} px</span></div>`).join("")}</div><p>شعاع کنترل ۹، کارت ۱۲ و پنل ۱۵ پیکسل؛ کنترل معمول ۳۶ پیکسل، هدف لمس پیشنهادی ۴۴ پیکسل در مرحله موبایل.</p>`;
  const form=`<div class="ds-form"><label for="ds-example-input">جست‌وجو</label><input id="ds-example-input" placeholder="عنوان مجموعه…" type="search"><label for="ds-example-invalid">نمونه حالت خطا</label><input id="ds-example-invalid" aria-invalid="true" placeholder="عبارت نامعتبر" readonly><small>حالت خطا صرفاً نمایشی است.</small></div><div class="ds-state">نتیجه‌ای یافت نشد.</div><button id="ds-open-modal" class="ds-button" style="margin-top:8px" onclick="dsDialog(true)">نمونه پنجره تأیید</button>`;
  const player=`<div class="ds-player-demo"><img src="${es(albumCoverUrl("116"))}" alt=""><div><strong>عنوان جلسه نمونه</strong><small>از حیوانیت تا حیات</small></div><button id="ds-demo-play" onclick="dsToggleDemo()" aria-label="پخش نمایشی">${dsDemoPlaying?"❚❚":"▶"}</button></div><p>پلیر اصلی بعد از شروع پخش در صفحه جلسه نمایش داده می‌شود.</p><button class="ds-button" onclick="go('session')">مشاهده پلیر واقعی ‹</button>`;
- return `<div class="ds-page"><section class="ds-intro"><h1>سیستم طراحی امینی‌خواه</h1><p>مرجع مرحله ۱۰ · نسخه اولیه برای تأیید اجزا؛ انتخاب پالت نهایی و آزمون اندازه‌ها در مراحل بعدی محفوظ است. رنگ‌ها از پوسته فعال خوانده می‌شوند.</p></section><div class="ds-panels">${dsPanel("رنگ‌های معنایی",dsSwatches(),true)}${dsPanel("تایپوگرافی آراد",typography)}${dsPanel("فاصله‌ها و اندازه‌ها",spacing)}${dsPanel("دکمه، چیپ و حالت انتخاب",buttons)}${dsPanel("فرم، جست‌وجو و حالات",form)}${dsPanel("نسبت تصویر و کارت",covers)}${dsPanel("پلیر و کنترل‌ها",player)}${dsPanel("اجزای واقعی در صفحات",`<div class="ds-links">${pages.map(([id,name])=>`<button onclick="go('${id}')">${es(name)} ‹</button>`).join("")}</div>`,true)}</div><div class="ds-modal-backdrop" id="ds-modal" hidden onclick="if(event.target===this)dsDialog(false)"><section class="ds-modal" role="dialog" aria-modal="true" aria-label="نمونه پنجره تأیید"><h2>تأیید عملیات</h2><p>این پنجره تنها نمونه طراحی است؛ هیچ داده‌ای تغییر نمی‌کند.</p><div class="ds-demo-row"><button id="ds-modal-close" class="ds-button ds-button-primary" onclick="dsDialog(false)">تأیید</button><button class="ds-button" onclick="dsDialog(false)">انصراف</button></div></section></div></div>`;
+ return `<div class="ds-page"><section class="ds-intro"><h1>سیستم طراحی امینی‌خواه</h1><p>مرجع مرحله ۱۰ · نسخه اولیه برای تأیید اجزا؛ انتخاب پالت نهایی و آزمون اندازه‌ها در مراحل بعدی محفوظ است. رنگ‌ها از پوسته فعال خوانده می‌شوند.</p></section><div class="ds-panels">${dsPanel("رنگ‌های معنایی",dsSwatches(),true)}${dsPanel("ممیزی کنتراست شش پوسته",dsContrastTable(),true)}${dsPanel("تایپوگرافی آراد",typography)}${dsPanel("فاصله‌ها و اندازه‌ها",spacing)}${dsPanel("دکمه، چیپ و حالت انتخاب",buttons)}${dsPanel("فرم، جست‌وجو و حالات",form)}${dsPanel("نسبت تصویر و کارت",covers)}${dsPanel("پلیر و کنترل‌ها",player)}${dsPanel("کنترل‌های مجموعه، فصل و جلسه",dsSpecialComponents())}${dsPanel("دیدگاه و پاسخ تو در تو",dsCommentExample())}${dsPanel("اجزای واقعی در صفحات",`<div class="ds-links">${pages.map(([id,name])=>`<button onclick="go('${id}')">${es(name)} ‹</button>`).join("")}</div>`,true)}</div><div class="ds-modal-backdrop" id="ds-modal" hidden onclick="if(event.target===this)dsDialog(false)"><section class="ds-modal" role="dialog" aria-modal="true" aria-label="نمونه پنجره تأیید"><h2>تأیید عملیات</h2><p>این پنجره تنها نمونه طراحی است؛ هیچ داده‌ای تغییر نمی‌کند.</p><div class="ds-demo-row"><button id="ds-modal-close" class="ds-button ds-button-primary" onclick="dsDialog(false)">تأیید</button><button class="ds-button" onclick="dsDialog(false)">انصراف</button></div></section></div></div>`;
 }
 
 const views={home,albums,album,session,roza,media,topics,search,questions,lessons,books,profile,designSystem};
