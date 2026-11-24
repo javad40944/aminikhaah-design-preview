@@ -2540,6 +2540,53 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-page .session-reader-footer .session-readmore{padding:7px 12px;font-size:10.5px}
 }
 @media(prefers-reduced-motion:reduce){.session-page .session-readmore svg{transition:none}}
+
+/* Session chapter queue: one compact, readable list with independent playback state. */
+.session-aside-card.session-chapter-card{padding:14px 13px;border-radius:16px}
+.session-chapter-card .session-aside-head{padding:0 0 12px;margin-bottom:6px;gap:10px}
+.session-chapter-card .session-aside-head>span{width:35px;height:35px;flex:0 0 35px;border-radius:10px}
+.session-chapter-card .session-aside-head h3{font-size:15px;font-weight:820;line-height:1.5}
+.session-chapter-card .session-aside-head p{font-size:10px;margin-top:2px;line-height:1.6}
+.session-chapter-card .session-queue{display:flex;flex-direction:column;gap:4px;max-height:465px;overscroll-behavior:contain;padding-inline-end:2px}
+.session-chapter-card .session-queue-item{position:relative;display:grid;grid-template-columns:30px minmax(0,1fr) 18px;gap:9px;align-items:center;padding:9px 8px;min-height:59px;border:1px solid transparent;border-radius:10px;background:transparent}
+.session-chapter-card .session-queue-item:not(.is-active):not(.is-playing):not(.is-paused){border-bottom-color:var(--line)}
+.session-chapter-card .session-queue-item:hover{background:var(--paper)}
+.session-chapter-card .session-queue-item:focus-visible{outline:2px solid var(--primary);outline-offset:-2px}
+.session-chapter-card .session-queue-num{width:29px;height:29px;border-radius:8px;font-size:11px;font-weight:800;background:var(--paper);color:var(--muted)}
+.session-chapter-card .session-queue-copy{min-width:0}
+.session-chapter-card .session-queue-copy strong{font-size:12px;line-height:1.7;font-weight:720;overflow-wrap:anywhere}
+.session-chapter-card .session-queue-meta{display:flex;flex-wrap:wrap;align-items:center;gap:5px 9px;margin-top:4px}
+.session-chapter-card .session-queue-copy small{font-size:10px;margin:0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.session-chapter-card .session-queue-state{font-size:9px;font-weight:750;line-height:1.5;color:var(--primary);white-space:normal}
+.session-chapter-card .session-queue-state:empty{display:none}
+.session-chapter-card .session-queue-item.is-active{background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 25%,var(--line))}
+.session-chapter-card .session-queue-item.is-active .session-queue-num{color:var(--primary);background:var(--surface)}
+.session-chapter-card .session-queue-item.is-playing,.session-chapter-card .session-queue-item.is-paused{background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 55%,var(--line));box-shadow:inset -3px 0 var(--primary)}
+.session-chapter-card .session-queue-item.is-playing .session-queue-num,.session-chapter-card .session-queue-item.is-paused .session-queue-num{background:var(--primary);color:#fff}
+.session-chapter-card .session-queue-end{display:grid;place-items:center;color:var(--muted);width:18px;height:24px}
+.session-chapter-card .session-queue-wave{display:none;align-items:center;justify-content:center;gap:2px;height:19px;color:var(--primary)}
+.session-chapter-card .session-queue-wave i{display:block;width:2.5px;height:7px;border-radius:3px;background:currentColor}
+.session-chapter-card .session-queue-wave i:nth-child(2){height:16px}
+.session-chapter-card .session-queue-wave i:nth-child(3){height:11px}
+.session-chapter-card .is-playing .session-queue-wave{display:flex}
+.session-chapter-card .is-playing .session-queue-chevron{display:none}
+.session-chapter-card .is-playing .session-queue-wave i{animation:chapterQueueWave .8s ease-in-out infinite alternate}
+.session-chapter-card .is-playing .session-queue-wave i:nth-child(2){animation-delay:-.35s}
+.session-chapter-card .is-playing .session-queue-wave i:nth-child(3){animation-delay:-.6s}
+@keyframes chapterQueueWave{from{transform:scaleY(.5)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.session-chapter-card .is-playing .session-queue-wave i{animation:none}}
+@container (max-width:750px){
+ .session-layout{gap:0}
+ .session-layout>.session-main{display:contents}
+ .session-layout .session-topics{grid-row:1}
+ .session-layout .session-text-panel{grid-row:2}
+ .session-layout>.session-aside{grid-row:3;position:static;margin-bottom:12px}
+ .session-layout .session-comments{grid-row:4}
+ .session-chapter-card .session-queue{max-height:365px}
+ .session-aside-card.session-chapter-card{padding:12px;margin-bottom:9px}
+ .session-chapter-card .session-queue-item{min-height:57px;padding:8px 7px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -3096,11 +3143,28 @@ function dockSetup(){
  byId("aud-seek").disabled=!file;
  bar.classList.add("show");dockSync();
 }
+function sessionQueuePlaybackState(id){
+ if(!id||queueType!=="session"||!dockActiveSession||String(dockActiveSession.id)!==String(id))return "";
+ const a=byId("dock-real-audio");
+ if(!a||!a.getAttribute("src")||a.ended||a.error||!byId("audio-dock")?.classList.contains("show"))return "";
+ return a.paused?"paused":"playing";
+}
+function sessionQueueSync(){
+ document.querySelectorAll(".session-chapter-card .session-queue-item").forEach(item=>{
+  const status=sessionQueuePlaybackState(item.dataset.sessionTrackId);
+  item.classList.toggle("is-playing",status==="playing");
+  item.classList.toggle("is-paused",status==="paused");
+  const label=item.querySelector(".session-queue-state");
+  const next=status==="playing"?"در حال پخش":status==="paused"?"در حالت مکث":item.getAttribute("aria-current")==="true"?"جلسه فعلی":"";
+  if(label&&label.textContent!==next)label.textContent=next;
+ });
+}
 function dockSync(){
  if(queueType!=="session")return;
  const a=byId("dock-real-audio");if(!a)return;
  const playing=!a.paused&&!!a.getAttribute("src");
  audioOn=playing;
+ sessionQueueSync();
  byId("aud-play").textContent=playing?"❚❚":"▶";
  byId("expanded-play").textContent=playing?"❚❚":"▶";
  const duration=Number.isFinite(a.duration)&&a.duration>0?a.duration:0;
@@ -3121,7 +3185,7 @@ function dockPlay(){
  const p=a.play();if(p&&typeof p.catch==="function")p.catch(()=>toast("امکان پخش فایل صوتی در این مرورگر وجود ندارد"));
 }
 function dockToggle(){const a=byId("dock-real-audio");if(a&&!a.paused)a.pause();else dockPlay()}
-function dockStop(){const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}dockActiveSession=null}
+function dockStop(){const a=byId("dock-real-audio");if(a){a.pause();a.removeAttribute("src");a.dataset.mediaSrc="";a.load()}dockActiveSession=null;sessionQueueSync()}
 function dockSeek(v){if(queueType!=="session")return;const a=byId("dock-real-audio");if(a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=a.duration*Number(v)/1000}
 function dockSkip(n){const a=byId("dock-real-audio");if(a&&a.getAttribute("src"))a.currentTime=Math.max(0,Math.min(Number.isFinite(a.duration)?a.duration:Infinity,a.currentTime+n))}
 function dockSpeed(){const a=byId("dock-real-audio");if(!a)return;const vals=[1,1.25,1.5,2];const i=vals.findIndex(x=>Math.abs(x-a.playbackRate)<.01);a.playbackRate=vals[(i+1)%vals.length];const t=sessionPersian(String(a.playbackRate).replace(".","٫"))+"×";byId("speed").textContent=t;byId("expanded-speed").textContent=t}
@@ -3136,7 +3200,7 @@ function dockChoose(i){
  dockSetup();dockPlay();
  if(!byId("audio-expanded").classList.contains("hide"))byId("queue-items").innerHTML=queueMarkup();
 }
-function dockAudioError(){if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
+function dockAudioError(){sessionQueueSync();if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
 
 function sessionTopicsToggle(button){
  const list=button?.closest(".session-topic-list");
@@ -3167,7 +3231,7 @@ function session(){
  const meta=(name,value,iconName)=>value?`<span class="session-meta-pill">${sessionIcon(iconName,16)}<span>${sessionPersian(value)}</span></span>`:"";
  const canPlay=!!d.file;
  const displayTime=sessionPersian((d.duration||"").replace(/^00:/,""));
- const queue=all.map(x=>`<button class="session-queue-item ${x.i===index?"is-active":""}" type="button" onclick="${fallback?`openSessionFromAlbum(${x.i})`:`sessionSelect(${x.i})`}" aria-current="${x.i===index?"true":"false"}"><span class="session-queue-num">${sessionPersian(x.i+1)}</span><span class="session-queue-copy"><strong>${es(x.title)}</strong><small>${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</small></span><span class="session-queue-play" aria-hidden="true">${x.i===index?"●":"›"}</span></button>`).join("");
+ const queue=all.map(x=>{const current=x.i===index;const status=sessionQueuePlaybackState(x.id);const state=status==="playing"?"در حال پخش":status==="paused"?"در حالت مکث":current?"جلسه فعلی":"";return `<button class="session-queue-item${current?" is-active":""}${status?" is-"+status:""}" type="button" data-session-track-id="${x.id||""}" aria-current="${current?"true":"false"}" onclick="${fallback?`openSessionFromAlbum(${x.i},${chapterIndex})`:`sessionSelect(${x.i})`}"><span class="session-queue-num">${sessionPersian(x.i+1)}</span><span class="session-queue-copy"><strong>${es(x.title)}</strong><span class="session-queue-meta"><small>${sessionIcon("clock",12)} ${sessionPersian(String(x.duration||"").replace(/^00:/,""))}</small><span class="session-queue-state">${state}</span></span></span><span class="session-queue-end" aria-hidden="true"><span class="session-queue-chevron">${sessionIcon("chevron",14)}</span><span class="session-queue-wave"><i></i><i></i><i></i></span></span></button>`}).join("");
  const nav=(i,dir)=>i<0||i>=all.length?`<div class="session-nav-cell is-disabled"><small>${dir}</small><b>—</b></div>`:`<button class="session-nav-cell" type="button" onclick="sessionSwitch(${i-index})"><small>${dir}</small><b>${es(all[i].title)}</b><span>مشاهده جلسه ${sessionPersian(i+1)} ${sessionIcon("arrow",13)}</span></button>`;
  const topicItem=(t,i)=>`<li class="session-topic-item${i>=6?" is-extra":""}"><span class="session-topic-text">${es(t)}</span></li>`;
  const topicMarkup=topics.length?`<ul class="session-topic-list">${topics.map((t,i)=>topicItem(t,i)).join("")}${topics.length>6?`<li class="session-topics-toggle-item"><button type="button" class="session-topics-toggle" aria-expanded="false" onclick="sessionTopicsToggle(this)"><span class="session-topics-toggle-label">نمایش سایر موضوعات</span><small>${sessionPersian(topics.length-6)} مورد دیگر</small>${sessionIcon("chevron",14)}</button></li>`:""}</ul>`:`<p class="session-unavailable">موضوعات این جلسه در پیش‌نمایش فعلی وارد نشده‌اند.</p>`;
@@ -3221,7 +3285,7 @@ function session(){
    </section>
   </main>
   <aside class="session-aside">
-   <section class="session-aside-card"><div class="session-aside-head"><span>${sessionIcon("list",18)}</span><div><h3>جلسات این فصل</h3><p>${sessionPersian(all.length)} جلسه در فهرست</p></div></div><div class="session-queue" role="group" aria-label="انتخاب جلسه">${queue}</div></section>
+   <section class="session-aside-card session-chapter-card"><div class="session-aside-head"><span>${sessionIcon("list",18)}</span><div><h3>${isChaptered?"جلسات این فصل":"جلسات این مجموعه"}</h3><p>${sessionPersian(all.length)} جلسه${chapterTitle?" · "+es(chapterTitle):""}</p></div></div><div class="session-queue" role="group" aria-label="انتخاب جلسه">${queue}</div></section>
    <div class="session-note"><span>${sessionIcon("book",19)}</span><p>شنیدن جلسات به ترتیب، به دنبال‌کردن سیر بحث کمک می‌کند.</p></div>
   </aside>
  </div>
