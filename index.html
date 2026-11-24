@@ -2589,6 +2589,39 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-chapter-card .session-queue-item{min-height:57px;padding:8px 7px}
 }
 
+
+/* Chapter list refinement: compact editorial rows, clearly differentiated playback. */
+.session-aside-card.session-chapter-card{padding:13px 12px 11px;border-radius:15px;box-shadow:0 3px 14px color-mix(in srgb,var(--ink) 4%,transparent)}
+.session-chapter-card .session-aside-head{gap:8px;padding:0 2px 11px;margin-bottom:8px}
+.session-chapter-card .session-aside-head>span{width:32px;height:32px;flex-basis:32px;background:var(--primary-soft);border-radius:9px}
+.session-chapter-card .session-queue-heading{min-width:0;flex:1}
+.session-chapter-card .session-queue-heading h3{font-size:14px;font-weight:820}
+.session-chapter-card .session-queue-heading p{font-size:10px;line-height:1.65;margin-top:2px;overflow-wrap:anywhere}
+.session-queue-total{flex-shrink:0;white-space:nowrap;font-size:10px;font-weight:720;color:var(--muted);padding:4px 8px;border-radius:7px;background:var(--paper)}
+.session-chapter-card .session-queue{gap:3px;padding-block:1px 2px;scrollbar-color:color-mix(in srgb,var(--primary) 40%,var(--line)) transparent}
+.session-chapter-card .session-queue-item{grid-template-columns:28px minmax(0,1fr) 20px;gap:9px;flex-shrink:0;min-height:57px;padding:8px 7px;border-radius:9px}
+.session-chapter-card .session-queue-num{width:27px;height:27px;border-radius:50%;background:transparent;border:1px solid var(--line);color:var(--muted);font-size:10px}
+.session-chapter-card .session-queue-copy strong{font-size:11.5px;line-height:1.7;font-weight:740}
+.session-chapter-card .session-queue-copy small{font-size:10px;gap:4px}
+.session-chapter-card .session-queue-copy small svg{color:var(--muted)}
+.session-chapter-card .session-queue-meta{margin-top:3px;gap:4px 7px}
+.session-chapter-card .session-queue-state:not(:empty){background:color-mix(in srgb,var(--primary) 9%,var(--surface));padding:1px 6px;border-radius:4px;font-size:9px}
+.session-chapter-card .session-queue-item.is-active{background:color-mix(in srgb,var(--primary-soft) 58%,var(--surface));border-color:color-mix(in srgb,var(--primary) 21%,var(--line))}
+.session-chapter-card .session-queue-item.is-active .session-queue-num{border-color:color-mix(in srgb,var(--primary) 28%,var(--line));color:var(--primary)}
+.session-chapter-card .session-queue-item.is-playing,.session-chapter-card .session-queue-item.is-paused{background:var(--primary-soft);border-color:color-mix(in srgb,var(--primary) 42%,var(--line));box-shadow:inset -3px 0 var(--primary)}
+.session-chapter-card .session-queue-item.is-playing .session-queue-num,.session-chapter-card .session-queue-item.is-paused .session-queue-num{background:var(--primary);border-color:var(--primary);color:#fff}
+.session-chapter-card .is-playing .session-queue-state{background:var(--primary);color:#fff}
+.session-chapter-card .is-paused .session-queue-state{background:var(--surface);color:var(--primary)}
+.session-chapter-card .session-queue-end{width:20px;height:25px}
+.session-chapter-card .is-playing .session-queue-end{border-radius:6px;background:var(--surface)}
+.session-chapter-card .is-paused .session-queue-chevron{display:none}
+.session-chapter-card .is-paused .session-queue-end::after{content:"";height:12px;width:8px;border-inline:2px solid var(--primary)}
+@container(max-width:750px){
+ .session-aside-card.session-chapter-card{padding:11px 10px 9px}
+ .session-chapter-card .session-queue-item{min-height:55px;padding:7px 6px}
+ .session-chapter-card .session-queue-copy strong{font-size:12px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -3287,7 +3320,7 @@ function session(){
    </section>
   </main>
   <aside class="session-aside">
-   <section class="session-aside-card session-chapter-card"><div class="session-aside-head"><span>${sessionIcon("list",18)}</span><div><h3>${isChaptered?"جلسات این فصل":"جلسات این مجموعه"}</h3><p>${sessionPersian(all.length)} جلسه${chapterTitle?" · "+es(chapterTitle):""}</p></div></div><div class="session-queue" role="group" aria-label="انتخاب جلسه">${queue}</div></section>
+   <section class="session-aside-card session-chapter-card"><div class="session-aside-head"><span>${sessionIcon("list",18)}</span><div class="session-queue-heading"><h3>${isChaptered?"جلسات این فصل":"جلسات این مجموعه"}</h3>${chapterTitle?`<p>${es(chapterTitle)}</p>`:""}</div><small class="session-queue-total">${sessionPersian(all.length)} جلسه</small></div><div class="session-queue" role="group" aria-label="انتخاب جلسه">${queue}</div></section>
    <div class="session-note"><span>${sessionIcon("book",19)}</span><p>شنیدن جلسات به ترتیب، به دنبال‌کردن سیر بحث کمک می‌کند.</p></div>
   </aside>
  </div>
