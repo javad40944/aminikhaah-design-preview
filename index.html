@@ -3239,6 +3239,82 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 .account-row-copy strong{font-size:11.5px}.account-row-copy small{font-size:9px}
 }
 
+
+/* Global player — persistent mini-player and focused listening view. */
+#audio-dock{width:min(760px,calc(100% - 32px));padding:10px 12px 8px;gap:7px;background:#1b312c;border:1px solid #ffffff22;border-radius:15px;box-shadow:0 10px 35px #0003}
+#audio-dock .audio-dock-main{gap:9px}
+#audio-dock button{display:grid;place-items:center;flex-shrink:0;border:0;background:transparent;color:#f6f2e9;padding:0;min-width:29px;min-height:29px;border-radius:8px}
+#audio-dock .global-dock-art{position:relative;width:44px;height:44px;overflow:hidden;background:#ffffff15;font-size:20px;border-radius:8px}
+.global-dock-art img,.global-player-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.global-dock-art img[hidden],.global-player-art img[hidden]{display:none}
+#audio-dock .aud-titles{gap:4px}
+#audio-dock .audtitle,#audio-dock .audalbum{display:block;text-align:right;width:100%;min-height:0;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#audio-dock .audtitle{font-size:12px}#audio-dock .audalbum{font-size:10px;color:#c1d0c9}
+#audio-dock .global-play{width:39px;height:39px;border-radius:50%;background:#e5efe8;color:#1b312c;font-size:17px}
+#audio-dock .audio-dock-controls{gap:6px}
+#audio-dock .audio-dock-controls button{min-width:29px;height:29px}
+.global-jump{position:relative}
+.global-jump small{position:absolute;font-size:8px;line-height:1;left:50%;top:50%;transform:translate(-50%,-40%);pointer-events:none}
+.global-dock-progress{display:flex;align-items:center;gap:7px;min-width:0;flex:1;direction:ltr}
+#audio-dock input.audio-progress{max-width:none;min-width:22px;accent-color:#d8bc83;height:5px;margin:0}
+#audio-dock .audtime{font-size:9px}
+#audio-expanded.player-fullscreen{background:var(--paper);color:var(--ink);padding:19px max(18px,env(safe-area-inset-right));overflow:auto}
+.global-player-header{max-width:920px;margin:0 auto 22px;display:flex;justify-content:space-between;align-items:center;text-align:center;gap:10px}
+.global-player-header button{display:grid;place-items:center;width:39px;height:39px;border:1px solid var(--line);background:var(--surface);color:var(--primary);border-radius:11px}
+.global-player-header h3{font-size:15px;font-weight:810;margin:0}
+.global-player-header small{font-size:10px;color:var(--muted)}
+.global-player-layout{max-width:920px;margin:auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.global-player-now{min-width:0;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:19px;text-align:center}
+.global-player-art{position:relative;display:grid;place-items:center;width:min(100%,280px);aspect-ratio:1;margin:0 auto 17px;background:var(--primary-soft);color:var(--primary);border-radius:14px;overflow:hidden;font-size:48px;box-shadow:var(--shadow)}
+.global-player-title{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:20px}
+.global-player-title button{background:transparent;border:0;padding:0;color:var(--ink);font-size:16px;line-height:1.7;font-weight:810;overflow-wrap:anywhere}
+.global-player-title #expanded-album{font-size:12px;font-weight:500;color:var(--muted)}
+.global-player-timeline{direction:ltr;margin:0 3px 12px}
+.global-player-timeline input{width:100%;height:6px;accent-color:var(--primary);cursor:pointer;margin:0}
+.global-player-timeline>div{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;direction:ltr;font-variant-numeric:tabular-nums;margin-top:7px}
+.global-player-transport{display:flex;align-items:center;justify-content:center;gap:12px;margin:14px 0}
+.global-player-transport button{display:grid;place-items:center;width:38px;height:38px;border:0;background:transparent;color:var(--primary)}
+.global-player-transport .global-play{width:60px;height:60px;border-radius:50%;background:var(--primary);color:var(--surface);font-size:24px}
+.global-player-transport .global-jump small{font-size:9px}
+.global-player-secondary{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;margin:15px 0 8px}
+.global-player-secondary button{display:flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:8px;padding:7px 10px;background:var(--paper);color:var(--primary);font-size:11px}
+.global-player-secondary svg{width:15px;height:15px}
+.global-player-note{font-size:10px;color:var(--muted);line-height:1.7;margin-top:9px}
+.global-player-queue{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:16px;min-width:0}
+.global-queue-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding-bottom:11px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.global-queue-head h3{font-size:15px;margin:0;font-weight:810}.global-queue-head small{font-size:10px;color:var(--muted)}
+#audio-expanded.player-fullscreen #queue-items{max-width:none;margin:0}
+.global-queue-row{display:flex;align-items:center;text-align:right;gap:9px;width:100%;padding:10px 6px;min-width:0;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);border-radius:5px}
+.global-queue-row:last-child{border-bottom:0}.global-queue-row.is-current{background:var(--primary-soft);color:var(--primary)}
+.global-queue-number{display:grid;place-items:center;width:28px;height:28px;flex:0 0 28px;border-radius:50%;background:var(--paper);color:var(--primary);font-size:11px}
+.global-queue-row.is-current .global-queue-number{background:var(--primary);color:var(--surface)}
+.global-queue-copy{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.global-queue-copy strong{font-size:12px;line-height:1.65;overflow-wrap:anywhere}.global-queue-copy small{font-size:10px;color:var(--primary)}
+.global-queue-time{font-size:10px;color:var(--muted);white-space:nowrap}
+@container(max-width:650px){
+ #audio-dock{bottom:66px;width:calc(100% - 18px);padding:8px;gap:5px;border-radius:12px}
+ #audio-dock .global-dock-art{width:36px;height:36px}#audio-dock .global-play{width:34px;height:34px}
+ #audio-dock .audtitle{font-size:11px}#audio-dock .audalbum{font-size:9px}
+ #audio-dock .audio-dock-controls{gap:3px}#audio-dock .audio-dock-controls button{min-width:25px;width:25px;height:27px;font-size:10px}
+ #audio-dock .audio-dock-controls svg{width:17px;height:17px}
+ #audio-dock .global-skip-track{display:none}
+ #audio-dock .audtime{font-size:8px}
+ .global-dock-progress{gap:4px}
+ #audio-expanded.player-fullscreen{padding:13px 12px}
+ .global-player-header{margin-bottom:12px}
+ .global-player-layout{grid-template-columns:1fr;gap:12px}
+ .global-player-now{padding:13px 12px;border-radius:14px}
+ .global-player-art{width:min(68%,235px);margin-bottom:12px;border-radius:11px}
+ .global-player-title{margin-bottom:13px}
+ .global-player-title button{font-size:14px}
+ .global-player-title #expanded-album{font-size:11px}
+ .global-player-transport{gap:8px;margin:9px 0}
+ .global-player-transport .global-play{width:53px;height:53px}
+ .global-player-secondary{margin:9px 0 6px}
+ .global-player-queue{padding:11px 10px;border-radius:13px}
+ .global-queue-copy strong{font-size:11px}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -3308,9 +3384,9 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  </div>
 </footer>
 <nav class="mobile-bottombar future-nav" aria-label="تب‌های اصلی موبایل"><button data-dest="home" onclick="go('home')"><b>⌂</b>خانه</button><button data-dest="media" onclick="go('media')"><b>◈</b>رسانه</button><button data-dest="topics" onclick="go('topics')"><b>▦</b>موضوعات</button><button data-dest="profile" onclick="go('profile')"><b>♙</b>پروفایل</button></nav>
-<div class="audio-dock" id="audio-dock"><div class="audio-dock-main"><button id="aud-play" onclick="togglePlay()" aria-label="پخش/توقف">▶</button><div class="aud-titles"><button class="audtitle" id="audtitle" onclick="openPlayerItem()">عنوان جلسه</button><button class="audalbum" id="audalbum" onclick="openPlayerSource()">نام مجموعه</button></div><button onclick="closePlayer()" aria-label="بستن پلیر">×</button></div><div class="audio-dock-controls"><button onclick="prevTrack()" aria-label="جلسه قبلی">قبلی</button><button onclick="seekAudio(-10)" aria-label="۱۰ ثانیه عقب">↶۱۰</button><input type="range" class="audio-progress" id="aud-seek" min="0" max="1000" value="0" oninput="dockSeek(this.value)" aria-label="موقعیت پخش صوت" disabled><span class="audtime" id="audtime">۰۰:۰۰</span><button onclick="seekAudio(10)" aria-label="۱۰ ثانیه جلو">۱۰↷</button><button onclick="nextTrack()" aria-label="جلسه بعدی">بعدی</button><button class="speed-btn" onclick="cycleSpeed()" id="speed">۱×</button><button class="queue-btn" onclick="showQueue()">صف</button><button onclick="expandPlayer()" aria-label="بازکردن پلیر تمام‌صفحه">▢</button></div></div>
+<div class="audio-dock" id="audio-dock" aria-label="پلیر سراسری"><div class="audio-dock-main"><button class="global-dock-art" type="button" onclick="expandPlayer()" aria-label="بازکردن پلیر کامل"><span>♫</span><img id="dock-art" alt="" hidden></button><div class="aud-titles"><button class="audtitle" id="audtitle" onclick="openPlayerItem()">عنوان جلسه</button><button class="audalbum" id="audalbum" onclick="openPlayerSource()">نام مجموعه</button></div><button class="global-dock-expand" onclick="expandPlayer()" aria-label="بازکردن پلیر تمام‌صفحه"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10V5h5m4 0h5v5m0 4v5h-5m-4 0H5v-5"/></svg></button><button class="global-play" id="aud-play" onclick="togglePlay()" aria-label="پخش یا مکث">▶</button><button class="global-dock-close" onclick="closePlayer()" aria-label="بستن پلیر"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="audio-dock-controls"><button class="global-skip-track" onclick="prevTrack()" aria-label="جلسه قبلی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5 7 12l10 7zM5 5v14"/></svg></button><button class="global-jump" onclick="seekAudio(-10)" aria-label="۱۰ ثانیه عقب"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a8 8 0 1 1 2 8M4 4v6h6"/></svg><small>۱۰</small></button><div class="global-dock-progress"><input type="range" class="audio-progress" id="aud-seek" min="0" max="1000" value="0" oninput="dockSeek(this.value)" aria-label="موقعیت پخش صوت" disabled><span class="audtime" id="audtime">۰۰:۰۰</span></div><button class="global-jump" onclick="seekAudio(10)" aria-label="۱۰ ثانیه جلو"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a8 8 0 1 0-2 8m2-14v6h-6"/></svg><small>۱۰</small></button><button class="global-skip-track" onclick="nextTrack()" aria-label="جلسه بعدی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 10 7-10 7zM19 5v14"/></svg></button><button class="speed-btn" onclick="cycleSpeed()" id="speed" aria-label="سرعت پخش">۱×</button><button class="queue-btn" onclick="showQueue()" aria-label="صف پخش"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 11h16M4 16h10m3-2 4 3-4 3z"/></svg></button></div></div>
 <audio id="dock-real-audio" preload="metadata" onloadedmetadata="dockSync()" ontimeupdate="dockSync()" onplay="dockSync()" onpause="dockSync()" onended="dockSync()" onerror="dockAudioError()" hidden></audio>
-<div class="audio-expanded hide" id="audio-expanded"><div class="audio-expanded-head"><div><h3>پلیر کامل و صف پخش</h3><p class="muted" id="expanded-meta">عنوان جلسه و مجموعه انتخاب‌شده</p></div><button class="small-icon" onclick="closeExpandedPlayer()" aria-label="بستن پلیر کامل">×</button></div><div class="expanded-player-controls"><button onclick="prevTrack()">جلسه قبلی</button><button id="expanded-play" onclick="togglePlay()">▶</button><button onclick="nextTrack()">جلسه بعدی</button><button id="expanded-speed" onclick="cycleSpeed()">۱×</button></div><p class="muted" id="dock-note" style="font-size:11px;margin:10px 0">پخش در جابه‌جایی صفحات ادامه می‌یابد؛ در این پیش‌نمایش هیچ صوت واقعی پخش نمی‌شود.</p><div id="queue-items"></div></div>
+<div class="audio-expanded hide" id="audio-expanded" role="dialog" aria-label="پلیر کامل"><header class="global-player-header"><button type="button" onclick="closeExpandedPlayer()" aria-label="کوچک کردن پلیر"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m5 9 7 7 7-7"/></svg></button><div><h3>در حال شنیدن</h3><small>پلیر صوتی</small></div><button type="button" onclick="closePlayer()" aria-label="بستن پخش"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M18 6 6 18"/></svg></button></header><div class="global-player-layout"><section class="global-player-now"><div class="global-player-art"><span>♫</span><img id="expanded-art" alt="" hidden></div><div class="global-player-title"><button id="expanded-title" onclick="closeExpandedPlayer();openPlayerItem()">عنوان جلسه</button><button id="expanded-album" onclick="closeExpandedPlayer();openPlayerSource()">نام مجموعه</button><p id="expanded-meta" hidden></p></div><div class="global-player-timeline"><input type="range" id="expanded-seek" min="0" max="1000" value="0" oninput="dockSeek(this.value)" aria-label="موقعیت پخش" disabled><div><span id="expanded-elapsed">۰۰:۰۰</span><span id="expanded-total">۰۰:۰۰</span></div></div><div class="global-player-transport"><button onclick="prevTrack()" aria-label="جلسه قبلی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5 7 12l10 7zM5 5v14"/></svg></button><button class="global-jump" onclick="seekAudio(-10)" aria-label="۱۰ ثانیه عقب"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10a8 8 0 1 1 2 8M4 4v6h6"/></svg><small>۱۰</small></button><button class="global-play" id="expanded-play" onclick="togglePlay()" aria-label="پخش یا مکث">▶</button><button class="global-jump" onclick="seekAudio(10)" aria-label="۱۰ ثانیه جلو"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10a8 8 0 1 0-2 8m2-14v6h-6"/></svg><small>۱۰</small></button><button onclick="nextTrack()" aria-label="جلسه بعدی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="m7 5 10 7-10 7zM19 5v14"/></svg></button></div><div class="global-player-secondary"><button id="expanded-speed" onclick="cycleSpeed()" aria-label="سرعت پخش">۱×</button><button onclick="closeExpandedPlayer();openPlayerItem()">صفحه جلسه ‹</button><button onclick="globalPlayerScrollQueue()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 11h16M4 16h10m3-2 4 3-4 3z"/></svg> صف پخش</button></div><p id="dock-note" class="global-player-note">پخش صوت در جابه‌جایی صفحات ادامه می‌یابد.</p></section><section class="global-player-queue" id="global-player-queue"><div class="global-queue-head"><h3>صف پخش</h3><small id="global-queue-count"></small></div><div id="queue-items"></div></section></div></div>
 <div class="mobile-drawer hide" id="drawer" onclick="if(event.target===this)openDrawer()"><div class="drawer-inner"><b style="font-size:18px">بخش‌های کتابخانه</b><button onclick="openDrawer()">✕ بستن</button><div id="drawer-nav"></div></div></div>
 </div></div></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -3831,7 +3907,7 @@ function dockSetup(){
  byId("expanded-meta").textContent=rec.title+" · "+(rec.album||"از حیوانیت تا حیات");
  byId("dock-note").textContent=file?"فایل صوتی اصلی از نوار پایین صفحه پخش می‌شود.":"فایل صوتی این جلسه در پیش‌نمایش موجود نیست.";
  byId("aud-seek").disabled=!file;
- bar.classList.add("show");dockSync();
+ bar.classList.add("show");globalPlayerMeta();dockSync();
 }
 function sessionQueuePlaybackState(id){
  if(!id||queueType!=="session"||!dockActiveSession||String(dockActiveSession.id)!==String(id))return "";
@@ -3861,7 +3937,11 @@ function dockSync(){
  const seek=byId("aud-seek");
  if(seek)seek.value=duration?Math.round(a.currentTime/duration*1000):0;
  const total=duration?sessionAudioTime(duration).replace(/^00:/,""):(dockCurrent().duration||"").replace(/^00:/,"");
- byId("audtime").textContent=sessionPersian(sessionAudioTime(a.currentTime||0).replace(/^00:/,""))+(total?" / "+sessionPersian(total):"");
+ const elapsed=sessionPersian(sessionAudioTime(a.currentTime||0).replace(/^00:/,""));
+ byId("audtime").textContent=elapsed+(total?" / "+sessionPersian(total):"");
+ const expanded=byId("expanded-seek");if(expanded){expanded.disabled=!a.getAttribute("src")||!duration;expanded.value=duration?Math.round(a.currentTime/duration*1000):0;}
+ byId("expanded-elapsed").textContent=elapsed;byId("expanded-total").textContent=total?sessionPersian(total):"۰۰:۰۰";
+ const queue=byId("queue-items");if(queue&&!byId("audio-expanded").classList.contains("hide")){const active=queue.querySelector(".is-current");if(active){const n=active.querySelector(".global-queue-number"),label=active.querySelector(".global-queue-copy small");if(n)n.textContent=playing?"❚❚":"▶";if(label)label.textContent=playing?"در حال پخش":"در صف فعلی";}}
 }
 function sessionStartPlayback(){
  const rec=sessionSelectedRecord();
@@ -3879,16 +3959,12 @@ function dockStop(){const a=byId("dock-real-audio");if(a){a.pause();a.removeAttr
 function dockSeek(v){if(queueType!=="session")return;const a=byId("dock-real-audio");if(a&&Number.isFinite(a.duration)&&a.duration>0)a.currentTime=a.duration*Number(v)/1000}
 function dockSkip(n){const a=byId("dock-real-audio");if(a&&a.getAttribute("src"))a.currentTime=Math.max(0,Math.min(Number.isFinite(a.duration)?a.duration:Infinity,a.currentTime+n))}
 function dockSpeed(){const a=byId("dock-real-audio");if(!a)return;const vals=[1,1.25,1.5,2];const i=vals.findIndex(x=>Math.abs(x-a.playbackRate)<.01);a.playbackRate=vals[(i+1)%vals.length];const t=sessionPersian(String(a.playbackRate).replace(".","٫"))+"×";byId("speed").textContent=t;byId("expanded-speed").textContent=t}
-function dockStep(n){
- if(sessionFallback){const i=sessionFallback.rows.findIndex(x=>x[0]===sessionFallback.title);if(i+n<0||i+n>=sessionFallback.rows.length)return;sessionSwitch(n)}
- else{const i=sessionPreviewIndex+n;if(i<0||i>=sessionPreviewTracks.length)return;sessionSelect(i)}
- dockSetup();dockPlay();
-}
+function dockStep(n){const i=globalPlayerIndex()+n;if(i<0||i>=globalPlayerItems().length)return;dockChoose(i)}
 function dockChoose(i){
- if(sessionFallback){const n=sessionFallback.rows.findIndex(x=>x[0]===sessionFallback.title);if(i!==n)sessionSwitch(i-n)}
- else sessionSelect(i);
- dockSetup();dockPlay();
- if(!byId("audio-expanded").classList.contains("hide"))byId("queue-items").innerHTML=queueMarkup();
+ const rec=dockActiveSession||sessionSelectedRecord(),items=globalPlayerItems();if(i<0||i>=items.length)return;
+ if(rec.id){sessionSelect(i)}else if(rec.rows){albumType=rec.album==="شرح و بررسی کتاب آن سوی مرگ"?"no":"chapter";chapterSelection=rec.chapterNumber?rec.chapterNumber-1:0;openSessionFromAlbum(i,chapterSelection)}
+ if(!sessionSelectedRecord().file){toast("فایل صوتی این جلسه در پیش‌نمایش موجود نیست");return}
+ dockSetup();dockPlay();globalPlayerRefreshQueue();
 }
 function dockAudioError(){sessionQueueSync();if(queueType==="session")toast("بارگذاری فایل صوتی ناموفق بود")}
 
@@ -4288,7 +4364,7 @@ function toggleDark(){document.body.classList.toggle('dark');try{localStorage.se
 function playSong(i){dockStop();queueType='song';playingMediaIndex=-1;playIndex=((i%songData.length)+songData.length)%songData.length;playName=songData[playIndex][0];audioOn=true;byId('audio-dock').classList.add('show');byId('audtitle').textContent=playName;byId('audalbum').textContent=albumData[0][0];byId('aud-play').textContent='❚❚';byId('expanded-meta').textContent=playName+' · '+albumData[0][0];byId('expanded-play').textContent='❚❚';toast('پلیر نمایشی است؛ هیچ صوتی پخش نمی‌شود')}
 function playMedia(i){const playable=mediaItems.map((x,idx)=>({x,idx})).filter(o=>['پادکست','روضه'].includes(o.x[1]));const qIndex=playable.findIndex(o=>o.idx===i);if(qIndex<0){toast('این رسانه صوتی نیست؛ در پلیر صوتی پخش نمی‌شود');return}playMediaQueue(qIndex)}
 function playMediaQueue(i){dockStop();const playable=mediaItems.filter(x=>['پادکست','روضه'].includes(x[1]));playIndex=((i%playable.length)+playable.length)%playable.length;const item=playable[playIndex];playingMediaIndex=mediaItems.indexOf(item);queueType='media';playName=item[0];audioOn=true;byId('audio-dock').classList.add('show');byId('audtitle').textContent=playName;byId('audalbum').textContent='رسانه · '+item[1];byId('aud-play').textContent='❚❚';byId('expanded-meta').textContent=playName+' · رسانه '+item[1];byId('expanded-play').textContent='❚❚';toast('پلیر نمایشی است؛ هیچ صوت یا ویدئوی واقعی پخش نمی‌شود')}
-function openPlayerItem(){if(queueType==='media'&&playingMediaIndex>=0){selectedMedia=playingMediaIndex;go('media');return}go('session')}
+function openPlayerItem(){if(queueType==='media'&&playingMediaIndex>=0){selectedMedia=playingMediaIndex;go('media');return}if(queueType==='session'&&dockActiveSession?.id){const i=sessionPreviewTracks.findIndex(x=>x.id===dockActiveSession.id);if(i>=0){sessionSelect(i);return}}go('session')}
 function openPlayerSource(){if(queueType==='media'&&playingMediaIndex>=0){selectedMedia=playingMediaIndex;go('media');return}if(queueType==='session'){const d=dockCurrent();albumType=d.album==='شرح و بررسی کتاب آن سوی مرگ'?'no':'chapter';chapterSelection=d.chapterNumber?d.chapterNumber-1:0;}go('album')}
 function nextTrack(){if(queueType==='session'){dockStep(1);return}if(queueType==='media'){playMediaQueue(playIndex+1);return}playSong(playIndex+1)}
 function prevTrack(){if(queueType==='session'){dockStep(-1);return}if(queueType==='media'){playMediaQueue(playIndex-1);return}playSong(playIndex-1)}
@@ -4296,10 +4372,20 @@ function closePlayer(){if(queueType==='session')dockStop();audioOn=false;byId('a
 function togglePlay(){if(queueType==='session'){dockToggle();return}audioOn=!audioOn;byId('aud-play').textContent=audioOn?'❚❚':'▶';byId('expanded-play').textContent=audioOn?'❚❚':'▶'}
 function seekAudio(n){if(queueType==='session'){dockSkip(n);return}toast('نمونه کنترل پرش '+Math.abs(n)+' ثانیه‌ای؛ پخش صوت واقعی انجام نمی‌شود')}
 function cycleSpeed(){if(queueType==='session'){dockSpeed();return}speed=(speed+1)%4;const label=['۱×','۱٫۲۵×','۱٫۵×','۲×'][speed];byId('speed').textContent=label;byId('expanded-speed').textContent=label}
-function queueMarkup(){if(queueType==='session'){const items=sessionFallback?sessionFallback.rows.map(x=>({title:x[0],duration:x[1]})):sessionPreviewTracks;return items.map((x,i)=>'<div class="track"><button class="play-circle" onclick="dockChoose('+i+')">▶</button><span><button class="track-title" onclick="dockChoose('+i+')">'+es(x.title)+'</button><small>'+sessionPersian(String(x.duration||'').replace(/^00:/,''))+'</small></span></div>').join('')}if(queueType==='media'){return mediaItems.filter(x=>['پادکست','روضه'].includes(x[1])).map((x,i)=>'<div class="track"><button class="play-circle" onclick="playMediaQueue('+i+')">▶</button><span><b class="track-title">'+x[0]+'</b><small>رسانه · '+x[1]+'</small></span><span class="track-time">رسانه</span></div>').join('')}return songData.map((x,i)=>track(x,i)).join('')}
-function showQueue(){byId('queue-items').innerHTML=queueMarkup();const p=byId('audio-expanded');p.classList.remove('player-fullscreen');p.classList.toggle('hide')}
-function expandPlayer(){byId('queue-items').innerHTML=queueMarkup();const p=byId('audio-expanded');p.classList.remove('hide');p.classList.add('player-fullscreen')}
-function closeExpandedPlayer(){const p=byId('audio-expanded');p.classList.add('hide');p.classList.remove('player-fullscreen')}
+
+function globalPlayerItems(){
+ if(queueType==="session"){const rec=dockActiveSession||sessionSelectedRecord();return rec.id?sessionPreviewTracks:rec.rows?.map((v,i)=>({id:null,title:v[0],duration:v[1],index:i}))||[]}
+ if(queueType==="media")return mediaItems.filter(x=>["پادکست","روضه"].includes(x[1])).map(x=>({title:x[0],duration:"",kind:x[1]}));
+ return songData.map(x=>({title:x[0],duration:x[2]}));
+}
+function globalPlayerIndex(){const rows=globalPlayerItems();if(queueType==="session"){const d=dockActiveSession||sessionSelectedRecord();return rows.findIndex(x=>d.id?String(x.id)===String(d.id):x.title===d.title)}return playIndex}
+function queueMarkup(){const rows=globalPlayerItems(),current=globalPlayerIndex();return rows.map((x,i)=>{const active=i===current,cmd=queueType==="session"?"dockChoose":queueType==="media"?"playMediaQueue":"playSong";return `<button type="button" class="global-queue-row${active?" is-current":""}" aria-current="${active?"true":"false"}" onclick="${cmd}(${i})"><span class="global-queue-number">${active?(audioOn?"❚❚":"▶"):sessionPersian(i+1)}</span><span class="global-queue-copy"><strong>${es(x.title)}</strong>${active?`<small>${audioOn?"در حال پخش":"در صف فعلی"}</small>`:""}</span><span class="global-queue-time">${sessionPersian(String(x.duration||"").replace(/^00:/,""))}</span></button>`}).join("")}
+function globalPlayerRefreshQueue(){const q=byId("queue-items"),count=byId("global-queue-count");if(!q)return;const offset=q.scrollTop;q.innerHTML=queueMarkup();q.scrollTop=offset;if(count)count.textContent=sessionPersian(globalPlayerItems().length)+" مورد"}
+function globalPlayerMeta(){const rec=queueType==="session"?(dockActiveSession||sessionSelectedRecord()):null;const title=rec?.title||playName||"عنوان جلسه";const album=rec?.album||byId("audalbum").textContent;byId("expanded-title").textContent=title;byId("expanded-album").textContent=album;const cover=rec?albumCoverUrl(rec.album==="شرح و بررسی کتاب آن سوی مرگ"?"1":"116"):queueType==="song"?albumCoverUrl("1"):"";for(const id of ["dock-art","expanded-art"]){const el=byId(id);if(!el)continue;el.hidden=!cover;if(cover&&el.getAttribute("src")!==cover)el.src=cover}if(!byId("audio-expanded").classList.contains("hide"))globalPlayerRefreshQueue()}
+function globalPlayerScrollQueue(){byId("global-player-queue")?.scrollIntoView({block:"start",behavior:"smooth"})}
+function showQueue(){expandPlayer();globalPlayerScrollQueue()}
+function expandPlayer(){const p=byId("audio-expanded");p.classList.remove("hide");p.classList.add("player-fullscreen");p.scrollTop=0;globalPlayerMeta();globalPlayerRefreshQueue()}
+function closeExpandedPlayer(){const p=byId("audio-expanded");p.classList.add("hide");p.classList.remove("player-fullscreen")}
 
 function openDrawer(){const d=byId('drawer');d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>!['roza','lessons','questions','books'].includes(id)):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('')}
 function setMode(m){mode=m;if(mode==='current'){if(['questions','books','lessons'].includes(page))page='home';if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
