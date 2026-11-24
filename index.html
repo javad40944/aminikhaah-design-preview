@@ -3321,10 +3321,8 @@ function session(){
   </main>
   <aside class="session-aside">
    <section class="session-aside-card session-chapter-card"><div class="session-aside-head"><span>${sessionIcon("list",18)}</span><div class="session-queue-heading"><h3>${isChaptered?"جلسات این فصل":"جلسات این مجموعه"}</h3>${chapterTitle?`<p>${es(chapterTitle)}</p>`:""}</div><small class="session-queue-total">${sessionPersian(all.length)} جلسه</small></div><div class="session-queue" role="group" aria-label="انتخاب جلسه">${queue}</div></section>
-   <div class="session-note"><span>${sessionIcon("book",19)}</span><p>شنیدن جلسات به ترتیب، به دنبال‌کردن سیر بحث کمک می‌کند.</p></div>
   </aside>
  </div>
- <nav class="session-navigation" aria-label="جابجایی بین جلسات">${nav(index-1,"جلسه قبل")}${nav(index+1,"جلسه بعد")}</nav>
  </div>`;
 }
 
