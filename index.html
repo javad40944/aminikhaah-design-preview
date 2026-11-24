@@ -2623,40 +2623,65 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 }
 
 
-/* Session comments: compact editorial conversation. */
-.session-comments .session-comments-heading{gap:9px;padding-bottom:13px;margin-bottom:12px;align-items:center}
+
+/* Compact comment threads, grouped one level deep like YouTube. */
+.session-comments .session-comments-heading{gap:9px;padding-bottom:12px;margin-bottom:9px;align-items:center}
 .session-comments-heading>div{min-width:0;flex:1}
 .session-comment-add{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:35px;padding:6px 12px;white-space:nowrap;border:1px solid color-mix(in srgb,var(--primary) 38%,var(--line));border-radius:9px;color:var(--primary);background:var(--primary-soft);font-size:11px;font-weight:780}
 .session-comment-add>span{font-size:17px;line-height:1}
 .session-comment-add:hover{background:var(--primary);color:white}
-.session-comment-preview-note{font-size:10.5px;color:var(--muted);line-height:1.85;background:var(--paper);border-radius:8px;padding:8px 10px;margin-bottom:4px}
+.session-comment-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:2px 0 10px}
+.session-comment-count{display:flex;align-items:center;flex-wrap:wrap;gap:5px 8px;font-weight:780;font-size:12px;color:var(--ink)}
+.session-comment-count small{font-weight:500;font-size:9px;color:var(--muted)}
+.session-comment-sort{display:inline-flex;align-items:center;gap:4px;flex-shrink:0;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:5px 8px;color:var(--primary)}
+.session-comment-sort select{font:inherit;font-size:11px;font-weight:700;background:transparent;color:var(--ink);border:0;max-width:120px;cursor:pointer}
 .session-comment-list{display:flex;flex-direction:column}
-.session-comment-entry{padding:15px 2px 13px;min-width:0;border-bottom:1px solid var(--line)}
-.session-comment-entry:last-child{border-bottom:0;padding-bottom:2px}
-.session-comment-author{display:flex;align-items:center;gap:9px}
+.session-comment-entry{display:flex;gap:10px;padding:14px 0 12px;min-width:0;border-bottom:1px solid var(--line)}
+.session-comment-entry:last-child{border-bottom:0}
 .session-comment-avatar{display:grid;place-items:center;flex:0 0 35px;width:35px;height:35px;border-radius:50%;background:var(--primary-soft);color:var(--primary)}
-.session-comment-author>div{min-width:0;display:flex;flex-direction:column;gap:2px}
-.session-comment-author strong{font-size:12px;font-weight:780;color:var(--ink);text-align:right;overflow-wrap:anywhere}
+.session-comment-avatar.is-admin{background:var(--primary);color:white}
+.session-comment-content{flex:1;min-width:0}
+.session-comment-author{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 8px}
+.session-comment-author strong{font-size:12px;font-weight:780;color:var(--ink);overflow-wrap:anywhere}
 .session-comment-author small{font-size:10px;color:var(--muted)}
-.session-comment-body{margin:8px 0 0;padding-inline-start:44px;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;line-height:2;color:var(--ink);text-align:start}
-.session-comment-reply{display:flex;gap:8px;margin:10px 44px 0 0;padding:10px 11px;border-inline-start:2px solid var(--primary);background:var(--paper);border-radius:9px;min-width:0}
-.session-comment-reply-mark{flex:0 0 17px;color:var(--primary)}
-.session-comment-reply>div{min-width:0}
-.session-comment-reply strong{font-size:10px;color:var(--primary);font-weight:820}
-.session-comment-reply p{font-size:12px;line-height:1.9;white-space:pre-line;overflow-wrap:anywhere;margin-top:3px;color:var(--ink)}
-.session-comment-source{display:flex;justify-content:flex-end;padding-top:6px}
-.session-comment-source a{font-size:9px;color:var(--muted);display:inline-flex;align-items:center;gap:3px;text-decoration:none}
-.session-comment-source a:hover{color:var(--primary);text-decoration:underline}
+.session-comment-role{font-size:9px;border-radius:4px;background:var(--primary-soft);padding:1px 5px;color:var(--primary)}
+.session-comment-body{margin:4px 0 0;padding:0;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;line-height:1.9;color:var(--ink);text-align:start}
+.session-comment-actions{display:flex;align-items:center;gap:7px;margin-top:5px}
+.session-comment-actions button{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:var(--muted);font-size:11px;min-height:30px;padding:4px 9px;border-radius:20px}
+.session-comment-actions button:hover,.session-comment-actions button:focus-visible{background:var(--paper);color:var(--primary)}
+.session-comment-actions .session-comment-like{padding-inline:4px 7px}
+.session-comment-like.is-liked{color:var(--primary);font-weight:800}
+.session-comment-like.is-liked svg{fill:var(--primary-soft);stroke:var(--primary)}
+.session-comment-thread-toggle{display:flex;align-items:center;gap:6px;background:transparent;color:var(--primary);border:0;border-radius:20px;padding:6px 9px;font-size:11px;font-weight:790;margin-top:1px}
+.session-comment-thread-toggle:hover{background:var(--primary-soft)}
+.session-comment-thread-arrow{font-size:17px;line-height:1;display:inline-block}
+.session-comment-thread-arrow.is-open{transform:rotate(180deg)}
+.session-comment-thread{border-inline-start:2px solid color-mix(in srgb,var(--primary) 23%,var(--line));margin:6px 0 1px;padding-inline-start:13px}
+.session-comment-thread .session-comment-child{border-bottom:0;padding:9px 0 8px;gap:8px}
+.session-comment-child .session-comment-avatar{width:27px;height:27px;flex-basis:27px}
+.session-comment-child .session-comment-avatar svg{width:15px;height:15px}
+.session-comment-child .session-comment-body{font-size:12px}
+.session-comment-mention{font-weight:750;color:var(--primary)}
+.session-comment-more{margin-top:9px;width:100%;min-height:39px;display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:var(--paper);border-radius:9px;font-size:12px;font-weight:780;color:var(--primary)}
+.session-comment-more:hover{background:var(--primary-soft)}
+.session-comment-more span{font-size:16px}
+.session-comment-compose{padding:9px 0;display:flex;flex-direction:column;gap:6px}
+.session-comment-compose textarea{width:100%;resize:vertical;min-height:54px;padding:8px 9px;font:inherit;font-size:12px;line-height:1.8;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:8px}
+.session-comment-compose>div{display:flex;justify-content:flex-end;gap:6px}
+.session-comment-compose button{padding:6px 12px;border:0;border-radius:8px;font-size:11px;font-weight:750}
+.session-comment-cancel{background:transparent;color:var(--muted)}
+.session-comment-send{background:var(--primary);color:white}
+.session-comment-compose small{color:var(--muted);font-size:9px}
 @container(max-width:620px){
  .session-comments-heading .session-panel-symbol{width:31px;height:31px;flex-basis:31px}
  .session-comments-heading h2{font-size:14px}
  .session-comment-add{min-height:33px;font-size:10px;padding:5px 8px}
+ .session-comment-entry{gap:8px;padding:12px 0 10px}
  .session-comment-avatar{width:31px;height:31px;flex-basis:31px}
  .session-comment-author strong{font-size:11.5px}
- .session-comment-entry{padding:12px 0 11px}
- .session-comment-body{font-size:12px;padding-inline-start:0;margin-top:8px;line-height:1.95}
- .session-comment-reply{margin-inline-start:14px;margin-inline-end:0;padding:9px;gap:6px}
- .session-comment-preview-note{font-size:10px}
+ .session-comment-body{font-size:12px;line-height:1.95}
+ .session-comment-thread{padding-inline-start:8px}
+ .session-comment-child .session-comment-avatar{width:25px;height:25px;flex-basis:25px}
 }
 
 </style>
@@ -3288,15 +3313,62 @@ function sessionOrdinal(n){
  return values[n-1]||sessionPersian(n);
 }
 
-/* Verified public samples captured from /song/{id}/comments. */
-const sessionCommentSamples=[{"id":1,"name":"Mahla Ghavidel","time":"۵ ماه پیش","body":"عالی"},{"id":93,"name":"Mim Nisi","time":"۴ ماه پیش","body":"ببخشید ادامه متن چرا نمیاد؟؟","reply":"سلام علیکم و رحمه الله\nلطفا صفحه مرورگر را Refresh کنید."},{"id":98,"name":"sareh farahani","time":"۹ ماه پیش","body":"الان تنها جهادی که از من برمیاد ازدواج کردن و فرزند آوریِ🤭😅"},{"id":806,"name":"Ali Shahrestani","time":"۹ ماه پیش","body":"سلام و درود بیکران و آرزوی موفقیت و سلامتی در این مسیر که یقینا تمامی ابعاد آن مورد توجه خود خداوند متعال و نایبان برحقشان است را مسئلت دارم به عدد تمام ملائک باری تعالی.\nدر این جلسه استاد و برادر قلبیم چونان سیری پر وپیمان ارائه کردند ‌که من شدیدا گیج میخورم از حیجان لذا بسیاری از مطالبی که دنبال کردم چه نزد استاد و چه در محافل دیگر دقیقا تمام جوابها رو یکجا در این جلسه حاصل دیدم و متوجه شدم جواب سوالات بنده این است که از هر بابی که فکر میکنیم اگر باز کنیم جواب پشت آن است میبینیم که دری از پس دگر هست و بزرگ تر و ناشناخته تر و اغواگر به سبب اشتیاق رسیدن و مهر تاییدی بر ما شاگردان که راه طولانیست .....\nخداقوت و دست مریزاد.\nیا حق"}];
+
+/* Public comment texts from source sessions 1,93,98,806,872,875. Likes are explicitly preview-only; one demo reply illustrates a deeper thread. */
+const sessionCommentSamples=[{"key":"s1","source":1,"name":"Mahla Ghavidel","time":"۵ ماه پیش","body":"عالی","likes":8,"days":150,"replies":[]},{"key":"s93","source":93,"name":"Mim Nisi","time":"۴ ماه پیش","body":"ببخشید ادامه متن چرا نمیاد؟؟","likes":12,"days":120,"replies":[{"key":"r93","name":"ادمین سایت","body":"سلام علیکم و رحمه الله\nلطفا صفحه مرورگر را Refresh کنید.","time":"","likes":3,"admin":true,"replies":[{"key":"demo-nested","name":"پاسخ آزمایشی","body":"ممنون از راهنمایی شما.","time":"","likes":1,"demo":true,"replies":[]}]}]},{"key":"s98","source":98,"name":"sareh farahani","time":"۹ ماه پیش","body":"الان تنها جهادی که از من برمیاد ازدواج کردن و فرزند آوریِ🤭😅","likes":18,"days":270,"replies":[]},{"key":"s806","source":806,"name":"Ali Shahrestani","time":"۹ ماه پیش","body":"سلام و درود بیکران و آرزوی موفقیت و سلامتی در این مسیر که یقینا تمامی ابعاد آن مورد توجه خود خداوند متعال و نایبان برحقشان است را مسئلت دارم به عدد تمام ملائک باری تعالی.\nدر این جلسه استاد و برادر قلبیم چونان سیری پر وپیمان ارائه کردند ‌که من شدیدا گیج میخورم از حیجان لذا بسیاری از مطالبی که دنبال کردم چه نزد استاد و چه در محافل دیگر دقیقا تمام جوابها رو یکجا در این جلسه حاصل دیدم و متوجه شدم جواب سوالات بنده این است که از هر بابی که فکر میکنیم اگر باز کنیم جواب پشت آن است میبینیم که دری از پس دگر هست و بزرگ تر و ناشناخته تر و اغواگر به سبب اشتیاق رسیدن و مهر تاییدی بر ما شاگردان که راه طولانیست .....\nخداقوت و دست مریزاد.\nیا حق","likes":24,"days":270,"replies":[]},{"key":"s872","source":872,"name":"javad mirzaei","time":"۳ هفته پیش","body":"کار و مطالعه زیادی شده برای این سخنرانی.... خدا به آقای امینی خواه توفیق بندگی و عاقبت به شهادتی بده.","likes":16,"days":21,"replies":[]},{"key":"s875","source":875,"name":"سعید منصوری","time":"۳ ماه پیش","body":"عالییی","likes":5,"days":90,"replies":[]}];
+let sessionCommentSort="popular",sessionCommentLimit=3,sessionCommentLiked=new Set(),sessionCommentOpen=new Set(),sessionCommentReplyTo="",sessionCommentReplyRoot="",sessionCommentDraft="",sessionCommentLocal=[],sessionCommentSerial=0;
+const sessionCommentAvatar='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20v-1c0-4 3.1-6 7-6s7 2 7 6v1"/></svg>';
+const sessionCommentMessage='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.5 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.6-.8L4 20l.8-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M8 11.5h8"/></svg>';
+const sessionCommentThumb='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M7 10v10H3V10h4Zm0 0 4-7c1.8 0 2.5 1 2.5 2.5L13 9h5.5a2 2 0 0 1 2 2.4l-1.4 7a2 2 0 0 1-2 1.6H7"/></svg>';
+function sessionCommentChildren(c){return [...(c.replies||[]),...sessionCommentLocal.filter(x=>x.parent===c.key)]}
+function sessionCommentCount(c){return sessionCommentChildren(c).reduce((n,x)=>n+1+sessionCommentCount(x),0)}
+function sessionCommentLikes(c){return (c.likes||0)+(sessionCommentLiked.has(c.key)?1:0)}
+function sessionCommentOrdered(){
+ return [...sessionCommentSamples,...sessionCommentLocal.filter(x=>!x.parent)].sort((a,b)=>sessionCommentSort==="latest"?a.days-b.days:sessionCommentSort==="oldest"?b.days-a.days:sessionCommentLikes(b)-sessionCommentLikes(a)||a.days-b.days);
+}
+function sessionCommentFind(key,rows=[...sessionCommentSamples,...sessionCommentLocal.filter(x=>!x.parent)]){
+ for(const c of rows){if(c.key===key)return c;const hit=sessionCommentFind(key,sessionCommentChildren(c));if(hit)return hit}return null;
+}
+function sessionCommentFlatten(c,parentName=""){
+ return sessionCommentChildren(c).flatMap(x=>[{c:x,target:parentName},...sessionCommentFlatten(x,x.name)]);
+}
+function sessionCommentComposer(key,root){
+ return `<div class="session-comment-compose"><textarea id="session-comment-draft" rows="2" maxlength="2000" aria-label="${key?"متن پاسخ":"متن دیدگاه"}" placeholder="${key?"پاسخ خود را بنویسید…":"دیدگاه خود را بنویسید…"}" oninput="sessionCommentDraft=this.value">${es(sessionCommentDraft)}</textarea><div><button type="button" class="session-comment-cancel" onclick="sessionCommentCancel()">انصراف</button><button type="button" class="session-comment-send" onclick="sessionCommentSubmit('${key}','${root}')">${key?"ارسال پاسخ":"ثبت دیدگاه"}</button></div><small>ارسال آزمایشی؛ در سایت اصلی ثبت نمی‌شود.</small></div>`;
+}
+function sessionCommentActions(c,root){
+ const liked=sessionCommentLiked.has(c.key);
+ return `<div class="session-comment-actions"><button type="button" class="session-comment-like${liked?" is-liked":""}" aria-pressed="${liked}" aria-label="${liked?"لغو پسند":"پسندیدن"}" onclick="sessionCommentToggleLike('${c.key}')">${sessionCommentThumb}<span>${sessionPersian(sessionCommentLikes(c))}</span></button><button type="button" class="session-comment-answer" onclick="sessionCommentBeginReply('${c.key}','${root}')">پاسخ</button></div>`;
+}
+function sessionCommentEntry(c,root="",target=""){
+ const isReply=!!root,rootKey=root||c.key,count=sessionCommentCount(c),open=sessionCommentOpen.has(c.key);
+ const flat=!isReply&&open?sessionCommentFlatten(c):[];
+ return `<article class="session-comment-entry${isReply?" session-comment-child":""}" data-comment-key="${c.key}"><div class="session-comment-avatar${c.admin?" is-admin":""}" aria-hidden="true">${sessionCommentAvatar}</div><div class="session-comment-content"><div class="session-comment-author"><strong dir="auto">${es(c.name)}</strong>${c.admin?'<span class="session-comment-role">ادمین</span>':c.demo?'<span class="session-comment-role">نمونه</span>':""}${c.time?`<small>${es(c.time)}</small>`:""}</div><p class="session-comment-body" dir="auto">${target?`<span class="session-comment-mention" dir="auto">@${es(target)}</span> `:""}${es(c.body)}</p>${sessionCommentActions(c,rootKey)}${sessionCommentReplyTo===c.key?sessionCommentComposer(c.key,rootKey):""}${!isReply&&count?`<button type="button" class="session-comment-thread-toggle" aria-expanded="${open}" onclick="sessionCommentToggleThread('${c.key}')"><span class="session-comment-thread-arrow${open?" is-open":""}">⌄</span>${open?"پنهان‌کردن پاسخ‌ها":sessionPersian(count)+" پاسخ"}</button>${open?`<div class="session-comment-thread">${flat.map(x=>sessionCommentEntry(x.c,rootKey,x.target)).join("")}</div>`:""}`:""}</div></article>`;
+}
+function sessionCommentListMarkup(){
+ const rows=sessionCommentOrdered();
+ return `<div class="session-comment-toolbar"><div class="session-comment-count">${sessionPersian(rows.length)} دیدگاه <small>نمونه طراحی</small></div><label class="session-comment-sort"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16M4 12h12M4 18h7"/></svg><select aria-label="مرتب‌سازی دیدگاه‌ها" onchange="sessionCommentSetSort(this.value)"><option value="popular" ${sessionCommentSort==="popular"?"selected":""}>محبوب‌ترین</option><option value="latest" ${sessionCommentSort==="latest"?"selected":""}>جدیدترین</option><option value="oldest" ${sessionCommentSort==="oldest"?"selected":""}>قدیمی‌ترین</option></select></label></div>${sessionCommentReplyTo==="new"?sessionCommentComposer("",""):""}<div class="session-comment-list">${rows.slice(0,sessionCommentLimit).map(c=>sessionCommentEntry(c)).join("")}</div>${rows.length>sessionCommentLimit?`<button class="session-comment-more" type="button" onclick="sessionCommentShowMore()">نمایش دیدگاه‌های بیشتر <span>⌄</span></button>`:""}`;
+}
+function sessionCommentRefresh(){
+ const el=byId("session-comment-dynamic");if(el)el.innerHTML=sessionCommentListMarkup();
+}
+function sessionCommentToggleLike(key){if(sessionCommentLiked.has(key))sessionCommentLiked.delete(key);else sessionCommentLiked.add(key);sessionCommentRefresh()}
+function sessionCommentSetSort(v){if(!["popular","latest","oldest"].includes(v))return;sessionCommentSort=v;sessionCommentLimit=3;sessionCommentRefresh()}
+function sessionCommentShowMore(){sessionCommentLimit+=3;sessionCommentRefresh()}
+function sessionCommentToggleThread(key){if(sessionCommentOpen.has(key))sessionCommentOpen.delete(key);else sessionCommentOpen.add(key);sessionCommentRefresh()}
+function sessionCommentBeginReply(key,root){sessionCommentReplyTo=key;sessionCommentReplyRoot=root;sessionCommentDraft="";sessionCommentOpen.add(root);sessionCommentRefresh();byId("session-comment-draft")?.focus({preventScroll:true})}
+function sessionCommentBeginNew(){sessionCommentReplyTo="new";sessionCommentReplyRoot="";sessionCommentDraft="";sessionCommentRefresh();byId("session-comment-draft")?.focus({preventScroll:true})}
+function sessionCommentCancel(){sessionCommentReplyTo="";sessionCommentReplyRoot="";sessionCommentDraft="";sessionCommentRefresh()}
+function sessionCommentSubmit(key,root){
+ const value=sessionCommentDraft.trim();if(!value){toast("متن دیدگاه را وارد کنید");return;}
+ if(key&&!sessionCommentFind(key))return;
+ sessionCommentLocal.push({key:"local-"+(++sessionCommentSerial),parent:key,name:"شما",body:value,time:"همین حالا",days:-sessionCommentSerial,likes:0,demo:true,replies:[]});
+ if(root)sessionCommentOpen.add(root);else{sessionCommentSort="latest";sessionCommentLimit=Math.max(3,sessionCommentLimit)}
+ sessionCommentCancel();toast("در پیش‌نمایش ثبت شد؛ به سایت اصلی ارسال نشد");
+}
 function sessionCommentPanel(d,fallback){
  const showSamples=!fallback&&d.id===2277;
  const knownEmpty=!fallback&&d.id>=2277&&d.id<=2286;
- const avatar='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20v-1c0-4 3.1-6 7-6s7 2 7 6v1"/></svg>';
- const message='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M20.5 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-3.6-.8L4 20l.8-4.4A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M8 11.5h8"/></svg>';
- const cards=showSamples?sessionCommentSamples.map(c=>`<article class="session-comment-entry"><div class="session-comment-author"><span class="session-comment-avatar" aria-hidden="true">${avatar}</span><div><strong dir="auto">${es(c.name)}</strong><small>${es(c.time)}</small></div></div><p class="session-comment-body" dir="auto">${es(c.body)}</p>${c.reply?`<div class="session-comment-reply"><span class="session-comment-reply-mark" aria-hidden="true">↳</span><div><strong>ادمین سایت</strong><p dir="auto">${es(c.reply)}</p></div></div>`:""}</article>`).join(""):"";
- return `<section class="session-panel session-comments" id="session-comments"><div class="session-panel-title session-comments-heading"><span class="session-panel-symbol">${message}</span><div><h2>دیدگاه‌های شنوندگان</h2></div><button class="session-comment-add" type="button" onclick="toast('برای ثبت دیدگاه در سایت اصلی باید وارد حساب کاربری شوید')"><span aria-hidden="true">+</span> ثبت دیدگاه</button></div>${showSamples?`<div class="session-comment-preview-note">این جلسه هنوز دیدگاهی ندارد. دیدگاه‌های واقعی زیر از جلسات دیگر سایت، صرفاً برای بررسی طراحی نمایش داده شده‌اند.</div><div class="session-comment-list">${cards}</div>`:`<div class="session-comments-empty"><div>${message}</div><p>${knownEmpty?"هنوز دیدگاهی برای این جلسه ثبت نشده است.":"دیدگاه‌های این جلسه در پیش‌نمایش فعلی دریافت نشده‌اند."}</p></div>`}</section>`;
+ return `<section class="session-panel session-comments" id="session-comments"><div class="session-panel-title session-comments-heading"><span class="session-panel-symbol">${sessionCommentMessage}</span><div><h2>دیدگاه‌های شنوندگان</h2></div><button class="session-comment-add" type="button" onclick="${showSamples?"sessionCommentBeginNew()":"toast('برای ثبت دیدگاه در سایت اصلی باید وارد حساب کاربری شوید')"}"><span aria-hidden="true">+</span> ثبت دیدگاه</button></div>${showSamples?`<div id="session-comment-dynamic">${sessionCommentListMarkup()}</div>`:`<div class="session-comments-empty"><div>${sessionCommentMessage}</div><p>${knownEmpty?"هنوز دیدگاهی برای این جلسه ثبت نشده است.":"دیدگاه‌های این جلسه در پیش‌نمایش فعلی دریافت نشده‌اند."}</p></div>`}</section>`;
 }
 
 function session(){
