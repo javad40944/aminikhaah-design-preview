@@ -2306,7 +2306,7 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
 @media(prefers-reduced-motion:reduce){.session-page .session-overview.session-clean .session-like-corner{transition:none}}
 
 
-/* Compact flowing topic index: all items share one continuous list and expansion stays inline. */
+/* Compact single-column topic list: one subject per row, with inline expansion. */
 .session-page .session-topics{
  position:relative;overflow:hidden;
  border-color:color-mix(in srgb,var(--gold) 20%,var(--line));
@@ -2336,28 +2336,27 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  color:var(--muted);background:color-mix(in srgb,var(--paper) 37%,var(--surface));
 }
 .session-page .session-topic-list{
- display:flex;align-items:center;align-content:flex-start;flex-wrap:wrap;gap:7px;
+ display:grid;grid-template-columns:minmax(0,1fr);gap:2px;
  padding:0;margin:0;list-style:none;min-width:0;
 }
 .session-page .session-topic-item{
- display:inline-flex;align-items:center;min-width:0;max-width:100%;
- padding:5px 11px;min-height:31px;
- background:color-mix(in srgb,var(--paper) 35%,var(--surface));
- border:1px solid color-mix(in srgb,var(--gold) 15%,var(--line));
- border-radius:9px;box-sizing:border-box;
+ display:flex;align-items:baseline;min-width:0;max-width:100%;width:100%;
+ padding:4px 8px;min-height:25px;
+ background:transparent;
+ border:0;border-radius:6px;box-sizing:border-box;
 }
 .session-page .session-topic-item::before{
- content:"";flex:0 0 5px;width:5px;height:5px;border-radius:50%;
+ content:"";flex:0 0 4px;width:4px;height:4px;border-radius:50%;align-self:flex-start;margin-top:.65em;
  margin-inline-end:8px;background:color-mix(in srgb,var(--gold) 77%,var(--primary));
 }
 .session-page .session-topic-text{
  display:block;min-width:0;padding:0;line-height:1.7;
- font-size:10.5px;font-weight:640;color:var(--ink);
+ font-size:11.5px;font-weight:630;color:var(--ink);
  overflow-wrap:anywhere;
 }
 .session-page .session-topic-item.is-extra{display:none}
-.session-page .session-topic-list.is-expanded .session-topic-item.is-extra{display:inline-flex}
-.session-topics-toggle-item{display:inline-flex;align-items:center;max-width:100%}
+.session-page .session-topic-list.is-expanded .session-topic-item.is-extra{display:flex}
+.session-topics-toggle-item{display:flex;align-items:center;justify-content:center;max-width:100%;margin-top:5px}
 .session-page .session-topics-toggle{
  display:inline-flex;align-items:center;justify-content:center;gap:5px;
  min-height:31px;padding:5px 10px;border-radius:9px;
@@ -2382,9 +2381,9 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-page .session-topics-heading h2{font-size:14px}
  .session-page .session-topics-heading .session-panel-symbol{width:29px;height:29px;flex-basis:29px}
  .session-topics-count{font-size:9px;padding:3px 7px}
- .session-page .session-topic-list{gap:6px}
- .session-page .session-topic-item{padding:5px 9px;min-height:30px;border-radius:8px}
- .session-page .session-topic-text{font-size:10px;line-height:1.65}
+ .session-page .session-topic-list{gap:1px}
+ .session-page .session-topic-item{padding:4px 5px;min-height:24px;border-radius:6px}
+ .session-page .session-topic-text{font-size:11px;line-height:1.7}
  .session-page .session-topics-toggle{min-height:30px;padding:4px 8px;font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){
