@@ -204,8 +204,8 @@ body.dark[data-palette="clay"]{--primary:#e0aaa0;--primary-dark:#f2d4cb;--primar
 }
 .qa-home-grid,.selected-comments-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.qa-home-item,.selected-comment{min-width:0;padding:12px;border:1px solid var(--line);border-radius:11px;background:var(--surface);text-align:right}.qa-home-item b,.selected-comment b{font-size:11px}.qa-home-item p,.selected-comment p{font-size:10px;color:var(--muted);margin:5px 0}.qa-home-item span{font-size:10px;color:var(--primary);font-weight:800}.track small{display:block;color:var(--muted);font-size:9px}.track-title{font-size:11px}.search-extra-note{font-size:10px;color:var(--muted);padding:10px 13px;border-right:3px solid var(--accent);background:var(--alt);border-radius:8px;margin:10px 0}
 /* Stage 08 QA: accurately separate current public routes from future-only concepts */
-.mode-current .mobile-bottombar{display:none!important}
-@container (max-width:650px){.mode-current .site-app{padding-bottom:72px}}
+
+
 
 
 /* Refined compact palette picker */
@@ -3423,12 +3423,12 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
 .demo-bar .toolbar{flex-wrap:wrap;max-width:100%}
 @container(max-width:650px){
  .preview .site-app.mode-full{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
- .preview .site-app.mode-current{padding-bottom:8px}
+ .preview .site-app.mode-current{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
  .preview .site-app.mode-full:has(#audio-dock.show){padding-bottom:calc(181px + env(safe-area-inset-bottom,0px))}
- .preview .site-app.mode-current:has(#audio-dock.show){padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+ .preview .site-app.mode-current:has(#audio-dock.show){padding-bottom:calc(181px + env(safe-area-inset-bottom,0px))}
  .mobile-bottombar{bottom:0;height:calc(62px + env(safe-area-inset-bottom,0px));padding-bottom:calc(7px + env(safe-area-inset-bottom,0px))}
  #audio-dock{bottom:calc(66px + env(safe-area-inset-bottom,0px));width:min(calc(100vw - 18px),calc(var(--preview-device-width,100vw) - 18px));min-height:0}
- .mode-current #audio-dock{bottom:calc(8px + env(safe-area-inset-bottom,0px))}
+ 
  #audio-dock input#aud-seek{display:block;min-width:28px;flex:1;max-width:none;width:100%;height:7px}
  #audio-dock .global-dock-progress{flex:1;min-width:0}
  #audio-dock .audtime{white-space:nowrap}
@@ -3490,7 +3490,7 @@ body.dark,body.dark[data-palette="lapis"],body.dark[data-palette="clay"]{--ds-ac
 .preview-list-caption,.preview-source-note,.preview-match-caption{font-size:11px;line-height:1.8;color:var(--muted)}.preview-source-note{margin:12px 0 0;padding:9px 12px;border-top:1px solid var(--line)}.preview-source-note a{text-decoration:underline;text-underline-offset:3px;color:var(--primary)}.preview-match-caption{display:block;overflow-wrap:anywhere}#session-match{scroll-margin-top:110px}#session-match mark,.preview-match-caption mark{background:var(--primary-soft);color:var(--ink);font-weight:700}
 
 /* Current scope: existing public backend only. */
-.mode-current .quick-rail{display:none!important}.current-quick-links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.current-quick-links>*{flex:1;min-width:125px;text-align:center;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font-weight:700}.current-public-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,calc((100% - 60px)/6));gap:12px;overflow:auto;scroll-snap-type:x proximity;padding:3px 1px 10px}.current-public-card{scroll-snap-align:start}.current-public-card .library-album-copy small{display:block;color:var(--muted)}.current-public-media{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));overflow:visible}.mode-current .mobile-bottombar{grid-template-columns:repeat(4,1fr)}@container(max-width:650px){.current-public-rail{grid-auto-columns:calc((100% - 20px)/2.2);gap:8px}.current-public-media{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mode-current .quick-rail{display:none!important}.current-quick-links{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.current-quick-links>*{flex:1;min-width:125px;text-align:center;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:10px;font-weight:700}.current-public-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,calc((100% - 60px)/6));gap:12px;overflow:auto;scroll-snap-type:x proximity;padding:3px 1px 10px}.current-public-card{scroll-snap-align:start}.current-public-card .library-album-copy small{display:block;color:var(--muted)}.current-public-media{grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));overflow:visible}@container(max-width:650px){.current-public-rail{grid-auto-columns:calc((100% - 20px)/2.2);gap:8px}.current-public-media{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 .current-tag-links{display:flex;flex-wrap:wrap;gap:7px}.current-tag-links a{padding:5px 9px;border:1px solid var(--line);border-radius:8px;background:var(--primary-soft);color:var(--primary);font-size:12px}
 </style>
@@ -3931,7 +3931,7 @@ function collectionRelatedCards(data){
 }
 
 function currentAlbumData(){return currentDetailSnapshot.albums.find(x=>x.id===(albumType==="chapter"?116:1))}
-function currentAlbumRows(sectionId){let a=currentAlbumData();return a.songs.filter(x=>!sectionId||x.section===sectionId).map(x=>[x.title,String(x.duration||"").replace(/^00:/,""),x.id])}
+function currentAlbumRows(sectionId){let a=currentAlbumData();return a.songs.filter(x=>!sectionId||x.section===sectionId).map(x=>[x.title,String(x.duration||""),x.id])}
 function currentAlbumSong(index,chapterIndex=chapterSelection){let a=currentAlbumData(),sid=albumType==="chapter"?chapterData[chapterIndex]?.id:null;return a.songs.filter(x=>!sid||x.section===sid)[index]}
 function currentOpenSong(id){let found=sessionPreviewTracks.findIndex(x=>x.id===id);if(found>=0){sessionSelect(found);return}window.open("https://aminikhaah.ir/song/"+id,"_blank","noopener,noreferrer")}
 function currentPlayAlbumSong(index,chapterIndex){const song=currentAlbumSong(index,chapterIndex);if(song)currentStartPlayback(song.id)}
@@ -3956,7 +3956,7 @@ function album(){
  const totalSessionCount=mode==='current'?currentAlbumData().songs.length:hasChapters?chapterData.reduce((sum,chapter)=>sum+(chapterSessionCounts[chapter.id]||0),0):41;
  const albumId=hasChapters?'116':'1';
  const isInPlaylist=playlistCollectionIds.has(albumId);
- const sampleViewCount=mode==='current'?currentAlbumData().views.toLocaleString('fa-IR'):hasChapters?'۱۲٬۴۸۰':'۱۰٬۸۵۰';
+ const sampleViewCount=currentAlbumData().views.toLocaleString("fa-IR");
  const downloadMarkup=mode==='current'&&hasChapters&&!currentAlbumData().downloads.length?'':hasChapters
    ?`<button class="collection-action-download" type="button" title="۲۸۵ MB حجم نمایشی در وایرفریم است؛ ZIP واقعی هنوز منتشر نشده" onclick="toast('فایل ZIP یکجای این مجموعه هنوز در منبع اصلی منتشر نشده است')"><span class="collection-zip-icon" aria-hidden="true"><b>ZIP</b></span><span class="collection-action-download-text"><b>دریافت مجموعه</b><small>ZIP · ۲۸۵ MB</small></span></button>`
    :`<a class="collection-action-download" href="https://dl.aminikhaah.ir/sound/1397/An-Sooye-Marg/An-Sooye-Marg.zip" target="_blank" rel="noopener noreferrer" aria-label="دریافت فایل ZIP مجموعه، حجم ۴۸۱ مگابایت"><span class="collection-zip-icon" aria-hidden="true"><b>ZIP</b></span><span class="collection-action-download-text"><b>دریافت مجموعه</b><small>ZIP · ۴۸۱ مگابایت</small></span></a>`;
@@ -4230,7 +4230,7 @@ function sessionCommentSetSort(v){if(!["popular","latest","oldest"].includes(v))
 function sessionCommentShowMore(){sessionCommentLimit+=3;sessionCommentRefresh()}
 function sessionCommentToggleThread(key){if(sessionCommentOpen.has(key))sessionCommentOpen.delete(key);else sessionCommentOpen.add(key);sessionCommentRefresh()}
 function sessionCommentBeginReply(key,root){sessionCommentReplyTo=key;sessionCommentReplyRoot=root;sessionCommentDraft="";sessionCommentOpen.add(root);sessionCommentRefresh();byId("session-comment-draft")?.focus({preventScroll:true})}
-function sessionCommentBeginNew(){sessionCommentReplyTo="new";sessionCommentReplyRoot="";sessionCommentDraft="";sessionCommentRefresh();byId("session-comment-draft")?.focus({preventScroll:true})}
+function sessionCommentBeginNew(){if(mode==="current"||sessionFallback||sessionSelectedRecord().id!==2277){previewGuestLogin("برای ثبت دیدگاه در سایت اصلی وارد حساب کاربری شوید.");return}sessionCommentReplyTo="new";sessionCommentReplyRoot="";sessionCommentDraft="";sessionCommentRefresh();byId("session-comment-draft")?.focus({preventScroll:true})}
 function sessionCommentCancel(){sessionCommentReplyTo="";sessionCommentReplyRoot="";sessionCommentDraft="";sessionCommentRefresh()}
 function sessionCommentSubmit(key,root){
  const value=sessionCommentDraft.trim();if(!value){toast("متن دیدگاه را وارد کنید");return;}
@@ -4243,7 +4243,7 @@ function currentCommentPanel(d){return `<section class="session-panel session-co
 function sessionCommentPanel(d,fallback){
  const showSamples=mode!=="current"&&!fallback&&d.id===2277;
  const knownEmpty=!fallback&&d.id>=2277&&d.id<=2286;
- return `<section class="session-panel session-comments" id="session-comments"><div class="session-panel-title session-comments-heading"><span class="session-panel-symbol">${sessionCommentMessage}</span><div><h2>دیدگاه‌های شنوندگان</h2></div><button class="session-comment-add" type="button" onclick="${showSamples?"sessionCommentBeginNew()":"previewGuestLogin('برای ثبت دیدگاه در سایت اصلی وارد حساب کاربری شوید.')"}"><span aria-hidden="true">+</span> ثبت دیدگاه</button></div>${showSamples?`<div id="session-comment-dynamic">${sessionCommentListMarkup()}</div>`:`<div class="session-comments-empty"><div>${sessionCommentMessage}</div><p>${knownEmpty?"هنوز دیدگاهی برای این جلسه ثبت نشده است.":"دیدگاه‌های این جلسه در پیش‌نمایش فعلی دریافت نشده‌اند."}</p></div>`}</section>`;
+ return `<section class="session-panel session-comments" id="session-comments"><div class="session-panel-title session-comments-heading"><span class="session-panel-symbol">${sessionCommentMessage}</span><div><h2>دیدگاه‌های شنوندگان</h2></div><button class="session-comment-add" type="button" onclick="sessionCommentBeginNew()"><span aria-hidden="true">+</span> ثبت دیدگاه</button></div>${showSamples?`<div id="session-comment-dynamic">${sessionCommentListMarkup()}</div>`:`<div class="session-comments-empty"><div>${sessionCommentMessage}</div><p>${knownEmpty?"هنوز دیدگاهی برای این جلسه ثبت نشده است.":"دیدگاه‌های این جلسه در پیش‌نمایش فعلی دریافت نشده‌اند."}</p></div>`}</section>`;
 }
 
 function session(){
@@ -4261,7 +4261,7 @@ function session(){
  const chapterCrumb=isChaptered?`<span>›</span><button type="button" onclick="albumType='chapter';chapterSelection=${chapterIndex};go('album')">فصل ${sessionOrdinal(chapterIndex+1)}</button>`:"";
  const cover=albumCoverUrl(fallback&&d.album!=="از حیوانیت تا حیات"?"1":"116");
  const hasText=!fallback&&sessionPreviewIndex===0&&sessionPreviewTranscript.trim().length>0;
- const actualDetail=mode==="current"?currentDetailSnapshot.detail.find(x=>x.id===d.id):null;const topics=actualDetail?.subjects?actualDetail.subjects.split(/\r?\n/).filter(Boolean):hasText?sessionPreviewTopics:[];
+ const actualDetail=currentDetailSnapshot.detail.find(x=>x.id===d.id);const topics=actualDetail?.subjects?actualDetail.subjects.split(/\r?\n/).filter(Boolean):hasText?sessionPreviewTopics:[];
  const meta=(name,value,iconName)=>value?`<span class="session-meta-pill">${sessionIcon(iconName,16)}<span>${sessionPersian(value)}</span></span>`:"";
  const canPlay=!!d.file;
  const displayTime=sessionPersian((d.duration||"").replace(/^00:/,""));
@@ -4290,8 +4290,8 @@ function session(){
       <span title="مدت سخنرانی">${sessionIcon("clock",15)} ${displayTime}</span>
       ${d.date?`<span title="تاریخ انتشار">${sessionIcon("calendar",15)} ${sessionPersian(d.date.replace(/-/g,"/"))}</span>`:""}
       ${mode!=="current"&&d.venue?`<span title="محل برگزاری">${sessionIcon("pin",15)} ${es(d.venue)}</span>`:""}
-      <span class="session-clean-views" title="آمار بازدید سایت (برای نمونهٔ اول؛ ممکن است بعداً تغییر کرده باشد)">${sessionIcon("eye",15)} بازدید ${mode==="current"&&currentDetailSnapshot.detail.some(x=>x.id===d.id)?sessionPersian(currentDetailSnapshot.detail.find(x=>x.id===d.id).views):Number.isFinite(d.views)?sessionPersian(d.views):"—"}</span>
-      <span class="session-clean-likes" title="آمار پسندیدن سایت؛ ممکن است بعداً تغییر کرده باشد">${sessionIcon("heart",15)} ${mode==="current"&&currentDetailSnapshot.detail.some(x=>x.id===d.id)?sessionPersian(currentDetailSnapshot.detail.find(x=>x.id===d.id).likes):Number.isFinite(d.likes)?sessionPersian(d.likes):"—"} پسند</span>
+      <span class="session-clean-views" title="آمار بازدید سایت (برای نمونهٔ اول؛ ممکن است بعداً تغییر کرده باشد)">${sessionIcon("eye",15)} بازدید ${currentDetailSnapshot.detail.some(x=>x.id===d.id)?sessionPersian(currentDetailSnapshot.detail.find(x=>x.id===d.id).views):Number.isFinite(d.views)?sessionPersian(d.views):"—"}</span>
+      <span class="session-clean-likes" title="آمار پسندیدن سایت؛ ممکن است بعداً تغییر کرده باشد">${sessionIcon("heart",15)} ${currentDetailSnapshot.detail.some(x=>x.id===d.id)?sessionPersian(currentDetailSnapshot.detail.find(x=>x.id===d.id).likes):Number.isFinite(d.likes)?sessionPersian(d.likes):"—"} پسند</span>
      </div>
      <div class="session-clean-controls" aria-label="امکانات جلسه">
       <button type="button" class="session-control-play" onclick="sessionStartPlayback()" ${canPlay?"":"disabled"}><span class="session-control-play-icon">${sessionIcon("play",17)}</span><span>پخش جلسه</span></button>
@@ -4311,7 +4311,7 @@ function session(){
    </section>
    <section class="session-panel session-text-panel" id="session-text">
     <div class="session-panel-title session-reader-heading"><span class="session-panel-symbol">${sessionIcon("file",20)}</span><h2>متن کامل سخنرانی</h2>${hasText?`<div class="session-fonttools" role="group" aria-label="تنظیم اندازه متن"><button id="session-font-minus" type="button" onclick="sessionAdjustFont(-1)" aria-label="کوچک‌تر کردن قلم" title="کوچک‌تر کردن قلم" ${sessionTextFont<=-2?"disabled":""}>−</button><span aria-hidden="true">قلم</span><button id="session-font-plus" type="button" onclick="sessionAdjustFont(1)" aria-label="بزرگ‌تر کردن قلم" title="بزرگ‌تر کردن قلم" ${sessionTextFont>=5?"disabled":""}>+</button></div>`:""}</div>
-    ${textMarkup}${hasText&&mode!=="current"?'<p class="preview-source-note">مأخذ مستقلِ نقل‌ها در این پیش‌نمایش ثبت نشده است؛ متن پیاده‌شده به معنای اعتبارسنجی علمی نقل‌ها نیست. <a href="https://aminikhaah.ir/song/'+d.id+'" target="_blank" rel="noopener noreferrer">صفحه اصلی جلسه</a></p>':""}
+    ${textMarkup}${hasText?'<p class="preview-source-note">مأخذ مستقلِ نقل‌ها در این پیش‌نمایش ثبت نشده است؛ متن پیاده‌شده به معنای اعتبارسنجی علمی نقل‌ها نیست. <a href="https://aminikhaah.ir/song/'+d.id+'" target="_blank" rel="noopener noreferrer">صفحه اصلی جلسه</a></p>':""}
    </section>
    ${sessionCommentPanel(d,fallback)}
   </div>
@@ -4456,7 +4456,7 @@ function searchLibrary(){
  const lessons=lessonDirectoryRecords.map(x=>({type:"lesson",title:x.title,subtitle:categoryName(x.category),cover:x.cover,href:"https://aminikhaah.ir/album/"+x.id}));
  const qa=mode==="current"?[]:qaDirectoryRecords.map(x=>({type:"qa",title:x.title,subtitle:x.category+" · نمونه طراحی",extra:x.question,action:"searchOpenQa("+x.id+")",target:"questions",symbol:"؟"}));
  const books=mode==="current"?[]:[...bookHubBooks.map((x,i)=>({type:"book",title:x.title,subtitle:"شرح کتاب",cover:bookHubAlbum(x.id)?.cover,action:"searchOpenBook(0,"+i+")",target:"books"})),...bookHubReading.map((x,i)=>({type:"book",title:x.title,subtitle:"سیر مطالعاتی پیشنهادی",action:"searchOpenBook(1,"+i+")",target:"books"})),...bookHubPaths.map((x,i)=>({type:"book",title:x.title,subtitle:"سیر شنیداری پیشنهادی",action:"searchOpenBook(2,"+i+")",target:"books"})),...bookHubOccasions.map((x,i)=>({type:"book",title:x.title,subtitle:"بسته مناسبتی پیشنهادی",action:"searchOpenBook(3,"+i+")",target:"books"}))];
- return mode==="current"?[...albums,...first,...tracks,...otherTracks,...sections,...topics,...new Map([...roza,...media].map(x=>[x.href,{...x,type:"song"}])).values()]:[...albums,...first,...tracks,...otherTracks,...sections,...topics,...roza,...media,...lessons,...qa,...books];
+ return [...albums,...first,...tracks,...otherTracks,...sections,...topics,...roza,...media,...lessons,...qa,...books];
 }
 function searchResults(q){
  const words=searchNormalize(q).split(" ").filter(Boolean);if(!words.length)return [];
@@ -4477,12 +4477,12 @@ function searchCard(x){
  const type=searchTypes.find(t=>t[0]===x.type)?.[2]||"محتوا";
  const thumb=x.cover?`<img src="${es(x.cover)}" alt="" loading="lazy" onerror="this.hidden=true">`:"";
  const label=x.type==="song"?"♫":x.symbol||"▤";
- const match=mode!=="current"&&x.transcript?previewTranscriptMatch(searchText):null;
+ const match=x.transcript?previewTranscriptMatch(searchText):null;
  const action=match?`href="#session" onclick="previewOpenTranscript();return false"`:x.action?`href="#${x.target||(x.type==="song"?"session":"album")}" onclick="${x.action};return false"`:`href="${es(x.href)}" target="_blank" rel="noopener noreferrer"`;
  return `<a class="library-search-card" ${action}><div class="library-search-cover"><span aria-hidden="true">${es(label)}</span>${thumb}${x.type==="song"?'<span class="library-search-audio-symbol" aria-hidden="true">♫</span>':""}</div><div class="library-search-card-copy"><span class="library-search-card-type">${type}</span><strong>${searchMarked(x.title,searchText)}</strong>${x.subtitle?`<small>${searchMarked(x.subtitle,searchText)}</small>`:""}${match?`<small class="preview-match-caption">مطابقت در متن جلسه: ${searchMarked(match.text.slice(Math.max(0,match.text.indexOf(searchText)-25),Math.max(0,match.text.indexOf(searchText)-25)+150),searchText)}</small>`:""}${x.duration?`<span class="library-search-duration">${sessionIcon("clock",12)} ${sessionPersian(String(x.duration).replace(/^00:/,""))}</span>`:""}</div></a>`;
 }
 function searchResultsBody(){
- const all=searchResults(searchText),groups=(mode==="current"?searchTypes.filter(t=>["album","song","section","category"].includes(t[0])):searchTypes).map(t=>({type:t[0],title:t[1],rows:all.filter(x=>x.type===t[0])})).filter(g=>g.rows.length);
+ const all=searchResults(searchText),groups=searchTypes.map(t=>({type:t[0],title:t[1],rows:all.filter(x=>x.type===t[0])})).filter(g=>g.rows.length);
  if(!searchText)return `<div class="library-search-discovery"><div class="library-search-empty-icon">${sessionIcon("book",28)}</div><h2>چه چیزی می‌خواهید پیدا کنید؟</h2><p>نام مجموعه، عنوان سخنرانی یا موضوع موردنظر را وارد کنید.</p><div class="library-search-suggestions" aria-label="عبارت‌های پیشنهادی">${["قرآن","آن سوی مرگ","جهاد با نفس","سوره فجر","صبر"].map(t=>`<button type="button" onclick="performSearch('${t}')">${t}</button>`).join("")}</div></div>`;
  if(searchKind!=="all"&&!groups.some(g=>g.type===searchKind))searchKind="all";
  const selected=searchKind==="all"?groups:groups.filter(g=>g.type===searchKind);
@@ -4641,7 +4641,7 @@ function previewNavState(){return {page,albumType,chapterSelection,sessionPrevie
 function previewRecordNav(replace=false){try{const state=previewNavState();const url=new URL(location.href);url.hash=page;if(mode==="current")url.searchParams.set("scope","current");else url.searchParams.delete("scope");if(page==="currentList")url.searchParams.set("list",currentListKey);else url.searchParams.delete("list");if(page==="search"&&searchText)url.searchParams.set("q",searchText);else url.searchParams.delete("q");if(replace||location.hash==="#"+page&&location.search===url.search)history.replaceState(state,"",url);else history.pushState(state,"",url)}catch(e){}}
 function previewRestoreNav(e){const state=e.state||{};const id=state.page||location.hash.slice(1)||"home";if(!views[id])return;for(const k of ["albumType","chapterSelection","sessionPreviewIndex","sessionFallback","searchText","searchKind","qaTab","qaDirectorySelected","booksTab","bookHubExpanded","profileSection","currentListKey"]){if(!Object.prototype.hasOwnProperty.call(state,k))continue;switch(k){case "albumType":albumType=state[k];break;case "chapterSelection":chapterSelection=state[k];break;case "sessionPreviewIndex":sessionPreviewIndex=state[k];break;case "sessionFallback":sessionFallback=state[k];break;case "searchText":searchText=state[k];searchHasResult=!!searchText;break;case "searchKind":searchKind=state[k];break;case "qaTab":qaTab=state[k];break;case "qaDirectorySelected":qaDirectorySelected=state[k];break;case "booksTab":booksTab=state[k];break;case "bookHubExpanded":bookHubExpanded=state[k];break;case "profileSection":profileSection=state[k];break;case "currentListKey":currentListKey=state[k];break;}}previewHistoryRestoring=true;try{go(id)}finally{previewHistoryRestoring=false}}
 function go(id){if(!views[id])return;if(mode==='full'&&id==='currentPodcast')id='media';if(mode==='full'&&id==='currentList')id='albums';if(mode==='current'&&['questions','books'].includes(id))id='home';page=id;render();if(!previewHistoryRestoring)previewRecordNav();window.scrollTo({top:0,behavior:'instant'});if(id==='session'&&searchJump){setTimeout(()=>{const target=byId('session-match');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});searchJump=false},80)}}
-function render(){const c=byId('content');c.innerHTML=views[page]();byId('app').classList.toggle('mode-current',mode==='current');byId('app').classList.toggle('mode-full',mode==='full');document.querySelectorAll('.mobile-bottombar button').forEach(b=>b.classList.toggle('active',b.dataset.dest===page));document.querySelectorAll('.head-nav button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===pages.find(x=>x[0]===page)?.[1]));document.querySelectorAll('.future-nav').forEach(b=>b.classList.toggle('hide',mode==='current'));byId('preview-mobile-account-label').textContent=mode==='current'?'ورود':'پروفایل';if(page==='home'&&mode==='full')startSlider();else stopSlider();if(mode==='current'&&['questions','books'].includes(page)){c.innerHTML=`${title('این بخش در طرح جامع نهایی محفوظ است')}<div class="soft-panel">این صفحه به انتشار عمومی یا توسعه فنی مستقل نیاز دارد. برای دیدن طرح آن حالت «طرح جامع» را انتخاب کنید.</div>`} }
+function render(){const c=byId('content');c.innerHTML=views[page]();byId('app').classList.toggle('mode-current',mode==='current');byId('app').classList.toggle('mode-full',mode==='full');document.querySelectorAll('.mobile-bottombar button').forEach(b=>b.classList.toggle('active',b.dataset.dest===page));document.querySelectorAll('.head-nav button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===pages.find(x=>x[0]===page)?.[1]));document.querySelectorAll('.future-nav').forEach(b=>b.classList.toggle('hide',mode==='current'));byId('preview-mobile-account-label').textContent='پروفایل';if(page==='home'&&mode==='full')startSlider();else stopSlider();if(mode==='current'&&['questions','books'].includes(page)){c.innerHTML=`${title('این بخش در طرح جامع نهایی محفوظ است')}<div class="soft-panel">این صفحه به انتشار عمومی یا توسعه فنی مستقل نیاز دارد. برای دیدن طرح آن حالت «طرح جامع» را انتخاب کنید.</div>`} }
 function goSlide(n){if(!sliderData.length)return;slide=(n+sliderData.length)%sliderData.length;document.querySelectorAll('.hero-slider .slide').forEach((el,i)=>{el.classList.toggle('active',i===slide);el.setAttribute('aria-hidden',i===slide?'false':'true')});document.querySelectorAll('.hero-slider .slider-dots button').forEach((el,i)=>{el.classList.toggle('active',i===slide);el.setAttribute('aria-current',String(i===slide))})}
 document.addEventListener("focusin",e=>{if(e.target.closest?.(".hero-slider"))stopSlider();});
 function previewSliderKey(e){if(!['ArrowLeft','ArrowRight'].includes(e.key)||sliderData.length<2)return;e.preventDefault();const inSlide=!!e.target.closest('.slide');goSlide(slide+(e.key==='ArrowLeft'?1:-1));stopSlider();if(inSlide)document.querySelector('.hero-slider .slide.active a')?.focus()}
@@ -4676,7 +4676,7 @@ let previewPlayerFocus=null,previewDrawerFocus=null;
 function expandPlayer(){const p=byId("audio-expanded"),wasHidden=p.classList.contains("hide");if(wasHidden)previewPlayerFocus=document.activeElement;if(!byId("preview-dock-state")){const status=document.createElement("p");status.id="preview-dock-state";status.className="preview-dock-state";status.setAttribute("role","status");status.hidden=true;p.querySelector("header")?.after(status)}if(queueType==="session")dockSync();else byId("preview-dock-state").hidden=true;p.classList.remove("hide");p.classList.add("player-fullscreen");p.scrollTop=0;globalPlayerMeta();globalPlayerRefreshQueue();if(wasHidden)p.querySelector("header button")?.focus()}
 function closeExpandedPlayer(){const p=byId("audio-expanded");p.classList.add("hide");p.classList.remove("player-fullscreen");if(previewPlayerFocus?.isConnected&&previewPlayerFocus.getClientRects().length)previewPlayerFocus.focus();else if(byId("audio-dock")?.classList.contains("show"))byId("audio-dock").querySelector("button")?.focus();else byId("content")?.focus();previewPlayerFocus=null}
 
-function openDrawer(){const d=byId('drawer'),opening=d.classList.contains('hide');if(opening)previewDrawerFocus=document.activeElement;d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>['home','albums','roza','media','topics','search','lessons','profile'].includes(id)).map(([id,name])=>[id,id==='profile'?'ورود':name]):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('');if(opening)d.querySelector('button')?.focus();else if(previewDrawerFocus?.isConnected)previewDrawerFocus.focus();}
+function openDrawer(){const d=byId('drawer'),opening=d.classList.contains('hide');if(opening)previewDrawerFocus=document.activeElement;d.classList.toggle('hide');const menuPages=mode==='current'?pages.filter(([id])=>['home','albums','roza','media','topics','search','lessons','profile'].includes(id)):pages;byId('drawer-nav').innerHTML=menuPages.map(([id,name])=>'<button onclick="openDrawer();go(\''+id+'\')">'+name+'</button>').join('');if(opening)d.querySelector('button')?.focus();else if(previewDrawerFocus?.isConnected)previewDrawerFocus.focus();}
 function setMode(m){mode=m;if(mode==='full'&&page==='currentPodcast')page='media';if(mode==='full'&&page==='currentList')page='albums';if(mode==='current'){profileDemo=false;if(['questions','books'].includes(page))page='home';searchKind='all';libraryAlbumQuery="";libraryAlbumCategory="all";libraryAlbumSort="default";libraryAlbumPage=1;if(currentTab!=='سخنرانی‌ها')currentTab='سخنرانی‌ها';if(selectedMedia>=0&&mediaItems[selectedMedia][1]!=='پادکست')selectedMedia=-1;}byId('full').classList.toggle('active',m==='full');byId('current').classList.toggle('active',m==='current');render()}
 function setDevice(m){const preview=byId('preview'),mobile=m==='mobile'||m==='mobile360';preview.classList.toggle('mobile-forced',mobile);preview.style.setProperty('--preview-device-width',mobile?(m==='mobile360'?'360px':'390px'):'100vw');byId('desk').classList.toggle('active',!mobile);byId('mob').classList.toggle('active',m==='mobile');byId('mob360').classList.toggle('active',m==='mobile360')}
 const paletteNotes={olive:'یشم و عاج',lapis:'لاجورد و خورشید',clay:'انار و کاغذ'};
