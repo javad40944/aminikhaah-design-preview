@@ -3315,11 +3315,65 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .global-queue-copy strong{font-size:11px}
 }
 
+
+/* Stage 10 — shared semantic tokens; legacy and specialized layouts retained. */
+:root{--ds-space-1:4px;--ds-space-2:8px;--ds-space-3:12px;--ds-space-4:16px;--ds-space-5:20px;--ds-space-6:24px;--ds-radius-control:9px;--ds-radius-card:12px;--ds-radius-panel:15px;--ds-radius-round:999px;--ds-control-height:36px;--ds-control-touch:44px;--ds-label:11px;--ds-card-title:12px;--ds-heading:15px;--ds-page-heading:20px;--ds-on-primary:#fff;--ds-focus:var(--primary);--ds-cover-square:1;--ds-cover-wide:16/9}
+body.dark{--ds-on-primary:var(--paper)}
+:is(.library-album-head,.topic-directory-head,.media-library-head,.roza-head,.qa-directory-head,.lesson-directory-head,.book-hub-head,.account-head){border-radius:var(--ds-radius-panel);padding:var(--ds-space-5) var(--ds-space-6);gap:var(--ds-space-4);border:1px solid var(--line);background:var(--surface)}
+:is(.library-album-heading,.topic-directory-heading,.media-library-heading,.roza-heading,.qa-directory-heading,.lesson-directory-heading,.book-hub-heading,.account-identity) h1{font-size:var(--ds-page-heading);line-height:1.5}
+:is(.library-album-heading,.topic-directory-heading,.media-library-heading,.roza-heading,.qa-directory-heading,.lesson-directory-heading,.book-hub-heading,.account-identity) p{font-size:var(--ds-label);line-height:1.7}
+:is(.library-album-search,.topic-directory-search,.media-library-search,.roza-search,.qa-directory-search,.lesson-directory-search,.book-hub-search,.library-search-form){border-radius:var(--ds-radius-control);border-color:var(--line)}
+:is(.library-album-search,.topic-directory-search,.media-library-search,.roza-search,.qa-directory-search,.lesson-directory-search,.book-hub-search,.library-search-form):focus-within{border-color:var(--primary);box-shadow:0 0 0 2px color-mix(in srgb,var(--primary) 15%,transparent)}
+:is(.library-album-card,.topic-directory-card,.media-library-card,.qa-directory-card,.lesson-directory-card,.book-hub-book-card,.book-hub-path,.book-hub-pack){border-radius:var(--ds-radius-card);border-color:var(--line)}
+:is(.library-album-categories,.topic-directory-tabs,.media-library-tabs,.qa-directory-category-list,.book-hub-tabs,.account-tabs,.library-search-filters) button{border-radius:var(--ds-radius-control);min-height:var(--ds-control-height)}
+:is(.library-album-categories,.topic-directory-tabs,.media-library-tabs,.qa-directory-category-list,.book-hub-tabs,.account-tabs,.library-search-filters) button[aria-pressed="true"],.library-album-pagination button.is-active,.library-album-search button,.library-search-form button,.account-primary{background:var(--primary);border-color:var(--primary);color:var(--ds-on-primary)}
+:is(.media-library-tabs,.book-hub-tabs,.account-tabs) button[aria-pressed="true"] span,.library-search-filters button[aria-pressed="true"] small{color:var(--ds-on-primary)}
+:is(.library-album-more,.media-library-more,.roza-more,.qa-directory-more,.lesson-directory-more,.book-hub-more){border-radius:var(--ds-radius-control);min-height:var(--ds-control-height);font-size:var(--ds-label)}
+:is(.library-album-grid,.topic-directory-grid,.media-library-grid,.qa-directory-grid,.lesson-directory-grid,.book-hub-grid,.account-overview-grid){gap:var(--ds-space-3)}
+:is(.library-album-cover,.media-library-art,.lesson-directory-art){aspect-ratio:var(--ds-cover-square)}
+.roza-row-action,.roza-cat-all{color:var(--ds-on-primary)}
+:where(.site-app) :is(button,a,input,select,textarea):focus-visible{outline:2px solid var(--ds-focus);outline-offset:3px}
+@container(max-width:620px){
+ :is(.library-album-head,.topic-directory-head,.media-library-head,.roza-head,.qa-directory-head,.lesson-directory-head,.book-hub-head,.account-head){padding:13px var(--ds-space-3);border-radius:var(--ds-radius-card);gap:var(--ds-space-3)}
+ :is(.library-album-heading,.topic-directory-heading,.media-library-heading,.roza-heading,.qa-directory-heading,.lesson-directory-heading,.book-hub-heading,.account-identity) h1{font-size:16px}
+ :is(.library-album-heading,.topic-directory-heading,.media-library-heading,.roza-heading,.qa-directory-heading,.lesson-directory-heading,.book-hub-heading,.account-identity) p{font-size:10px}
+ :is(.library-album-grid,.topic-directory-grid,.media-library-grid,.qa-directory-grid,.lesson-directory-grid,.book-hub-grid,.account-overview-grid){gap:var(--ds-space-2)}
+}
+/* Review-only reference component library, in the existing preview. */
+.ds-page{max-width:1200px;margin:auto;min-width:0}
+.ds-intro,.ds-panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--ds-radius-panel);padding:var(--ds-space-4);margin-bottom:var(--ds-space-3)}
+.ds-intro h1{font-size:24px;line-height:1.6}.ds-intro p,.ds-panel p{color:var(--muted);font-size:12px;line-height:1.9;margin-top:5px}
+.ds-panel h2{font-size:var(--ds-heading);font-weight:800;margin-bottom:var(--ds-space-3)}
+.ds-panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ds-space-3);align-items:start}
+.ds-panel{min-width:0;margin:0}.ds-wide{grid-column:1/-1}
+.ds-swatches{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.ds-swatch{min-width:0;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--paper)}
+.ds-swatch-color{height:55px;background:var(--swatch)}
+.ds-swatch span,.ds-swatch code{display:block;padding:3px 5px;font-size:10px;overflow-wrap:anywhere}
+.ds-swatch code{direction:ltr;color:var(--muted)}
+.ds-demo-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.ds-button,.ds-chip{display:inline-flex;align-items:center;justify-content:center;min-height:var(--ds-control-height);padding:7px 12px;border:1px solid var(--line);border-radius:var(--ds-radius-control);background:var(--paper);color:var(--ink);font-size:var(--ds-label);font-weight:750}
+.ds-button-primary,.ds-chip[aria-pressed="true"]{background:var(--primary);color:var(--ds-on-primary);border-color:var(--primary)}
+.ds-button[disabled]{opacity:.5;cursor:not-allowed}.ds-button-text{background:transparent;border-color:transparent;color:var(--primary)}
+.ds-type-demo{display:grid;gap:9px}.ds-type-demo>div{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding-bottom:7px}.ds-type-demo small{color:var(--muted);font-size:10px;white-space:nowrap}
+.ds-cover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.ds-cover-demo{min-width:0}.ds-cover-demo>div{display:grid;place-items:center;overflow:hidden;background:var(--primary-soft);color:var(--primary);border:1px solid var(--line);border-radius:var(--ds-radius-card);aspect-ratio:1}
+.ds-cover-demo>div img{width:100%;height:100%;object-fit:contain}.ds-cover-demo.wide>div{aspect-ratio:16/9}.ds-cover-demo.round>div{border-radius:50%}
+.ds-cover-demo small{font-size:10px;color:var(--muted);display:block;margin-top:5px}
+.ds-space-list{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px}
+.ds-space-list>div{display:grid;justify-items:center;gap:5px;font-size:10px;color:var(--muted)}.ds-space-list i{width:var(--demo-space);height:var(--demo-space);background:var(--primary);border-radius:2px}
+.ds-form{display:flex;flex-direction:column;gap:8px}.ds-form label{font-size:11px;color:var(--muted)}.ds-form input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:var(--ds-radius-control);background:var(--paper);color:var(--ink);font:inherit;font-size:12px}.ds-form input[aria-invalid="true"]{border:1px solid var(--accent)}
+.ds-state{padding:13px;border:1px dashed var(--line);background:var(--paper);border-radius:var(--ds-radius-card);font-size:12px;color:var(--muted);text-align:center;margin-top:8px}
+.ds-links{display:flex;flex-wrap:wrap;gap:7px}.ds-links button{background:var(--paper);border:1px solid var(--line);color:var(--primary);border-radius:8px;padding:7px 10px;font-size:11px}
+.ds-modal-backdrop{position:fixed;inset:0;z-index:100;background:#0007;display:grid;place-items:center;padding:16px}.ds-modal-backdrop[hidden]{display:none}.ds-modal{background:var(--surface);color:var(--ink);padding:20px;max-width:340px;width:100%;border:1px solid var(--line);border-radius:var(--ds-radius-panel);box-shadow:var(--shadow)}.ds-modal h2{font-size:17px}.ds-modal p{font-size:12px;line-height:1.9;margin:8px 0 15px}
+.ds-player-demo{border-radius:12px;background:#1b312c;color:#fff;padding:12px;display:flex;align-items:center;gap:10px}.ds-player-demo img{width:46px;height:46px;border-radius:7px;object-fit:contain}.ds-player-demo>div{flex:1;min-width:0}.ds-player-demo strong{font-size:12px;display:block}.ds-player-demo small{font-size:10px;color:#c1d0c9}.ds-player-demo button{background:#e5efe8;color:#1b312c;border:0;border-radius:50%;width:36px;height:36px}
+@container(max-width:620px){.ds-panels{grid-template-columns:1fr;gap:8px}.ds-swatches{grid-template-columns:repeat(3,minmax(0,1fr))}.ds-intro,.ds-panel{padding:12px}.ds-intro h1{font-size:18px}.ds-cover-grid{gap:6px}.ds-cover-demo small{font-size:9px}}
+
 </style>
 </head>
 <body data-palette="olive">
 <div class="demo-bar"><div><div class="demo-brand">امینی‌خواه | طرح جامع یکپارچه ـ نسخه پیشنهادی ۱</div><div class="demo-caption" title="مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch">مقایسه سه هویت بصری A/B/C از همین پیش‌نمایش؛ طراحی بر پایه Wordها و HTMLهای اصلی، با استفاده تکمیلی از Stitch</div></div>
-<div class="toolbar"><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button></div></div>
+<div class="toolbar"><button id="desk" class="active" type="button">دسکتاپ</button><button id="mob" type="button">موبایل ۳۹۰</button><button id="full" class="active" type="button">طرح جامع</button><button id="current" type="button">امکانات فعلی</button><button type="button" onclick="go('designSystem')">سیستم طراحی</button></div></div>
 
 <div class="preview" id="preview"><div class="app-frame" id="frame"><div class="site-app mode-full" id="app">
 <div class="overline bismillah-band" role="img" aria-label="بسم الله الرحمن الرحیم"><span class="bismillah-star" aria-hidden="true">✦</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-script" lang="ar" dir="rtl" aria-hidden="true">﷽</span><span class="bismillah-line" aria-hidden="true"></span><span class="bismillah-star" aria-hidden="true">✦</span></div>
@@ -4353,7 +4407,26 @@ function profile(){
  return `<div class="account-page"><section class="account-head">${identity}</section>${login}${tabs}${content}</div>`;
 }
 
-const views={home,albums,album,session,roza,media,topics,search,questions,lessons,books,profile};
+
+/* Review-only design system: uses the same live theme tokens as the actual pages. */
+const dsTokenRoles=[["رنگ اصلی","--primary"],["رنگ تأکید","--accent"],["طلایی","--gold"],["زمینه","--paper"],["سطح کارت","--surface"],["متن","--ink"],["متن فرعی","--muted"],["خط جداکننده","--line"],["زمینه انتخاب","--primary-soft"],["متن روی رنگ اصلی","--ds-on-primary"],["رنگ مکمل","--alt"],["زمینه تأکید","--accent-soft"]];
+let dsChip="all",dsDemoPlaying=false;
+function dsPanel(name,html,wide=false){return `<section class="ds-panel${wide?" ds-wide":""}"><h2>${name}</h2>${html}</section>`}
+function dsSetChip(v){dsChip=v;document.querySelectorAll(".ds-chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.chip===v)))}
+function dsDialog(open){const el=byId("ds-modal");if(!el)return;el.hidden=!open;if(open)byId("ds-modal-close")?.focus();else byId("ds-open-modal")?.focus()}
+function dsToggleDemo(){dsDemoPlaying=!dsDemoPlaying;byId("ds-demo-play").textContent=dsDemoPlaying?"❚❚":"▶"}
+function dsSwatches(){return `<div class="ds-swatches">${dsTokenRoles.map(([name,token])=>`<div class="ds-swatch"><div class="ds-swatch-color" style="--swatch:var(${token})"></div><span>${name}</span><code>${token}</code></div>`).join("")}</div>`}
+function designSystem(){
+ const covers=`<div class="ds-cover-grid"><div class="ds-cover-demo"><div><img src="${es(albumCoverUrl("116"))}" alt="نمونه تصویر مجموعه"></div><small>کاور مربع ۱:۱</small></div><div class="ds-cover-demo wide"><div>بنر / پوستر</div><small>تصویر افقی ۱۶:۹</small></div><div class="ds-cover-demo round"><div><img src="./assets/occasions/arbaeen.webp" alt="نمونه بسته مناسبتی"></div><small>بسته دایره‌ای</small></div></div>`;
+ const buttons=`<div class="ds-demo-row"><button class="ds-button ds-button-primary" onclick="toast('نمونه دکمه اصلی')">شروع شنیدن</button><button class="ds-button" onclick="toast('نمونه دکمه فرعی')">افزودن به فهرست</button><button class="ds-button ds-button-text" onclick="go('albums')">مشاهده همه ‹</button><button class="ds-button" disabled>غیرفعال</button></div><div class="ds-demo-row">${[["all","همه"],["audio","صوت"],["video","کلیپ"]].map(([k,t])=>`<button class="ds-chip" data-chip="${k}" aria-pressed="${dsChip===k}" onclick="dsSetChip('${k}')">${t}</button>`).join("")}</div>`;
+ const typography=`<div class="ds-type-demo"><div><strong style="font-size:var(--ds-page-heading)">عنوان صفحه</strong><small>۲۰ / موبایل ۱۶</small></div><div><strong style="font-size:var(--ds-heading)">عنوان بخش</strong><small>۱۵</small></div><div><strong style="font-size:var(--ds-card-title)">عنوان کارت</strong><small>۱۲</small></div><div><span style="font-size:var(--body-lg-size);line-height:var(--body-lg-leading)">متن مطالعه و سخنرانی</span><small>۱۷ / فاصله ۳۰</small></div><div><span style="font-size:var(--ds-label);color:var(--muted)">برچسب و اطلاعات تکمیلی</span><small>۱۱</small></div></div>`;
+ const spacing=`<div class="ds-space-list">${[4,8,12,16,20,24].map(n=>`<div><i style="--demo-space:${n}px"></i><span>${sessionPersian(n)} px</span></div>`).join("")}</div><p>شعاع کنترل ۹، کارت ۱۲ و پنل ۱۵ پیکسل؛ کنترل معمول ۳۶ پیکسل، هدف لمس پیشنهادی ۴۴ پیکسل در مرحله موبایل.</p>`;
+ const form=`<div class="ds-form"><label for="ds-example-input">جست‌وجو</label><input id="ds-example-input" placeholder="عنوان مجموعه…" type="search"><label for="ds-example-invalid">نمونه حالت خطا</label><input id="ds-example-invalid" aria-invalid="true" placeholder="عبارت نامعتبر" readonly><small>حالت خطا صرفاً نمایشی است.</small></div><div class="ds-state">نتیجه‌ای یافت نشد.</div><button id="ds-open-modal" class="ds-button" style="margin-top:8px" onclick="dsDialog(true)">نمونه پنجره تأیید</button>`;
+ const player=`<div class="ds-player-demo"><img src="${es(albumCoverUrl("116"))}" alt=""><div><strong>عنوان جلسه نمونه</strong><small>از حیوانیت تا حیات</small></div><button id="ds-demo-play" onclick="dsToggleDemo()" aria-label="پخش نمایشی">${dsDemoPlaying?"❚❚":"▶"}</button></div><p>پلیر اصلی بعد از شروع پخش در صفحه جلسه نمایش داده می‌شود.</p><button class="ds-button" onclick="go('session')">مشاهده پلیر واقعی ‹</button>`;
+ return `<div class="ds-page"><section class="ds-intro"><h1>سیستم طراحی امینی‌خواه</h1><p>مرجع مرحله ۱۰ · نسخه اولیه برای تأیید اجزا؛ انتخاب پالت نهایی و آزمون اندازه‌ها در مراحل بعدی محفوظ است. رنگ‌ها از پوسته فعال خوانده می‌شوند.</p></section><div class="ds-panels">${dsPanel("رنگ‌های معنایی",dsSwatches(),true)}${dsPanel("تایپوگرافی آراد",typography)}${dsPanel("فاصله‌ها و اندازه‌ها",spacing)}${dsPanel("دکمه، چیپ و حالت انتخاب",buttons)}${dsPanel("فرم، جست‌وجو و حالات",form)}${dsPanel("نسبت تصویر و کارت",covers)}${dsPanel("پلیر و کنترل‌ها",player)}${dsPanel("اجزای واقعی در صفحات",`<div class="ds-links">${pages.map(([id,name])=>`<button onclick="go('${id}')">${es(name)} ‹</button>`).join("")}</div>`,true)}</div><div class="ds-modal-backdrop" id="ds-modal" hidden onclick="if(event.target===this)dsDialog(false)"><section class="ds-modal" role="dialog" aria-modal="true" aria-label="نمونه پنجره تأیید"><h2>تأیید عملیات</h2><p>این پنجره تنها نمونه طراحی است؛ هیچ داده‌ای تغییر نمی‌کند.</p><div class="ds-demo-row"><button id="ds-modal-close" class="ds-button ds-button-primary" onclick="dsDialog(false)">تأیید</button><button class="ds-button" onclick="dsDialog(false)">انصراف</button></div></section></div></div>`;
+}
+
+const views={home,albums,album,session,roza,media,topics,search,questions,lessons,books,profile,designSystem};
 function go(id){if(!views[id])return;page=id;render();window.scrollTo({top:0,behavior:'instant'});if(id==='session'&&searchJump){setTimeout(()=>{const target=byId('session-match');if(target)target.scrollIntoView({behavior:'smooth',block:'center'});searchJump=false},80)}}
 function render(){const c=byId('content');c.innerHTML=views[page]();byId('app').classList.toggle('mode-current',mode==='current');byId('app').classList.toggle('mode-full',mode==='full');document.querySelectorAll('.mobile-bottombar button').forEach(b=>b.classList.toggle('active',b.dataset.dest===page));document.querySelectorAll('.head-nav button').forEach(b=>b.classList.toggle('active',b.textContent.trim()===pages.find(x=>x[0]===page)?.[1]));document.querySelectorAll('.future-nav').forEach(b=>b.classList.toggle('hide',mode==='current'));if(page==='home')startSlider();else stopSlider();if(mode==='current'&&['questions','books','lessons'].includes(page)){c.innerHTML=`${title('این بخش در طرح جامع نهایی محفوظ است')}<div class="soft-panel">این صفحه به انتشار عمومی یا توسعه فنی مستقل نیاز دارد. برای دیدن طرح آن حالت «طرح جامع» را انتخاب کنید.</div>`} }
 function goSlide(n){slide=(n+sliderData.length)%sliderData.length;document.querySelectorAll('.hero-slider .slide').forEach((el,i)=>{el.classList.toggle('active',i===slide);el.setAttribute('aria-hidden',i===slide?'false':'true')});document.querySelectorAll('.hero-slider .slider-dots button').forEach((el,i)=>el.classList.toggle('active',i===slide))}
