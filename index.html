@@ -2820,6 +2820,64 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .library-album-link{font-size:9px}
 }
 
+
+/* Topic directory: independent content families, selected image cards and expandable subtopics. */
+.topic-directory-page{max-width:1200px;margin:auto;padding-bottom:18px;min-width:0}
+.topic-directory-head{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.topic-directory-heading{display:flex;align-items:center;gap:10px;min-width:0}
+.topic-directory-emblem{display:grid;place-items:center;width:43px;height:43px;flex:0 0 43px;border-radius:11px;background:var(--primary-soft);color:var(--primary)}
+.topic-directory-heading h1{font-size:20px;font-weight:830;color:var(--ink)}
+.topic-directory-heading p{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.7}
+.topic-directory-search{display:flex;align-items:center;gap:7px;width:min(36%,340px);padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--primary)}
+.topic-directory-search:focus-within{border-color:var(--primary)}
+.topic-directory-search svg{flex-shrink:0}
+.topic-directory-search input{min-width:0;flex:1;font:inherit;font-size:12px;color:var(--ink);border:0;outline:0;background:transparent}
+.topic-directory-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:thin;padding:2px 0 9px;border-bottom:1px solid var(--line)}
+.topic-directory-tabs button{white-space:nowrap;flex-shrink:0;border:1px solid var(--line);background:var(--surface);color:var(--muted);font-size:12px;font-weight:730;padding:9px 15px;border-radius:9px}
+.topic-directory-tabs button.is-active{background:var(--primary);color:white;border-color:var(--primary)}
+.topic-directory-section-head{padding:14px 2px 12px}
+.topic-directory-section-head h2{font-size:15px;color:var(--ink);font-weight:810}
+.topic-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.topic-directory-card{min-width:0;border:1px solid var(--line);border-radius:13px;background:var(--surface);overflow:hidden}
+.topic-directory-card:hover,.topic-directory-card.is-open{border-color:color-mix(in srgb,var(--primary) 45%,var(--line))}
+.topic-directory-main,.topic-directory-leaf>a{display:flex;align-items:center;gap:10px;text-align:right;padding:10px;width:100%;min-width:0;color:var(--ink);border:0;background:transparent;text-decoration:none}
+.topic-directory-cover{position:relative;display:grid;place-items:center;width:64px;height:64px;flex:0 0 64px;overflow:hidden;border-radius:9px;background:var(--primary-soft);color:var(--primary);font-size:25px}
+.topic-directory-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.topic-directory-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.topic-directory-copy strong{font-size:12px;line-height:1.75;font-weight:790;overflow-wrap:anywhere}
+.topic-directory-copy small{font-size:10px;color:var(--muted)}
+.topic-directory-copy mark{background:var(--accent-soft);color:var(--ink)}
+.topic-directory-chevron{font-size:19px;color:var(--primary);flex-shrink:0;line-height:1}
+.topic-directory-chevron.is-open{transform:rotate(180deg)}
+.topic-directory-sublist{border-top:1px solid var(--line);padding:5px 10px 8px;background:var(--paper)}
+.topic-directory-sublist a{display:flex;align-items:center;justify-content:space-between;gap:5px;padding:8px 1px;font-size:11px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);line-height:1.6}
+.topic-directory-sublist a:first-child{color:var(--primary);font-weight:780}
+.topic-directory-sublist a:last-child{border-bottom:0}
+.topic-directory-sublist a:hover{color:var(--primary)}
+.topic-directory-empty{padding:32px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);text-align:center;font-size:13px;color:var(--muted)}
+.topic-directory-note{font-size:10px;line-height:1.8;margin-top:14px;color:var(--muted)}
+@container(max-width:1050px){.topic-directory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@container(max-width:680px){
+ .topic-directory-head{flex-direction:column;align-items:stretch;gap:12px;padding:13px 12px;border-radius:13px;margin-bottom:10px}
+ .topic-directory-emblem{width:34px;height:34px;flex-basis:34px;border-radius:9px}
+ .topic-directory-heading h1{font-size:16px}
+ .topic-directory-heading p{font-size:10px}
+ .topic-directory-search{width:100%;padding:9px}
+ .topic-directory-tabs button{font-size:11px;padding:7px 11px}
+ .topic-directory-section-head{padding:11px 1px 9px}
+ .topic-directory-section-head h2{font-size:14px}
+ .topic-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .topic-directory-main,.topic-directory-leaf>a{padding:9px 7px;gap:6px;min-height:66px}
+ .topic-directory-cover{width:42px;height:42px;flex-basis:42px;border-radius:7px;font-size:20px}
+ .topic-directory-copy strong{font-size:11px}
+ .topic-directory-copy small{font-size:9px}
+ .topic-directory-chevron{font-size:15px}
+ .topic-directory-card.is-open{grid-column:1/-1}
+ .topic-directory-card.is-open .topic-directory-cover{width:49px;height:49px;flex-basis:49px}
+ .topic-directory-sublist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 10px}
+ .topic-directory-sublist a:first-child{grid-column:1/-1}
+}
+
 </style>
 </head>
 <body data-palette="olive">
@@ -3637,20 +3695,47 @@ function media(){
 }
 
 function topicImageCard(name,symbol,kind){return '<button class="topic-image-card" onclick="toast(\'در نسخه متصل، این دسته به فهرست محتوای همان نوع هدایت می‌شود\')"><div class="topic-image"><span>'+symbol+'</span><small>تصویر دسته</small></div><b>'+name+'</b><small class="topic-card-note">'+kind+' · جایگاه نمونه</small></button>'}
-function topics(){
- const allTabs=['سخنرانی‌ها','دروس','رسانه','روضه‌ها','پرسش‌وپاسخ'];
- const tabs=mode==='current'?['سخنرانی‌ها']:allTabs;
- const active=tabs.includes(currentTab)?currentTab:'سخنرانی‌ها';
- const selectedSpeech=categories.map(x=>topicImageCard(x[0],x[2],'سخنرانی')).join('');
- const selectedLessons=['دسته منتخب درس ۱','دسته منتخب درس ۲','دسته منتخب درس ۳','دسته منتخب درس ۴','دسته منتخب درس ۵','دسته منتخب درس ۶'].map(x=>topicImageCard(x,'▤','درس تخصصی')).join('');
- const selectedMedia=[['پادکست','♫'],['کلیپ','▷'],['پوستر','▣'],['روضه','✧']].map(x=>topicImageCard(x[0],x[1],'رسانه')).join('');
- const selectedRoza=['دسته منتخب روضه ۱','دسته منتخب روضه ۲','دسته منتخب روضه ۳','دسته منتخب روضه ۴','دسته منتخب روضه ۵','دسته منتخب روضه ۶'].map(x=>topicImageCard(x,'✧','روضه')).join('');
- const selectedQA=categoriesQA.slice(0,6).map(x=>topicImageCard(x,'؟','پرسش‌وپاسخ')).join('');
- const map={'سخنرانی‌ها':selectedSpeech,'دروس':selectedLessons,'رسانه':selectedMedia,'روضه‌ها':selectedRoza,'پرسش‌وپاسخ':selectedQA};
- const accordion='<div class="accordion"><details><summary>فهرست منتخب سخنرانی‌ها</summary><p>دسته‌ها و ترتیب نمایش از انتخاب مدیر می‌آیند؛ هیچ درخت کاملی به‌صورت خودکار در این صفحه چاپ نمی‌شود.</p></details><details><summary>فهرست منتخب دروس تخصصی</summary><p>عنوان فهرست و دسته‌های زیرمجموعه توسط مدیر قابل تعریف و بازآرایی است.</p></details><details><summary>فهرست منتخب رسانه‌ها و روضه‌ها</summary><p>نوع محتوا، تعداد فهرست‌ها و اقلام هر فهرست از تنظیمات مدیر خوانده می‌شود.</p></details><details><summary>فهرست منتخب پرسش‌وپاسخ</summary><p>این دسته‌بندی مستقل از دسته‌های سخنرانی است و انتخاب‌های آن در پنل مدیریت انجام می‌شود.</p></details></div>';
- return title('دسته‌های موضوعی',mode==='current'?'در امکانات فعلی، دسته‌بندی‌های عمومی سخنرانی نمایش داده می‌شوند.':'درخت دسته‌بندی کامل فقط ابزار داخلی مدیریت است؛ در سایت، صرفاً دسته‌ها و فهرست‌هایی که مدیر انتخاب کرده نمایش داده می‌شوند.')+'<div class="pill-row">'+tabs.map(t=>'<button class="pill '+(active===t?'active':'')+'" onclick="currentTab=\''+t+'\';render()">'+t+'</button>').join('')+'</div>'+sect('فهرست‌های کشویی قابل تنظیم',accordion,{future:true,desc:'تعداد فهرست‌ها، عنوان هر فهرست، محتوای داخل آن و ترتیب نمایش از پنل مدیریت تعیین می‌شوند.'})+sect('دسته‌های '+active,'<div class="topic-image-grid">'+map[active]+'</div>',{future:active!=='سخنرانی‌ها',desc:'تصاویر مربعی؛ فقط موارد منتخب و مرتب‌شده توسط مدیر نمایش داده می‌شوند.'})+sect('دسته‌های موجود','<div class="topic-image-grid">'+categories.slice(0,6).map(x=>topicImageCard(x[0],x[2],'دسته موجود در نمونه سایت')).join('')+'</div>',{desc:'این موارد نمونه‌ای از دسته‌های موجودند؛ انتخاب و ترتیب نهایی باید از داده سایت بیاید.'});
-}
 
+/* Selected topic lists use real site categories; final selection and order remain administrator-controlled. */
+const topicDirectoryData=[{"id":136,"name":"اخلاق","parent":null,"image":"https://aminikhaah.ir/storage/categories/9dumSlcJX9uCNYed9HvhsvDmzUYs8Rad712ezYap.jpg"},{"id":137,"name":"شرح حدیث","parent":null,"image":"https://aminikhaah.ir/storage/categories/wWiCM7nKlJaTjOR26vsZLcZdEuiLPsPgh4jpqFFw.jpg"},{"id":138,"name":"صحیفه سجادیه","parent":137,"image":"https://aminikhaah.ir/storage/categories/hbKR0tQYDrPzWW9tH3h57Gna9kjzyGX6IxkQjRJd.jpg"},{"id":140,"name":"قرآن","parent":null,"image":"https://aminikhaah.ir/storage/categories/q7p5LaPqlS7AwNq0sR5xwvRPPf5sSRWEWpCefkYm.jpg"},{"id":141,"name":"اهل بیت (ع)","parent":null,"image":"https://aminikhaah.ir/storage/categories/WBS9feNeKGRYsGFjxPzelKdZdqKWB1Pe3pwXvOhb.jpg"},{"id":142,"name":"عالم ملکوت","parent":null,"image":"https://aminikhaah.ir/storage/categories/9BRM7TSwTOIWyW5qCVN89g2f8GOhnVMUTzA23UUU.jpg"},{"id":144,"name":"معرفتی","parent":null,"image":"https://aminikhaah.ir/storage/categories/zHjSHGAoh50ExD7koEYYP3d3YgCXB1QqZJiquJl2.jpg"},{"id":145,"name":"سیاست","parent":null,"image":"https://aminikhaah.ir/storage/categories/OpLM5RFQNkOuWxrktJcUkhYGmOZSWnEeEIsM5DFa.jpg"},{"id":146,"name":"شخصیت شناسی","parent":null,"image":"https://aminikhaah.ir/storage/categories/YTUIDHauqpqCsTXnpah3ewGMxGZlTXPmfU29MKSS.jpg"},{"id":147,"name":"سبک زندگی","parent":null,"image":"https://aminikhaah.ir/storage/categories/fdvY8yHdqLIBPmWJDzuoM8G9THzFexvK8inEdFSj.jpg"},{"id":148,"name":"رسانه","parent":null,"image":"https://aminikhaah.ir/storage/categories/WBnrFGrmEqafhn2ohuyA1ieiOfYOH8fsuNOBgKjK.jpg"},{"id":149,"name":"مهدویت","parent":null,"image":"https://aminikhaah.ir/storage/categories/LSb59b09RryI2XgmkVzXVoz2lnd2MVoc1q6MsnZ8.jpg"},{"id":151,"name":"دروس تخصصی","parent":null,"image":"https://aminikhaah.ir/storage/categories/g7ekF9elyc28j0PQQHruSLm7Xli0oDW2lnA3x75r.jpg"},{"id":152,"name":"کتاب‌های برگزیده","parent":151,"image":""},{"id":153,"name":"امام حسین علیه السلام","parent":141,"image":""},{"id":154,"name":"امیر المومنین علیه السلام","parent":141,"image":""},{"id":155,"name":"امام جواد علیه السلام","parent":141,"image":""},{"id":156,"name":"امام هادی علیه السلام","parent":141,"image":""},{"id":157,"name":"روش تحصیل","parent":151,"image":""},{"id":159,"name":"ادبیات عرب","parent":151,"image":""},{"id":160,"name":"منطق","parent":151,"image":""},{"id":161,"name":"حضرت زهرا سلام الله علیها","parent":141,"image":""},{"id":162,"name":"حضرت زینب سلام الله علیها","parent":141,"image":""},{"id":163,"name":"امام رضا علیه السلام","parent":141,"image":""},{"id":164,"name":"فقه","parent":151,"image":""},{"id":165,"name":"مدرسه تعالی","parent":null,"image":""},{"id":166,"name":"روضه","parent":170,"image":"https://aminikhaah.ir/storage/categories/kmb9TksO7wyaSkLmOR3svFJZHrlEjMRdnYYy9Xos.png"},{"id":167,"name":"حضرت معصومه سلام الله علیها","parent":141,"image":""},{"id":168,"name":"امام سجاد علیه السلام","parent":141,"image":""},{"id":169,"name":"امام کاظم علیه السلام","parent":141,"image":""},{"id":170,"name":"چند رسانه ای","parent":null,"image":"https://aminikhaah.ir/storage/categories/5fw6MpyshqbznbQ6ohuesXGQw2bsDvQfHRlPAPlG.jpg"},{"id":171,"name":"پادکست صوتی","parent":170,"image":""},{"id":172,"name":"پادکست تصویری","parent":170,"image":""},{"id":173,"name":"عکس نوشت","parent":170,"image":""},{"id":174,"name":"روضه پیامبر اکرم (ص)","parent":166,"image":"https://aminikhaah.ir/storage/categories/TrJL4ibBTfGlPU994wEUkY7P9r09l3xhUrxZxuNx.jpg"},{"id":175,"name":"روضه امیرالمومنین (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/zFBVEDMkVjjLXPlmqQctVHJ1bXn5K0kE5rwPatdD.jpg"},{"id":176,"name":"روضه حضرت فاطمه (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/OCKyzaC7v4CbUMEINiBoK9VSffk30nv3euVgBi4V.jpg"},{"id":177,"name":"روضه امام حسن مجتبی (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/2NEneVirFjVlvScCXSF1lhIETvK4dmY34nwRUfbu.jpg"},{"id":178,"name":"روضه امام حسین (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/3eF1Zk2ayhik4hxLjsMYg0Fj2sR6DbFcGM3RHJz4.jpg"},{"id":179,"name":"روضه امام زین العابدین (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/i52AF1blUtMoEEx47twAYx4Km2am1GrT4WiVZYM8.jpg"},{"id":180,"name":"روضه امام باقر (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/By4VVtg7hkErgWlLz9cYHL3sND8R4LnDGg3DUn5L.jpg"},{"id":181,"name":"روضه امام صادق (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/sWSXMKxfj5vMvUo5LUfqYzcdbaMEQuk8q2Ya8fXk.jpg"},{"id":182,"name":"روضه امام کاظم (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/puYrstg3sdfIytQ3VuVvD88bNxVfIa7VSU3PoWZ1.jpg"},{"id":183,"name":"روضه امام رضا (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/yC4FoGRPO0Qg9YRBgKwZitlL7lq078UdzSHzi5U4.jpg"},{"id":184,"name":"روضه امام جواد (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/lvunSqYxBz98ujjuuNKIDbAKx2Ch6xx4OvjsACqP.jpg"},{"id":185,"name":"روضه امام هادی (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/LehOV7veZlacqfXAqKA0w6ftX8SnhNU6sxphAz6P.jpg"},{"id":186,"name":"روضه امام حسن عسکری (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/BSFWbLXHXSory3z5DcEBKaxgBwQltqnZCHr23r9t.jpg"},{"id":187,"name":"روضه امام زمان (عج)","parent":166,"image":"https://aminikhaah.ir/storage/categories/uzOkBryhSRn9soHmNZ6SQSQCTSSn853TP2NKRImv.jpg"},{"id":188,"name":"روضه حضرت زینب (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/yz7c2KFKktaSpntzI51pXadX2LzWSt6kPYTV9bCv.jpg"},{"id":189,"name":"روضه حضرت اباالفضل (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/XRHreCMheKXb7BRljizh5f1q5K8IA4DC5jpwkqnD.jpg"},{"id":190,"name":"روضه حضرت علی اکبر (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/SRZVjnH1pE1JK4JfJk4AS1CkCfu1nVr1Mdy3pzoJ.jpg"},{"id":191,"name":"روضه حضرت علی اصغر (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/8rqOTVjUGZPjpGyLMP5ZsvHq4LrwCytBAlSLQ4vK.jpg"},{"id":192,"name":"روضه حضرت مسلم بن عقیل (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/PMCfldrNM40hkAgXsokrVxF9sjuL4Hdmei2lIBv5.jpg"},{"id":193,"name":"روضه حضرت عبدالله بن حسن (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/nMbPMO86mAd2MHIBL7rVmW3SX9AiYU8ftiWqw3KH.jpg"},{"id":194,"name":"روضه حضرت حمزه (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/fSnUndBCz6DqxJLimt7wUtDHWQ5LFju5RUGk3tPy.jpg"},{"id":195,"name":"روضه حضرت قاسم (ع)","parent":166,"image":"https://aminikhaah.ir/storage/categories/yKREY1yUFfEMUDfkhCHp4dP5luI2dyHFKIJNF2d3.jpg"},{"id":196,"name":"روضه حضرت رقیه (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/fP4FVqUyW1wkaiUY5jpTH9xtTpkVrb4MInbIFTKB.jpg"},{"id":197,"name":"روضه حضرت رباب (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/N1EzmhbLyz6Jc2C9MUFr3YJKJTl85gD2otpBgdNC.jpg"},{"id":198,"name":"روضه حضرت سکینه (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/pwnwv95JHZpkW5DS2av9hxJODg2KTPyTJodE05e0.jpg"},{"id":199,"name":"روضه حضرت معصومه (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/3Uh7z268o2MIokPs8XEoqaKm2w9xYgBOSVsP6X4o.jpg"},{"id":200,"name":"روضه تخریب جنت البقیع","parent":166,"image":"https://aminikhaah.ir/storage/categories/9f1BSE0DGtSJrJ2oCSmNDnRX6O9gy1Z7FVTvQpwI.jpg"},{"id":201,"name":"روضه حضرت خدیجه (س)","parent":166,"image":"https://aminikhaah.ir/storage/categories/wdMNg6jehqRiv0RApQM2OJky2Q5Ppq6aGDcocjZm.jpg"},{"id":202,"name":"روضه جناب حر","parent":166,"image":"https://aminikhaah.ir/storage/categories/AsvYKfX08DoRGP2lvlA4QZWGgqEqoLVbtZMgc414.jpg"},{"id":203,"name":"امام حسن علیه السلام","parent":141,"image":"https://aminikhaah.ir/storage/categories/ryKbJ5jXrMd6UrEcw4GTKLnMehpLtuGBFc5PYM8F.jpg"},{"id":204,"name":"امام باقر علیه السلام","parent":141,"image":"https://aminikhaah.ir/storage/categories/zcJVyoTaxO2kIExZqIDuJvSAhLWrsxXfyB5O2Hov.jpg"},{"id":205,"name":"علوم حدیث","parent":151,"image":"https://aminikhaah.ir/storage/categories/JxRpZq3cvvp1XCtD26oqGE4lJnFGiKe7rvSOWVMb.jpg"},{"id":206,"name":"امام صادق علیه السلام","parent":141,"image":"https://aminikhaah.ir/storage/categories/ZRsJNAMMBTwFZIQCGBAZ7uoTXdlClsRLfzITs0aS.jpg"},{"id":207,"name":"پیامبر اکرم صلی الله علیه و آله","parent":141,"image":"https://aminikhaah.ir/storage/categories/X6vRDL2dLdO7vsBjWqTk0IvnJUEaIv6zHXpftWSW.jpg"},{"id":208,"name":"حضرت عباس علیه السلام","parent":141,"image":"https://aminikhaah.ir/storage/categories/QFOAlO8SHwRwHBMPiKEua4xAllAlo0XBITg2DYeG.jpg"},{"id":209,"name":"فلسفه","parent":151,"image":"https://aminikhaah.ir/storage/categories/I9xj6M6OwCQObYZ1NZ3eySHb9S2jp53RJHadSRD6.jpg"}];
+const topicDirectoryTabs=["سخنرانی‌ها","دروس","رسانه","روضه‌ها","پرسش‌وپاسخ"];
+const topicDirectorySpeech=[136,140,137,141,142,144,147,149,146,145,148,165];
+const topicDirectoryLessons=[152,157,159,160,164,205,209];
+const topicDirectoryMedia=[171,172,173];
+const topicDirectoryIcons={136:"◈",137:"✦",140:"۞",141:"✧",142:"◇",144:"▤",145:"◉",146:"♧",147:"⌂",148:"◉",149:"✧",151:"▤",165:"▤",171:"♫",172:"▷",173:"▣"};
+let topicDirectoryOpen=new Set(),topicDirectoryQuery="";
+function topicDirectoryFind(id){return topicDirectoryData.find(c=>c.id===id)}
+function topicDirectoryChildren(id){return topicDirectoryData.filter(c=>c.parent===id)}
+function topicDirectoryEntries(tab){
+ const ids=tab==="سخنرانی‌ها"?topicDirectorySpeech:tab==="دروس"?topicDirectoryLessons:tab==="رسانه"?topicDirectoryMedia:tab==="روضه‌ها"?topicDirectoryChildren(166).map(c=>c.id):[];
+ if(tab==="پرسش‌وپاسخ")return categoriesQA.map((name,i)=>({id:"qa"+i,name,parent:null,image:"",qaIndex:i}));
+ return ids.map(topicDirectoryFind).filter(Boolean);
+}
+function topicDirectoryChoose(tab){currentTab=tab;topicDirectoryOpen.clear();topicDirectoryQuery="";render()}
+function topicDirectoryRefresh(){const root=byId("topic-directory-results");if(root)root.innerHTML=topicDirectoryResults()}
+function topicDirectoryFilter(v){topicDirectoryQuery=String(v||"").trim();topicDirectoryRefresh()}
+function topicDirectoryToggle(id){if(topicDirectoryOpen.has(id))topicDirectoryOpen.delete(id);else topicDirectoryOpen.add(id);topicDirectoryRefresh()}
+function topicDirectoryLink(c,label){
+ const href=c.qaIndex!==undefined?"#questions":"https://aminikhaah.ir/category/"+c.id;
+ const extra=c.qaIndex!==undefined?`onclick="qaTab=${c.qaIndex};go('questions');return false"`:'target="_blank" rel="noopener noreferrer"';
+ return `<a href="${href}" ${extra}>${label}</a>`;
+}
+function topicDirectoryCard(c){
+ const subs=topicDirectoryChildren(c.id),open=topicDirectoryOpen.has(c.id),sym=topicDirectoryIcons[c.id]||(currentTab==="روضه‌ها"?"✧":currentTab==="پرسش‌وپاسخ"?"؟":"▤");
+ const cover=`<span class="topic-directory-cover"><span aria-hidden="true">${es(sym)}</span>${c.image?`<img src="${es(c.image)}" alt="" loading="lazy" decoding="async" onerror="this.hidden=true">`:""}</span>`;
+ const title=`<span class="topic-directory-copy"><strong>${searchMarked(c.name,topicDirectoryQuery)}</strong>${subs.length?`<small>${sessionPersian(subs.length)} زیرموضوع</small>`:""}</span>`;
+ const main=subs.length?`<button class="topic-directory-main" type="button" aria-expanded="${open}" onclick="topicDirectoryToggle(${c.id})">${cover}${title}<span class="topic-directory-chevron${open?" is-open":""}">⌄</span></button>`:`<div class="topic-directory-leaf">${topicDirectoryLink(c,cover+title+'<span class="topic-directory-chevron">‹</span>')}</div>`;
+ return `<article class="topic-directory-card${open?" is-open":""}">${main}${subs.length&&open?`<div class="topic-directory-sublist">${topicDirectoryLink(c,"همه مطالب این موضوع ‹")}${subs.map(x=>topicDirectoryLink(x,es(x.name)+" <span>‹</span>")).join("")}</div>`:""}</article>`;
+}
+function topicDirectoryResults(){
+ const all=topicDirectoryEntries(currentTab),q=searchNormalize(topicDirectoryQuery);
+ const rows=all.filter(c=>!q||searchNormalize(c.name).includes(q)||topicDirectoryChildren(c.id).some(x=>searchNormalize(x.name).includes(q)));
+ return rows.length?`<div class="topic-directory-grid">${rows.map(topicDirectoryCard).join("")}</div>`:`<div class="topic-directory-empty">موضوعی با این عبارت پیدا نشد.</div>`;
+}
+function topics(){
+ const tabs=mode==="current"?["سخنرانی‌ها"]:topicDirectoryTabs;if(!tabs.includes(currentTab))currentTab="سخنرانی‌ها";
+ return `<div class="topic-directory-page"><section class="topic-directory-head"><div class="topic-directory-heading"><span class="topic-directory-emblem"><svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.6" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span><div><h1>موضوعات</h1><p>محتوا را بر اساس علاقه و موضوع موردنظر پیدا کنید.</p></div></div><label class="topic-directory-search"><svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="1.7" fill="none"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><input type="search" aria-label="جست‌وجوی موضوع" placeholder="جست‌وجوی موضوع…" value="${es(topicDirectoryQuery)}" oninput="topicDirectoryFilter(this.value)"></label></section><div class="topic-directory-tabs" role="group" aria-label="نوع محتوا">${tabs.map(t=>`<button type="button" aria-pressed="${currentTab===t}" class="${currentTab===t?"is-active":""}" onclick="topicDirectoryChoose('${t}')">${t}</button>`).join("")}</div><div class="topic-directory-section-head"><h2>موضوعات ${currentTab}</h2></div><div id="topic-directory-results">${topicDirectoryResults()}</div>${currentTab==="پرسش‌وپاسخ"?'<p class="topic-directory-note">نمای طرح جامع؛ بخش عمومی پرسش‌وپاسخ هنوز به سایت متصل نیست.</p>':""}</div>`;
+}
 
 /* Search: local matching against real preview records, not a live search service. */
 let searchKind="all",searchExpanded=new Set();
