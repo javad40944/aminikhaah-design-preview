@@ -2582,8 +2582,8 @@ button.session-nav-cell:hover{border-color:var(--primary);background:var(--prima
  .session-layout .session-text-panel{grid-row:2}
  .session-layout>.session-aside{grid-row:3;position:static;margin-bottom:12px}
  .session-layout .session-comments{grid-row:4}
- /* Mobile uses the document as the only vertical scroll surface. */
- .session-chapter-card .session-queue{max-height:none;height:auto;overflow:visible;overscroll-behavior:auto;touch-action:pan-y;padding-inline-end:0}
+ /* Mobile: compact scrollable queue; allow scroll chaining to the page at both edges. */
+ .session-chapter-card .session-queue{max-height:280px;height:auto;overflow-x:hidden;overflow-y:auto;overscroll-behavior:auto;touch-action:pan-y;-webkit-overflow-scrolling:touch;padding-inline-end:3px}
  .session-chapter-card .session-queue-item{flex-shrink:0}
  .session-aside-card.session-chapter-card{padding:12px;margin-bottom:9px}
  .session-chapter-card .session-queue-item{min-height:57px;padding:8px 7px}
